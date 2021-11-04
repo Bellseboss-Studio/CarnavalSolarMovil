@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0199c11aa6f514784c5c69cd8378d8, type: 3}
+  m_Name: PlayFabEditorPrefsSO
+  m_EditorClassIdentifier: 
+  DevAccountEmail: www.luisplata@gmail.com
+  DevAccountToken: gep89t17piny13fu5wmke5k3tsiejfsz1asx68a7hxg1nrzpreurg7d9ftdaqgn7td85n17xupxjqgpq36iezcsp5bkced6xkwqwxpq6qh1s6sqnkf9orfmkny91i4zaqhm8tfoin5t1ksmnc7h14t983axma6z6y4qni1eycrucr7b19hfxscqzxnry7mcdyz4fnzig
+  SelectedStudio: RPG de Accion
+  SdkPath: Assets/PlayFabSDK
+  EdExPath: 
+  LocalCloudScriptPath: 
+  PanelIsShown: 0
+  curMainMenuIdx: 2
+  curSubMenuIdx: 0
