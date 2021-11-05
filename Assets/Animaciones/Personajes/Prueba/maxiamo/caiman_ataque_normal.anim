@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Armature_ArmatureAction.001
+  m_Name: caiman_ataque_normal
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
