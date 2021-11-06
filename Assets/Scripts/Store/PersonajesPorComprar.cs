@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PersonajesPorComprar : MonoBehaviour
 {
-    [SerializeField] private List<Container> containers;
+    [SerializeField] private List<ContainerDeSeleccionDePeronsaje> containers;
     [SerializeField] private GameObject botonDeFinalizar;
     [SerializeField] private Button terminar;
 
@@ -17,7 +17,7 @@ public class PersonajesPorComprar : MonoBehaviour
         botonDeFinalizar.SetActive(false);
     }
 
-    public void FullPlaces(List<Personaje> pjs, Container.OnSelectingPj acction)
+    public void FullPlaces(List<Personaje> pjs, ContainerDeSeleccionDePeronsaje.OnSelectingPj acction)
     {
         var index = 0;
         Debug.Log($"cantidad es {pjs.Count}");

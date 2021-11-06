@@ -19,7 +19,7 @@ namespace ServiceLocatorPath
         {
         }
 
-        public float ataque, defensa, velocidad;
+        public float ataque, defensa, velocidad, vida;
 
         public string imagen, nombre, type;
         /*
@@ -48,6 +48,11 @@ namespace ServiceLocatorPath
         public float GetVelocidad()
         {
             return velocidad;
+        }
+
+        public float GetVida()
+        {
+            return vida;
         }
     }
 }

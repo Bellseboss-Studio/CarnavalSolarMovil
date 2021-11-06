@@ -8,6 +8,7 @@ using Object = UnityEngine.Object;
 public class PlaceOfPlayer : MonoBehaviour
 {
     [SerializeField] private GameObject[] points;
+    //[SerializeField] private [] UiDeAtaques;
     [SerializeField] private List<PjView> personajes;
     [SerializeField] private PjView pjPrefab;
 
@@ -25,7 +26,12 @@ public class PlaceOfPlayer : MonoBehaviour
             var pjview = Instantiate(pjPrefab);
             pjview.transform.position = point.transform.position;
             pjview.Configurate(personajesJugablesElegidos[index]);
+            index++;
             personajes.Add(pjview);
+            if (point.TryGetComponent<ControladorDeBatallaParaPersonajes>(out var controlador))
+            {
+                //controlador.
+            }
         }
     }
 }

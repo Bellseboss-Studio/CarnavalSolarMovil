@@ -39,15 +39,28 @@ public class DragComponent : MonoBehaviour
     private void ObjectDrop_(PointerEventData arg0)
     {
         Debug.Log("drop");
+        Point();
+    }
+
+    public void Point()
+    {
+        var ray = _camera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out var hit))
+        {
+            if (hit.collider.gameObject.transform.parent != null && hit.collider.gameObject.transform.parent.TryGetComponent<PjView>(out var pjView))
+            {
+                Debug.Log($"hit.point {hit.point} pjView {pjView.PJ.nombre}");
+                return;
+            }
+        }
+        rectTransform.position = origin.transform.position;
     }
 
     private void ObjectDragging_(PointerEventData arg0)
     {
-        Debug.Log("Dragin");
         var mousePos = Input.mousePosition;
-        Debug.Log($"mousePos {mousePos} Input.mousePosition {Input.mousePosition}");
         var position = new Vector3(mousePos.x, mousePos.y, 0);
-        Debug.Log($"position {position}");
         rectTransform.position = position;
     }
 
@@ -59,9 +72,9 @@ public class DragComponent : MonoBehaviour
     private void Awake()
     {
         listOfChain = new Stack<GameObject>();
+        linesRender.Points = Array.Empty<Vector2>();
         listOfChain.Push(origin);
         listOfChain.Push(gameObject);
-        linesRender.Points =new Vector2[listOfChain.Count];
     }
 
     // Start is called before the first frame update
@@ -94,7 +107,7 @@ public class DragComponent : MonoBehaviour
         var positionCount = 0;
         foreach (var chain in listOfChain)
         {
-            positions[positionCount] = chain.transform.localPosition;
+            positions[positionCount] =  chain.transform.localPosition;
             positionCount++;
         }
         linesRender.Points = new Vector2[listOfChain.Count];

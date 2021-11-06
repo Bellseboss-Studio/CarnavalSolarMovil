@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Container : MonoBehaviour
+public class ContainerDeSeleccionDePeronsaje : MonoBehaviour
 {
     [SerializeField] private Image foto, seleccionado;
     [SerializeField] private TextMeshProUGUI nombre, ataque, defensa, velocidad;
