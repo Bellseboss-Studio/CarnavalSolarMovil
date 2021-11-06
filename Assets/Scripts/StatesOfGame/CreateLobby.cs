@@ -17,7 +17,7 @@ namespace StatesOfEnemies
         {
             yield return new WaitForSeconds(0.1f);
             _mediator.ConfiguraElSegundoPlayer();
-            behavior.SetNextState(GameStatesConfiguration.BatallaState);
+            behavior.SetNextState(GameStatesConfiguration.EsperaDeSincro);
         }
     }
 }

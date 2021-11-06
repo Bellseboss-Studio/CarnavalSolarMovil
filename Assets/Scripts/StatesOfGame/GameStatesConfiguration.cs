@@ -11,6 +11,7 @@ namespace StatesOfEnemies
         public const int ConfiguracionState = 2;
         public const int CreacionDeSalaState = 3;
         public const int BatallaState = 4;
+        public const int EsperaDeSincro = 7;
         public const int FinDeBatallaState = 5;
         public const int QueMasPodemosHacer = 6;
 

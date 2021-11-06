@@ -1,11 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using ServiceLocatorPath;
 using StatesOfEnemies;
 using UnityEngine;
 
-public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguration, IMediatorBattle
+public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguration, IMediatorBattle, IMediatorDeEspera
 {
     [SerializeField] private Player player1, player2;
     [SerializeField] private PlaceOfPlayer placeOfPlayer1, placeOfPlayer2;
@@ -17,7 +14,7 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
         placeOfPlayer1.Configure();
         placeOfPlayer2.Configure();
         uiController.Configure(player1);
-        StartCoroutine(gameBehavior.StartState(gameBehavior.Configuration(this, this, this)));
+        StartCoroutine(gameBehavior.StartState(gameBehavior.Configuration(this)));
     }
 
     private void ColocarleCosasAlPlayer2()
@@ -68,5 +65,21 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     public void MuestraLaUiDeBatalla()
     {
         uiBatalla.SetActive(true);
+    }
+
+    public void SincronizaJugadores()
+    {
+        
+    }
+
+    public bool EstanLosJugadoresSincronizados()
+    {
+        return true;
+    }
+
+    public float ColocarTemporalizador()
+    {
+        //mostrar un temporalizador para empezar el juego
+        return 2;
     }
 }

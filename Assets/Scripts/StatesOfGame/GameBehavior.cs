@@ -9,13 +9,14 @@ namespace StatesOfEnemies
         private GameStatesConfiguration _gameStatesConfiguration;
         private GameObject targer;
 
-        public IGameState Configuration(IMediatorGeneral mediator, IMediatorConfiguration configuration, IMediatorBattle battle)
+        public IGameState Configuration(Instalador mediador)
         {
             _gameStatesConfiguration = new GameStatesConfiguration();
-            _gameStatesConfiguration.AddInitialState(GameStatesConfiguration.ConfiguracionState, new ConfiguracionDeElementosParaIniciar(configuration));
-            _gameStatesConfiguration.AddState(GameStatesConfiguration.SeleccionandoPersonajesState, new SeleccionandoPersonajes(mediator));
-            _gameStatesConfiguration.AddState(GameStatesConfiguration.CreacionDeSalaState, new CreateLobby(mediator));
-            _gameStatesConfiguration.AddState(GameStatesConfiguration.BatallaState, new BatallaState(battle));
+            _gameStatesConfiguration.AddInitialState(GameStatesConfiguration.ConfiguracionState, new ConfiguracionDeElementosParaIniciar(mediador));
+            _gameStatesConfiguration.AddState(GameStatesConfiguration.SeleccionandoPersonajesState, new SeleccionandoPersonajes(mediador));
+            _gameStatesConfiguration.AddState(GameStatesConfiguration.CreacionDeSalaState, new CreateLobby(mediador));
+            _gameStatesConfiguration.AddState(GameStatesConfiguration.EsperaDeSincro, new EsperaParaSincronizar(mediador));
+            _gameStatesConfiguration.AddState(GameStatesConfiguration.BatallaState, new BatallaState(mediador));
             _nextState = 0;
             return _gameStatesConfiguration.GetInitialState();
         }
