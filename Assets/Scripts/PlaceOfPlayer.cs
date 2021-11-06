@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using ServiceLocatorPath;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class PlaceOfPlayer : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class PlaceOfPlayer : MonoBehaviour
             //Aqui cambiar por una factoria
             var pjview = Instantiate(pjPrefab);
             pjview.transform.position = point.transform.position;
-            pjview.Configurate();
+            pjview.Configurate(personajesJugablesElegidos[index]);
             personajes.Add(pjview);
         }
     }

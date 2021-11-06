@@ -1,13 +1,14 @@
-﻿using UnityEngine;
+﻿using ServiceLocatorPath;
+using UnityEngine;
 
 public class PjView : MonoBehaviour
 {
     [SerializeField] private Animator anim;
-    [SerializeField] private AnimationClip ataqueNormal;
-    [SerializeField] private AnimationClip ataqueEspecial;
 
-    public void Configurate()
+    [SerializeField] private GameObject personaje;
+
+    public void Configurate(Personaje personajesJugablesElegido)
     {
-        
+        var pj = Instantiate(personaje, transform);
     }
 }

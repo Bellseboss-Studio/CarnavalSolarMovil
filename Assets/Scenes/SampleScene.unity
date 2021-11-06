@@ -2734,7 +2734,7 @@ MonoBehaviour:
   - {fileID: 281975148}
   - {fileID: 1977241201}
   personajes: []
-  pjPrefab: {fileID: 2967929367373134920, guid: 50adea791c4a02840b89ca0e2f4bf6a6, type: 3}
+  pjPrefab: {fileID: 2967929367373134920, guid: f14cf0a7090086949b401c83c9e8628a, type: 3}
 --- !u!4 &1537101883
 Transform:
   m_ObjectHideFlags: 0

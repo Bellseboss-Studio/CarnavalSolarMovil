@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 2967929367373134927}
   - component: {fileID: 2967929367373134920}
   m_Layer: 0
-  m_Name: PJ
+  m_Name: PJPlayer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,14 +199,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2967929367373134926}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 2967929365772072823}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &2967929367373134920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,4 +220,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  personaje: {fileID: 6474068273519146826, guid: 6b011693137a67b4086a8e5390d0226f, type: 3}
+  personaje: {fileID: 2831680589639547929, guid: b4917d9a6c8299d4cbc7dd7f78205bb4, type: 3}
