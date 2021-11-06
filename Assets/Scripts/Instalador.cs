@@ -11,6 +11,7 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     [SerializeField] private PlaceOfPlayer placeOfPlayer1, placeOfPlayer2;
     [SerializeField] private ControladorDeUI uiController;
     [SerializeField] private GameBehavior gameBehavior;
+    [SerializeField] private GameObject uiBatalla;
     private void Start()
     {
         placeOfPlayer1.Configure();
@@ -62,5 +63,10 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     {
         player1.Configurarlo();
         player2.Configurarlo();
+    }
+
+    public void MuestraLaUiDeBatalla()
+    {
+        uiBatalla.SetActive(true);
     }
 }

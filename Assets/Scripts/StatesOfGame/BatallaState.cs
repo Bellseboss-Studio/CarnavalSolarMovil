@@ -16,6 +16,7 @@ namespace StatesOfEnemies
         public IEnumerator DoAction(IBehavior behavior)
         {
             _mediator.ConfigurePlayers();
+            _mediator.MuestraLaUiDeBatalla();
             while (!_mediator.OncePlayersIsDead())
             {
                 yield return new WaitForSeconds(0.1f);   
