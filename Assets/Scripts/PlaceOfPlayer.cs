@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using ServiceLocatorPath;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -8,7 +9,6 @@ using Object = UnityEngine.Object;
 public class PlaceOfPlayer : MonoBehaviour
 {
     [SerializeField] private GameObject[] points;
-    //[SerializeField] private [] UiDeAtaques;
     [SerializeField] private List<PjView> personajes;
     [SerializeField] private PjView pjPrefab;
 
@@ -25,13 +25,24 @@ public class PlaceOfPlayer : MonoBehaviour
             //Aqui cambiar por una factoria
             var pjview = Instantiate(pjPrefab);
             pjview.transform.position = point.transform.position;
-            pjview.Configurate(personajesJugablesElegidos[index]);
-            index++;
-            personajes.Add(pjview);
+            
             if (point.TryGetComponent<ControladorDeBatallaParaPersonajes>(out var controlador))
             {
-                //controlador.
+                pjview.Configurate(personajesJugablesElegidos[index], controlador);
             }
+            index++;
+            personajes.Add(pjview);
         }
+    }
+
+    public bool HayAlguienDePie()
+    {
+        var EstanTodosVivos = false;
+        foreach (var personaje in personajes.Where(personaje => personaje.EstaVivo()))
+        {
+            EstanTodosVivos = true;
+        }
+
+        return EstanTodosVivos;
     }
 }

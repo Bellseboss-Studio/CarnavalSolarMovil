@@ -60,4 +60,9 @@ public class ControladorDeUI : MonoBehaviour
     {
         return personajesPorComprar.TerminoDeElegir;
     }
+
+    public void Restart()
+    {
+        personajesPorComprar.Restart();
+    }
 }

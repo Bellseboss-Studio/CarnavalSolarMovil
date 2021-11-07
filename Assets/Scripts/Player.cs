@@ -22,12 +22,11 @@ public class Player : MonoBehaviour
             throw new Exception("Ya no puede llevar mas personajes");
         }
         personajesJugablesElegidos.Add(pj);
-        Debug.Log($"Personaje {pj.GetNombre()} agregado");
     }
 
     public bool IsDead()
     {
-        return false;
+        return !place.HayAlguienDePie();
     }
 
     public void Configurarlo()
@@ -38,5 +37,10 @@ public class Player : MonoBehaviour
     public bool IsFull()
     {
         return personajesJugablesElegidos.Count > 2;
+    }
+
+    public void Restart()
+    {
+        Start();
     }
 }

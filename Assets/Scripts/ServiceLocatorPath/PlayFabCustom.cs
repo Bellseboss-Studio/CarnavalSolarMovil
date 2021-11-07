@@ -103,7 +103,7 @@ namespace ServiceLocatorPath
         }
         private async Task GetInventory()
         {
-            Debug.Log("get inventory");
+            //Debug.Log("get inventory");
             resultPlayfab = false;
             GetCatalogItemsResult itemsResultLocal = null;
             var catalog = new GetCatalogItemsRequest()
@@ -113,7 +113,7 @@ namespace ServiceLocatorPath
             PlayFabClientAPI.GetCatalogItems(catalog, itemsResult =>
             {
                 Personaje extra = null;
-                Debug.Log($"resuylts {itemsResult.Catalog.Count}");
+                //Debug.Log($"resuylts {itemsResult.Catalog.Count}");
                 foreach (var item in itemsResult.Catalog)
                 {
                     inventaryPersonajes.Add(JsonUtility.FromJson<Personaje>(item.CustomData));

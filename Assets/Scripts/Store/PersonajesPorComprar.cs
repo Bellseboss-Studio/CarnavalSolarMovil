@@ -20,7 +20,7 @@ public class PersonajesPorComprar : MonoBehaviour
     public void FullPlaces(List<Personaje> pjs, ContainerDeSeleccionDePeronsaje.OnSelectingPj acction)
     {
         var index = 0;
-        Debug.Log($"cantidad es {pjs.Count}");
+        //Debug.Log($"cantidad es {pjs.Count}");
         foreach (var pj in pjs)
         {
             containers[index].Fulled(pj);
@@ -42,5 +42,9 @@ public class PersonajesPorComprar : MonoBehaviour
         });
     }
 
+    public void Restart()
+    {
+        terminoDeElegir = false;
+    }
     public bool TerminoDeElegir => terminoDeElegir;
 }

@@ -258,6 +258,7 @@ GameObject:
   - component: {fileID: 3172775847872767651}
   - component: {fileID: 7576473590839079375}
   - component: {fileID: 1092907520588037304}
+  - component: {fileID: -5599195573415770133}
   m_Layer: 0
   m_Name: BaseCharacter
   m_TagString: Untagged
@@ -313,6 +314,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &-5599195573415770133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2831680589639547929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c74e8644a16934698b258d0824bb8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ataqueNormal: {fileID: 7400000, guid: ac2e59b532b48844fbfc7561f474b8c9, type: 2}
+  ataqueEspecial: {fileID: 7400000, guid: d489a2c5fc7b819409820f31527ecb9e, type: 2}
 --- !u!1 &2885529259893303945
 GameObject:
   m_ObjectHideFlags: 0

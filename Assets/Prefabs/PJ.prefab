@@ -220,4 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  personaje: {fileID: 6474068273519146826, guid: 6b011693137a67b4086a8e5390d0226f, type: 3}
+  danioAnim: {fileID: 7400000, guid: 6b8490a7f3e5edf4fa09bcd33ddd9420, type: 2}
+  idle: {fileID: 7400000, guid: d6aaaea65e9a1e94b8699ef08272c588, type: 2}
+  muerte: {fileID: 7400000, guid: 1fbd3879ce137f34184bca1d18e76fc2, type: 2}
+  personaje: {fileID: 6986709228758888096, guid: 6b011693137a67b4086a8e5390d0226f, type: 3}

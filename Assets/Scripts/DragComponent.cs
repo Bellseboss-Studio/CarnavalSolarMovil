@@ -1,6 +1,7 @@
 using System;
 using UnityEngine.UI.Extensions;
 using System.Collections.Generic;
+using ServiceLocatorPath;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -14,6 +15,10 @@ public class DragComponent : MonoBehaviour
     private EventTrigger.Entry entry_2;
     private RectTransform rectTransform;
     private Stack<GameObject> listOfChain;
+    public OnDrop OnDropInTarget;
+
+    public delegate void OnDrop(PjView target);
+    
 
     public void CreateEventForDragAndDrop()
     {
@@ -38,7 +43,7 @@ public class DragComponent : MonoBehaviour
 
     private void ObjectDrop_(PointerEventData arg0)
     {
-        Debug.Log("drop");
+        //Debug.Log("drop");
         Point();
     }
 
@@ -50,8 +55,8 @@ public class DragComponent : MonoBehaviour
         {
             if (hit.collider.gameObject.transform.parent != null && hit.collider.gameObject.transform.parent.TryGetComponent<PjView>(out var pjView))
             {
-                Debug.Log($"hit.point {hit.point} pjView {pjView.PJ.nombre}");
-                return;
+                //Debug.Log($"hit.point {hit.point} pjView {pjView.PJ.nombre}");
+                OnDropInTarget?.Invoke(pjView);
             }
         }
         rectTransform.position = origin.transform.position;
@@ -66,7 +71,7 @@ public class DragComponent : MonoBehaviour
 
     private void BeginDrag_(PointerEventData arg0)
     {
-        Debug.Log("begin");
+        //Debug.Log("begin");
     }
 
     private void Awake()

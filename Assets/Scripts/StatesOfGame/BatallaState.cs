@@ -20,10 +20,9 @@ namespace StatesOfEnemies
             _mediator.MuestraLaUiDeBatalla();
             while (!_mediator.OncePlayersIsDead())
             {
-                yield return new WaitForSeconds(0.1f);   
+                yield return new WaitForSeconds(0.1f);
             }
-            //behavior.SetNextState(GameStatesConfiguration.FinDeBatallaState);
-            behavior.SetNextState(-1);
+            behavior.SetNextState(GameStatesConfiguration.FinDeBatallaState);
         }
     }
 }

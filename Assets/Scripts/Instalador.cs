@@ -1,6 +1,8 @@
 using ServiceLocatorPath;
 using StatesOfEnemies;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguration, IMediatorBattle, IMediatorDeEspera
 {
@@ -8,9 +10,23 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     [SerializeField] private PlaceOfPlayer placeOfPlayer1, placeOfPlayer2;
     [SerializeField] private ControladorDeUI uiController;
     [SerializeField] private GameBehavior gameBehavior;
-    [SerializeField] private GameObject uiBatalla;
+    [SerializeField] private GameObject uiBatalla, uiDeGanastePerdiste;
+    [SerializeField] private TextMeshProUGUI textoDeGanastePerdiste;
+    [SerializeField] private Button nuevaBatalla, finalizar;
+
+    private bool eligio;
+    private bool quiereOtraBatalla;
     private void Start()
     {
+        nuevaBatalla.onClick.AddListener(() =>
+        {
+            quiereOtraBatalla = true;
+            eligio = true;
+        });
+        finalizar.onClick.AddListener(() =>
+        {
+            eligio = true;
+        });
         placeOfPlayer1.Configure();
         placeOfPlayer2.Configure();
         uiController.Configure(player1);
@@ -19,9 +35,9 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
 
     private void ColocarleCosasAlPlayer2()
     {
-        player2.AddPj(new Personaje(2,2,2,"https://i.ytimg.com/vi/-6vnomecItA/maxresdefault.jpg","PlaceHolder","PlaceHolder"));
-        player2.AddPj(new Personaje(2,2,2,"https://i.ytimg.com/vi/-6vnomecItA/maxresdefault.jpg","PlaceHolder","PlaceHolder"));
-        player2.AddPj(new Personaje(2,2,2,"https://i.ytimg.com/vi/-6vnomecItA/maxresdefault.jpg","PlaceHolder","PlaceHolder"));
+        player2.AddPj(new Personaje(2,2,2,"https://i.ytimg.com/vi/-6vnomecItA/maxresdefault.jpg","PlaceHolder","PlaceHolder",1));
+        player2.AddPj(new Personaje(2,2,2,"https://i.ytimg.com/vi/-6vnomecItA/maxresdefault.jpg","PlaceHolder","PlaceHolder",1));
+        player2.AddPj(new Personaje(2,2,2,"https://i.ytimg.com/vi/-6vnomecItA/maxresdefault.jpg","PlaceHolder","PlaceHolder",1));
     }
 
     public void ShowLoad()
@@ -32,6 +48,35 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     public void HideLoad()
     {
         uiController.HideLoading();
+    }
+
+    public void MostrarElLetreroDeGanarOPerder()
+    {
+        //debo mostrar un panel con el texto
+        textoDeGanastePerdiste.text = "Prueba inicial";
+        uiDeGanastePerdiste.SetActive(true);
+    }
+
+    public bool EligioLoQueQuiereHacer()
+    {
+        return eligio;
+    }
+
+    public bool QuiereHacerOtraBatalla()
+    {
+        return quiereOtraBatalla;
+    }
+
+    public void ReiniciaTodosLosEstados()
+    {
+        player1.Restart();
+        player2.Restart();
+        uiController.Restart();
+    }
+
+    public void OcultarElLetreroDeGanarOPerder()
+    {
+        uiDeGanastePerdiste.SetActive(false);
     }
 
     public bool TerminoDeElegir => uiController.GetTerminoDeElegir();

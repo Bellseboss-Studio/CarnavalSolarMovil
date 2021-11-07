@@ -17,6 +17,7 @@ namespace StatesOfEnemies
             _gameStatesConfiguration.AddState(GameStatesConfiguration.CreacionDeSalaState, new CreateLobby(mediador));
             _gameStatesConfiguration.AddState(GameStatesConfiguration.EsperaDeSincro, new EsperaParaSincronizar(mediador));
             _gameStatesConfiguration.AddState(GameStatesConfiguration.BatallaState, new BatallaState(mediador));
+            _gameStatesConfiguration.AddState(GameStatesConfiguration.FinDeBatallaState, new BatallaTerminada(mediador));
             _nextState = 0;
             return _gameStatesConfiguration.GetInitialState();
         }
@@ -39,6 +40,13 @@ namespace StatesOfEnemies
             else
             {
                 Debug.Log("Fin de los estados del juego");
+                #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+                #elif UNITY_WEBPLAYER
+                Application.OpenURL(webplayerQuitURL);
+                #else
+                Application.Quit();
+                #endif
             }
         }
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2f033247daf4c0c48908de4cc4c8da3f
+guid: 3550bb64d9ff83942a77d46f7dd28abc
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: TT_checker_1024x1024_UV_GRID
-    second: {fileID: 2100000, guid: d952aa70a466f12429d76b59d44d13ca, type: 2}
+      name: T_Character
+    second: {fileID: 2100000, guid: 09308499d3724444698f33ae3eb958f0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
