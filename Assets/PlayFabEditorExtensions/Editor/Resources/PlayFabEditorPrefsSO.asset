@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0199c11aa6f514784c5c69cd8378d8, type: 3}
   m_Name: PlayFabEditorPrefsSO
   m_EditorClassIdentifier: 
-  DevAccountEmail: www.luisplata@gmail.com
-  DevAccountToken: gep89t17piny13fu5wmke5k3tsiejfsz1asx68a7hxg1nrzpreurg7d9ftdaqgn7td85n17xupxjqgpq36iezcsp5bkced6xkwqwxpq6qh1s6sqnkf9orfmkny91i4zaqhm8tfoin5t1ksmnc7h14t983axma6z6y4qni1eycrucr7b19hfxscqzxnry7mcdyz4fnzig
-  SelectedStudio: RPG de Accion
-  SdkPath: Assets/PlayFabSDK
+  DevAccountEmail: 
+  DevAccountToken: 
+  SelectedStudio: 
+  SdkPath: 
   EdExPath: 
   LocalCloudScriptPath: 
   PanelIsShown: 0
-  curMainMenuIdx: 2
+  curMainMenuIdx: 0
   curSubMenuIdx: 0
