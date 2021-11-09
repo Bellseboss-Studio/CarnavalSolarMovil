@@ -6,4 +6,5 @@
     bool TerminoDeProcesarLaSala();
     bool FalloAlgo();
     void ResetFlags();
+    string CantidadDePersonasEnSala();
 }

@@ -9,6 +9,7 @@ public class MultiplayerV2 : MonoBehaviourPunCallbacks, IMultiplayer
     private bool _estaListo;
     private bool _terminoDeProcesar;
     private bool _falloAlgo;
+    private List<RoomInfo> _roomList;
 
     void Start()
     {
@@ -71,6 +72,16 @@ public class MultiplayerV2 : MonoBehaviourPunCallbacks, IMultiplayer
     {
         _falloAlgo = false;
         _terminoDeProcesar = false;
+    }
+
+    public string CantidadDePersonasEnSala()
+    {
+        return $"{PhotonNetwork.CurrentRoom.PlayerCount}";
+    }
+
+    public void GetCustomRoomList()
+    {
+        //DebugParaRooms();
     }
 
     public override void OnJoinedRoom()
