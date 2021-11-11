@@ -53,6 +53,7 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     public void MostrarElLetreroDeGanarOPerder()
     {
         //debo mostrar un panel con el texto
+        //Victory or Lose mx 
         textoDeGanastePerdiste.text = "Prueba inicial";
         uiDeGanastePerdiste.SetActive(true);
     }
@@ -126,5 +127,16 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     {
         //mostrar un temporalizador para empezar el juego
         return 2;
+    }
+
+
+    public void MusicaPersonajeGanador()
+    {
+        //Play some mx
+    }
+
+    public void MusicaPersonajePerdedor()
+    {
+        //Play some mx
     }
 }
