@@ -1,3 +1,4 @@
+using Photon.Pun;
 using ServiceLocatorPath;
 using StatesOfEnemies;
 using TMPro;
@@ -13,9 +14,20 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     [SerializeField] private GameObject uiBatalla, uiDeGanastePerdiste;
     [SerializeField] private TextMeshProUGUI textoDeGanastePerdiste;
     [SerializeField] private Button nuevaBatalla, finalizar;
+    [SerializeField] private GameObject opcionesDeEleccion;
+    [SerializeField] private TMP_InputField nombreDeSala;
 
     private bool eligio;
     private bool quiereOtraBatalla;
+    private bool _eligioCrearUnise;
+    private bool _eligioCrear;
+
+    public void CrearSala(bool cierto)
+    {
+        _eligioCrearUnise = true;
+        _eligioCrear = cierto;
+    }
+
     private void Start()
     {
         nuevaBatalla.onClick.AddListener(() =>
@@ -90,6 +102,48 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
         ColocarleCosasAlPlayer2();
     }
 
+    public bool ElegidoSiCrearUnise()
+    {
+        return _eligioCrearUnise;
+    }
+
+    public void MuestraLasOpcionesParaElJugador()
+    {
+        opcionesDeEleccion.SetActive(true);
+    }
+
+    public bool EligioCrear()
+    {
+        return _eligioCrear;
+    }
+
+    public string GetNombreDeSala()
+    {
+        return nombreDeSala.text;
+    }
+
+    public void OcultarOpcionesAlJugador()
+    {
+        opcionesDeEleccion.SetActive(false);
+    }
+
+    public void MostrarUnPanelDeCarga()
+    {
+        
+        //implementar
+    }
+
+    public void OcultarPanelDeCarga()
+    {
+        //implementar
+    }
+
+    public void ResetLaParteDeUnirseCrearSala()
+    {
+        _eligioCrear = false;
+        _eligioCrearUnise = false;
+    }
+
     public void ShowStore()
     {
         uiController.LoadPersonajes();
@@ -119,7 +173,7 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
 
     public bool EstanLosJugadoresSincronizados()
     {
-        return true;
+        return false;
     }
 
     public float ColocarTemporalizador()

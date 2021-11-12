@@ -18,7 +18,8 @@ namespace StatesOfEnemies
             _mediador.SincronizaJugadores();
             while (!_mediador.EstanLosJugadoresSincronizados())
             {
-                yield return new WaitForSeconds(0.1f);    
+                Debug.Log($"Cantidad de jugadores {ServiceLocator.Instance.GetService<IMultiplayer>().CantidadDePersonasEnSala()}");
+                yield return new WaitForSeconds(1f);    
             }
             yield return new WaitForSeconds(_mediador.ColocarTemporalizador());
             behavior.SetNextState(GameStatesConfiguration.BatallaState);
