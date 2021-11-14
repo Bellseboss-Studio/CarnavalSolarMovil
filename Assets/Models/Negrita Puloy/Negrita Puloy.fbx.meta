@@ -3,7 +3,12 @@ guid: 575823184a7bbbd41a5665de1f1e5197
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Negrita Puloy
+    second: {fileID: 2100000, guid: 88126d48346a61b46a01854c4e3e4ef3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
