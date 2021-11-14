@@ -16,11 +16,15 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     [SerializeField] private Button nuevaBatalla, finalizar;
     [SerializeField] private GameObject opcionesDeEleccion;
     [SerializeField] private TMP_InputField nombreDeSala;
+    [SerializeField] private DebuControler debugController;
+    [SerializeField] private MultiplayerControllerComponent multiplayerComponent;
 
     private bool eligio;
     private bool quiereOtraBatalla;
     private bool _eligioCrearUnise;
     private bool _eligioCrear;
+    private GameObject player01;
+    private GameObject player02;
 
     public void CrearSala(bool cierto)
     {
@@ -168,6 +172,7 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
 
     public void SincronizaJugadores()
     {
+        var crearPersonaje = ServiceLocator.Instance.GetService<IMultiplayer>().CrearPersonaje();
         
     }
 

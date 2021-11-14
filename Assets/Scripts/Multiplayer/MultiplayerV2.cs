@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
@@ -10,6 +11,7 @@ public class MultiplayerV2 : MonoBehaviourPunCallbacks, IMultiplayer
     private bool _terminoDeProcesar;
     private bool _falloAlgo;
     private List<RoomInfo> _roomList;
+    private DebuControler debuControler;
 
     void Start()
     {
@@ -77,6 +79,18 @@ public class MultiplayerV2 : MonoBehaviourPunCallbacks, IMultiplayer
     public string CantidadDePersonasEnSala()
     {
         return $"{PhotonNetwork.CurrentRoom.PlayerCount}";
+    }
+
+    public PlayerSincro CrearPersonaje()
+    {
+        var player01 = PhotonNetwork.Instantiate("PlayerBellseboss", Vector3.zero, Quaternion.identity, 0);
+        if (player01.TryGetComponent<PlayerSincro>(out var sincro))
+        {
+            sincro.Configure();
+            return sincro;
+        }
+
+        throw new Exception("no se pudo crear el pj");
     }
 
     public void GetCustomRoomList()

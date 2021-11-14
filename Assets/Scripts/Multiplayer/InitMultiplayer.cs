@@ -22,6 +22,7 @@ public class InitMultiplayer : MonoBehaviourPunCallbacks
         void Start()
         {
             Connect();
+            PhotonNetwork.LoadLevel(1);
         }
 
        
