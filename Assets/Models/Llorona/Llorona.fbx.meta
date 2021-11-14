@@ -3,7 +3,12 @@ guid: f148072089976454f8da707055155654
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Llorona
+    second: {fileID: 2100000, guid: 9818c14c7b8ccf141b4d742f6f212cee, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
