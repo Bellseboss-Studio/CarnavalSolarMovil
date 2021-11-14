@@ -8,5 +8,5 @@
     void ResetFlags();
     string CantidadDePersonasEnSala();
 
-    PlayerSincro CrearPersonaje();
+    Player CrearPersonaje();
 }

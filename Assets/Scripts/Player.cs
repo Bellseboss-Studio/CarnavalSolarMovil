@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using ServiceLocatorPath;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviourPun, IPunObservable
 {
     [SerializeField] private PlaceOfPlayer place;
 
@@ -42,5 +43,16 @@ public class Player : MonoBehaviour
     public void Restart()
     {
         Start();
+    }
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext("Hola a todos");
+        }
+        else
+        {
+            Debug.Log((string)stream.ReceiveNext());
+        }
     }
 }

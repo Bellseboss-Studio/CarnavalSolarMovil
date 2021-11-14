@@ -81,12 +81,12 @@ public class MultiplayerV2 : MonoBehaviourPunCallbacks, IMultiplayer
         return $"{PhotonNetwork.CurrentRoom.PlayerCount}";
     }
 
-    public PlayerSincro CrearPersonaje()
+    public Player CrearPersonaje()
     {
         var player01 = PhotonNetwork.Instantiate("PlayerBellseboss", Vector3.zero, Quaternion.identity, 0);
-        if (player01.TryGetComponent<PlayerSincro>(out var sincro))
+        if (player01.TryGetComponent<Player>(out var sincro))
         {
-            sincro.Configure();
+            sincro.Configurarlo();
             return sincro;
         }
 
