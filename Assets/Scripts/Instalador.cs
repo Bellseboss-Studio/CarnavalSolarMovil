@@ -242,10 +242,16 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
                 var tresP = Resources.Load<GameObject>($"Prefab/{playerSincro.tresN}");
                 var unoI = Instantiate(unoP);
                 unoI.transform.position = placeOfPlayer2.GetPoints()[0].transform.position;
+                unoI.transform.rotation = placeOfPlayer2.GetPoints()[0].transform.rotation;
+                unoI.transform.localScale = new Vector3(-1, 1, 1);
                 var dosI = Instantiate(dosP);
                 dosI.transform.position = placeOfPlayer2.GetPoints()[1].transform.position;
+                dosI.transform.rotation = placeOfPlayer2.GetPoints()[1].transform.rotation;
+                dosI.transform.localScale = new Vector3(-1, 1, 1);
                 var tresI = Instantiate(tresP);
                 tresI.transform.position = placeOfPlayer2.GetPoints()[2].transform.position;
+                tresI.transform.rotation = placeOfPlayer2.GetPoints()[2].transform.rotation;
+                tresI.transform.localScale = new Vector3(-1, 1, 1);
                 player2Sincro = true;
             }
         }

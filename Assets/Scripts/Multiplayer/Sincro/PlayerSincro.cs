@@ -13,6 +13,7 @@ public class PlayerSincro : MonoBehaviourPun, IPunObservable
    public string unoN;
    public string dosN;
    public string tresN;
+   public string campoParSincronizar;
 
    public delegate void OnLoadMyPj(string uno, string dos, string tres);
 
@@ -73,5 +74,10 @@ public class PlayerSincro : MonoBehaviourPun, IPunObservable
    public void ConfigurarPersonajes(List<Personaje> personajes)
    {
       pv.RPC("PublicandoPersonajesElejidos",RpcTarget.AllBuffered, personajes[0].nombre, personajes[1].nombre, personajes[2].nombre);
+   }
+
+   private void Update()
+   {
+      campoParSincronizar = $"{Time.realtimeSinceStartup}";
    }
 }
