@@ -16,8 +16,6 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     [SerializeField] private Button nuevaBatalla, finalizar;
     [SerializeField] private GameObject opcionesDeEleccion;
     [SerializeField] private TMP_InputField nombreDeSala;
-    [SerializeField] private DebuControler debugController;
-    [SerializeField] private MultiplayerControllerComponent multiplayerComponent;
 
     private bool eligio;
     private bool quiereOtraBatalla;
@@ -25,6 +23,7 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     private bool _eligioCrear;
     private GameObject player01;
     private GameObject player02;
+    private bool player1Sincro, player2Sincro;
 
     public void CrearSala(bool cierto)
     {
@@ -172,18 +171,83 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
 
     public void SincronizaJugadores()
     {
-        var crearPersonaje = ServiceLocator.Instance.GetService<IMultiplayer>().CrearPersonaje();
-        
+        var crearPersonaje = ServiceLocator.Instance.GetService<IMultiplayer>().CrearPersonaje(((uno, dos, tres) =>
+        {
+            var unoP = Resources.Load<GameObject>($"Prefab/{uno}");
+            var dosP = Resources.Load<GameObject>($"Prefab/{dos}");
+            var tresP = Resources.Load<GameObject>($"Prefab/{tres}");
+            var unoI = Instantiate(unoP);
+            unoI.transform.position = placeOfPlayer1.GetPoints()[0].transform.position;
+            unoI.transform.rotation = placeOfPlayer1.GetPoints()[0].transform.rotation;
+            var dosI = Instantiate(dosP);
+            dosI.transform.position = placeOfPlayer1.GetPoints()[1].transform.position;
+            dosI.transform.rotation = placeOfPlayer1.GetPoints()[1].transform.rotation;
+            var tresI = Instantiate(tresP);
+            tresI.transform.position = placeOfPlayer1.GetPoints()[2].transform.position;
+            tresI.transform.rotation = placeOfPlayer1.GetPoints()[2].transform.rotation;
+            player1Sincro = true;
+        }), (uno, dos, tres) =>
+        {
+            
+        });
+        foreach (var playerSincro in FindObjectsOfType<PlayerSincro>())
+        {
+            if (playerSincro._EsOtroPlayer)
+            {
+                Debug.Log($"Aqui debe de instanciar a {playerSincro.unoN} {playerSincro.dosN} {playerSincro.tresN}");
+                var unoP = Resources.Load<GameObject>($"Prefab/{playerSincro.unoN}");
+                var dosP = Resources.Load<GameObject>($"Prefab/{playerSincro.dosN}");
+                var tresP = Resources.Load<GameObject>($"Prefab/{playerSincro.tresN}");
+                var unoI = Instantiate(unoP);
+                unoI.transform.position = placeOfPlayer2.GetPoints()[0].transform.position;
+                unoI.transform.rotation = placeOfPlayer2.GetPoints()[0].transform.rotation;
+                unoI.transform.localScale = new Vector3(-1, 1, 1);
+                var dosI = Instantiate(dosP);
+                dosI.transform.position = placeOfPlayer2.GetPoints()[1].transform.position;
+                dosI.transform.rotation = placeOfPlayer2.GetPoints()[1].transform.rotation;
+                dosI.transform.localScale = new Vector3(-1, 1, 1);
+                var tresI = Instantiate(tresP);
+                tresI.transform.position = placeOfPlayer2.GetPoints()[2].transform.position;
+                tresI.transform.rotation = placeOfPlayer2.GetPoints()[2].transform.rotation;
+                tresI.transform.localScale = new Vector3(-1, 1, 1);
+                player2Sincro = true;
+            }
+        }
+        if (crearPersonaje.IsMine())
+        {
+            crearPersonaje.ConfigurarPersonajes(player1.GetPersonajes());   
+        }
     }
 
     public bool EstanLosJugadoresSincronizados()
     {
-        return false;
+        return player1Sincro && player2Sincro;
     }
 
     public float ColocarTemporalizador()
     {
         //mostrar un temporalizador para empezar el juego
         return 2;
+    }
+
+    public void BuscarNuevosPlayers()
+    {
+        foreach (var playerSincro in FindObjectsOfType<PlayerSincro>())
+        {
+            if (playerSincro._EsOtroPlayer)
+            {
+                Debug.Log($"Aqui debe de instanciar a {playerSincro.unoN} {playerSincro.dosN} {playerSincro.tresN}");
+                var unoP = Resources.Load<GameObject>($"Prefab/{playerSincro.unoN}");
+                var dosP = Resources.Load<GameObject>($"Prefab/{playerSincro.dosN}");
+                var tresP = Resources.Load<GameObject>($"Prefab/{playerSincro.tresN}");
+                var unoI = Instantiate(unoP);
+                unoI.transform.position = placeOfPlayer2.GetPoints()[0].transform.position;
+                var dosI = Instantiate(dosP);
+                dosI.transform.position = placeOfPlayer2.GetPoints()[1].transform.position;
+                var tresI = Instantiate(tresP);
+                tresI.transform.position = placeOfPlayer2.GetPoints()[2].transform.position;
+                player2Sincro = true;
+            }
+        }
     }
 }

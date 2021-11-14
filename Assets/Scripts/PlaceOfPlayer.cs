@@ -45,4 +45,9 @@ public class PlaceOfPlayer : MonoBehaviour
 
         return EstanTodosVivos;
     }
+
+    public GameObject[] GetPoints()
+    {
+        return points;
+    }
 }

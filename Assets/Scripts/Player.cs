@@ -5,7 +5,7 @@ using Photon.Pun;
 using ServiceLocatorPath;
 using UnityEngine;
 
-public class Player : MonoBehaviourPun, IPunObservable
+public class Player : MonoBehaviour
 {
     [SerializeField] private PlaceOfPlayer place;
 
@@ -44,15 +44,9 @@ public class Player : MonoBehaviourPun, IPunObservable
     {
         Start();
     }
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+
+    public List<Personaje> GetPersonajes()
     {
-        if (stream.IsWriting)
-        {
-            stream.SendNext("Hola a todos");
-        }
-        else
-        {
-            Debug.Log((string)stream.ReceiveNext());
-        }
+        return personajesJugablesElegidos;
     }
 }
