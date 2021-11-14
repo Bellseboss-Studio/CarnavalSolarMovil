@@ -1,7 +1,7 @@
 ﻿public enum MusicObjects
 {
     MenuMxPlayer,
-    PLaymodeMxPLayer,
+    GameplayMxPlayer,
     VictoryMxPLayer,
     LoseMxPLayer,
 }
