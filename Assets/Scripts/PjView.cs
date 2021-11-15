@@ -27,6 +27,7 @@ public class PjView : MonoBehaviour
     {
         //Animar el propio personaje
         anim.Play(_configuracionDelPeronsaje.AtaqueEspecial.name);
+        SfxManager.Instance.PlaySound(_configuracionDelPeronsaje.AtaqueEspecial.name);
         Debug.Log($"El ataque especial para {target.PJ.nombre}");
         StartCoroutine(LuegoDeLaAnimacionRecibir(target, _configuracionDelPeronsaje.AtaqueEspecial));
     }
@@ -34,6 +35,7 @@ public class PjView : MonoBehaviour
     private void OnDropInTargetInAtacaqueNormal(PjView target)
     {
         anim.Play(_configuracionDelPeronsaje.AtaqueNormal.name);
+        SfxManager.Instance.PlaySound(_configuracionDelPeronsaje.AtaqueEspecial.name);
         Debug.Log($"El ataque normal para {target.PJ.nombre}");
         StartCoroutine(LuegoDeLaAnimacionRecibir(target, _configuracionDelPeronsaje.AtaqueNormal));
     }
