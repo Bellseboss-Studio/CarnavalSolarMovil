@@ -39,6 +39,8 @@ public class PersonajesPorComprar : MonoBehaviour
         terminar.onClick.AddListener(() =>
         {
             terminoDeElegir = true;
+            SfxManager.Instance.PlaySound(this.gameObject.name);
+            Debug.Log(this.gameObject.name);
         });
     }
 

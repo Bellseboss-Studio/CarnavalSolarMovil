@@ -8,11 +8,15 @@ public class SfxManager : MonoBehaviour, ICheckDependencies
 {
 
     public static SfxManager Instance;
+
+    [Header("UI SFx")]
+    [SerializeField] private List<GameObject> m_UISfx;
+
     [Header ("Activation Sfx")]
-    [SerializeField] private List<GameObject> AttacksSfx;
+    [SerializeField] private List<GameObject> m_AttacksSfx;
 
     [Header("Impact Sfx")]
-    [SerializeField] private List<GameObject> ImpactSfx;
+    [SerializeField] private List<GameObject> m_ImpactSfx;
 
 
     [SerializeField] private Dictionary<string, GameObject> SfxDictionary = new Dictionary<string, GameObject>();
@@ -30,12 +34,17 @@ public class SfxManager : MonoBehaviour, ICheckDependencies
 
     private void Start()
     {
-        foreach(var sfx in AttacksSfx)
+        foreach(var sfx in m_AttacksSfx)
         {
             SfxDictionary.Add(sfx.name, sfx);
         }
 
-        foreach (var sfx in ImpactSfx)
+        foreach (var sfx in m_ImpactSfx)
+        {
+            SfxDictionary.Add(sfx.name, sfx);
+        }
+
+        foreach (var sfx in m_UISfx)
         {
             SfxDictionary.Add(sfx.name, sfx);
         }
@@ -71,13 +80,13 @@ public class SfxManager : MonoBehaviour, ICheckDependencies
 
     void AssignOutputs()
     {
-        foreach(var sfx in AttacksSfx)
+        foreach(var sfx in m_AttacksSfx)
         {
             var audioSource = sfx.GetComponent<AudioSource>();
             audioSource.outputAudioMixerGroup = SfxOutput;
         }
 
-        foreach (var sfx in ImpactSfx)
+        foreach (var sfx in m_ImpactSfx)
         {
             var audioSource = sfx.GetComponent<AudioSource>();
             audioSource.outputAudioMixerGroup = SfxOutput;

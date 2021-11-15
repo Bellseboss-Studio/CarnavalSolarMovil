@@ -2,6 +2,6 @@
 {
     MenuMxPlayer,
     GameplayMxPlayer,
-    VictoryMxPLayer,
+    VictoryMxPlayer,
     LoseMxPLayer,
 }
