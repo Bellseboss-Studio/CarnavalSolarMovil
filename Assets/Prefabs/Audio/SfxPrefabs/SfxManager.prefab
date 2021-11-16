@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1023674160}
   - component: {fileID: 1023674161}
   m_Layer: 0
-  m_Name: M_llorona
+  m_Name: llorona
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 7847915954037703412}
   - component: {fileID: 1035917126302830663}
   m_Layer: 0
-  m_Name: M_ElSombreron
+  m_Name: Sombreron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 8386392889356876105}
   - component: {fileID: 2119362556427670488}
   m_Layer: 0
-  m_Name: B_PedroCubetaz
+  m_Name: Juancho
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1089,7 +1089,7 @@ GameObject:
   - component: {fileID: 1752152520670448110}
   - component: {fileID: 3074719315859905886}
   m_Layer: 0
-  m_Name: B_Momo
+  m_Name: Silletero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1216,7 +1216,7 @@ GameObject:
   - component: {fileID: 272443829709006595}
   - component: {fileID: 3067879068449905671}
   m_Layer: 0
-  m_Name: B_marimonda
+  m_Name: Marimonda_Final
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1445,7 +1445,7 @@ GameObject:
   - component: {fileID: 4915997936452081403}
   - component: {fileID: 7504156146917150636}
   m_Layer: 0
-  m_Name: M_Hombre_Cauman
+  m_Name: Caiman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

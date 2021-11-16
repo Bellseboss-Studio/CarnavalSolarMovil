@@ -267,7 +267,7 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
                 player2.AddPj(primerPj);
                 player2.AddPj(segundoPj);
                 player2.AddPj(tercerPj);
-                player2.Configurarlo();
+                player2.Configurarlo(this);
                 player2Sincro = true;
                 jsonDelOtroPlayer = playerSincro.informacion;
                 otroPlayer = playerSincro;
