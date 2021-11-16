@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
@@ -10,6 +11,10 @@ public class MultiplayerV2 : MonoBehaviourPunCallbacks, IMultiplayer
     private bool _terminoDeProcesar;
     private bool _falloAlgo;
     private List<RoomInfo> _roomList;
+    private DebuControler debuControler;
+    private GameObject _prefab;
+
+    public delegate void OnJoinPlayer();
 
     void Start()
     {
@@ -79,9 +84,17 @@ public class MultiplayerV2 : MonoBehaviourPunCallbacks, IMultiplayer
         return $"{PhotonNetwork.CurrentRoom.PlayerCount}";
     }
 
-    public void GetCustomRoomList()
+    public PlayerSincro CrearPersonaje(PlayerSincro.OnLoadMyPj ownPj)
     {
-        //DebugParaRooms();
+        var player01 = PhotonNetwork.Instantiate("PlayerBellseboss", Vector3.zero, Quaternion.identity, 0);
+        if (player01.TryGetComponent<PlayerSincro>(out var sincro))
+        {
+            sincro.OnLoadMyOwnPj += ownPj;
+            sincro.Configuralo();
+            return sincro;
+        }
+
+        throw new Exception("no se pudo crear el pj");
     }
 
     public override void OnJoinedRoom()
@@ -100,7 +113,7 @@ public class MultiplayerV2 : MonoBehaviourPunCallbacks, IMultiplayer
     public override void OnCreatedRoom()
     {
         base.OnCreatedRoom();
-        Debug.Log("Debemos notificar al jugador que ocurrio un error al crear la sala");
+        Debug.Log("Debemos notificar al jugador que se creo la sala");
         _terminoDeProcesar = true;
     }
     
@@ -119,5 +132,10 @@ public class MultiplayerV2 : MonoBehaviourPunCallbacks, IMultiplayer
         Debug.Log("Debemos notificar al jugador que ocurrio un error al unirse a la sala");
         _terminoDeProcesar = true;
         _falloAlgo = true;
+    }
+
+    public void SetPrefabForInstantiante(GameObject prefab)
+    {
+        _prefab = prefab;
     }
 }
