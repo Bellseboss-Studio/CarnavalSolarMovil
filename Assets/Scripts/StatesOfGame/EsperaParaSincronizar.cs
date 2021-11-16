@@ -15,6 +15,7 @@ namespace StatesOfEnemies
         public IEnumerator DoAction(IBehavior behavior)
         {
             Debug.Log("Sincronizacion");
+            MxManager.MxInstance.PlayMusicState(GameStatesConfiguration.EsperaDeSincro);
             _mediador.SincronizaJugadores();
             while (!_mediador.EstanLosJugadoresSincronizados())
             {

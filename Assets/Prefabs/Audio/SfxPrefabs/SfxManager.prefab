@@ -241,6 +241,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1369398439292581632}
     m_Modifications:
+    - target: {fileID: 761976058719370075, guid: 7821ba94c00ab4ee68ede0be18039e41, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8d63d4a00d7904e5cb739079709bef0c, type: 3}
     - target: {fileID: 5138391791475561575, guid: 7821ba94c00ab4ee68ede0be18039e41, type: 3}
       propertyPath: m_Name
       value: Panel
