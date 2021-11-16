@@ -39,7 +39,8 @@ public class ContainerDeSeleccionDePeronsaje : MonoBehaviour
         }
         EsSeleccionadoElPersonaje?.Invoke(pjLocal);
         SeleccionadoPorClick();
-        SfxManager.Instance.PlaySound(Path.GetFileName(pjLocal.imagen).Replace(".jpg", ""));
+        SfxManager.Instance.PlaySound(nombre.text);
+        
     }
 
     public void SeleccionadoPorClick()
