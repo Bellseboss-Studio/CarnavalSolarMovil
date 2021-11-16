@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Rest;
 using ServiceLocatorPath;
 using TMPro;
@@ -38,6 +39,7 @@ public class ContainerDeSeleccionDePeronsaje : MonoBehaviour
         }
         EsSeleccionadoElPersonaje?.Invoke(pjLocal);
         SeleccionadoPorClick();
+        SfxManager.Instance.PlaySound(Path.GetFileName(pjLocal.imagen).Replace(".jpg", ""));
     }
 
     public void SeleccionadoPorClick()

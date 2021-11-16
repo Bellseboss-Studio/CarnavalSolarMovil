@@ -14,6 +14,7 @@ namespace StatesOfEnemies
 
         public IEnumerator DoAction(IBehavior behavior)
         {
+            MxManager.MxInstance.PlayMusicState(GameStatesConfiguration.FinDeBatallaState);
             _mediator.MostrarElLetreroDeGanarOPerder();
             while (!_mediator.EligioLoQueQuiereHacer())
             {
