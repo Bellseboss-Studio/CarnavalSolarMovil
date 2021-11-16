@@ -6,5 +6,6 @@
         void ConfigurePlayers();
         void MuestraLaUiDeBatalla();
         void BuscarSiHayDatosDelOtroJugador();
+        void HideBattleUi();
     }
 }

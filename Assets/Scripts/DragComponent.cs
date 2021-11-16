@@ -16,8 +16,12 @@ public class DragComponent : MonoBehaviour
     private RectTransform rectTransform;
     private Stack<GameObject> listOfChain;
     public OnDrop OnDropInTarget;
+    public OnDropAnywhere OnDropInAnywhere;
+    private bool canBeUsed = true;
+    
 
     public delegate void OnDrop(PjView target);
+    public delegate void OnDropAnywhere();
     
 
     public void CreateEventForDragAndDrop()
@@ -49,6 +53,7 @@ public class DragComponent : MonoBehaviour
 
     public void Point()
     {
+        if(!canBeUsed) return;
         var ray = _camera.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out var hit))
@@ -60,10 +65,12 @@ public class DragComponent : MonoBehaviour
             }
         }
         rectTransform.position = origin.transform.position;
+        OnDropInAnywhere?.Invoke();
     }
 
     private void ObjectDragging_(PointerEventData arg0)
     {
+        if(!canBeUsed) return;
         var mousePos = Input.mousePosition;
         var position = new Vector3(mousePos.x, mousePos.y, 0);
         rectTransform.position = position;
@@ -117,5 +124,17 @@ public class DragComponent : MonoBehaviour
         }
         linesRender.Points = new Vector2[listOfChain.Count];
         linesRender.Points = positions;
+    }
+
+    public void CannotBeUsed()
+    {
+        Debug.Log("no puedes usarlo");
+        canBeUsed = false;
+    }
+
+    public void CanBeUsed()
+    {
+        Debug.Log("puedes usarlo");
+        canBeUsed = true;
     }
 }
