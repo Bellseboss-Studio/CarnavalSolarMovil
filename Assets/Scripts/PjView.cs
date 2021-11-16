@@ -67,4 +67,11 @@ public class PjView : MonoBehaviour
     {
         return _personaje.vida > 0;
     }
+
+    public void DesConfigure(ControladorDeBatallaParaPersonajes controladorDeBatallaParaPersonajes)
+    {
+        controladorDeBatallaParaPersonajes.AtaqueNormal.OnDropInTarget -= OnDropInTargetInAtacaqueNormal;
+        controladorDeBatallaParaPersonajes.AtaqueEspecial.OnDropInTarget -= OnDropInTargetAtaqueEspecial;
+    }
+    
 }

@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using ServiceLocatorPath;
 using StatesOfEnemies;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguration, IMediatorBattle, IMediatorDeEspera
+public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguration, IMediatorBattle, IMediatorDeEspera, IMediatorCooldown
 {
     [SerializeField] private Player player1, player2;
     [SerializeField] private PlaceOfPlayer placeOfPlayer1, placeOfPlayer2;
@@ -13,6 +14,7 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     [SerializeField] private GameObject uiBatalla, uiDeGanastePerdiste;
     [SerializeField] private TextMeshProUGUI textoDeGanastePerdiste;
     [SerializeField] private Button nuevaBatalla, finalizar;
+    [SerializeField] private List<PanelDePoderesController> _panelDePoderesControllers;
 
     private bool eligio;
     private bool quiereOtraBatalla;
@@ -35,9 +37,9 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
 
     private void ColocarleCosasAlPlayer2()
     {
-        player2.AddPj(new Personaje(2,2,2,"https://i.ytimg.com/vi/-6vnomecItA/maxresdefault.jpg","PlaceHolder","PlaceHolder",1));
-        player2.AddPj(new Personaje(2,2,2,"https://i.ytimg.com/vi/-6vnomecItA/maxresdefault.jpg","PlaceHolder","PlaceHolder",1));
-        player2.AddPj(new Personaje(2,2,2,"https://i.ytimg.com/vi/-6vnomecItA/maxresdefault.jpg","PlaceHolder","PlaceHolder",1));
+        player2.AddPj(new Personaje(2,2,2,"https://i.ytimg.com/vi/-6vnomecItA/maxresdefault.jpg","PlaceHolder","PlaceHolder",1,10));
+        player2.AddPj(new Personaje(2,2,2,"https://i.ytimg.com/vi/-6vnomecItA/maxresdefault.jpg","PlaceHolder","PlaceHolder",1,10));
+        player2.AddPj(new Personaje(2,2,2,"https://i.ytimg.com/vi/-6vnomecItA/maxresdefault.jpg","PlaceHolder","PlaceHolder",1,10));
     }
 
     public void ShowLoad()
@@ -69,6 +71,7 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
 
     public void ReiniciaTodosLosEstados()
     {
+        quiereOtraBatalla = false;
         player1.Restart();
         player2.Restart();
         uiController.Restart();
@@ -103,10 +106,21 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
 
     public void ConfigurePlayers()
     {
-        player1.Configurarlo();
-        player2.Configurarlo();
+        player1.Configurarlo(this);
+        player2.Configurarlo(this);
     }
 
+    public void DestroyPlayers()
+    {
+        player1.Destruyelo();
+        player2.Destruyelo();
+    }
+    
+    public void HideBattleUi()
+    {
+        uiBatalla.SetActive(false);
+    }
+    
     public void MuestraLaUiDeBatalla()
     {
         uiBatalla.SetActive(true);
@@ -126,5 +140,30 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     {
         //mostrar un temporalizador para empezar el juego
         return 2;
+    }
+
+    public void RehabilitarMenu()
+    {
+        uiController.HabilitarMenu();
+        eligio = false;
+    }
+
+    public void LimpiarPersonajesElejidos()
+    {
+        placeOfPlayer1.DesConfigurePjView();
+        uiController.ClearPlayer();
+    }
+
+    public void CannotAttackAnymore()
+    {
+        placeOfPlayer1.DeshabilitaElDrag();
+    }
+
+    public void ConfiguraCooldownsPorPersonaje(List<Personaje> personajes)
+    {
+        for (int i = 0; i < personajes.Count; i++)
+        {
+            _panelDePoderesControllers[i].ConfigureSliderValues(personajes[i].cooldown, this);
+        }
     }
 }

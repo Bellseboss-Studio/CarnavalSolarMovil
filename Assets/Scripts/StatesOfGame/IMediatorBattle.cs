@@ -5,5 +5,6 @@
         bool OncePlayersIsDead();
         void ConfigurePlayers();
         void MuestraLaUiDeBatalla();
+        void HideBattleUi();
     }
 }

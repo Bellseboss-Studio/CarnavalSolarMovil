@@ -5,7 +5,7 @@ namespace ServiceLocatorPath
 {
     public class Personaje
     {
-        public Personaje(float ataque, float defensa, float velocidad, string imagen, string nombre, string type, float vida)
+        public Personaje(float ataque, float defensa, float velocidad, string imagen, string nombre, string type, float vida, float cooldown)
         {
             this.ataque = ataque;
             this.defensa = defensa;
@@ -14,13 +14,14 @@ namespace ServiceLocatorPath
             this.nombre = nombre;
             this.type = type;
             this.vida = vida;
+            this.cooldown = cooldown;
         }
 
         public Personaje()
         {
         }
 
-        public float ataque, defensa, velocidad, vida;
+        public float ataque, defensa, velocidad, vida, cooldown;
 
         public string imagen, nombre, type;
         /*

@@ -19,7 +19,10 @@ namespace StatesOfEnemies
             {
                 yield return new WaitForSeconds(0.1f);   
             }
-
+            _mediator.LimpiarPersonajesElejidos();
+            _mediator.DestroyPlayers();
+            _mediator.RehabilitarMenu();
+            
             if (_mediator.QuiereHacerOtraBatalla())
             {
                 _mediator.ReiniciaTodosLosEstados();
