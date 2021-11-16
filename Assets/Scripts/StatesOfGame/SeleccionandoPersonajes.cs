@@ -20,7 +20,7 @@ namespace StatesOfEnemies
             {
                 yield return new WaitForSeconds(0.1f);
             }
-            behavior.SetNextState(GameStatesConfiguration.CreacionDeSalaState);
+            behavior.SetNextState(GameStatesConfiguration.EsperaDeSincro);
             _mediatorGeneral.HideStore();
             yield return new WaitForSeconds(0.1f);
         }

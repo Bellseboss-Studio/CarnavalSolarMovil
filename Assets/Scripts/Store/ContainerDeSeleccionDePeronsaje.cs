@@ -22,7 +22,7 @@ public class ContainerDeSeleccionDePeronsaje : MonoBehaviour
     public void Fulled(Personaje pj)
     {
         pjLocal = pj;
-        Debug.Log($"Llenado");
+        //Debug.Log($"Llenado");
         nombre.text = pjLocal.GetNombre();
         ataque.text = $"{pjLocal.GetAtaque()}";
         defensa.text = $"{pjLocal.GetDefensa()}";
@@ -53,14 +53,14 @@ public class ContainerDeSeleccionDePeronsaje : MonoBehaviour
 
     private void LoadImage()
     {
-        Debug.Log($"Buscando imagen {pjLocal.imagen}");
+        //Debug.Log($"Buscando imagen {pjLocal.imagen}");
         StartCoroutine(RestGet.GetImageRequest(pjLocal.imagen, result =>
         {
             foto.sprite = result;
-            Debug.Log($"encontro la imagen");
+            //Debug.Log($"encontro la imagen");
         }, () =>
         {
-            Debug.Log($"no encontro la imagen");
+            //Debug.Log($"no encontro la imagen");
         }));
     }
 }
