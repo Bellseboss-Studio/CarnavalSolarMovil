@@ -20,8 +20,8 @@ public class PanelDePoderesController : MonoBehaviour, ICooldownAttacks
         _mediatorCooldown = mediatorCooldown;
         normalAttackCooldown = cooldown * 0.5f;
         specialAttackCooldown = cooldown * 0.8f;
-        normalAttackSlider.value = 1;
-        specialAttackSlider.value = 1;
+        normalAttackSlider.value = 0;
+        specialAttackSlider.value = 0;
         normalAttackDrag.OnDropInAnywhere += CooldownForNormalAttack;
         specialAttackDrag.OnDropInAnywhere += CooldownForSpecialAttack;
     }
@@ -29,18 +29,18 @@ public class PanelDePoderesController : MonoBehaviour, ICooldownAttacks
     public void CooldownForNormalAttack()
     {
         normalAttackDrag.CannotBeUsed();
-        normalAttackSlider.value = 0;
+        normalAttackSlider.value = 1;
         var sequence = DOTween.Sequence();
-        sequence.Insert(0, normalAttackSlider.DOValue(1, normalAttackCooldown));
+        sequence.Insert(0, normalAttackSlider.DOValue(0, normalAttackCooldown));
         sequence.OnComplete (()=> normalAttackDrag.CanBeUsed());
     }
 
     public void CooldownForSpecialAttack()
     {
         specialAttackDrag.CannotBeUsed();
-        specialAttackSlider.value = 0;
+        specialAttackSlider.value = 1;
         var sequence = DOTween.Sequence();
-        sequence.Insert(0, specialAttackSlider.DOValue(1, specialAttackCooldown));
+        sequence.Insert(0, specialAttackSlider.DOValue(0, specialAttackCooldown));
         sequence.OnComplete (()=> specialAttackDrag.CanBeUsed());
     }
 
