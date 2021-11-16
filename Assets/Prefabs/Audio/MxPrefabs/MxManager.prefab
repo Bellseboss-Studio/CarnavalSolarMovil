@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ecbc7782c094411a5a191b1b5b7085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransitionTime: 3
+  m_TransitionTime: 1
   m_MusicTracks: []
   m_MixesSnapshots:
   - {fileID: 24500006, guid: 8630ef64c34f243f682d65f44a9bc495, type: 2}
