@@ -27,6 +27,7 @@ public class ContainerDeSeleccionDePeronsaje : MonoBehaviour
         ataque.text = $"{pjLocal.GetAtaque()}";
         defensa.text = $"{pjLocal.GetDefensa()}";
         velocidad.text = $"{pjLocal.GetVelocidad()}";
+        selecting.onClick.RemoveAllListeners();
         selecting.onClick.AddListener(Seleccionado);
         LoadImage();
     }
@@ -49,6 +50,12 @@ public class ContainerDeSeleccionDePeronsaje : MonoBehaviour
     public void DesHabilitarBoton()
     {
         selecting.enabled = false;
+    }
+
+    public void HabilitarBoton()
+    {
+        selecting.enabled = true;
+        seleccionado.enabled = false;
     }
 
     private void LoadImage()

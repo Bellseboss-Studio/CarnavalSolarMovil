@@ -9,5 +9,8 @@
         bool QuiereHacerOtraBatalla();
         void ReiniciaTodosLosEstados();
         void OcultarElLetreroDeGanarOPerder();
+        void DestroyPlayers();
+        void RehabilitarMenu();
+        void LimpiarPersonajesElejidos();
     }
 }

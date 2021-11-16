@@ -22,6 +22,7 @@ namespace StatesOfEnemies
             {
                 yield return new WaitForSeconds(0.1f);
             }
+            _mediator.HideBattleUi();
             behavior.SetNextState(GameStatesConfiguration.FinDeBatallaState);
         }
     }
