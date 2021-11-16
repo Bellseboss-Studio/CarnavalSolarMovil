@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using ExitGames.Client.Photon;
 using Store;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,8 +24,6 @@ public class PanelDePoderesController : MonoBehaviour, ICooldownAttacks
         specialAttackSlider.value = 1;
         normalAttackDrag.OnDropInAnywhere += CooldownForNormalAttack;
         specialAttackDrag.OnDropInAnywhere += CooldownForSpecialAttack;
-        CooldownForNormalAttack();
-        CooldownForSpecialAttack();
     }
 
     public void CooldownForNormalAttack()
