@@ -35,8 +35,27 @@ public class PlaceOfPlayer : MonoBehaviour
         }
     }
 
-    
-    
+    public void FulledCharacters(List<Personaje> personajesJugablesElegidos, PjView.OnApplyDamage cuandoAtaqueNormal, PjView.OnApplyDamage cuandoAtaqueEspecial)
+    {
+        var index = 0;
+        foreach (var point in points)
+        {
+            //Aqui cambiar por una factoria
+            var pjview = Instantiate(pjPrefab);
+            pjview.transform.position = point.transform.position;
+            
+            if (point.TryGetComponent<ControladorDeBatallaParaPersonajes>(out var controlador))
+            {
+                pjview.Configurate(personajesJugablesElegidos[index], controlador);
+                pjview.OnApplyDamageCustomEspecial += cuandoAtaqueEspecial;
+                pjview.OnApplyDamageCustomNormal += cuandoAtaqueNormal;
+            }
+            index++;
+            personajes.Add(pjview);
+        }
+    }
+
+
     public bool HayAlguienDePie()
     {
         var EstanTodosVivos = false;
@@ -48,6 +67,16 @@ public class PlaceOfPlayer : MonoBehaviour
         return EstanTodosVivos;
     }
 
+    public GameObject[] GetPoints()
+    {
+        return points;
+    }
+
+    public List<PjView> GetViews()
+    {
+        return personajes;
+    }
+    
     public void DestroyPlayableCharacters()
     {
         var index = 0;

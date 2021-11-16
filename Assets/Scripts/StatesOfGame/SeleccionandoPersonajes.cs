@@ -15,12 +15,12 @@ namespace StatesOfEnemies
         public IEnumerator DoAction(IBehavior behavior)
         {
             _mediatorGeneral.ShowStore();
-            
+            MxManager.MxInstance.PlayMusicState(GameStatesConfiguration.SeleccionandoPersonajesState);
             while (!_mediatorGeneral.TerminoDeElegir)
             {
                 yield return new WaitForSeconds(0.1f);
             }
-            behavior.SetNextState(GameStatesConfiguration.CreacionDeSalaState);
+            behavior.SetNextState(GameStatesConfiguration.EsperaDeSincro);
             _mediatorGeneral.HideStore();
             yield return new WaitForSeconds(0.1f);
         }

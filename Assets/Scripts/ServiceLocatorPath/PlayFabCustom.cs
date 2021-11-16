@@ -117,7 +117,7 @@ namespace ServiceLocatorPath
                 foreach (var item in itemsResult.Catalog)
                 {
                     inventaryPersonajes.Add(JsonUtility.FromJson<Personaje>(item.CustomData));
-                    Debug.Log(item.CustomData);
+                    //Debug.Log(item.CustomData);
                 }
                 resultPlayfab = true;
             }, error =>
