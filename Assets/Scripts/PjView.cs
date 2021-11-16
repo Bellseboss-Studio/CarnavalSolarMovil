@@ -83,4 +83,10 @@ public class PjView : MonoBehaviour
         anim.Play(tipoDeDanio == "n" ? _configuracionDelPeronsaje.AtaqueNormal.name : _configuracionDelPeronsaje.AtaqueEspecial.name);
         StartCoroutine(ComeBackIdle(danioAnim));
     }
+
+    public void DesConfigure(ControladorDeBatallaParaPersonajes controladorDeBatallaParaPersonajes)
+    {
+        controladorDeBatallaParaPersonajes.AtaqueNormal.OnDropInTarget -= OnDropInTargetInAtacaqueNormal;
+        controladorDeBatallaParaPersonajes.AtaqueEspecial.OnDropInTarget -= OnDropInTargetAtaqueEspecial;
+    }   
 }

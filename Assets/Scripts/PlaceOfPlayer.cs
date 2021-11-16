@@ -55,6 +55,7 @@ public class PlaceOfPlayer : MonoBehaviour
         }
     }
 
+
     public bool HayAlguienDePie()
     {
         var EstanTodosVivos = false;
@@ -74,5 +75,31 @@ public class PlaceOfPlayer : MonoBehaviour
     public List<PjView> GetViews()
     {
         return personajes;
+    }
+    
+    public void DestroyPlayableCharacters()
+    {
+        var index = 0;
+        foreach (var personaje in personajes)
+        {
+            Destroy(personaje.gameObject);
+        }
+        Configure();
+    }
+
+    public void DesConfigurePjView()
+    {
+        for (int i = 0; i < personajes.Count; i++)
+        {
+            if (points[i].TryGetComponent<ControladorDeBatallaParaPersonajes>(out var controlador))
+            {
+                personajes[i].DesConfigure(controlador);
+            }
+        }
+    }
+
+    public void DeshabilitaElDrag()
+    {
+        
     }
 }
