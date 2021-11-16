@@ -22,6 +22,11 @@ namespace StatesOfEnemies
                 _mediador.BuscarNuevosPlayers();
                 yield return new WaitForSeconds(1f);    
             }
+            while (!_mediador.TenemosTodosLosDatosDeLosPersonajes())
+            {
+                _mediador.CompartirInformacion();   
+                yield return new WaitForSeconds(1f);    
+            }
             yield return new WaitForSeconds(_mediador.ColocarTemporalizador());
             behavior.SetNextState(GameStatesConfiguration.BatallaState);
         }

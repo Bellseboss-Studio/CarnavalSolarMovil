@@ -837,6 +837,7 @@ GameObject:
   - component: {fileID: 7649207028061080018}
   - component: {fileID: 919132148115393811}
   - component: {fileID: 919132148115393810}
+  - component: {fileID: 2298615815631508849}
   m_Layer: 0
   m_Name: Sombreron
   m_TagString: Untagged
@@ -892,6 +893,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2298615815631508849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7020163968437113704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c74e8644a16934698b258d0824bb8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ataqueNormal: {fileID: 7400000, guid: 9ffadaedbeffdf34aaeb11bb11af83bc, type: 2}
+  ataqueEspecial: {fileID: 7400000, guid: 73b5c68812b829d4cbbf0e2d91d411c8, type: 2}
 --- !u!1 &7071040956705392219
 GameObject:
   m_ObjectHideFlags: 0

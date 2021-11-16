@@ -1,3 +1,4 @@
+using System.Linq;
 using Photon.Pun;
 using ServiceLocatorPath;
 using StatesOfEnemies;
@@ -16,6 +17,8 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     [SerializeField] private Button nuevaBatalla, finalizar;
     [SerializeField] private GameObject opcionesDeEleccion;
     [SerializeField] private TMP_InputField nombreDeSala;
+    [SerializeField] private TextMeshProUGUI testoLog;
+    [SerializeField] private Button botonPruebaDeEnvioDeDatos;
 
     private bool eligio;
     private bool quiereOtraBatalla;
@@ -24,6 +27,7 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     private GameObject player01;
     private GameObject player02;
     private bool player1Sincro, player2Sincro;
+    private PlayerSincro propioPlayer, otroPlayer;
 
     public void CrearSala(bool cierto)
     {
@@ -45,7 +49,13 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
         placeOfPlayer1.Configure();
         placeOfPlayer2.Configure();
         uiController.Configure(player1);
+        botonPruebaDeEnvioDeDatos.onClick.AddListener(Call);
         StartCoroutine(gameBehavior.StartState(gameBehavior.Configuration(this)));
+    }
+
+    private void Call()
+    {
+        EnviaInformacionQueModifiqueElOtroPlayer();
     }
 
     private void ColocarleCosasAlPlayer2()
@@ -160,8 +170,6 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
 
     public void ConfigurePlayers()
     {
-        player1.Configurarlo();
-        player2.Configurarlo();
     }
 
     public void MuestraLaUiDeBatalla()
@@ -169,54 +177,44 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
         uiBatalla.SetActive(true);
     }
 
+    public void BuscarSiHayDatosDelOtroJugador()
+    {
+    }
+
     public void SincronizaJugadores()
     {
-        var crearPersonaje = ServiceLocator.Instance.GetService<IMultiplayer>().CrearPersonaje(((uno, dos, tres) =>
+        propioPlayer = ServiceLocator.Instance.GetService<IMultiplayer>().CrearPersonaje(((uno, dos, tres) =>
         {
-            var unoP = Resources.Load<GameObject>($"Prefab/{uno}");
-            var dosP = Resources.Load<GameObject>($"Prefab/{dos}");
-            var tresP = Resources.Load<GameObject>($"Prefab/{tres}");
-            var unoI = Instantiate(unoP);
-            unoI.transform.position = placeOfPlayer1.GetPoints()[0].transform.position;
-            unoI.transform.rotation = placeOfPlayer1.GetPoints()[0].transform.rotation;
-            var dosI = Instantiate(dosP);
-            dosI.transform.position = placeOfPlayer1.GetPoints()[1].transform.position;
-            dosI.transform.rotation = placeOfPlayer1.GetPoints()[1].transform.rotation;
-            var tresI = Instantiate(tresP);
-            tresI.transform.position = placeOfPlayer1.GetPoints()[2].transform.position;
-            tresI.transform.rotation = placeOfPlayer1.GetPoints()[2].transform.rotation;
+            player1.Configurarlo(AtaqueNormal, AtaqueEspecial);
             player1Sincro = true;
-        }), (uno, dos, tres) =>
+        }));
+        BuscarNuevosPlayers();
+        if (propioPlayer.IsMine())
         {
-            
-        });
-        foreach (var playerSincro in FindObjectsOfType<PlayerSincro>())
-        {
-            if (playerSincro._EsOtroPlayer)
-            {
-                Debug.Log($"Aqui debe de instanciar a {playerSincro.unoN} {playerSincro.dosN} {playerSincro.tresN}");
-                var unoP = Resources.Load<GameObject>($"Prefab/{playerSincro.unoN}");
-                var dosP = Resources.Load<GameObject>($"Prefab/{playerSincro.dosN}");
-                var tresP = Resources.Load<GameObject>($"Prefab/{playerSincro.tresN}");
-                var unoI = Instantiate(unoP);
-                unoI.transform.position = placeOfPlayer2.GetPoints()[0].transform.position;
-                unoI.transform.rotation = placeOfPlayer2.GetPoints()[0].transform.rotation;
-                unoI.transform.localScale = new Vector3(-1, 1, 1);
-                var dosI = Instantiate(dosP);
-                dosI.transform.position = placeOfPlayer2.GetPoints()[1].transform.position;
-                dosI.transform.rotation = placeOfPlayer2.GetPoints()[1].transform.rotation;
-                dosI.transform.localScale = new Vector3(-1, 1, 1);
-                var tresI = Instantiate(tresP);
-                tresI.transform.position = placeOfPlayer2.GetPoints()[2].transform.position;
-                tresI.transform.rotation = placeOfPlayer2.GetPoints()[2].transform.rotation;
-                tresI.transform.localScale = new Vector3(-1, 1, 1);
-                player2Sincro = true;
-            }
+            propioPlayer.ConfigurarPersonajes(player1.GetPersonajes(),ConvertirInformacionDePlayerEnJson(player1));
         }
-        if (crearPersonaje.IsMine())
-        {
-            crearPersonaje.ConfigurarPersonajes(player1.GetPersonajes());   
-        }
+    }
+
+    private void AtaqueEspecial(string nameoffrom, string nameoftarger, float damage)
+    {
+        var stringDeDanio = JsonUtility.ToJson(new InformacionDeDanioHaciaPersonaje() { danioVieneDe = nameoffrom, personajeDeDanio = nameoftarger, danioAntesDeDescuentos = damage,tipoDeAtaque = "e"});
+        propioPlayer.DanarOponente(stringDeDanio);
+    }
+
+    private void AtaqueNormal(string nameoffrom, string nameoftarger, float damage)
+    {
+        var stringDeDanio = JsonUtility.ToJson(new InformacionDeDanioHaciaPersonaje() { danioVieneDe = nameoffrom, personajeDeDanio = nameoftarger, danioAntesDeDescuentos = damage,tipoDeAtaque = "n"});
+        propioPlayer.DanarOponente(stringDeDanio);
+    }
+
+    private void CuandoHacenDanioAMi(string jsonformat)
+    {
+        Debug.Log($">>>>>>>>>>>>>>>recibo danio antes de descuento antes de convertir {jsonformat}");
+        testoLog.text += "\n" + jsonformat;
+        var informacionDeDanio = JsonUtility.FromJson<InformacionDeDanioHaciaPersonaje>(jsonformat);
+        player2.QuienHizoDanio(informacionDeDanio.danioVieneDe, informacionDeDanio.tipoDeAtaque);
+        player1.HayDanio(informacionDeDanio.personajeDeDanio, informacionDeDanio.danioAntesDeDescuentos);
+        Debug.Log($">>>>>>>>>>>>>>>recibo danio antes de descuento {informacionDeDanio.ToString()}");
     }
 
     public bool EstanLosJugadoresSincronizados()
@@ -227,7 +225,7 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     public float ColocarTemporalizador()
     {
         //mostrar un temporalizador para empezar el juego
-        return 2;
+        return 5;
     }
 
     public void BuscarNuevosPlayers()
@@ -236,24 +234,67 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
         {
             if (playerSincro._EsOtroPlayer)
             {
-                Debug.Log($"Aqui debe de instanciar a {playerSincro.unoN} {playerSincro.dosN} {playerSincro.tresN}");
-                var unoP = Resources.Load<GameObject>($"Prefab/{playerSincro.unoN}");
-                var dosP = Resources.Load<GameObject>($"Prefab/{playerSincro.dosN}");
-                var tresP = Resources.Load<GameObject>($"Prefab/{playerSincro.tresN}");
-                var unoI = Instantiate(unoP);
-                unoI.transform.position = placeOfPlayer2.GetPoints()[0].transform.position;
-                unoI.transform.rotation = placeOfPlayer2.GetPoints()[0].transform.rotation;
-                unoI.transform.localScale = new Vector3(-1, 1, 1);
-                var dosI = Instantiate(dosP);
-                dosI.transform.position = placeOfPlayer2.GetPoints()[1].transform.position;
-                dosI.transform.rotation = placeOfPlayer2.GetPoints()[1].transform.rotation;
-                dosI.transform.localScale = new Vector3(-1, 1, 1);
-                var tresI = Instantiate(tresP);
-                tresI.transform.position = placeOfPlayer2.GetPoints()[2].transform.position;
-                tresI.transform.rotation = placeOfPlayer2.GetPoints()[2].transform.rotation;
-                tresI.transform.localScale = new Vector3(-1, 1, 1);
+                var primerPj = new Personaje();
+                var segundoPj = new Personaje();
+                var tercerPj = new Personaje();
+                foreach (var pj in ServiceLocator.Instance.GetService<IPlayFabCustom>().GetPjs().Where(pj => pj.nombre == playerSincro.unoN))
+                {
+                    primerPj = pj;
+                }
+                foreach (var pj in ServiceLocator.Instance.GetService<IPlayFabCustom>().GetPjs().Where(pj => pj.nombre == playerSincro.dosN))
+                {
+                    segundoPj = pj;
+                }
+                foreach (var pj in ServiceLocator.Instance.GetService<IPlayFabCustom>().GetPjs().Where(pj => pj.nombre == playerSincro.tresN))
+                {
+                    tercerPj = pj;
+                }
+                player2.AddPj(primerPj);
+                player2.AddPj(segundoPj);
+                player2.AddPj(tercerPj);
+                player2.Configurarlo();
                 player2Sincro = true;
+                jsonDelOtroPlayer = playerSincro.informacion;
+                otroPlayer = playerSincro;
+                otroPlayer.onGuardarInformacionDelOtro += CuandoHacenDanioAMi;
+            }
+        }
+        jsonDeMiPropioPlayer = ConvertirInformacionDePlayerEnJson(player1);
+        
+        testoLog.text += $"{jsonDeMiPropioPlayer} =;= {jsonDelOtroPlayer}";
+    }
+
+    public string jsonDelOtroPlayer, jsonDeMiPropioPlayer;
+    public void CompartirInformacion()
+    {
+        foreach (var playerSincro in FindObjectsOfType<PlayerSincro>())
+        {
+            if (playerSincro.IsMine())
+            {
+                jsonDeMiPropioPlayer = ConvertirInformacionDePlayerEnJson(player1);
+                playerSincro.CompartirInformacion(jsonDeMiPropioPlayer);
+                //Colocando comentario
             }
         }
     }
+
+    public bool TenemosTodosLosDatosDeLosPersonajes()
+    {
+        return jsonDelOtroPlayer != null && jsonDeMiPropioPlayer != null;
+    }
+
+    public void EnviaInformacionQueModifiqueElOtroPlayer()
+    {
+        var stringDeDanio = JsonUtility.ToJson(new InformacionDeDanioHaciaPersonaje() { danioVieneDe = "otroPlayer", personajeDeDanio = "llorona", danioAntesDeDescuentos = 2 });
+        propioPlayer.DanarOponente(stringDeDanio);
+    }
+
+    private string ConvertirInformacionDePlayerEnJson(Player player)
+    {
+        var playerJson = new PlayerSincroJson(player);
+        //TODO comvertir la informacion del player como de sus personajes en json para compartirlo
+        return $"{JsonUtility.ToJson(playerJson)}";
+    }
+
+    
 }

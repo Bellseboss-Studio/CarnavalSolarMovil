@@ -631,6 +631,7 @@ GameObject:
   - component: {fileID: 5551282131819928804}
   - component: {fileID: 1807193245885122921}
   - component: {fileID: 1807193245885122922}
+  - component: {fileID: -4933361730292297044}
   m_Layer: 0
   m_Name: Llorona
   m_TagString: Untagged
@@ -686,6 +687,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &-4933361730292297044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5062552870011389534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c74e8644a16934698b258d0824bb8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ataqueNormal: {fileID: 7400000, guid: 911ad54389b7a094a8a64a37d6963f00, type: 2}
+  ataqueEspecial: {fileID: 7400000, guid: d6e8ae941a84b7744aca670da5cf8c3c, type: 2}
 --- !u!1 &5396007127473181140
 GameObject:
   m_ObjectHideFlags: 0

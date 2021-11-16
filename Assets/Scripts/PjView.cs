@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using ServiceLocatorPath;
+using StatesOfEnemies;
 using UnityEngine;
 
 public class PjView : MonoBehaviour
@@ -10,9 +11,15 @@ public class PjView : MonoBehaviour
     private Personaje _personaje;
     private ConfiguracionDelPeronsaje _configuracionDelPeronsaje;
 
+    public OnApplyDamage OnApplyDamageCustomNormal;
+    public OnApplyDamage OnApplyDamageCustomEspecial;
+
+    public delegate void OnApplyDamage(string nameOfFrom, string nameOfTarger, float damage);
     public void Configurate(Personaje personajesJugablesElegido, ControladorDeBatallaParaPersonajes controladorDeBatallaParaPersonajes)
     {
-        var pj = Instantiate(personaje, transform);
+        Debug.Log($"Aqui debe de instanciar a {personajesJugablesElegido.nombre}");
+        var unoP = Resources.Load<GameObject>($"Prefab/{personajesJugablesElegido.nombre}");
+        var pj = Instantiate(unoP, transform);
         anim = pj.GetComponent<Animator>();
         _configuracionDelPeronsaje = pj.GetComponent<ConfiguracionDelPeronsaje>();
         if (controladorDeBatallaParaPersonajes.DebeConfigurar)
@@ -43,9 +50,10 @@ public class PjView : MonoBehaviour
         yield return new WaitForSeconds(waitTime.length);
         anim.Play(idle.name);
         target.AplicaDanoDe(_personaje.ataque);
+        OnApplyDamageCustomNormal?.Invoke(_personaje.nombre, target.PJ.nombre, _personaje.ataque);
     }
 
-    private void AplicaDanoDe(float danio)
+    public void AplicaDanoDe(float danio)
     {
         anim.Play(danioAnim.name);
         //probablemente esto defina cuando se muestra la pantalla de ganaste o perdiste
@@ -66,5 +74,11 @@ public class PjView : MonoBehaviour
     public bool EstaVivo()
     {
         return _personaje.vida > 0;
+    }
+
+    public void HacerAnimacionDeAtaque(string tipoDeDanio)
+    {
+        anim.Play(tipoDeDanio == "n" ? _configuracionDelPeronsaje.AtaqueNormal.name : _configuracionDelPeronsaje.AtaqueEspecial.name);
+        StartCoroutine(ComeBackIdle(danioAnim));
     }
 }

@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 3068946227620533526}
   - component: {fileID: 8912959050469432630}
   - component: {fileID: 8912959050469432629}
+  - component: {fileID: 5596332278479185211}
   m_Layer: 0
   m_Name: Negrita Puloy
   m_TagString: Untagged
@@ -345,6 +346,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5596332278479185211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2440043871391485868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c74e8644a16934698b258d0824bb8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ataqueNormal: {fileID: 7400000, guid: ac2e59b532b48844fbfc7561f474b8c9, type: 2}
+  ataqueEspecial: {fileID: 7400000, guid: d489a2c5fc7b819409820f31527ecb9e, type: 2}
 --- !u!1 &2523744709300899043
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,13 +9,29 @@ public class PlayerSincro : MonoBehaviourPun, IPunObservable
 {
    [SerializeField] private PhotonView pv;
    public OnLoadMyPj OnLoadMyOwnPj;
+   public OnGuardarInformacionDelOtro onGuardarInformacionDelOtro;
    public bool _EsOtroPlayer;
    public string unoN;
    public string dosN;
    public string tresN;
-   public string campoParSincronizar;
+   public string informacion;
+   private string _danioDelOtroPlayer;
 
+   public bool HayData()
+   {
+      //Debug.Log($"Datos a entregar soy yo? {pv.IsMine} ({_danioDelOtroPlayer})");
+      return !string.IsNullOrEmpty(_danioDelOtroPlayer);
+   }
+   public string GetDanioDelOtroPlayer()
+   {
+      var aux = _danioDelOtroPlayer;
+      _danioDelOtroPlayer = null;
+      //Debug.Log($"entregando ({aux}) soy yo? {pv.IsMine}");
+      return aux;
+   }
    public delegate void OnLoadMyPj(string uno, string dos, string tres);
+
+   public delegate void OnGuardarInformacionDelOtro(string jsonFormat);
 
    private void Start()
    {
@@ -32,7 +48,7 @@ public class PlayerSincro : MonoBehaviourPun, IPunObservable
       { 
          if (!pv.IsMine)
          {
-            Debug.Log($"recivido {pv.IsMine}"); 
+            //Debug.Log($"recivido {pv.IsMine}"); 
             Debug.Log((string)stream.ReceiveNext());  
          }
       }
@@ -45,7 +61,7 @@ public class PlayerSincro : MonoBehaviourPun, IPunObservable
    }
 
    [PunRPC]
-   public void PublicandoPersonajesElejidos(string uno, string dos, string tres)
+   public void PublicandoPersonajesElejidos(string uno, string dos, string tres, string playerInJson)
    {
       if (!pv.IsMine)
       {
@@ -54,6 +70,8 @@ public class PlayerSincro : MonoBehaviourPun, IPunObservable
          dosN = dos;
          tresN = tres;
          _EsOtroPlayer = true;
+         //Debug.Log($">>>>>>recibo jsonFormat {playerInJson}");
+         informacion = playerInJson;
       }
       else
       {
@@ -71,13 +89,39 @@ public class PlayerSincro : MonoBehaviourPun, IPunObservable
       return pv.IsMine;
    }
 
-   public void ConfigurarPersonajes(List<Personaje> personajes)
+   public void ConfigurarPersonajes(List<Personaje> personajes, string player)
    {
-      pv.RPC("PublicandoPersonajesElejidos",RpcTarget.AllBuffered, personajes[0].nombre, personajes[1].nombre, personajes[2].nombre);
+      pv.RPC("PublicandoPersonajesElejidos",RpcTarget.AllBuffered, personajes[0].nombre, personajes[1].nombre, personajes[2].nombre, player);
    }
 
-   private void Update()
+   [PunRPC]
+   public void CompartirInformacionDeTodoLoMio(string jsonFormat)
    {
-      campoParSincronizar = $"{Time.realtimeSinceStartup}";
+      if (!pv.IsMine)
+      {
+         Debug.Log($"recibo jsonFormat");
+         informacion = jsonFormat;
+      }
+   }
+
+   [PunRPC]
+   public void DanandoPersonaje(string jsonDeDatosDeDanio)
+   {
+      if (!pv.IsMine)
+      {
+         Debug.Log($"<<<<Viene danio de otro lado {jsonDeDatosDeDanio}");
+         _danioDelOtroPlayer = jsonDeDatosDeDanio;
+         onGuardarInformacionDelOtro?.Invoke(jsonDeDatosDeDanio);
+      }  
+   }
+   public void CompartirInformacion(string jsonFormat)
+   {
+      pv.RPC("CompartirInformacionDeTodoLoMio", RpcTarget.AllBuffered, jsonFormat);
+   }
+
+   public void DanarOponente(string stringDeDanio)
+   {
+      Debug.Log($"Datos enviados {stringDeDanio}");
+      pv.RPC("DanandoPersonaje", RpcTarget.AllBuffered, stringDeDanio);
    }
 }

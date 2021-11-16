@@ -464,6 +464,7 @@ GameObject:
   - component: {fileID: 4087230880496630830}
   - component: {fileID: 919132147671299311}
   - component: {fileID: 919132147671299310}
+  - component: {fileID: 8662052515492817705}
   m_Layer: 0
   m_Name: Bellseboss
   m_TagString: Untagged
@@ -479,7 +480,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3743356022714164884}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.794914, y: -1.051472, z: -9.950773}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7636821733375211993}
@@ -519,6 +520,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &8662052515492817705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3743356022714164884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c74e8644a16934698b258d0824bb8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ataqueNormal: {fileID: 7400000, guid: 5b0d977a5dd13d443a01c807a8366003, type: 2}
+  ataqueEspecial: {fileID: 7400000, guid: d6e8ae941a84b7744aca670da5cf8c3c, type: 2}
 --- !u!1 &4620007352516453147
 GameObject:
   m_ObjectHideFlags: 0

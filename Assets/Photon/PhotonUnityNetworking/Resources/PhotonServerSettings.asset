@@ -42,6 +42,8 @@ MonoBehaviour:
   - prueba_callback
   - Saludar
   - PublicandoPersonajesElejidos
+  - CompartirInformacionDeTodoLoMio
+  - DanandoPersonaje
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

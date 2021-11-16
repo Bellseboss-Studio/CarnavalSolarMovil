@@ -8,5 +8,5 @@
     void ResetFlags();
     string CantidadDePersonasEnSala();
 
-    PlayerSincro CrearPersonaje(PlayerSincro.OnLoadMyPj ownPj, PlayerSincro.OnLoadMyPj otherPj);
+    PlayerSincro CrearPersonaje(PlayerSincro.OnLoadMyPj ownPj);
 }
