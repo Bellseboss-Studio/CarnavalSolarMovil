@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999946, b: 0.99999946, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2605,7 +2605,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &949637691 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2595105301226180729, guid: e9c38f99a216a3f49bb9e3a504569ca2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8511886952727079252, guid: e9c38f99a216a3f49bb9e3a504569ca2, type: 3}
   m_PrefabInstance: {fileID: 949637689}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -2713,7 +2713,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.17277938, y: 0.014820288, z: -0.0026000426, w: 0.98484564}
+  m_LocalRotation: {x: 0.1727794, y: 0.01482025, z: -0.002600036, w: 0.98484564}
   m_LocalPosition: {x: 17.16, y: 7.7, z: -13.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5866,7 +5866,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2105187039}
-  m_LocalRotation: {x: 0.17277938, y: 0.014820288, z: -0.0026000426, w: 0.98484564}
+  m_LocalRotation: {x: 0.1727794, y: 0.01482025, z: -0.002600036, w: 0.98484564}
   m_LocalPosition: {x: 17.16, y: 7.7, z: -13.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6146,7 +6146,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: e9c38f99a216a3f49bb9e3a504569ca2, type: 3}
 --- !u!114 &2595105301829442861 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2595105301226180729, guid: e9c38f99a216a3f49bb9e3a504569ca2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8511886952727079252, guid: e9c38f99a216a3f49bb9e3a504569ca2, type: 3}
   m_PrefabInstance: {fileID: 2595105301829442860}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -6281,7 +6281,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &4105517279737024488 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2595105301226180729, guid: e9c38f99a216a3f49bb9e3a504569ca2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8511886952727079252, guid: e9c38f99a216a3f49bb9e3a504569ca2, type: 3}
   m_PrefabInstance: {fileID: 4105517279737024486}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
