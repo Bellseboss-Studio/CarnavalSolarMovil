@@ -628,6 +628,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Caiman
       objectReference: {fileID: 0}
+    - target: {fileID: 8379911302858077871, guid: d443a80e56f1c4b9681afb843c282aaa, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3d5f1ec4bff3244af814b53cc19609ab, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d443a80e56f1c4b9681afb843c282aaa, type: 3}
 --- !u!4 &4915997936452081403 stripped
