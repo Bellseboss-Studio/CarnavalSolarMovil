@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ecbc7782c094411a5a191b1b5b7085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransitionTime: 1
+  m_TransitionTime: 0.5
   m_MusicTracks: []
   m_MixesSnapshots:
   - {fileID: 24500006, guid: 8630ef64c34f243f682d65f44a9bc495, type: 2}
@@ -336,6 +336,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9085504904348220886}
     m_Modifications:
+    - target: {fileID: 5219242972562194044, guid: cd2c42bd311c047dabc212f81459e358, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 80221aefb3b974542877ba085b1ef69d, type: 3}
     - target: {fileID: 5219242973778794345, guid: cd2c42bd311c047dabc212f81459e358, type: 3}
       propertyPath: m_Name
       value: VictoryMxPlayer

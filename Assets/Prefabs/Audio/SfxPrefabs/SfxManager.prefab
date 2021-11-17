@@ -360,6 +360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sombreron_Especial
       objectReference: {fileID: 0}
+    - target: {fileID: 4149921871263556343, guid: 3bc8d851fbd624d7299b4677cf10bd09, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2d6a31045c3054a6c951bc164e70a1fd, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bc8d851fbd624d7299b4677cf10bd09, type: 3}
 --- !u!4 &3946194829159464948 stripped
@@ -383,6 +387,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Juancho
       objectReference: {fileID: 0}
+    - target: {fileID: 593966766301494717, guid: a0dd42c3c71384d07ba5c2b1f16a98b8, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a6419349f9f4d4714b26f60c971b4984, type: 3}
     - target: {fileID: 7004574352357283628, guid: a0dd42c3c71384d07ba5c2b1f16a98b8, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -494,6 +502,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Juancho_Especial
       objectReference: {fileID: 0}
+    - target: {fileID: 2349913841914963735, guid: 68c8435d389654557b74ceba05846841, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a6419349f9f4d4714b26f60c971b4984, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68c8435d389654557b74ceba05846841, type: 3}
 --- !u!4 &3946194830199872490 stripped
@@ -561,6 +573,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1932043884143890075, guid: b46ed5da75e874324a5c096346568b81, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1425b8fa12d1c45479f70d08d96a3d2e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b46ed5da75e874324a5c096346568b81, type: 3}
 --- !u!4 &1023674160 stripped
@@ -779,6 +795,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Caiman_Especial
       objectReference: {fileID: 0}
+    - target: {fileID: 381978664747752382, guid: c4ce3d5b19dff47f9a94f900c4e54de4, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3d5f1ec4bff3244af814b53cc19609ab, type: 3}
     - target: {fileID: 381978664747752383, guid: c4ce3d5b19dff47f9a94f900c4e54de4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -846,6 +866,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sombreron
       objectReference: {fileID: 0}
+    - target: {fileID: 4001722132171366983, guid: d2f083f6b27e64c94a553034f00b525e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2d6a31045c3054a6c951bc164e70a1fd, type: 3}
     - target: {fileID: 6125403237285327092, guid: d2f083f6b27e64c94a553034f00b525e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1086,6 +1110,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8616786705441088584, guid: cd02bb2492f0743d8806aec0809dec3f, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9206bedd367194134ab24d1cf2474cd0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd02bb2492f0743d8806aec0809dec3f, type: 3}
 --- !u!1 &3946194830567705159 stripped
@@ -1153,6 +1181,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7434081531002495352, guid: 85cf290ef5b234df280ea84fa0e8a680, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1425b8fa12d1c45479f70d08d96a3d2e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85cf290ef5b234df280ea84fa0e8a680, type: 3}
 --- !u!4 &3946194830629261158 stripped
@@ -1176,6 +1208,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Marimonda_Final
       objectReference: {fileID: 0}
+    - target: {fileID: 5204862566303290443, guid: 6373f2d7ab49e49929f99803046b5860, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9206bedd367194134ab24d1cf2474cd0, type: 3}
     - target: {fileID: 7021044849304481615, guid: 6373f2d7ab49e49929f99803046b5860, type: 3}
       propertyPath: m_RootOrder
       value: 3

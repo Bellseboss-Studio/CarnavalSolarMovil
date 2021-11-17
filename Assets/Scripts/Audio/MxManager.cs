@@ -9,7 +9,7 @@ public class MxManager : MonoBehaviour, ICheckDependencies
 {
     public static MxManager MxInstance;
    
-    [SerializeField] private float m_TransitionTime = 1f;
+    [SerializeField] private float m_TransitionTime = 0.5f;
     [SerializeField] private List<GameObject> m_MusicTracks = new List<GameObject>();
     [SerializeField] private List<AudioMixerSnapshot> m_MixesSnapshots;
     [SerializeField] private AudioMixer mixer;
