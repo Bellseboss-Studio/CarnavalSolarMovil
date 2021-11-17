@@ -10,6 +10,7 @@ public class PjView : MonoBehaviour
     [SerializeField] private GameObject personaje;
     private Personaje _personaje;
     private ConfiguracionDelPeronsaje _configuracionDelPeronsaje;
+    private ControladorDeBatallaParaPersonajes _controladorDeBatallaParaPersonajes;
 
     public OnApplyDamage OnApplyDamageCustomNormal;
     public OnApplyDamage OnApplyDamageCustomEspecial;
@@ -18,6 +19,7 @@ public class PjView : MonoBehaviour
     public void Configurate(Personaje personajesJugablesElegido, ControladorDeBatallaParaPersonajes controladorDeBatallaParaPersonajes)
     {
         Debug.Log($"Aqui debe de instanciar a {personajesJugablesElegido.nombre}");
+        _controladorDeBatallaParaPersonajes = controladorDeBatallaParaPersonajes;
         var unoP = Resources.Load<GameObject>($"Prefab/{personajesJugablesElegido.nombre}");
         var pj = Instantiate(unoP, transform);
         anim = pj.GetComponent<Animator>();
@@ -34,6 +36,8 @@ public class PjView : MonoBehaviour
     {
         //Animar el propio personaje
         anim.Play(_configuracionDelPeronsaje.AtaqueEspecial.name);
+        _controladorDeBatallaParaPersonajes.AtaqueEspecial.CannotBeUsed();
+        _controladorDeBatallaParaPersonajes.AtaqueNormal.CannotBeUsed();
         SfxManager.Instance.PlaySound(_configuracionDelPeronsaje.AtaqueEspecial.name);
         Debug.Log($"El ataque especial para {target.PJ.nombre}");
         StartCoroutine(LuegoDeLaAnimacionRecibir(target, _configuracionDelPeronsaje.AtaqueEspecial));
@@ -42,6 +46,8 @@ public class PjView : MonoBehaviour
     private void OnDropInTargetInAtacaqueNormal(PjView target)
     {
         anim.Play(_configuracionDelPeronsaje.AtaqueNormal.name);
+        _controladorDeBatallaParaPersonajes.AtaqueEspecial.CannotBeUsed();
+        _controladorDeBatallaParaPersonajes.AtaqueNormal.CannotBeUsed();
         SfxManager.Instance.PlaySound(_configuracionDelPeronsaje.AtaqueEspecial.name);
         Debug.Log($"El ataque normal para {target.PJ.nombre}");
         StartCoroutine(LuegoDeLaAnimacionRecibir(target, _configuracionDelPeronsaje.AtaqueNormal));
@@ -51,6 +57,8 @@ public class PjView : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime.length);
         anim.Play(idle.name);
+        _controladorDeBatallaParaPersonajes.AtaqueEspecial.CanBeUsed();
+        _controladorDeBatallaParaPersonajes.AtaqueNormal.CanBeUsed();
         target.AplicaDanoDe(_personaje.ataque);
         OnApplyDamageCustomNormal?.Invoke(_personaje.nombre, target.PJ.nombre, _personaje.ataque);
     }

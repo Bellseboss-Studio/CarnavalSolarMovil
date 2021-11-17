@@ -190,6 +190,11 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     public void MuestraLaUiDeBatalla()
     {
         uiBatalla.SetActive(true);
+        for (int i = 0; i < player1.GetPersonajes().Count; i++)
+        {
+            _panelDePoderesControllers[i].CooldownForNormalAttack();
+            _panelDePoderesControllers[i].CooldownForSpecialAttack();
+        }
     }
 
     public void BuscarSiHayDatosDelOtroJugador()
