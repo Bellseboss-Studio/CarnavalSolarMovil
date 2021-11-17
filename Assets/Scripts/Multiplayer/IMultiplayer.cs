@@ -7,6 +7,8 @@
     bool FalloAlgo();
     void ResetFlags();
     string CantidadDePersonasEnSala();
-
+    string GetErrorMessage();
+    
+    
     PlayerSincro CrearPersonaje(PlayerSincro.OnLoadMyPj ownPj);
 }

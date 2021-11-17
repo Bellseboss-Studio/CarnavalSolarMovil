@@ -13,6 +13,7 @@ public class MultiplayerV2 : MonoBehaviourPunCallbacks, IMultiplayer
     private List<RoomInfo> _roomList;
     private DebuControler debuControler;
     private GameObject _prefab;
+    private string mensajeDeError;
 
     public delegate void OnJoinPlayer();
 
@@ -84,6 +85,11 @@ public class MultiplayerV2 : MonoBehaviourPunCallbacks, IMultiplayer
         return $"{PhotonNetwork.CurrentRoom.PlayerCount}";
     }
 
+    public string GetErrorMessage()
+    {
+        return mensajeDeError;
+    }
+
     public PlayerSincro CrearPersonaje(PlayerSincro.OnLoadMyPj ownPj)
     {
         var player01 = PhotonNetwork.Instantiate("PlayerBellseboss", Vector3.zero, Quaternion.identity, 0);
@@ -121,6 +127,7 @@ public class MultiplayerV2 : MonoBehaviourPunCallbacks, IMultiplayer
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         base.OnCreateRoomFailed(returnCode, message);
+        mensajeDeError = "Ya existe una sala con ese nombre, por favor elije un nombre de sala disponible";
         Debug.Log("Debemos notificar al jugador que ocurrio un error al crear la sala");
         _terminoDeProcesar = true;
         _falloAlgo = true;
@@ -129,6 +136,7 @@ public class MultiplayerV2 : MonoBehaviourPunCallbacks, IMultiplayer
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         base.OnJoinRoomFailed(returnCode, message);
+        mensajeDeError = "La sala no existe, Por favor intente con un nombre de una sala existente";
         Debug.Log("Debemos notificar al jugador que ocurrio un error al unirse a la sala");
         _terminoDeProcesar = true;
         _falloAlgo = true;
