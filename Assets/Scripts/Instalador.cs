@@ -1,6 +1,7 @@
 using System.Linq;
 using Photon.Pun;
 using System.Collections.Generic;
+using DG.Tweening;
 using ServiceLocatorPath;
 using StatesOfEnemies;
 using TMPro;
@@ -14,8 +15,9 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     [SerializeField] private ControladorDeUI uiController;
     [SerializeField] private GameBehavior gameBehavior;
     [SerializeField] private GameObject uiBatalla, uiDeGanastePerdiste;
-    [SerializeField] private TextMeshProUGUI textoDeGanastePerdiste;
+    [SerializeField] private TextMeshProUGUI textoDeGanastePerdiste, textoFinalizar, textoNuevaBatalla;
     [SerializeField] private Button nuevaBatalla, finalizar;
+    [SerializeField] private Image contenedorGanastePerdiste;
     [SerializeField] private GameObject opcionesDeEleccion;
     [SerializeField] private TMP_InputField nombreDeSala;
     [SerializeField] private TextMeshProUGUI testoLog;
@@ -83,6 +85,14 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
         //Victory or Lose mx 
         textoDeGanastePerdiste.text = "Prueba inicial";
         uiDeGanastePerdiste.SetActive(true);
+        var sequence = DOTween.Sequence();
+        sequence.Insert(0, uiDeGanastePerdiste.GetComponent<Image>().DOFade(.4f, .4f));
+        sequence.Insert(0, nuevaBatalla.gameObject.GetComponent<Image>().DOFade(1, 1));
+        sequence.Insert(0, finalizar.gameObject.GetComponent<Image>().DOFade(1, 1));
+        sequence.Insert(0, contenedorGanastePerdiste.DOFade(1, 1));
+        sequence.Insert(0, textoNuevaBatalla.DOFade(1, 1));
+        sequence.Insert(0, textoFinalizar.DOFade(1, 1));
+        sequence.Insert(0, textoDeGanastePerdiste.DOFade(1, 1));
     }
 
     public bool EligioLoQueQuiereHacer()
@@ -105,7 +115,15 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
 
     public void OcultarElLetreroDeGanarOPerder()
     {
-        uiDeGanastePerdiste.SetActive(false);
+        var sequence = DOTween.Sequence();
+        sequence.Insert(0, uiDeGanastePerdiste.GetComponent<Image>().DOFade(.4f, .4f));
+        sequence.Insert(0, nuevaBatalla.gameObject.GetComponent<Image>().DOFade(0, 1));
+        sequence.Insert(0, finalizar.gameObject.GetComponent<Image>().DOFade(0, 1));
+        sequence.Insert(0, contenedorGanastePerdiste.DOFade(0, 1));
+        sequence.Insert(0, textoNuevaBatalla.DOFade(0, 1));
+        sequence.Insert(0, textoFinalizar.DOFade(0, 1));
+        sequence.Insert(0, textoDeGanastePerdiste.DOFade(0, 1));
+        sequence.onComplete += () => { uiDeGanastePerdiste.SetActive(false); };
     }
 
     public bool TerminoDeElegir => uiController.GetTerminoDeElegir();
