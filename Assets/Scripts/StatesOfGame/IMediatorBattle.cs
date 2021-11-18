@@ -7,5 +7,6 @@
         void MuestraLaUiDeBatalla();
         void BuscarSiHayDatosDelOtroJugador();
         void HideBattleUi();
+        void ConfiguraCooldownsPorPersonaje();
     }
 }
