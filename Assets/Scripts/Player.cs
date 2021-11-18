@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     private List<Personaje> personajesJugablesElegidos;
     [SerializeField] private PlaceOfPlayer place;
 
-    private IMediatorCooldown _mediatorCooldown;
 
     // Start is called before the first frame update
     void Start()
@@ -39,11 +38,9 @@ public class Player : MonoBehaviour
         return !place.HayAlguienDePie();
     }
 
-    public void Configurarlo(IMediatorCooldown mediatorCooldown)
+    public void Configurarlo()
     {
-        _mediatorCooldown = mediatorCooldown;
         place.FulledCharacters(personajesJugablesElegidos);
-        _mediatorCooldown.ConfiguraCooldownsPorPersonaje(personajesJugablesElegidos);
     }
     public void Configurarlo(PjView.OnApplyDamage ataqueNormal, PjView.OnApplyDamage ataqueEspecial)
     {

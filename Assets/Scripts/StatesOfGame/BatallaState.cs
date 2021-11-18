@@ -17,6 +17,7 @@ namespace StatesOfEnemies
         {
             Debug.Log("Batalla");
             MxManager.MxInstance.PlayMusicState(GameStatesConfiguration.BatallaState);
+            _mediator.ConfiguraCooldownsPorPersonaje();
             _mediator.MuestraLaUiDeBatalla();
             while (!_mediator.OncePlayersIsDead())
             {

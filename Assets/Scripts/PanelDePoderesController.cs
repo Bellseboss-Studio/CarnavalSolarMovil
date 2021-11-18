@@ -3,23 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using ExitGames.Client.Photon;
-using Store;
+using Rest;
+using ServiceLocatorPath;
 using UnityEngine;
 using UnityEngine.UI;
-public class PanelDePoderesController : MonoBehaviour, ICooldownAttacks
+public class PanelDePoderesController : MonoBehaviour
 {
     [SerializeField] private Slider normalAttackSlider, specialAttackSlider;
     private float normalAttackCooldown, specialAttackCooldown;
-    private IMediatorCooldown _mediatorCooldown;
+    [SerializeField] private Image miniatura;
     [SerializeField] private DragComponent normalAttackDrag, specialAttackDrag;
     private float _cooldown;
+    private Personaje _personaje;
 
-    public void ConfigureSliderValues(float cooldown, IMediatorCooldown mediatorCooldown)
+
+    public void ConfigureSliderValues(Personaje personaje)
     {
-        _cooldown = cooldown;
-        _mediatorCooldown = mediatorCooldown;
-        normalAttackCooldown = cooldown * 0.5f;
-        specialAttackCooldown = cooldown * 0.8f;
+        _personaje = personaje;
+        _cooldown = personaje.cooldown;
+        normalAttackCooldown = personaje.cooldown * 0.5f;
+        specialAttackCooldown = personaje.cooldown * 0.8f;
         normalAttackSlider.value = 0;
         specialAttackSlider.value = 0;
         normalAttackDrag.OnDropInAnywhere += CooldownForNormalAttack;
@@ -44,5 +47,16 @@ public class PanelDePoderesController : MonoBehaviour, ICooldownAttacks
         sequence.OnComplete (()=> specialAttackDrag.CanBeUsed());
     }
 
-    
+
+    public void LlenarFotoDePerfil()
+    {
+        StartCoroutine(RestGet.GetImageRequest(_personaje.fotoDePerfil, result =>
+        {
+            miniatura.sprite = result;
+            //Debug.Log($"encontro la imagen");
+        }, () =>
+        {
+            //Debug.Log($"no encontro la imagen");
+        }));
+    }
 }

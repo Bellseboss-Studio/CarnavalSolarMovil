@@ -8,7 +8,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguration, IMediatorBattle, IMediatorDeEspera, IMediatorCooldown
+public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguration, IMediatorBattle, IMediatorDeEspera
 {
     [SerializeField] private Player player1, player2;
     [SerializeField] private PlaceOfPlayer placeOfPlayer1, placeOfPlayer2;
@@ -64,9 +64,7 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
 
     private void ColocarleCosasAlPlayer2()
     {
-        player2.AddPj(new Personaje(2,2,2,"https://i.ytimg.com/vi/-6vnomecItA/maxresdefault.jpg","PlaceHolder","PlaceHolder",1,10));
-        player2.AddPj(new Personaje(2,2,2,"https://i.ytimg.com/vi/-6vnomecItA/maxresdefault.jpg","PlaceHolder","PlaceHolder",1,10));
-        player2.AddPj(new Personaje(2,2,2,"https://i.ytimg.com/vi/-6vnomecItA/maxresdefault.jpg","PlaceHolder","PlaceHolder",1,10));
+        
     }
 
     public void ShowLoad()
@@ -208,9 +206,11 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
     public void MuestraLaUiDeBatalla()
     {
         uiBatalla.SetActive(true);
+        
         for (int i = 0; i < player1.GetPersonajes().Count; i++)
         {
             _panelDePoderesControllers[i].CooldownForNormalAttack();
+            _panelDePoderesControllers[i].LlenarFotoDePerfil();
             _panelDePoderesControllers[i].CooldownForSpecialAttack();
         }
     }
@@ -290,7 +290,7 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
                 player2.AddPj(primerPj);
                 player2.AddPj(segundoPj);
                 player2.AddPj(tercerPj);
-                player2.Configurarlo(this);
+                player2.Configurarlo();
                 player2Sincro = true;
                 jsonDelOtroPlayer = playerSincro.informacion;
                 otroPlayer = playerSincro;
@@ -358,16 +358,11 @@ public class Instalador : MonoBehaviour, IMediatorGeneral, IMediatorConfiguratio
         uiController.ClearPlayer();
     }
 
-    public void CannotAttackAnymore()
+    public void ConfiguraCooldownsPorPersonaje()
     {
-        placeOfPlayer1.DeshabilitaElDrag();
-    }
-
-    public void ConfiguraCooldownsPorPersonaje(List<Personaje> personajes)
-    {
-        for (int i = 0; i < personajes.Count; i++)
+        for (int i = 0; i < player1.GetPersonajes().Count; i++)
         {
-            _panelDePoderesControllers[i].ConfigureSliderValues(personajes[i].cooldown, this);
+            _panelDePoderesControllers[i].ConfigureSliderValues(player1.GetPersonajes()[i]);
         }
     }
 }
