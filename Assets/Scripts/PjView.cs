@@ -66,6 +66,7 @@ public class PjView : MonoBehaviour
     public void AplicaDanoDe(float danio)
     {
         anim.Play(danioAnim.name);
+        SfxManager.Instance.PlaySound(danioAnim.name);
         //probablemente esto defina cuando se muestra la pantalla de ganaste o perdiste
         Debug.Log($"Vida antes {_personaje.vida}");
         _personaje.vida -= danio;

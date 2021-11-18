@@ -16,7 +16,6 @@ namespace StatesOfEnemies
         public IEnumerator DoAction(IBehavior behavior)
         {
             Debug.Log("Batalla");
-            MxManager.MxInstance.PlayMusicState(GameStatesConfiguration.BatallaState);
             _mediator.MuestraLaUiDeBatalla();
             while (!_mediator.OncePlayersIsDead())
             {
