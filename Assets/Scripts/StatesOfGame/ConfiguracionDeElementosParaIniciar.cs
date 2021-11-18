@@ -15,6 +15,7 @@ namespace StatesOfEnemies
 
         public IEnumerator DoAction(IBehavior behavior)
         {
+            Debug.Log("Wepaaaaaa");
             _mediator.ShowLoad();
             while (!ServiceLocator.Instance.GetService<IPlayFabCustom>().IsAllCompleted())
             {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657856, g: 0.49641234, b: 0.57481724, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,10 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9085504904348220885, guid: 2454f3c11cd1144b6ad6dfed1ebbf3fe, type: 3}
-      propertyPath: m_TransitionTime
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9085504904348220886, guid: 2454f3c11cd1144b6ad6dfed1ebbf3fe, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -266,7 +262,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 197159070}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1870388639}
+        m_TargetAssemblyTypeName: SfxManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Unirse
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &197159070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -796,7 +804,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 522226140}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1870388639}
+        m_TargetAssemblyTypeName: SfxManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Crear
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &522226140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2065,3 +2085,14 @@ MonoBehaviour:
   botonDeCrear: {fileID: 522226137}
   botonDeUnir: {fileID: 197159067}
   nombreDeSala: {fileID: 1149180960}
+--- !u!114 &1870388639 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3946194830119860529, guid: 086eeaebb5ed14486bb6de91b4bed5b0, type: 3}
+  m_PrefabInstance: {fileID: 311405438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a6e52bb6b344706884c4c9687d1b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
