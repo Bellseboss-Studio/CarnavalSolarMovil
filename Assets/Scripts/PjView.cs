@@ -77,7 +77,16 @@ public class PjView : MonoBehaviour
     IEnumerator ComeBackIdle(AnimationClip concurrentAnimation)
     {
         yield return new WaitForSeconds(concurrentAnimation.length);
-        anim.Play(_personaje.vida <= 0 ? muerte.name : idle.name);
+        if (_personaje.vida <= 0)
+        {
+            anim.Play(muerte.name);
+            if(_controladorDeBatallaParaPersonajes.GetPanelDePoderesController() != null) _controladorDeBatallaParaPersonajes.GetPanelDePoderesController().DesactivarPanelDePoderes();
+            _configuracionDelPeronsaje.gameObject.GetComponent<BoxCollider>().enabled = false;
+        }
+        else
+        {
+            anim.Play(idle.name);
+        }
     }
 
     public Personaje PJ => _personaje;

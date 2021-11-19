@@ -15,7 +15,7 @@ public class PanelDePoderesController : MonoBehaviour
     [SerializeField] private DragComponent normalAttackDrag, specialAttackDrag;
     private float _cooldown;
     private Personaje _personaje;
-
+    [SerializeField] private List<Image> equis;
 
     public void ConfigureSliderValues(Personaje personaje)
     {
@@ -58,5 +58,17 @@ public class PanelDePoderesController : MonoBehaviour
         {
             //Debug.Log($"no encontro la imagen");
         }));
+    }
+
+    public void DesactivarPanelDePoderes()
+    {
+        var sequence = DOTween.Sequence();
+        foreach (var image in equis)
+        {
+            image.gameObject.SetActive(true);
+            sequence.Insert(0,image.DOFade(.7f, .25f));
+            sequence.Insert(.25f,image.DOFade(.35f, .2f));
+            sequence.Insert(.45f,image.DOFade(.7f, .2f));
+        }
     }
 }
