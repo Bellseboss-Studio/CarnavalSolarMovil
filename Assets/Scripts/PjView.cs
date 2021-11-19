@@ -25,7 +25,7 @@ public class PjView : MonoBehaviour
         _controladorDeBatallaParaPersonajes = controladorDeBatallaParaPersonajes;
         var unoP = Resources.Load<GameObject>($"Prefab/{personajesJugablesElegido.nombre}");
         var pj = Instantiate(unoP, transform);
-        anim = pj.GetComponent<Animator>();
+            anim = pj.GetComponent<Animator>();
         _configuracionDelPeronsaje = pj.GetComponent<ConfiguracionDelPeronsaje>();
         if (controladorDeBatallaParaPersonajes.DebeConfigurar)
         {
@@ -34,6 +34,7 @@ public class PjView : MonoBehaviour
         }
         _personaje = personajesJugablesElegido;
         lifeText.text = _personaje.vida.ToString();
+        pj.transform.rotation = controladorDeBatallaParaPersonajes.transform.rotation;
     }
 
     private void OnDropInTargetAtaqueEspecial(PjView target)
