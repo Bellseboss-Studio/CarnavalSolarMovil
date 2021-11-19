@@ -1,6 +1,8 @@
 ﻿using System.Collections;
+using System.Globalization;
 using ServiceLocatorPath;
 using StatesOfEnemies;
+using TMPro;
 using UnityEngine;
 
 public class PjView : MonoBehaviour
@@ -14,6 +16,7 @@ public class PjView : MonoBehaviour
 
     public OnApplyDamage OnApplyDamageCustomNormal;
     public OnApplyDamage OnApplyDamageCustomEspecial;
+    [SerializeField] private TextMeshProUGUI lifeText;
 
     public delegate void OnApplyDamage(string nameOfFrom, string nameOfTarger, float damage);
     public void Configurate(Personaje personajesJugablesElegido, ControladorDeBatallaParaPersonajes controladorDeBatallaParaPersonajes)
@@ -22,7 +25,7 @@ public class PjView : MonoBehaviour
         _controladorDeBatallaParaPersonajes = controladorDeBatallaParaPersonajes;
         var unoP = Resources.Load<GameObject>($"Prefab/{personajesJugablesElegido.nombre}");
         var pj = Instantiate(unoP, transform);
-        anim = pj.GetComponent<Animator>();
+            anim = pj.GetComponent<Animator>();
         _configuracionDelPeronsaje = pj.GetComponent<ConfiguracionDelPeronsaje>();
         if (controladorDeBatallaParaPersonajes.DebeConfigurar)
         {
@@ -30,6 +33,8 @@ public class PjView : MonoBehaviour
             controladorDeBatallaParaPersonajes.AtaqueEspecial.OnDropInTarget += OnDropInTargetAtaqueEspecial;
         }
         _personaje = personajesJugablesElegido;
+        lifeText.text = _personaje.vida.ToString();
+        pj.transform.rotation = controladorDeBatallaParaPersonajes.transform.rotation;
     }
 
     private void OnDropInTargetAtaqueEspecial(PjView target)
@@ -80,11 +85,13 @@ public class PjView : MonoBehaviour
         if (_personaje.vida <= 0)
         {
             anim.Play(muerte.name);
+            lifeText.text = "Muerto";
             if(_controladorDeBatallaParaPersonajes.GetPanelDePoderesController() != null) _controladorDeBatallaParaPersonajes.GetPanelDePoderesController().DesactivarPanelDePoderes();
             _configuracionDelPeronsaje.gameObject.GetComponent<BoxCollider>().enabled = false;
         }
         else
         {
+            lifeText.text = _personaje.vida.ToString();
             anim.Play(idle.name);
         }
     }
