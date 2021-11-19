@@ -442,6 +442,10 @@ PrefabInstance:
       propertyPath: ataqueEspecial
       value: 
       objectReference: {fileID: 949637691}
+    - target: {fileID: 7411811718616086316, guid: 0cfa7597448618f489675a59a1ad8db5, type: 3}
+      propertyPath: panelDePoderesController
+      value: 
+      objectReference: {fileID: 949637693}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cfa7597448618f489675a59a1ad8db5, type: 3}
 --- !u!1 &62390815 stripped
@@ -3896,6 +3900,10 @@ PrefabInstance:
       propertyPath: ataqueEspecial
       value: 
       objectReference: {fileID: 4105517279737024488}
+    - target: {fileID: 7411811718616086316, guid: 0cfa7597448618f489675a59a1ad8db5, type: 3}
+      propertyPath: panelDePoderesController
+      value: 
+      objectReference: {fileID: 4105517279737024490}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cfa7597448618f489675a59a1ad8db5, type: 3}
 --- !u!1 &1465011774 stripped
@@ -5892,6 +5900,10 @@ PrefabInstance:
       propertyPath: ataqueEspecial
       value: 
       objectReference: {fileID: 2595105301829442861}
+    - target: {fileID: 7411811718616086316, guid: 0cfa7597448618f489675a59a1ad8db5, type: 3}
+      propertyPath: panelDePoderesController
+      value: 
+      objectReference: {fileID: 2595105301829442863}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cfa7597448618f489675a59a1ad8db5, type: 3}
 --- !u!1001 &2595105301829442860
