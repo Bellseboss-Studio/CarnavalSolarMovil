@@ -28,7 +28,7 @@ public class PlaceOfPlayer : MonoBehaviour
             
             if (point.TryGetComponent<ControladorDeBatallaParaPersonajes>(out var controlador))
             {
-                pjview.Configurate(personajesJugablesElegidos[index], controlador);
+                pjview.Configurate(personajesJugablesElegidos[index], controlador, false);
             }
             index++;
             personajes.Add(pjview);
@@ -46,7 +46,7 @@ public class PlaceOfPlayer : MonoBehaviour
             
             if (point.TryGetComponent<ControladorDeBatallaParaPersonajes>(out var controlador))
             {
-                pjview.Configurate(personajesJugablesElegidos[index], controlador);
+                pjview.Configurate(personajesJugablesElegidos[index], controlador, true);
                 pjview.OnApplyDamageCustomEspecial += cuandoAtaqueEspecial;
                 pjview.OnApplyDamageCustomNormal += cuandoAtaqueNormal;
             }

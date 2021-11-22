@@ -19,7 +19,7 @@ public class PjView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI lifeText;
 
     public delegate void OnApplyDamage(string nameOfFrom, string nameOfTarger, float damage);
-    public void Configurate(Personaje personajesJugablesElegido, ControladorDeBatallaParaPersonajes controladorDeBatallaParaPersonajes)
+    public void Configurate(Personaje personajesJugablesElegido, ControladorDeBatallaParaPersonajes controladorDeBatallaParaPersonajes, bool isOwnCharacter)
     {
         Debug.Log($"Aqui debe de instanciar a {personajesJugablesElegido.nombre}");
         _controladorDeBatallaParaPersonajes = controladorDeBatallaParaPersonajes;
@@ -35,6 +35,7 @@ public class PjView : MonoBehaviour
         _personaje = personajesJugablesElegido;
         lifeText.text = _personaje.vida.ToString();
         pj.transform.rotation = controladorDeBatallaParaPersonajes.transform.rotation;
+        if (isOwnCharacter) pj.GetComponent<BoxCollider>().enabled = false;
     }
 
     private void OnDropInTargetAtaqueEspecial(PjView target)
