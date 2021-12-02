@@ -18,7 +18,7 @@ namespace Gameplay
         public void AplicarInteraccion(Personaje origen)
         {
             //behaviour.AplicarInteraccion(origen);
-            Debug.Log(_personaje.name + origen.name);
+            //Debug.Log(_personaje.name + origen.name);
             origen.GetInteractionComponent().EjecucionDeInteraccion(_personaje);
         }
 
