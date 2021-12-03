@@ -1,28 +1,32 @@
-﻿using Rest;
+﻿using System;
+using Rest;
 using UnityEngine;
 
 namespace ServiceLocatorPath
 {
     public class Personaje
     {
-        public Personaje(float ataque, float defensa, float velocidad, string imagen, string nombre, string type, float vida)
+        public Personaje(float ataque, float defensa, float velocidad, string imagen, string nombre, string type, string fotoDePerfil, float vida, float cooldown)
         {
             this.ataque = ataque;
             this.defensa = defensa;
             this.velocidad = velocidad;
             this.imagen = imagen;
+            this.fotoDePerfil = fotoDePerfil;
             this.nombre = nombre;
             this.type = type;
             this.vida = vida;
+            this.cooldown = cooldown;
+            
         }
 
         public Personaje()
         {
         }
 
-        public float ataque, defensa, velocidad, vida;
+        public float ataque, defensa, velocidad, vida, cooldown;
 
-        public string imagen, nombre, type;
+        public string imagen, fotoDePerfil, nombre, type;
         /*
          {"ataque":"1","defensa":"1","velocidad":"1","imagen":"url","type":"llorona","nombre":"llorona"}
          */
@@ -31,6 +35,11 @@ namespace ServiceLocatorPath
             return imagen;
         }
 
+        public string GetSpriteFotoDePerfil()
+        {
+            return fotoDePerfil;
+        }
+        
         public string GetNombre()
         {
             return nombre;

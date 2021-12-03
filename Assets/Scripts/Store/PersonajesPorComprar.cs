@@ -24,6 +24,7 @@ public class PersonajesPorComprar : MonoBehaviour
         foreach (var pj in pjs)
         {
             containers[index].Fulled(pj);
+            containers[index].EsSeleccionadoElPersonaje = null;
             containers[index].EsSeleccionadoElPersonaje += acction;
             index++;
         }
@@ -39,12 +40,30 @@ public class PersonajesPorComprar : MonoBehaviour
         terminar.onClick.AddListener(() =>
         {
             terminoDeElegir = true;
+            SfxManager.Instance.PlaySound(this.gameObject.name);
+            Debug.Log(this.gameObject.name);
         });
     }
 
-    public void Restart()
+    public void Restart(ContainerDeSeleccionDePeronsaje.OnSelectingPj acction)
     {
         terminoDeElegir = false;
+        foreach (var container in containers)
+        {
+            container.EsSeleccionadoElPersonaje -= acction;
+        }
     }
     public bool TerminoDeElegir => terminoDeElegir;
+    
+    
+    
+    public void ReinicarMenu()
+    {
+        botonDeFinalizar.SetActive(false);
+        foreach (var container in containers)
+        {
+            container.HabilitarBoton();
+        }
+    }
+    
 }
