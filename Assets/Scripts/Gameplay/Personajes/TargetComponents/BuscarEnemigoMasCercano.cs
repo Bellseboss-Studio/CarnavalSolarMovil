@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Gameplay.Personajes.TargetComponents;
 using UnityEngine;
 
 namespace Gameplay
@@ -7,28 +8,38 @@ namespace Gameplay
     {
         public override List<Personaje> GetTargets()
         {
-            Personaje _transformMasCercano = null;
-            List<Personaje> transforms = new List<Personaje>();
-            List<Personaje> transformsCercanos = new List<Personaje>();
+            Personaje _personajeMasCercano = null;
+            List<Personaje> _personajesList = new List<Personaje>();
             var personajes = GameObject.FindObjectsOfType<Personaje>();
             foreach (var personaje in personajes)
             {
-                if (personaje.enemigo)
+                if (personaje.enemigo != _personaje.enemigo && personaje.isTargeteable)
                 {
-                    transforms.Add(personaje);
+                    _personajesList.Add(personaje);
                 }
             }
 
             float distance = 100;
-            foreach (var _transform in transforms)
+            foreach (var personajeList in _personajesList)
             {
-                if (Vector3.Distance(_personaje.transform.position, _transform.transform.position) < distance)
+                if (Vector3.Distance(_personaje.transform.position, personajeList.transform.position) < distance)
                 {
-                    _transformMasCercano = _transform;
+                    _personajeMasCercano = personajeList;
                 }
             }
-            transformsCercanos.Add(_transformMasCercano);
-            return transformsCercanos;
+            if (!_targets.Contains(_personajeMasCercano) && _personajeMasCercano != null && _personajeMasCercano.isTargeteable) _targets.Add(_personajeMasCercano);
+            if (_personajeMasCercano != null)
+            {
+                if (!_personajeMasCercano.GetTargetComponent().TargetedBy.Contains(_personaje))
+                {
+                    Debug.Log("se añadio a la lista");
+                    _personajeMasCercano.GetTargetComponent().TargetedBy.Add(_personaje);
+                }
+                Debug.Log(_personajeMasCercano.GetTargetComponent().TargetedBy.Contains(_personaje));
+                return _targets;
+            }
+
+            return new List<Personaje>();
         }
     }
 }

@@ -1,12 +1,31 @@
+using System;
 using System.Threading.Tasks;
+using Gameplay.Personajes.TargetComponents;
+using UnityEngine;
 
 namespace Gameplay.PersonajeStates
 {
     public class BuscarTargetState : IPersonajeState
     {
-        public Task<PersonajeStateResult> DoAction(object data)
+
+        private readonly TargetComponent _targetComponent;
+
+        public BuscarTargetState(TargetComponent targetComponent)
         {
-            throw new System.NotImplementedException();
+            _targetComponent = targetComponent;
+        }
+
+        public async Task<PersonajeStateResult> DoAction(object data)
+        {
+            if (_targetComponent.GetTargets().Count == 0)
+            {
+                
+                Debug.Log("estas en el estado buscar target, pero no se encontro ningun target");
+                await Task.Delay(TimeSpan.FromMilliseconds(500));
+                return new PersonajeStateResult(PersonajeStatesConfiguration.BuscarTargetState);
+            }
+            Debug.Log("Estas en el estado buscar target");
+            return _targetComponent.GetPersonaje()!= null ? new PersonajeStateResult(PersonajeStatesConfiguration.DesplazarseHaciaElTargetState) : new PersonajeStateResult(PersonajeStatesConfiguration.CongeladoState);
         }
     }
 }

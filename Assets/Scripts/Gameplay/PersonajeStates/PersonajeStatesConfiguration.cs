@@ -6,6 +6,7 @@ namespace Gameplay.PersonajeStates
 {
     public class PersonajeStatesConfiguration
     {
+        public const int CongeladoState = 0;
         public const int BuscarTargetState = 1;
         public const int DesplazarseHaciaElTargetState = 2;
         public const int InteractuarConElTargetState = 3;
