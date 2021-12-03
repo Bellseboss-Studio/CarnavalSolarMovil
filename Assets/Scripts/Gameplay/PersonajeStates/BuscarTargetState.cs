@@ -17,6 +17,7 @@ namespace Gameplay.PersonajeStates
 
         public async Task<PersonajeStateResult> DoAction(object data)
         {
+            _targetComponent.BuscaTusTargets();
             if (_targetComponent.GetTargets().Count == 0)
             {
                 
@@ -25,7 +26,7 @@ namespace Gameplay.PersonajeStates
                 return new PersonajeStateResult(PersonajeStatesConfiguration.BuscarTargetState);
             }
             Debug.Log("Estas en el estado buscar target");
-            return _targetComponent.GetPersonaje()!= null ? new PersonajeStateResult(PersonajeStatesConfiguration.DesplazarseHaciaElTargetState) : new PersonajeStateResult(PersonajeStatesConfiguration.CongeladoState);
+            return new PersonajeStateResult(PersonajeStatesConfiguration.DesplazarseHaciaElTargetState);
         }
     }
 }

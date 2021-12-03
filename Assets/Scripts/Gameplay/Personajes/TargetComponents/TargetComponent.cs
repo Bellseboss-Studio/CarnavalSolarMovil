@@ -1,50 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Gameplay.Personajes.Scripts;
 using UnityEngine;
 
 namespace Gameplay.Personajes.TargetComponents
 {
-    public abstract class TargetComponent : MonoBehaviour
+    public class TargetComponent : MonoBehaviour, ITargetComponent
     {
-        //private TargetBehaviour _behaviour;
-        public List<Personaje> TargetedBy;
-        protected List<Personaje> _targets;
-        protected Personaje _personaje;
+        private TargetBehaviour _behaviour;
 
-        public void Configuracion(Personaje personaje)
+
+        public void Configuracion(TargetBehaviour behaviour, Personaje personaje)
         {
-            _personaje = personaje;
-            _targets = new List<Personaje>();
+            _behaviour = behaviour;
+            _behaviour.Configurate(this, personaje);
         } 
         
-        public abstract List<Personaje> GetTargets();
-
-        public void DejarDeSerTargeteado(Personaje personajeOrigen)
+        public List<Personaje> GetTargets()
         {
-            foreach (var personaje in TargetedBy)
-            {
-                if (personaje != null && personajeOrigen != null) personaje.GetTargetComponent()._targets.Remove(personajeOrigen);
-            }
+            return _behaviour.GetTargets();
         }
 
-        public void HeDejadoDeTargetear(Personaje personaje)
+
+        public List<Personaje> GetTargetTargetedBy()
         {
-            foreach (var target in _targets)
-            {
-                target.GetTargetComponent().TargetedBy.Remove(personaje);
-            }
+            return _behaviour.GetTargetedBy();
         }
 
-        public List<Personaje> TargetsGet()
+        public void AddTargetedBy(Personaje personaje)
         {
-            return _targets;
-        }
-
-        public Personaje GetPersonaje()
-        {
-            return _personaje;
+            _behaviour.AddTargetedBy(personaje);
         }
         
+        public void BuscaTusTargets()
+        {
+            _behaviour.BuscaLosTargets();
+        }
+
+        public void DejarDeSerTargeteado(Personaje personaje)
+        {
+            _behaviour.DejarDeSerTargeteado(personaje);
+        }
+
+        public void HeDejadoDeTargetear()
+        {
+            _behaviour.HeDejadoDeTargetear();
+        }
+
+        public Personaje[] GetPersonajes()
+        {
+            return GameObject.FindObjectsOfType<Personaje>();
+        }
+
+        public void RemoveTargetedBy(Personaje personaje)
+        {
+            _behaviour.RemoveTargetedBy(personaje);
+        }
+        
+        public void RemoveTarget(Personaje personaje)
+        {
+            _behaviour.RemoveTarget(personaje);
+        }
     }
 }

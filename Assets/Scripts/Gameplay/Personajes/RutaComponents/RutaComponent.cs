@@ -4,22 +4,30 @@ using UnityEngine.AI;
 
 namespace Gameplay.Personajes.RutaComponents
 {
-    public abstract class RutaComponent : MonoBehaviour
+    public class RutaComponent : MonoBehaviour, IRutaComponent
     {
-        protected Transform target;
-        protected NavMeshAgent _navMeshAgent;
-        protected Personaje _personaje;
+        public RutaBehaviour _rutaBehaviour;
+        
 
-        public abstract void DesplazarHaciaElTarget(GameObject personaje);
-
-        public abstract void SetTargetsToNavMesh(List<Personaje> targets);
-
-        public abstract void DejarDeDesplazar();
-
-        public void Configuration(NavMeshAgent navMeshAgent, Personaje personaje)
+        public void DesplazarHaciaElTarget(GameObject personaje)
         {
-            _navMeshAgent = navMeshAgent;
-            _personaje = personaje;
+            _rutaBehaviour.DesplazarHaciaElTarget(personaje);
+        }
+
+        public void SetTargetsToNavMesh(List<Personaje> targets)
+        {
+            _rutaBehaviour.SetTargetsToNavMesh(targets);
+        }
+
+        public void DejarDeDesplazar()
+        {
+            _rutaBehaviour.DejarDeDesplazar();
+        }
+
+        public void Configuration(NavMeshAgent navMeshAgent, Personaje personaje, RutaBehaviour rutaBehaviour)
+        {
+            _rutaBehaviour = rutaBehaviour;
+            _rutaBehaviour.Configurate(navMeshAgent, personaje, this);
         }
     }
 }

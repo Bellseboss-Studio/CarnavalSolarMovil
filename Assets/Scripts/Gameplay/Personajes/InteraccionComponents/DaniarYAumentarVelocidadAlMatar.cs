@@ -1,8 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Gameplay.Personajes.InteraccionComponents
 {
-    public class InteraccionDaniarPersonaje : InteraccionBehaviour
+    public class DaniarYAumentarVelocidadAlMatar : InteraccionBehaviour
     {
         public override void EjecucionDeInteraccion(Personaje target)
         {
@@ -11,6 +11,7 @@ namespace Gameplay.Personajes.InteraccionComponents
             Debug.Log(target.health);
             if (target.health <= 0)
             {
+                _personaje.velocidadDeMovimiento += (_personaje.velocidadDeMovimiento * .2f);
                 target.Muerte();
             }
         }

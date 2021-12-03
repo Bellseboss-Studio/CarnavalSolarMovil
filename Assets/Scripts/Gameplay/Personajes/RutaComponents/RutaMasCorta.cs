@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 namespace Gameplay.Personajes.RutaComponents
 {
-    public class RutaMasCorta : RutaComponent
+    public class RutaMasCorta : RutaBehaviour
     {
         public override void DesplazarHaciaElTarget(GameObject personaje)
         {
@@ -20,6 +20,7 @@ namespace Gameplay.Personajes.RutaComponents
             _navMeshAgent.enabled = true;
             _navMeshAgent.destination = targets[0].transform.position;
             _navMeshAgent.stoppingDistance = _personaje.distanciaDeInteraccion;
+            _navMeshAgent.speed = _personaje.velocidadDeMovimiento;
         }
 
         public override void DejarDeDesplazar()
@@ -27,6 +28,5 @@ namespace Gameplay.Personajes.RutaComponents
             
            if (_navMeshAgent!= null) _navMeshAgent.enabled = false;
         }
-        
     }
 }
