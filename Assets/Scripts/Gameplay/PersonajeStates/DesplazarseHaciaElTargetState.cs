@@ -20,16 +20,16 @@ namespace Gameplay.PersonajeStates
 
         public async Task<PersonajeStateResult> DoAction(object data)
         {
-            var targets = _personaje.GetTargetComponent().TargetsGet();
+            var targets = _personaje.GetTargetComponent().GetTargets();
+            Debug.Log($"{_personaje.cosaDiferenciadora} {_personaje.transform.position} + {targets[0].cosaDiferenciadora} {targets[0].gameObject.transform.position}");
             float distanciaEntrePersonajes = Vector3.Distance(_personaje.transform.position, targets[0].gameObject.transform.position);
             if(distanciaEntrePersonajes > _personaje.distanciaDeInteraccion && targets.Count > 0 && _personaje != null && targets[0] != null) _rutaComponent.SetTargetsToNavMesh(targets);
-            while (distanciaEntrePersonajes > _personaje.distanciaDeInteraccion && targets.Count > 0 && _personaje != null && targets[0] != null)
-
+            while (targets.Count > 0 && _personaje.isTargeteable && targets[0] != null && targets[0].isTargeteable && distanciaEntrePersonajes > _personaje.distanciaDeInteraccion)
             {
                 Debug.Log("estas en el estado desplazarse");
                 distanciaEntrePersonajes = Vector3.Distance(_personaje.transform.position, targets[0].transform.position);
                 await Task.Delay(TimeSpan.FromMilliseconds(500));
-                //Debug.Log(distanciaEntrePersonajes);
+                Debug.Log(distanciaEntrePersonajes);
                 seDesplazo = true;
             }
             if(seDesplazo) _rutaComponent.DejarDeDesplazar();

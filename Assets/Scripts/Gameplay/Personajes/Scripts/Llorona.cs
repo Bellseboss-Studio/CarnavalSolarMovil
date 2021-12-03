@@ -2,10 +2,10 @@
 {
     public class Llorona : Personaje
     {
-        public override void Muerte()
+        public void Muerte()
         {
             GetTargetComponent().DejarDeSerTargeteado(this);
-            GetTargetComponent().HeDejadoDeTargetear(this);
+            GetTargetComponent().HeDejadoDeTargetear();
 
             isTargeteable = false;
         }

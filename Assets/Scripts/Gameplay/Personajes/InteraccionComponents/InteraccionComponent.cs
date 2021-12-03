@@ -1,28 +1,36 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Gameplay
 {
-    public abstract class InteraccionComponent : MonoBehaviour
+    public class InteraccionComponent : MonoBehaviour, IInteraccionComponent
     {
-        private Personaje _personaje;
-        public void Configurate(Personaje origen)
+        private InteraccionBehaviour _interaccionBehaviour;
+        public void Configurate(Personaje origen, InteraccionBehaviour interaccionBehaviour)
         {
-            _personaje = origen;
+            _interaccionBehaviour = interaccionBehaviour;
+            interaccionBehaviour.Configurate(origen, this);
         }
         
-        public void Interactuar(Personaje target)
+        public void Interactuar(List<Personaje> target)
         {
-            target.GetInteractionComponent().AplicarInteraccion(_personaje);
+            _interaccionBehaviour.Interactuar(target);
         }
 
         public void AplicarInteraccion(Personaje origen)
         {
-            //behaviour.AplicarInteraccion(origen);
-            //Debug.Log(_personaje.name + origen.name);
-            origen.GetInteractionComponent().EjecucionDeInteraccion(_personaje);
+            _interaccionBehaviour.AplicarInteraccion(origen);
         }
 
-        public abstract void EjecucionDeInteraccion(Personaje target);
+        public void EjecucionDeInteraccion(Personaje target)
+        {
+            _interaccionBehaviour.EjecucionDeInteraccion(target);
+        }
 
+    }
+
+    public interface IInteraccionComponent
+    {
+        
     }
 }

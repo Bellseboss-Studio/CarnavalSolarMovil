@@ -8,11 +8,12 @@ namespace Gameplay
     public class PersonajeBuilder
     {
         private Personaje _personaje;
-        private RutaComponent _rutaComponent;
-        private TargetComponent _targetComponent;
-        private InteraccionComponent _interaccionComponent;
-        private float _velocidadDeInteraccion;
+        private RutaBehaviour _rutaComponent;
+        private TargetBehaviour _targetBehaviour;
+        private InteraccionBehaviour _interaccionBehaviour;
         private Vector3 _position;
+        private GameObject _prefab;
+        private EstadisticasCarta _estadisticasCarta;
 
         public PersonajeBuilder WithPersonaje(Personaje personaje)
         {
@@ -20,40 +21,46 @@ namespace Gameplay
             return this;
         }
 
-        public PersonajeBuilder WithTargetComponent(TargetComponent targetComponent)
+        public PersonajeBuilder WithTargetComponent(TargetBehaviour targetComponent)
         {
-            _targetComponent = targetComponent;
+            _targetBehaviour = targetComponent;
             return this;
         }
 
-        public PersonajeBuilder WithInteraccionComponent(InteraccionComponent interaccionComponent)
+        public PersonajeBuilder WithInteraccionComponent(InteraccionBehaviour interaccionBehaviour)
         {
-            _interaccionComponent = interaccionComponent;
+            _interaccionBehaviour = interaccionBehaviour;
             return this;
         }
         
-        public PersonajeBuilder WithRutaComponent(RutaComponent rutaComponent)
+        public PersonajeBuilder WithRutaComponent(RutaBehaviour rutaComponent)
         {
             _rutaComponent = rutaComponent;
             return this;
         }
-        
-        public PersonajeBuilder WithVelocidadDeInteraccion(float velocidadDeInteraccion)
-        {
-            _velocidadDeInteraccion = velocidadDeInteraccion;
-            return this;
-        }
-        
+
         public PersonajeBuilder WithPosition(Vector3 position)
         {
             _position = position;
             return this;
         }
         
+        public PersonajeBuilder With3DObject(GameObject gameObject)
+        {
+            _prefab = gameObject;
+            return this;
+        }
+
+        public PersonajeBuilder WithEstadisticasCarta(EstadisticasCarta estadisticasCarta)
+        {
+            _estadisticasCarta = estadisticasCarta;
+            return this;
+        }
+        
         public Personaje Build()
         {
             var personaje = Object.Instantiate(_personaje);
-            personaje.SetComponents(_targetComponent, _interaccionComponent, _rutaComponent, _velocidadDeInteraccion);
+            personaje.SetComponents(_targetBehaviour, _interaccionBehaviour, _rutaComponent, _estadisticasCarta, _prefab);
             personaje.transform.position = _position;
             return personaje;
         }

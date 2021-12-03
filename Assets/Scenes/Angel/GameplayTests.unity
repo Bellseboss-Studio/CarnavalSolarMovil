@@ -217,7 +217,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &401129129
 GameObject:
@@ -248,12 +248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b77a618235f20e43a0975bdef626912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _personaje: {fileID: 1168836069349944582, guid: 5ff9f054f2f72c24b9a54feac2b1fc6d, type: 3}
-  _distanciaComponent: {fileID: 1484731264148866825, guid: 5908eec49970457c81fce0b4bd207b23, type: 3}
-  _rutaComponent: {fileID: 8988966804722673041, guid: 27264432b19e8be4fb31f91aa1274cc6, type: 3}
-  _targetComponent: {fileID: 4156347703155924604, guid: 840ee32f49574cec870e1cd3bb3ea038, type: 3}
-  _interaccionComponent: {fileID: 413185477551938768, guid: 76ef16a3a38441f7a9462eddda0dca70, type: 3}
-  EsEnemigoElPersonaje: 1
+  _modelo3D: {fileID: 6658209186139850537, guid: 5ff9f054f2f72c24b9a54feac2b1fc6d, type: 3}
+  _personaje: {fileID: 7211001348162731057, guid: 6007717e080ba034aabca20567a9e6e4, type: 3}
 --- !u!4 &401129131
 Transform:
   m_ObjectHideFlags: 0
@@ -267,55 +263,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &432925279
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 432925281}
-  - component: {fileID: 432925280}
-  m_Layer: 0
-  m_Name: ComportamientoDePersonajesP2Facade
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &432925280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432925279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b77a618235f20e43a0975bdef626912, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _personaje: {fileID: 1168836069349944582, guid: 5ff9f054f2f72c24b9a54feac2b1fc6d, type: 3}
-  _distanciaComponent: {fileID: 1484731264148866825, guid: 5908eec49970457c81fce0b4bd207b23, type: 3}
-  _rutaComponent: {fileID: 8988966804722673041, guid: 27264432b19e8be4fb31f91aa1274cc6, type: 3}
-  _targetComponent: {fileID: 4156347703155924604, guid: 840ee32f49574cec870e1cd3bb3ea038, type: 3}
-  _interaccionComponent: {fileID: 413185477551938768, guid: 76ef16a3a38441f7a9462eddda0dca70, type: 3}
-  EsEnemigoElPersonaje: 0
---- !u!4 &432925281
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432925279}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &678330754
 GameObject:

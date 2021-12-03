@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Gameplay.Personajes.InteraccionComponents;
 using Gameplay.Personajes.RutaComponents;
 using Gameplay.Personajes.TargetComponents;
 using UnityEngine;
@@ -8,28 +9,22 @@ namespace Gameplay
     public class ComportamientoDePersonajesFacade: MonoBehaviour
     {
         private List<Personaje> _personajes;
-        private PersonajeBuilder _personajeBuilder;
+        [SerializeField] private GameObject _modelo3D;
         [SerializeField] private Personaje _personaje;
-        [SerializeField] private RutaComponent _rutaComponent;
-        [SerializeField] private TargetComponent _targetComponent;
+        [SerializeField] private RutaBehaviour _rutaComponent;
         [SerializeField] private InteraccionComponent _interaccionComponent;
-        [SerializeField] private bool EsEnemigoElPersonaje;
+        private bool EsEnemigoElPersonaje;
     
     
         private void Awake()
         {
             _personajes = new List<Personaje>();
-            _personajeBuilder = new PersonajeBuilder();
         
         }
     
         void Start()
         {
-            _personajeBuilder.WithPersonaje(_personaje);
-            _personajeBuilder.WithTargetComponent(_targetComponent);
-            _personajeBuilder.WithInteraccionComponent(_interaccionComponent);
-            _personajeBuilder.WithRutaComponent(_rutaComponent);
-            _personajeBuilder.WithVelocidadDeInteraccion(1);
+            
         }
         void Update()
         {
@@ -47,11 +42,15 @@ namespace Gameplay
                 RaycastHit hit;
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
                 {
+                    var _personajeBuilder = new PersonajeBuilder();
+                    _personajeBuilder.With3DObject(_modelo3D);
+                    _personajeBuilder.WithPersonaje(_personaje);
+                    _personajeBuilder.WithTargetComponent(new BuscarEnemigoMasCercano());
+                    _personajeBuilder.WithInteraccionComponent(new DaniarYAumentarVelocidadAlMatar());
+                    _personajeBuilder.WithRutaComponent(new RutaMasCorta());
+                    _personajeBuilder.WithEstadisticasCarta(new EstadisticasCarta(2, 10, 1, 2, 2));
                     _personajeBuilder.WithPosition(hit.point);
-                    var personaje = _personajeBuilder.Build();
-                    personaje.transform.parent = transform;
-                    personaje.enemigo = false;
-                    _personajes.Add(personaje);
+                    InstanciarPersonaje(_personajeBuilder, false);
                 }
             }
         
@@ -60,11 +59,15 @@ namespace Gameplay
                 RaycastHit hit;
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
                 {
+                    var _personajeBuilder = new PersonajeBuilder();
+                    _personajeBuilder.With3DObject(_modelo3D);
+                    _personajeBuilder.WithPersonaje(_personaje);
+                    _personajeBuilder.WithTargetComponent(new BuscarEnemigoMasCercano());
+                    _personajeBuilder.WithInteraccionComponent(new DaniarYAumentarVelocidadAlMatar());
+                    _personajeBuilder.WithRutaComponent(new RutaMasCorta());
+                    _personajeBuilder.WithEstadisticasCarta(new EstadisticasCarta(2, 10, 1, 2, 2));
                     _personajeBuilder.WithPosition(hit.point);
-                    var personaje = _personajeBuilder.Build();
-                    personaje.transform.parent = transform;
-                    personaje.enemigo = true;
-                    _personajes.Add(personaje);
+                    InstanciarPersonaje(_personajeBuilder, true);
                 }
             }
         
@@ -86,10 +89,6 @@ namespace Gameplay
             _personajes.Add(personaje);
         }
 
-        public PersonajeBuilder GetPersonajeBuilder()
-        {
-            return _personajeBuilder;
-        }
         
         
     }
