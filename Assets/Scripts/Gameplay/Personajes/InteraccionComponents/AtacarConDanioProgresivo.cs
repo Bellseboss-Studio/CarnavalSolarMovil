@@ -1,18 +1,14 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Gameplay.Personajes.InteraccionComponents
 {
-    public class InteraccionDaniarPersonaje : InteraccionBehaviour
+    public class AtacarConDanioProgresivo : InteraccionBehaviour
     {
         public override void EjecucionDeInteraccion(Personaje target)
         {
             if (target == null) return;
-            target.health -= _personaje.damage;
+            _interaccionComponent.AplicarDanioProgresivamente(_personaje, target, _personaje.damage, 3, 1);
             Debug.Log(target.health);
-            if (target.health <= 0)
-            {
-                target.Muerte();
-            }
         }
     }
 }

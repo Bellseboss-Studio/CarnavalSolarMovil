@@ -2,7 +2,7 @@
 {
     public class Llorona : Personaje
     {
-        public void Muerte()
+        public void AAMuerte()
         {
             GetTargetComponent().DejarDeSerTargeteado(this);
             GetTargetComponent().HeDejadoDeTargetear();

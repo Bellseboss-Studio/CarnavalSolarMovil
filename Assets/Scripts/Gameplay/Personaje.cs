@@ -28,6 +28,7 @@ namespace Gameplay
         public float velocidadDeInteraccion;
         public float velocidadDeMovimiento;
         public float damage;
+        public float escudo;
         private EstadisticasCarta _estadisticasCarta;
         private void Awake()
         {
@@ -108,14 +109,16 @@ namespace Gameplay
         private float _velocidadDeInteraccion;
         private float _velocidadDeMovimiento;
         private float _damage;
+        private float _escudo;
 
-        public EstadisticasCarta(float distanciaDeInteraccion, float health, float velocidadDeInteraccion, float velocidadDeMovimiento, float damage)
+        public EstadisticasCarta(float distanciaDeInteraccion, float health, float velocidadDeInteraccion, float velocidadDeMovimiento, float damage, float escudo)
         {
             _distanciaDeInteraccion = distanciaDeInteraccion;
             _health = health;
             _velocidadDeInteraccion = velocidadDeInteraccion;
             _velocidadDeMovimiento = velocidadDeMovimiento;
             _damage = damage;
+            _escudo = escudo;
         }
 
 
@@ -124,6 +127,7 @@ namespace Gameplay
         public float VelocidadDeInteraccion => _velocidadDeInteraccion;
         public float VelocidadDeMovimiento => _velocidadDeMovimiento;
         public float Damage => _damage;
+        public float Escudo => _escudo;
 
     }
 }
