@@ -27,8 +27,9 @@ namespace Gameplay.PersonajeStates
             while (targets.Count > 0 && _personaje.isTargeteable && targets[0] != null && targets[0].isTargeteable && distanciaEntrePersonajes > _personaje.distanciaDeInteraccion)
             {
                 Debug.Log("estas en el estado desplazarse");
+                _rutaComponent.SetTargetsToNavMesh(targets);
                 distanciaEntrePersonajes = Vector3.Distance(_personaje.transform.position, targets[0].transform.position);
-                await Task.Delay(TimeSpan.FromMilliseconds(500));
+                await Task.Delay(TimeSpan.FromMilliseconds(100));
                 Debug.Log(distanciaEntrePersonajes);
                 seDesplazo = true;
             }

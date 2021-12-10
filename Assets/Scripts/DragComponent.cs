@@ -5,7 +5,8 @@ using ServiceLocatorPath;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragComponent : MonoBehaviour
+
+    public class DragComponent : MonoBehaviour
 {
     [SerializeField] private GameObject origin;
     [SerializeField] private UILineRenderer linesRender;
@@ -138,3 +139,4 @@ public class DragComponent : MonoBehaviour
         canBeUsed = true;
     }
 }
+

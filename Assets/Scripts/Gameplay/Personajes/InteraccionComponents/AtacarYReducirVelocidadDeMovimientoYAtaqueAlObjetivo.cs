@@ -2,17 +2,14 @@
 
 namespace Gameplay.Personajes.InteraccionComponents
 {
-    public class DaniarYAumentarVelocidadAlMatar : InteraccionBehaviour
+    public class AtacarYReducirVelocidadDeMovimientoYAtaqueAlObjetivo : InteraccionBehaviour
     {
         public override void EjecucionDeInteraccion(Personaje target)
         {
             if (target == null) return;
+            _interaccionComponent.ReducirVelocidadDeMovimientoYAtaqueAlObjetivo(target, 20, _personaje.velocidadDeInteraccion);
             AplicarDanio(target, _personaje.damage);
             Debug.Log(target.health);
-            if (target.health <= 0)
-            {
-                _personaje.velocidadDeMovimiento += (_personaje.velocidadDeMovimiento * .2f);
-            }
         }
     }
 }

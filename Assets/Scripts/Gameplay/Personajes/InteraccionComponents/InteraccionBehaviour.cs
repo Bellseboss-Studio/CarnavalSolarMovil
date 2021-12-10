@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Gameplay
 {
@@ -6,19 +9,28 @@ namespace Gameplay
     {
         
         protected Personaje _personaje;
-        private IInteraccionComponent _interaccionComponent;
+        protected IInteraccionComponent _interaccionComponent;
 
-        public abstract void EjecucionDeInteraccion(Personaje target);
+        public virtual void EjecucionDeInteraccion(Personaje target)
+        {
+            if (target == null) return;
+            AplicarDanio(target, _personaje.damage);
+            Debug.Log(target.health);
+        }
 
-        public void AplicarInteraccion(Personaje origen)
+        public virtual void AplicarInteraccion(Personaje origen)
         {
             //behaviour.AplicarInteraccion(origen);
             //Debug.Log(_personaje.name + origen.name);
             origen.GetInteractionComponent().EjecucionDeInteraccion(_personaje);
+            if (_personaje.health <= 0)
+            {
+                _personaje.Muerte();
+            }
         }
 
 
-        public void Interactuar(List<Personaje> target)
+        public virtual void Interactuar(List<Personaje> target)
         {
             target[0].GetInteractionComponent().AplicarInteraccion(_personaje);
         }
@@ -28,6 +40,26 @@ namespace Gameplay
             _personaje = personaje;
             _interaccionComponent = interaccionComponent;
         }
-        
+
+        public void AplicarDanio(Personaje target, float danioARealizar)
+        {
+            if (target.escudo > 0)
+            {
+                if (target.escudo > danioARealizar)
+                {
+                    target.escudo -= danioARealizar;
+                }
+                else
+                {
+                    var danioRestante = (target.escudo - danioARealizar)*-1;
+                    target.escudo = 0;
+                    target.health -= danioRestante;
+                }
+            }
+            else
+            {
+                target.health -= danioARealizar;
+            }
+        }
     }
 }

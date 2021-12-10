@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using Gameplay.Personajes.TargetComponents;
 using UnityEngine;
 
-namespace Gameplay
+namespace Gameplay.Personajes.TargetComponents
 {
     public class BuscarEnemigoMasCercano : TargetBehaviour
     {
