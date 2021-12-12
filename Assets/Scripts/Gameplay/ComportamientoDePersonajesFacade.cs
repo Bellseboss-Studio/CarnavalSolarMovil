@@ -46,7 +46,7 @@ namespace Gameplay
                     _personajeBuilder.With3DObject(_modelo3D);
                     _personajeBuilder.WithPersonaje(_personaje);
                     _personajeBuilder.WithTargetComponent(new BuscartresEnemigosMasCercanos());
-                    _personajeBuilder.WithInteraccionComponent(new DaniarTresTargetsMasCercanos());
+                    _personajeBuilder.WithInteraccionComponent(new DaniarYAumentarVelocidadAlMatar());
                     _personajeBuilder.WithRutaComponent(new RutaMasCorta());
                     _personajeBuilder.WithEstadisticasCarta(new EstadisticasCarta(2, 10, 1, 2, 2,0));
                     _personajeBuilder.WithPosition(hit.point);
