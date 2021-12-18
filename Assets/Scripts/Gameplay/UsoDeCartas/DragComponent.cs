@@ -18,10 +18,10 @@ public class DragComponent : MonoBehaviour
     public bool canUseComponent;
     public OnDraggingElement OnDragging;
     public OnDraggingElement OnFinishDragging;
-    public OnDraggingElement OnDropCompleted;
-    [SerializeField] private FactoriaCarta _factoriaCarta;
+    public OnDraggingElementCompleted OnDropCompleted;
     
     public delegate void OnDraggingElement();
+    public delegate void OnDraggingElementCompleted(Vector3 hitPoint);
 
 
     private void Start()
@@ -59,16 +59,15 @@ public class DragComponent : MonoBehaviour
         var posicion = transform.position;
         // Does the ray intersect any objects excluding the player layer
         Debug.Log(posicion);
-        Debug.Log(_camera.nearClipPlane);
-        if (Physics.Raycast(posicion,transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+        if (Physics.Raycast(Vector3.zero, posicion, out hit, Mathf.Infinity))
         {
-            Debug.DrawRay(posicion, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            Debug.DrawRay(Vector3.zero, posicion, Color.yellow);
             Debug.Log("Did Hit");
-            _factoriaCarta.CreateCarta(hit.point);
+            //_factoriaCarta.CreateCarta(hit.point);
         }
         else
         {
-            Debug.DrawRay(posicion, transform.TransformDirection(Vector3.forward) * hit.distance, Color.white);
+            Debug.DrawRay(Vector3.zero, posicion, Color.white);
             Debug.Log("Did not Hit");
         }
         
@@ -84,7 +83,7 @@ public class DragComponent : MonoBehaviour
         if (_finalPosition.TryGetComponent<DropComponent>(out var drop))
         {
             drop.Drop(this);
-            OnDropCompleted?.Invoke();
+            OnDropCompleted?.Invoke(hit.point);
         }
     }
 
@@ -107,20 +106,19 @@ public class DragComponent : MonoBehaviour
         var rectTransform = gameObject.GetComponent<RectTransform>();
         //Debug.Log(rectTransform);
         Debug.Log(mousePos);
-        rectTransform.localPosition = new Vector3(Input.mousePosition.x - 960, Input.mousePosition.y - 540);
+        rectTransform.localPosition = new Vector3(mousePos.x - 960, mousePos.y - 540);
         RaycastHit hit;
         var posicion = transform.position;
         // Does the ray intersect any objects excluding the player layer
         Debug.Log(posicion);
-        Debug.Log(_camera.nearClipPlane);
-        if (Physics.Raycast(posicion,transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+        if (Physics.Raycast(Vector3.zero, posicion, out hit, Mathf.Infinity))
         {
-            Debug.DrawRay(posicion, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            Debug.DrawRay(Vector3.zero, posicion, Color.yellow);
             Debug.Log("Did Hit");
         }
         else
         {
-            Debug.DrawRay(posicion, transform.TransformDirection(Vector3.forward) * hit.distance, Color.white);
+            Debug.DrawRay(Vector3.zero, posicion, Color.white);
             Debug.Log("Did not Hit");
         }
 
@@ -146,9 +144,9 @@ public class DragComponent : MonoBehaviour
         _finalPosition = initialPosition.gameObject;
     }
 
-    public void Configure(DropComponent drop, FactoriaCarta factoriaCartas)
+    public void Configure(DropComponent drop, FactoriaPersonaje factoriaPersonajes)
     {
-        _factoriaCarta = factoriaCartas;
+        //_factoriaCarta = factoriaCartas;
         _drop = drop;
         CreateEventForDragAndDrop();
     }

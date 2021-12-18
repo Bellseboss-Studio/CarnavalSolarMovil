@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Gameplay.UsoDeCartas;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Gameplay.NewGameStates
@@ -6,17 +8,27 @@ namespace Gameplay.NewGameStates
     public class MediadorDeEstadosDelJuego : MonoBehaviour, IMediadorDeEstadosDelJuego
     {
         [SerializeField] private Button finalizarConfiguracionButton, pauseButton, jugarButton, finalizarJuegoButton;
+        [SerializeField] private FactoriaCarta _factoriaCarta;
+        [SerializeField] private ColocacionCartas _colocacionCartas;
+        [SerializeField] private CartasConfiguracion cartasConfiguracion;
+        [SerializeField] private GameObject canvasDeLasCartas;
+        [SerializeField] private bool jugadoresSincronizados; 
         private ConfiguracionDeLosEstadosDelJuego _configuracionDeLosEstadosDelJuego;
         private bool _juegoPausado = false;
         private bool _juegoTerminado = false;
         private bool _juegoConfigurado = false;
-        [SerializeField] private bool jugadoresSincronizados;
         private bool _puedeSalirDelBucleDeEstados = false;
+
+        private void Awake()
+        {
+            cartasConfiguracion = Instantiate(cartasConfiguracion);
+        }
 
         private void Start()
         {
             _configuracionDeLosEstadosDelJuego = new ConfiguracionDeLosEstadosDelJuego();
-            _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.ConfiguracionDelJuego, new ConfiguracionDelJuegoState(this));
+            _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.ConfiguracionDelJuego,
+                new ConfiguracionDelJuegoState(this, _factoriaCarta, _colocacionCartas, cartasConfiguracion, canvasDeLasCartas));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.SincronizacionDeJugadores, new SincronizacionDeJugadoresState(this));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Jugando, new JugandoState(this));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Pausa, new PausaState(this));
@@ -30,7 +42,7 @@ namespace Gameplay.NewGameStates
         
         private async void StartState(IEstadoDeJuego state, object data = null)
         {
-            while (_puedeSalirDelBucleDeEstados == false)
+            while (!_puedeSalirDelBucleDeEstados)
             {
                 var resultData = await state.DoAction(data);
                 var nextState = _configuracionDeLosEstadosDelJuego.GetState(resultData.NextStateId);
@@ -62,6 +74,11 @@ namespace Gameplay.NewGameStates
         public void SalirDelBuclePrincipal()
         {
             _puedeSalirDelBucleDeEstados = true;
+        }
+
+        private void OnDisable()
+        {
+            SalirDelBuclePrincipal();
         }
     }
 }

@@ -1,38 +1,38 @@
-﻿using Gameplay.Personajes.InteraccionComponents;
-using Gameplay.Personajes.RutaComponents;
-using Gameplay.Personajes.TargetComponents;
+﻿using System;
+using Gameplay.NewGameStates;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Gameplay.UsoDeCartas
 {
-    public class FactoriaCarta : MonoBehaviour
+    public class FactoriaCarta : MonoBehaviour, IFactoriaCarta
     {
-        [SerializeField] private GameObject _modelo3D;
-        [SerializeField] private Personaje _personaje;
-        
-        
-        
-        
-        public void CreateCarta(Vector3 hitPoint)
+        private IColocacionCartas _colocacionCartas;
+        private CartasConfiguracion _cartasConfiguracion;
+        private GameObject _canvasDeLasCartas;
+
+        public void Configurate(IColocacionCartas colocacionCartas, CartasConfiguracion cartasConfiguracion, GameObject canvasDeLasCartas)
         {
-            var _personajeBuilder = new PersonajeBuilder();
-            _personajeBuilder.With3DObject(_modelo3D);
-            _personajeBuilder.WithPersonaje(_personaje);
-            _personajeBuilder.WithTargetComponent(new BuscartresEnemigosMasCercanos());
-            _personajeBuilder.WithInteraccionComponent(new DaniarTresTargetsMasCercanos());
-            _personajeBuilder.WithRutaComponent(new RutaMasCorta());
-            _personajeBuilder.WithEstadisticasCarta(new EstadisticasCarta(2, 10, 1, 2, 2,0));
-            _personajeBuilder.WithPosition(hitPoint);
-            InstanciarPersonaje(_personajeBuilder, true);
+            _colocacionCartas = colocacionCartas;
+            _cartasConfiguracion = cartasConfiguracion;
+            _canvasDeLasCartas = canvasDeLasCartas;
         }
-        
-        void InstanciarPersonaje(PersonajeBuilder personajeBuilder, bool seraEnemigoElPersonaje)
+
+        public CartaTemplate Create(string id, Vector3 posicion)
         {
-            var personaje = personajeBuilder.Build();
-            personaje.transform.parent = transform;
-            personaje.enemigo = seraEnemigoElPersonaje;
-            // _personajes.Add(personaje);
+            var cartaTemplate = _cartasConfiguracion.GetCartaTemplate(id);
+            var cartaInstancia = Instantiate(cartaTemplate, _canvasDeLasCartas.transform);
+            cartaInstancia.transform.position = posicion;
+            return cartaInstancia;
         }
-        
+
+        public void CrearPrimerasCartas()
+        {
+            var posiciones = _colocacionCartas.GetPosicionesDeCartas();
+            for (int i = 0; i < _colocacionCartas.GetNumeroDePosiciones(); i++)
+            {
+                Create("Llorona", posiciones[i].transform.position);
+            }
+        }
     }
 }
