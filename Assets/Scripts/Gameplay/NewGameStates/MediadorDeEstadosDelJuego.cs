@@ -12,9 +12,10 @@ namespace Gameplay.NewGameStates
         [SerializeField] private ColocacionCartas _colocacionCartas;
         [SerializeField] private CartasConfiguracion cartasConfiguracion;
         [SerializeField] private GameObject canvasDeLasCartas;
-        [SerializeField] private bool jugadoresSincronizados; 
+        [SerializeField] private bool jugadoresSincronizados;
+        [SerializeField] private FactoriaPersonaje _factoriaPersonaje;
         private ConfiguracionDeLosEstadosDelJuego _configuracionDeLosEstadosDelJuego;
-        private bool _juegoPausado = false;
+        private bool _juegoPausado = true;
         private bool _juegoTerminado = false;
         private bool _juegoConfigurado = false;
         private bool _puedeSalirDelBucleDeEstados = false;
@@ -28,10 +29,10 @@ namespace Gameplay.NewGameStates
         {
             _configuracionDeLosEstadosDelJuego = new ConfiguracionDeLosEstadosDelJuego();
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.ConfiguracionDelJuego,
-                new ConfiguracionDelJuegoState(this, _factoriaCarta, _colocacionCartas, cartasConfiguracion, canvasDeLasCartas));
+                new ConfiguracionDelJuegoState(this, _factoriaCarta, _colocacionCartas, cartasConfiguracion, canvasDeLasCartas, _factoriaPersonaje));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.SincronizacionDeJugadores, new SincronizacionDeJugadoresState(this));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Jugando, new JugandoState(this));
-            _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Pausa, new PausaState(this));
+            _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Pausa, new PausaState(this, _factoriaCarta));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.FinDeJuego, new FinDeJuegoState(this));
             StartState(_configuracionDeLosEstadosDelJuego.GetState(1));
             finalizarConfiguracionButton.onClick.AddListener(() => _juegoConfigurado = true);
@@ -44,10 +45,13 @@ namespace Gameplay.NewGameStates
         {
             while (!_puedeSalirDelBucleDeEstados)
             {
+                state.InitialConfiguration();
                 var resultData = await state.DoAction(data);
+                state.FinishConfiguration();
                 var nextState = _configuracionDeLosEstadosDelJuego.GetState(resultData.NextStateId);
                 state = nextState;
                 data = resultData.ResultData;
+                
             }
         }
 

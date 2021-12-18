@@ -13,9 +13,19 @@ namespace Gameplay.NewGameStates
             _mediadorDeEstadosDelJuego = mediadorDeEstadosDelJuego;
         }
 
+        public void InitialConfiguration()
+        {
+            
+        }
+
+        public void FinishConfiguration()
+        {
+            
+        }
+
         public async Task<PersonajeStateResult> DoAction(object data)
         {
-            Debug.Log("Estas en estado de Fin de juego");
+            //Debug.Log("Estas en estado de Fin de juego");
             _mediadorDeEstadosDelJuego.SalirDelBuclePrincipal();
             await Task.Yield();
             return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.FinDeJuego);

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7114197542983364732}
   - component: {fileID: 7316080808676934838}
   m_Layer: 5
-  m_Name: LloronaCarta
+  m_Name: LloronaCarta 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,4 +153,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e031fdb4af66f98488ef4942973ae24d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: Llorona
+  id: Bellseboss
+  modelo3DId: Bellseboss
+  targetComponentId: buscarEnemigoMasCercano
+  rutaComponentId: rutaMasCorta
+  interaccionComponentId: DaniarPersonaje
+  distanciaDeInteraccion: 3
+  health: 10
+  velocidadDeInteraccion: 3
+  velocidadDeMovimiento: 3
+  damage: 3
+  escudo: 0

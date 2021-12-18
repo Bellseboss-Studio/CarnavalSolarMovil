@@ -16,14 +16,24 @@ namespace Gameplay.NewGameStates
             _mediadorDeEstadosDelJuego = mediadorDeEstadosDelJuego;
         }
 
+        public void InitialConfiguration()
+        {
+            
+        }
+
+        public void FinishConfiguration()
+        {
+            
+        }
+
 
         public async Task<PersonajeStateResult> DoAction(object data)
         {
-            Debug.Log("Estas en estado de sincronizar jugadores");
+            //Debug.Log("Estas en estado de sincronizar jugadores");
             if (_mediadorDeEstadosDelJuego.SeSincronizaronLosJugadores())
             {
                 await Task.Delay(TimeSpan.FromMilliseconds(100));
-                return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.Jugando);
+                return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.Pausa);
             }
             await Task.Delay(TimeSpan.FromMilliseconds(100));
             return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.SincronizacionDeJugadores);

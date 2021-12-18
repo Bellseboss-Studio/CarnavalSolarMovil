@@ -8,7 +8,10 @@ namespace Gameplay.UsoDeCartas
         private DragComponent _dragComponent;
         private FactoriaPersonaje _factoriaPersonaje;
         [SerializeField] private string id;
+        [SerializeField] private string modelo3DId, targetComponentId, rutaComponentId, interaccionComponentId;
+        [SerializeField] private float distanciaDeInteraccion, health, velocidadDeInteraccion, velocidadDeMovimiento, damage, escudo;
         public string Id => id;
+        
         
         public void Configurate(FactoriaPersonaje factoriaPersonaje)
         {
@@ -26,7 +29,8 @@ namespace Gameplay.UsoDeCartas
 
         private void DropCompleted(Vector3 hitPoint)
         {
-            _factoriaPersonaje.CreateCarta(hitPoint);
+            _factoriaPersonaje.CreatePersonaje(hitPoint, new EstadististicasYHabilidadesDePersonaje(modelo3DId, targetComponentId, interaccionComponentId, rutaComponentId, distanciaDeInteraccion, health, velocidadDeInteraccion, velocidadDeMovimiento, damage, escudo));
+            gameObject.SetActive(false);
         }
 
         private void Dragging()

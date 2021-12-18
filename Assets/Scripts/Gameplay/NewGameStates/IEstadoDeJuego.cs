@@ -7,6 +7,8 @@ namespace Gameplay.NewGameStates
 {
     public interface IEstadoDeJuego
     {
+        void InitialConfiguration();
+        void FinishConfiguration();
         Task<PersonajeStateResult> DoAction(object data);
     }
 }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Cartas Configuracion
   m_EditorClassIdentifier: 
   cartaTemplates:
-  - {fileID: 7316080808676934838, guid: 89d550f7153925a418d35460417fdca8, type: 3}
+  - {fileID: 7316080808676934838, guid: bba87592b3281ff4c8979a1f8a64623d, type: 3}

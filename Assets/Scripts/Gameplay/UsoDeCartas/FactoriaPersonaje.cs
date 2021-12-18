@@ -8,21 +8,23 @@ namespace Gameplay.UsoDeCartas
 {
     public class FactoriaPersonaje : MonoBehaviour, IFactoriaPersonajes
     {
-        [SerializeField] private GameObject _modelo3D;
-        [SerializeField] private Personaje _personaje;
+        [SerializeField] private ConfiguracionDeModelo3DDePersonajes configuracionDeModelo3DDePersonajes;
+        [SerializeField] private Personaje personaje;
         
-        
-        
-        
-        public void CreateCarta(Vector3 hitPoint)
+        private void Awake()
+        {
+            configuracionDeModelo3DDePersonajes = Instantiate(configuracionDeModelo3DDePersonajes);
+        }
+
+        public void CreatePersonaje(Vector3 hitPoint, EstadististicasYHabilidadesDePersonaje estadististicasYHabilidadesDePersonaje)
         {
             var _personajeBuilder = new PersonajeBuilder();
-            _personajeBuilder.With3DObject(_modelo3D);
-            _personajeBuilder.WithPersonaje(_personaje);
-            _personajeBuilder.WithTargetComponent(new BuscartresEnemigosMasCercanos());
-            _personajeBuilder.WithInteraccionComponent(new DaniarTresTargetsMasCercanos());
-            _personajeBuilder.WithRutaComponent(new RutaMasCorta());
-            _personajeBuilder.WithEstadisticasCarta(new EstadisticasCarta(2, 10, 1, 2, 2,0));
+            _personajeBuilder.With3DObject(configuracionDeModelo3DDePersonajes.GetPersonajePrefabById(estadististicasYHabilidadesDePersonaje.idModelo3D));
+            _personajeBuilder.WithPersonaje(personaje);
+            _personajeBuilder.WithTargetComponent(estadististicasYHabilidadesDePersonaje.idTargetComponent);
+            _personajeBuilder.WithInteraccionComponent(estadististicasYHabilidadesDePersonaje.idInteraccionComponent);
+            _personajeBuilder.WithRutaComponent(estadististicasYHabilidadesDePersonaje.idRutaComponent);
+            _personajeBuilder.WithEstadisticasCarta(estadististicasYHabilidadesDePersonaje.EstadisticasCarta);
             _personajeBuilder.WithPosition(hitPoint);
             InstanciarPersonaje(_personajeBuilder, true);
         }
