@@ -1,4 +1,6 @@
-﻿using Gameplay.Personajes.RutaComponents;
+﻿using System;
+using Gameplay.Personajes.InteraccionComponents;
+using Gameplay.Personajes.RutaComponents;
 using Gameplay.Personajes.TargetComponents;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -21,21 +23,65 @@ namespace Gameplay
             return this;
         }
 
-        public PersonajeBuilder WithTargetComponent(TargetBehaviour targetComponent)
+        public PersonajeBuilder WithTargetComponent(string targetComponentId)
         {
-            _targetBehaviour = targetComponent;
+            switch (targetComponentId)
+            {
+                case "buscarEnemigoMasCercano":
+                    _targetBehaviour = new BuscarEnemigoMasCercano();
+                    break;
+                
+                case "buscarTresEnemigosMasCercanos":
+                    _targetBehaviour = new BuscartresEnemigosMasCercanos();
+                    break;
+                
+                default:
+                    throw new Exception($"El componente con la id {targetComponentId} no existe");
+            }
             return this;
         }
 
-        public PersonajeBuilder WithInteraccionComponent(InteraccionBehaviour interaccionBehaviour)
+        public PersonajeBuilder WithInteraccionComponent(string interaccionBehaviourId)
         {
-            _interaccionBehaviour = interaccionBehaviour;
+            switch (interaccionBehaviourId)
+            {
+                case "DaniarPersonaje":
+                    _interaccionBehaviour = new DaniarPersonaje();
+                    break;
+
+                case "atacarConDanioProgresivo":
+                    _interaccionBehaviour = new AtacarConDanioProgresivo();
+                    break;
+                
+                case "daniarPersonajeSegunLaDistancia":
+                    _interaccionBehaviour = new DaniarPersonajeSegunLaDistancia();
+                    break;
+                
+                case "daniarPersonajeYAutoCurarse":
+                    _interaccionBehaviour = new DaniarPersonajeYAutoCurarse();
+                    break;
+                
+                case "daniarPersonajeYReflejarDanio":
+                    _interaccionBehaviour = new DaniarPersonajeYReflejarDanio();
+                    break;
+
+                default:
+                    throw new Exception($"El componente con la id {interaccionBehaviourId} no existe");
+            }
             return this;
         }
         
-        public PersonajeBuilder WithRutaComponent(RutaBehaviour rutaComponent)
+        public PersonajeBuilder WithRutaComponent(string rutaComponentId)
         {
-            _rutaComponent = rutaComponent;
+            switch (rutaComponentId)
+            {
+                case "rutaMasCorta":
+                    _rutaComponent = new RutaMasCorta();
+                    break;
+                default:
+                    throw new Exception($"El componente con la id {rutaComponentId} no existe");
+                break;
+            }
             return this;
         }
 

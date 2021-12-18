@@ -14,9 +14,20 @@ namespace Gameplay.NewGameStates
             _mediadorDeEstadosDelJuego = mediadorDeEstadosDelJuego;
         }
 
+        public void InitialConfiguration()
+        {
+            
+        }
+
+        public void FinishConfiguration()
+        {
+            
+        }
+
+        
         public async Task<PersonajeStateResult> DoAction(object data)
         {
-            Debug.Log("Estas en estado de jugar");
+            //Debug.Log("Estas en estado de jugar");
             if (_mediadorDeEstadosDelJuego.SeTerminoElJuego())
             {
                 await Task.Delay(TimeSpan.FromMilliseconds(100));

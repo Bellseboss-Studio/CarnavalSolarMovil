@@ -14,6 +14,7 @@ namespace Gameplay
     
     public class Personaje : MonoBehaviour
     {
+        [SerializeField] private string id;
         [SerializeField] private TargetComponent _targetComponent;
         [SerializeField] private InteraccionComponent _interaccionComponent;
         [SerializeField] private RutaComponent _rutaComponent;
@@ -30,6 +31,7 @@ namespace Gameplay
         public float damage;
         public float escudo;
         private EstadisticasCarta _estadisticasCarta;
+        public string Id => id;
         private void Awake()
         {
             
@@ -42,6 +44,9 @@ namespace Gameplay
         public void SetComponents(TargetBehaviour targetBehaviour, InteraccionBehaviour interaccionBehaviour, RutaBehaviour rutaBehaviour, EstadisticasCarta estadisticasCarta, GameObject prefab)
         {
             var _prefabInstanciado = Instantiate(prefab, transform);
+            var position = _prefabInstanciado.transform.position;
+            position = new Vector3(position.x, position.y + .5f, position.z);
+            _prefabInstanciado.transform.position = position;
             velocidadDeInteraccion = estadisticasCarta.VelocidadDeInteraccion;
             health = estadisticasCarta.Health;
             velocidadDeMovimiento = estadisticasCarta.VelocidadDeMovimiento;
