@@ -191,9 +191,9 @@ Canvas:
   m_GameObject: {fileID: 159561408}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 678330756}
-  m_PlaneDistance: 4
+  m_PlaneDistance: 4.68
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -715,6 +715,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218025766}
   m_CullTransparentMesh: 1
+--- !u!1 &1260782721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1260782723}
+  - component: {fileID: 1260782722}
+  m_Layer: 0
+  m_Name: FactoriaCartas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1260782722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260782721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c7c256c8304721bf6e774e2fa156ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _modelo3D: {fileID: 6658209186139850537, guid: 5ff9f054f2f72c24b9a54feac2b1fc6d, type: 3}
+  _personaje: {fileID: 1033197627994222903, guid: 6007717e080ba034aabca20567a9e6e4, type: 3}
+--- !u!4 &1260782723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260782721}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1374923, y: 3.3291206, z: -1.3273064}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1470199931
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +909,7 @@ MonoBehaviour:
   isDetachable: 0
   initialPosition: {fileID: 1656900505}
   canUseComponent: 1
+  _factoriaCarta: {fileID: 1260782722}
 --- !u!50 &1599502809
 Rigidbody2D:
   serializedVersion: 4
