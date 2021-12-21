@@ -8,7 +8,7 @@ namespace Gameplay.Personajes.InteraccionComponents
         {
             if (target == null) return;
             _interaccionComponent.AplicarDanioProgresivamente(_personaje, target, _personaje.damage, 3, 1);
-            Debug.Log(target.health);
+            //Debug.Log(target.health);
         }
     }
 }

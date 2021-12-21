@@ -8,6 +8,7 @@ public class DragComponent : MonoBehaviour
 {
     [SerializeField] private bool isDetachable;
     [SerializeField] private RectTransform initialPosition;
+    private RectTransform _canvasRectTransform;
     private GameObject _finalPosition;
     private EventTrigger.Entry entry_0;
     private EventTrigger.Entry entry_1;
@@ -94,25 +95,27 @@ public class DragComponent : MonoBehaviour
         if (!canUseComponent) return;
         var mousePos = Input.mousePosition;
         var rectTransform = gameObject.GetComponent<RectTransform>();
-        //Debug.Log(rectTransform);
-        rectTransform.localPosition = new Vector3(mousePos.x - (960/2), mousePos.y - (540/2));
+        Debug.Log(_canvasRectTransform.rect.width);
+        rectTransform.localPosition = new Vector3(mousePos.x - (_canvasRectTransform.rect.width / 2),
+            mousePos.y - (_canvasRectTransform.rect.height / 2), 10);
+        
         RaycastHit[] hits;
         var posicion = transform.position;
         // Does the ray intersect any objects excluding the player layer
         hits = Physics.RaycastAll(_camera.transform.position, posicion - _camera.transform.position, Mathf.Infinity);
         Debug.DrawRay(_camera.transform.position, (posicion - _camera.transform.position) * 100, Color.yellow);
-        Debug.Log(hits.Length);
+        
         foreach (var hit in hits)
         {
             if (hit.collider.gameObject.TryGetComponent<DropComponent>(out var drop))
             {
                 drop.Drop(this);
-                Debug.Log("did hit");
+                //Debug.Log("did hit");
                 break;
             }
             else
             {
-                Debug.Log(hit.collider.gameObject.name);
+                //Debug.Log(hit.collider.gameObject.name);
             }
         }
 
@@ -138,9 +141,10 @@ public class DragComponent : MonoBehaviour
         _finalPosition = initialPosition.gameObject;
     }
 
-    public void Configure(RectTransform initial_Position)
+    public void Configure(RectTransform initial_Position, RectTransform canvasRectTransform)
     {
         //_factoriaCarta = factoriaCartas;
+        _canvasRectTransform = canvasRectTransform;
         initialPosition = initial_Position;
         CreateEventForDragAndDrop();
     }

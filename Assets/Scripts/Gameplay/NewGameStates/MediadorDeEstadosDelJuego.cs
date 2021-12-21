@@ -11,7 +11,7 @@ namespace Gameplay.NewGameStates
         [SerializeField] private FactoriaCarta _factoriaCarta;
         [SerializeField] private ColocacionCartas _colocacionCartas;
         [SerializeField] private CartasConfiguracion cartasConfiguracion;
-        [SerializeField] private GameObject canvasDeLasCartas;
+        [SerializeField] private GameObject canvasDeLasCartas, canvasPrincipal;
         [SerializeField] private bool jugadoresSincronizados;
         [SerializeField] private FactoriaPersonaje _factoriaPersonaje;
         private ConfiguracionDeLosEstadosDelJuego _configuracionDeLosEstadosDelJuego;
@@ -29,7 +29,7 @@ namespace Gameplay.NewGameStates
         {
             _configuracionDeLosEstadosDelJuego = new ConfiguracionDeLosEstadosDelJuego();
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.ConfiguracionDelJuego,
-                new ConfiguracionDelJuegoState(this, _factoriaCarta, _colocacionCartas, cartasConfiguracion, canvasDeLasCartas, _factoriaPersonaje));
+                new ConfiguracionDelJuegoState(this, _factoriaCarta, _colocacionCartas, cartasConfiguracion, canvasPrincipal, _factoriaPersonaje, canvasDeLasCartas));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.SincronizacionDeJugadores, new SincronizacionDeJugadoresState(this));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Jugando, new JugandoState(this));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Pausa, new PausaState(this, _factoriaCarta));

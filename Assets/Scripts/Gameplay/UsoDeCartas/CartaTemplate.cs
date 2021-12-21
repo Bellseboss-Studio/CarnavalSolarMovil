@@ -8,7 +8,10 @@ namespace Gameplay.UsoDeCartas
         private DragComponent _dragComponent;
         private FactoriaPersonaje _factoriaPersonaje;
         [SerializeField] private string id;
-        [SerializeField] private string modelo3DId, targetComponentId, rutaComponentId, interaccionComponentId;
+        [SerializeField] private string modelo3DId;
+        [SerializeField] private InteraccionComponentEnum interaccionComponentId;
+        [SerializeField] private TargetComponentEnum targetComponentId;
+        [SerializeField] private RutaComponentEnum rutaComponentId;
         [SerializeField] private float distanciaDeInteraccion, health, velocidadDeInteraccion, velocidadDeMovimiento, damage, escudo;
         public string Id => id;
         
@@ -20,11 +23,15 @@ namespace Gameplay.UsoDeCartas
             _dragComponent.OnDropCompleted += DropCompleted;
             _dragComponent.OnFinishDragging += FinishDragging;
             _factoriaPersonaje = factoriaPersonaje;
+            var rectTransformRect = GetComponent<RectTransform>().rect;
+            rectTransformRect.width = rectTransformRect.height;
+            Debug.Log(rectTransformRect.height);
+            Debug.Log(rectTransformRect.width);
         }
 
         private void FinishDragging()
         {
-            Debug.Log("Se Termino De Draggear");
+            //Debug.Log("Se Termino De Draggear");
         }
 
         private void DropCompleted(Vector3 hitPoint)
@@ -35,7 +42,7 @@ namespace Gameplay.UsoDeCartas
 
         private void Dragging()
         {
-            Debug.Log("Se Esta Draggeando");
+            //Debug.Log("Se Esta Draggeando");
         }
     }
 }

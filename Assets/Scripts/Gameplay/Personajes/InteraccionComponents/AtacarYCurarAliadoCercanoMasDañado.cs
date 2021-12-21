@@ -11,7 +11,7 @@ namespace Gameplay.Personajes.InteraccionComponents
             var aliadosCercanos = _interaccionComponent.GetAliadosCercanos(_personaje);
             var aliadoCercanoConMenosVida = _interaccionComponent.GetAliadoConMenosVida(aliadosCercanos);
             aliadoCercanoConMenosVida.health += 2;
-            Debug.Log(target.health);
+            //Debug.Log(target.health);
         }
     }
 }

@@ -129,13 +129,13 @@ using UnityEngine.EventSystems;
 
     public void CannotBeUsed()
     {
-        Debug.Log("no puedes usarlo");
+        //Debug.Log("no puedes usarlo");
         canBeUsed = false;
     }
 
     public void CanBeUsed()
     {
-        Debug.Log("puedes usarlo");
+        //Debug.Log("puedes usarlo");
         canBeUsed = true;
     }
 }
