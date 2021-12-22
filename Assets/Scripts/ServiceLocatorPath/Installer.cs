@@ -4,8 +4,8 @@ namespace ServiceLocatorPath
 {
     public class Installer : MonoBehaviour
     {
-        [SerializeField] private MultiplayerV2 multiplayer;
         [SerializeField] private GameObject prefab;
+        [SerializeField] private ServicioDeTiempo _servicioDeTiempo;
         private void Awake()
         {
             if (FindObjectsOfType<Installer>().Length > 1)
@@ -15,8 +15,7 @@ namespace ServiceLocatorPath
             }
             var playFab = new PlayFabCustom();
             ServiceLocator.Instance.RegisterService<IPlayFabCustom>(playFab);
-            multiplayer.SetPrefabForInstantiante(prefab);
-            ServiceLocator.Instance.RegisterService<IMultiplayer>(multiplayer);
+            ServiceLocator.Instance.RegisterService<IServicioDeTiempo>(_servicioDeTiempo);
             DontDestroyOnLoad(gameObject);
         }
     }

@@ -18,7 +18,7 @@ namespace Gameplay.PersonajeStates
         public async Task<PersonajeStateResult> DoAction(object data)
         {
             var targets = _personaje.GetTargetComponent().GetTargets();
-            Debug.Log("estas en el estado interactuar");
+            //Debug.Log("estas en el estado interactuar");
             if (targets.Count > 0) _personaje.GetInteractionComponent().Interactuar(targets);
             await Task.Delay(TimeSpan.FromSeconds(_personaje.velocidadDeInteraccion));
             return new PersonajeStateResult(PersonajeStatesConfiguration.BuscarTargetState);

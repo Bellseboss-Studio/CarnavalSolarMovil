@@ -21,11 +21,11 @@ namespace Gameplay.PersonajeStates
             if (_targetComponent.GetTargets().Count == 0)
             {
                 
-                Debug.Log("estas en el estado buscar target, pero no se encontro ningun target");
+                //Debug.Log("estas en el estado buscar target, pero no se encontro ningun target");
                 await Task.Delay(TimeSpan.FromMilliseconds(500));
                 return new PersonajeStateResult(PersonajeStatesConfiguration.BuscarTargetState);
             }
-            Debug.Log("Estas en el estado buscar target");
+            //Debug.Log("Estas en el estado buscar target");
             return new PersonajeStateResult(PersonajeStatesConfiguration.DesplazarseHaciaElTargetState);
         }
     }
