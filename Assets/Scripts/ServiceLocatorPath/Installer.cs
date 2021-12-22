@@ -6,6 +6,7 @@ namespace ServiceLocatorPath
     {
         [SerializeField] private GameObject prefab;
         [SerializeField] private ServicioDeTiempo _servicioDeTiempo;
+        [SerializeField] private ServicioDeEnergia _servicioDeEnergia;
         private void Awake()
         {
             if (FindObjectsOfType<Installer>().Length > 1)
@@ -16,6 +17,7 @@ namespace ServiceLocatorPath
             var playFab = new PlayFabCustom();
             ServiceLocator.Instance.RegisterService<IPlayFabCustom>(playFab);
             ServiceLocator.Instance.RegisterService<IServicioDeTiempo>(_servicioDeTiempo);
+            ServiceLocator.Instance.RegisterService<IServicioDeEnergia>(_servicioDeEnergia);
             DontDestroyOnLoad(gameObject);
         }
     }

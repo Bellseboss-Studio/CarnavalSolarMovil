@@ -1,5 +1,6 @@
 ﻿using System;
 using Gameplay.UsoDeCartas;
+using ServiceLocatorPath;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,7 +58,7 @@ namespace Gameplay.NewGameStates
 
         public bool EstaPausadoElJuego()
         {
-            return _juegoPausado;
+            return ServiceLocator.Instance.GetService<IServicioDeTiempo>().EstaPausadoElJuego();
         }
 
         public bool SeTerminoElJuego()
@@ -78,6 +79,11 @@ namespace Gameplay.NewGameStates
         public void SalirDelBuclePrincipal()
         {
             _puedeSalirDelBucleDeEstados = true;
+        }
+
+        public bool EstanJugando()
+        {
+            return ServiceLocator.Instance.GetService<IServicioDeTiempo>().EstanJugando();
         }
 
         private void OnDisable()
