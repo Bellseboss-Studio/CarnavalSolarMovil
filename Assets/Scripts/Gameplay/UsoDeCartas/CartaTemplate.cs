@@ -18,6 +18,7 @@ namespace Gameplay.UsoDeCartas
         [SerializeField] private float distanciaDeInteraccion, health, velocidadDeInteraccion, velocidadDeMovimiento, damage, escudo;
         [SerializeField] private int costoEnergia;
         [SerializeField] private TextMeshProUGUI valorCarta;
+        [SerializeField] private ZonaDeDropeo zona;
         public string Id => id;
         
         
@@ -27,6 +28,7 @@ namespace Gameplay.UsoDeCartas
             _dragComponent.OnDragging += Dragging;
             _dragComponent.OnDropCompleted += DropCompleted;
             _dragComponent.OnFinishDragging += FinishDragging;
+            _dragComponent.Zona = zona;
             _factoriaPersonaje = factoriaPersonaje;
             var rectTransformRect = GetComponent<RectTransform>().rect;
             rectTransformRect.width = rectTransformRect.height;
