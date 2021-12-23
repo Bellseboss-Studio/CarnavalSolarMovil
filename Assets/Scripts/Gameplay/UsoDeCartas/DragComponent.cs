@@ -77,6 +77,7 @@ public class DragComponent : MonoBehaviour
         }
         //var position = _finalPosition.transform.position;
         //gameObject.GetComponent<RectTransform>().position = new Vector3(position.x, position.y, 0);
+        RestartPosition();
     }
 
     public void RestartPosition()

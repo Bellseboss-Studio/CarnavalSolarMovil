@@ -20,6 +20,7 @@ namespace Gameplay.NewGameStates
 
         public void InitialConfiguration()
         {
+            ServiceLocator.Instance.GetService<IServicioDeEnergia>().AddEnergy();
             _factoriaCarta.CrearPrimerasCartas();
             ServiceLocator.Instance.GetService<IServicioDeTiempo>().ComienzaAContarElTiempo();
         }

@@ -37,10 +37,9 @@ namespace Gameplay.UsoDeCartas
 
         public void CrearPrimerasCartas()
         {
-            var posiciones = _colocacionCartas.GetPosicionesDeCartas();
-            for (int i = 0; i < _colocacionCartas.GetNumeroDePosiciones(); i++)
+            while (_colocacionCartas.PuedoSacarOtraCarta())
             {
-                cartasInstanciadas.Push(Create("Bellseboss", posiciones[i]));
+                Create(_colocacionCartas.GetNextCartaId(), _colocacionCartas.GetPosicionDeCarta());
             }
         }
 

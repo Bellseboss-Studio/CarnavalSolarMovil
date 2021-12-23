@@ -4,5 +4,6 @@
     {
         void Init();
         bool TieneEnergiaSuficiente(int costoDeEnergia);
+        void AddEnergy();
     }
 }
