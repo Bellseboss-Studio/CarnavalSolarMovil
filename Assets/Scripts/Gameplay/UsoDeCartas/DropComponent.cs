@@ -2,17 +2,18 @@
 
 namespace Gameplay.UsoDeCartas
 {
-    
     [RequireComponent(typeof(BoxCollider))]
     public class DropComponent : MonoBehaviour
     {
-        [SerializeField] private Gameplay.UsoDeCartas.DragComponent _dragComponent;
+        [SerializeField] private ZonaDeDropeo area;
+        [SerializeField] private DragComponent _dragComponent;
         [SerializeField] private bool puedeRecibirMasDeUno;
         public OnExitBalloonCorrectly OnExitBalloon;
         public delegate void OnExitBalloonCorrectly();
         public bool IsFull() => _dragComponent != null;
+        public ZonaDeDropeo Area => area;
 
-        public void Drop(Gameplay.UsoDeCartas.DragComponent dragComponent)
+        public void Drop(DragComponent dragComponent)
         {
             _dragComponent = dragComponent;
         }
@@ -23,7 +24,7 @@ namespace Gameplay.UsoDeCartas
             OnExitBalloon?.Invoke();
         }
 
-        public bool IsEqual(Gameplay.UsoDeCartas.DragComponent dragComponent)
+        public bool IsEqual(DragComponent dragComponent)
         {
             return _dragComponent != null && _dragComponent.Equals(dragComponent);
         }
@@ -33,7 +34,7 @@ namespace Gameplay.UsoDeCartas
             return _dragComponent != null;
         }
 
-        public Gameplay.UsoDeCartas.DragComponent GetDragComponent()
+        public DragComponent GetDragComponent()
         {
             return _dragComponent;
         }
