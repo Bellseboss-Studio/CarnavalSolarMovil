@@ -11,7 +11,7 @@ namespace Gameplay.Personajes.InteraccionComponents
             origen.GetInteractionComponent().EjecucionDeInteraccion(_personaje);
             if (origen == null) return;
             AplicarDanio(origen,origen.damage * .2f);
-            Debug.Log(origen.health);
+            //Debug.Log(origen.health);
             if (origen.health <= 0)
             {
                 origen.Muerte();

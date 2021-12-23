@@ -15,7 +15,7 @@ namespace Gameplay
         {
             if (target == null) return;
             AplicarDanio(target, _personaje.damage);
-            Debug.Log(target.health);
+            //Debug.Log(target.health);
         }
 
         public virtual void AplicarInteraccion(Personaje origen)

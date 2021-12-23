@@ -1,4 +1,6 @@
-﻿using Gameplay.Personajes.RutaComponents;
+﻿using System;
+using Gameplay.Personajes.InteraccionComponents;
+using Gameplay.Personajes.RutaComponents;
 using Gameplay.Personajes.TargetComponents;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -21,21 +23,89 @@ namespace Gameplay
             return this;
         }
 
-        public PersonajeBuilder WithTargetComponent(TargetBehaviour targetComponent)
+        public PersonajeBuilder WithTargetComponent(TargetComponentEnum targetComponentId)
         {
-            _targetBehaviour = targetComponent;
+            switch (targetComponentId)
+            {
+                case TargetComponentEnum.BuscarEnemigoMasCercano:
+                    _targetBehaviour = new BuscarEnemigoMasCercano();
+                    break;
+                
+                case TargetComponentEnum.BuscarTresEnemigosMasCercanos:
+                    _targetBehaviour = new BuscartresEnemigosMasCercanos();
+                    break;
+                
+                default:
+                    throw new Exception($"El componente con la id {targetComponentId} no existe");
+            }
             return this;
         }
 
-        public PersonajeBuilder WithInteraccionComponent(InteraccionBehaviour interaccionBehaviour)
+        public PersonajeBuilder WithInteraccionComponent(InteraccionComponentEnum interaccionBehaviourId)
         {
-            _interaccionBehaviour = interaccionBehaviour;
+            switch (interaccionBehaviourId)
+            {
+                case InteraccionComponentEnum.DaniarPersonaje:
+                    _interaccionBehaviour = new DaniarPersonaje();
+                    break;
+
+                case InteraccionComponentEnum.AtacarConDanioProgresivo:
+                    _interaccionBehaviour = new AtacarConDanioProgresivo();
+                    break;
+                
+                case InteraccionComponentEnum.DaniarPersonajeSegunLaDistancia:
+                    _interaccionBehaviour = new DaniarPersonajeSegunLaDistancia();
+                    break;
+                
+                case InteraccionComponentEnum.DaniarPersonajeYAutoCurarse:
+                    _interaccionBehaviour = new DaniarPersonajeYAutoCurarse();
+                    break;
+                
+                case InteraccionComponentEnum.DaniarPersonajeYReflejarDanio:
+                    _interaccionBehaviour = new DaniarPersonajeYReflejarDanio();
+                    break;
+
+                case InteraccionComponentEnum.DaniarYAumentarVelocidadAlMatar:
+                    _interaccionBehaviour = new DaniarYAumentarVelocidadAlMatar();
+                    break;
+                
+                case InteraccionComponentEnum.AtacarYCurarAliadoCercanoMasDañado:
+                    _interaccionBehaviour = new AtacarYCurarAliadoCercanoMasDañado();
+                    break;
+                
+                case InteraccionComponentEnum.AtacarYReducirVelocidadDeMovimientoYAtaqueAlObjetivo:
+                    _interaccionBehaviour = new AtacarYReducirVelocidadDeMovimientoYAtaqueAlObjetivo();
+                    break;
+                
+                case InteraccionComponentEnum.AumentarVelocidadDeAtaqueYDeMovimientoDeAliadosCercanosAlMorir:
+                    _interaccionBehaviour = new AumentarVelocidadDeAtaqueYDeMovimientoDeAliadosCercanosAlMorir();
+                    break;
+                
+                case InteraccionComponentEnum.DaniarTresTargetsMasCercanos:
+                    _interaccionBehaviour = new DaniarTresTargetsMasCercanos();
+                    break;
+                
+                /*case InteraccionComponentEnum.:
+                    _interaccionBehaviour = new ();
+                    break;*/
+                
+                default:
+                    throw new Exception($"El componente con la id {interaccionBehaviourId} no existe");
+            }
             return this;
         }
         
-        public PersonajeBuilder WithRutaComponent(RutaBehaviour rutaComponent)
+        public PersonajeBuilder WithRutaComponent(RutaComponentEnum rutaComponentId)
         {
-            _rutaComponent = rutaComponent;
+            switch (rutaComponentId)
+            {
+                case RutaComponentEnum.RutaMasCorta:
+                    _rutaComponent = new RutaMasCorta();
+                    break;
+                default:
+                    throw new Exception($"El componente con la id {rutaComponentId} no existe");
+                break;
+            }
             return this;
         }
 

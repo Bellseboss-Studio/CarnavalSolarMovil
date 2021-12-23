@@ -8,7 +8,7 @@ namespace Gameplay.Personajes.InteraccionComponents
         {
             if (target == null) return;
             AplicarDanio(target, _personaje.damage);
-            Debug.Log(target.health);
+            //Debug.Log(target.health);
             if (target.health <= 0)
             {
                 _personaje.velocidadDeMovimiento += (_personaje.velocidadDeMovimiento * .2f);

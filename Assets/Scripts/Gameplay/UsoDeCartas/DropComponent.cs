@@ -3,7 +3,7 @@
 namespace Gameplay.UsoDeCartas
 {
     
-    [RequireComponent(typeof(BoxCollider2D))]
+    [RequireComponent(typeof(BoxCollider))]
     public class DropComponent : MonoBehaviour
     {
         [SerializeField] private Gameplay.UsoDeCartas.DragComponent _dragComponent;

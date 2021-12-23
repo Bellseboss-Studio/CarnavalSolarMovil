@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Threading.Tasks;
 using Gameplay.PersonajeStates;
+using ServiceLocatorPath;
 using StatesOfEnemies;
 using UnityEngine;
 
@@ -16,14 +17,25 @@ namespace Gameplay.NewGameStates
             _mediadorDeEstadosDelJuego = mediadorDeEstadosDelJuego;
         }
 
+        public void InitialConfiguration()
+        {
+            
+        }
+
+        public void FinishConfiguration()
+        {
+            
+        }
+
 
         public async Task<PersonajeStateResult> DoAction(object data)
         {
-            Debug.Log("Estas en estado de sincronizar jugadores");
+            //Debug.Log("Estas en estado de sincronizar jugadores");
             if (_mediadorDeEstadosDelJuego.SeSincronizaronLosJugadores())
             {
                 await Task.Delay(TimeSpan.FromMilliseconds(100));
-                return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.Jugando);
+                ServiceLocator.Instance.GetService<IServicioDeEnergia>().Init();
+                return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.Pausa);
             }
             await Task.Delay(TimeSpan.FromMilliseconds(100));
             return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.SincronizacionDeJugadores);

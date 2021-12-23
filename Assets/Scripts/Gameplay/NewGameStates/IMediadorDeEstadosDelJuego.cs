@@ -7,5 +7,6 @@
         public bool SeConfiguroElJuego();
         public bool SeSincronizaronLosJugadores();
         void SalirDelBuclePrincipal();
+        bool EstanJugando();
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Gameplay.PersonajeStates;
+using Gameplay.UsoDeCartas;
+using ServiceLocatorPath;
 using UnityEngine;
 
 namespace Gameplay.NewGameStates
@@ -8,25 +10,39 @@ namespace Gameplay.NewGameStates
     public class PausaState : IEstadoDeJuego
     {
         private IMediadorDeEstadosDelJuego _mediadorDeEstadosDelJuego;
+        private readonly IFactoriaCarta _factoriaCarta;
 
-        public PausaState(IMediadorDeEstadosDelJuego mediadorDeEstadosDelJuego)
+        public PausaState(IMediadorDeEstadosDelJuego mediadorDeEstadosDelJuego, IFactoriaCarta factoriaCarta)
         {
             _mediadorDeEstadosDelJuego = mediadorDeEstadosDelJuego;
+            _factoriaCarta = factoriaCarta;
+        }
+
+        public void InitialConfiguration()
+        {
+            ServiceLocator.Instance.GetService<IServicioDeEnergia>().AddEnergy();
+            _factoriaCarta.CrearPrimerasCartas();
+            ServiceLocator.Instance.GetService<IServicioDeTiempo>().ComienzaAContarElTiempo();
+        }
+
+        public void FinishConfiguration()
+        {
+            _factoriaCarta.DestruirLasCartas();
+            ServiceLocator.Instance.GetService<IServicioDeTiempo>().DejaDeContarElTiempo();
         }
 
         public async Task<PersonajeStateResult> DoAction(object data)
         {
-            Debug.Log("Estas en estado de pausa");
-            if (_mediadorDeEstadosDelJuego.SeTerminoElJuego())
+            while (_mediadorDeEstadosDelJuego.EstaPausadoElJuego())
             {
+                if (_mediadorDeEstadosDelJuego.SeTerminoElJuego())
+                {
+                    await Task.Delay(TimeSpan.FromMilliseconds(100));
+                    return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.FinDeJuego);
+                }
                 await Task.Delay(TimeSpan.FromMilliseconds(100));
-                return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.FinDeJuego);
             }
-            if (_mediadorDeEstadosDelJuego.EstaPausadoElJuego())
-            {
-                await Task.Delay(TimeSpan.FromMilliseconds(100));
-                return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.Pausa);
-            }
+            //Debug.Log("Estas en estado de pausa");
             await Task.Delay(TimeSpan.FromMilliseconds(100));
             return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.Jugando);
         }

@@ -10,8 +10,8 @@ namespace Gameplay.Personajes.InteraccionComponents
             AplicarDanio(target, _personaje.damage);
             var aliadosCercanos = _interaccionComponent.GetAliadosCercanos(_personaje);
             var aliadoCercanoConMenosVida = _interaccionComponent.GetAliadoConMenosVida(aliadosCercanos);
-            aliadoCercanoConMenosVida.health += 2;
-            Debug.Log(target.health);
+            aliadoCercanoConMenosVida.health += 80;
+            //Debug.Log(target.health);
         }
     }
 }
