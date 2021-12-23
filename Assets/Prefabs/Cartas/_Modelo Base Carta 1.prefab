@@ -722,6 +722,10 @@ MonoBehaviour:
   velocidadDeMovimiento: 1
   damage: 1
   escudo: 0
+  costoEnergia: 0
+  carta: {fileID: 5551007811965141285}
+  imagenDeCarta: {fileID: 0}
+  valorCarta: {fileID: 971560392514880441}
 --- !u!1 &8159330854986713344
 GameObject:
   m_ObjectHideFlags: 0
