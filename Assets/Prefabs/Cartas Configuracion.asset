@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cartaTemplates:
   - {fileID: 7316080808676934838, guid: bba87592b3281ff4c8979a1f8a64623d, type: 3}
+  - {fileID: 7316080808676934838, guid: 4ddde0efc543a0c4faf7dbd7a498e1e1, type: 3}
+  - {fileID: 7316080808676934838, guid: b08d10dabee708245b657517f390bceb, type: 3}
+  - {fileID: 7316080808676934838, guid: 558a35b17acd710489b9e2e4497724f9, type: 3}
