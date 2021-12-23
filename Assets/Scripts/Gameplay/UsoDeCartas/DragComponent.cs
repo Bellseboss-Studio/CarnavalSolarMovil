@@ -8,6 +8,7 @@ public class DragComponent : MonoBehaviour
 {
     [SerializeField] private bool isDetachable;
     [SerializeField] private RectTransform initialPosition;
+    public ZonaDeDropeo Zona { get; set; }
     private RectTransform _canvasRectTransform;
     private GameObject _finalPosition;
     private EventTrigger.Entry entry_0;
@@ -62,12 +63,12 @@ public class DragComponent : MonoBehaviour
         bool colisionoConAlgo = false;
         foreach (var hit in hits)
         {
-            if (hit.collider.gameObject.TryGetComponent<DropComponent>(out var drop))
+            if (hit.collider.gameObject.TryGetComponent<DropComponent>(out var drop) && drop.Area == Zona)
             {
                 drop.Drop(this);
                 OnDropCompleted?.Invoke(hit.point);
                 colisionoConAlgo = true;
-                break;
+                break;   
             }
         }
         if (!colisionoConAlgo)
