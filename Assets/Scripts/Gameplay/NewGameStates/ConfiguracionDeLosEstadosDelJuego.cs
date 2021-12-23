@@ -13,6 +13,7 @@ namespace Gameplay.NewGameStates
         public const int Jugando = 3;
         public const int Pausa = 4;
         public const int FinDeJuego = 5;
+        public static int InstanciarHeroe = 6;
         
         private readonly Dictionary<int, IEstadoDeJuego> _states;
 

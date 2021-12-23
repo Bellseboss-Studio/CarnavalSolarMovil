@@ -1,5 +1,4 @@
-﻿using System;
-using Gameplay.UsoDeCartas;
+﻿using Gameplay.UsoDeCartas;
 using ServiceLocatorPath;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,12 +28,13 @@ namespace Gameplay.NewGameStates
         private void Start()
         {
             _configuracionDeLosEstadosDelJuego = new ConfiguracionDeLosEstadosDelJuego();
-            _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.ConfiguracionDelJuego,
+            _configuracionDeLosEstadosDelJuego.AddInitialState(ConfiguracionDeLosEstadosDelJuego.ConfiguracionDelJuego,
                 new ConfiguracionDelJuegoState(this, _factoriaCarta, _colocacionCartas, cartasConfiguracion, canvasPrincipal, _factoriaPersonaje, canvasDeLasCartas));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.SincronizacionDeJugadores, new SincronizacionDeJugadoresState(this));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Jugando, new JugandoState(this));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Pausa, new PausaState(this, _factoriaCarta));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.FinDeJuego, new FinDeJuegoState(this));
+            _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.InstanciarHeroe, new InstanciarHeroeState(this));
             StartState(_configuracionDeLosEstadosDelJuego.GetState(1));
             finalizarConfiguracionButton.onClick.AddListener(() => _juegoConfigurado = true);
             pauseButton.onClick.AddListener(() => _juegoPausado = true);
