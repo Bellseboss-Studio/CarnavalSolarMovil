@@ -12,13 +12,9 @@ namespace Gameplay.NewGameStates
 
         public void Configurate()
         {
-            barajaDeCartasId = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetBaraja();
-        }
-        
-        private void Start()
-        {
             barajaDeCartasId = new Stack<string>();
             cartasEnMano = new Stack<string>();
+            barajaDeCartasId = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetBaraja();
         }
 
         public List<GameObject> GetPosicionesDeCartas()
@@ -38,12 +34,15 @@ namespace Gameplay.NewGameStates
 
         public GameObject GetPosicionDeCarta()
         {
-            return posicionesDeCartas[cartasEnMano.Count-1];
+            return posicionesDeCartas[cartasEnMano.Count];
         }
 
         public string GetNextCartaId()
         {
-            return barajaDeCartasId.Pop();
+            var carta = barajaDeCartasId.Pop();
+            cartasEnMano.Push(carta);
+            return carta;
+
         }
     }
 }

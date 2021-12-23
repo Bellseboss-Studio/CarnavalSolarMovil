@@ -1115,7 +1115,7 @@ GameObject:
   - component: {fileID: 9020990677720249292}
   - component: {fileID: 2117840615850029303}
   m_Layer: 0
-  m_Name: Curandero Luchador
+  m_Name: CuranderoLuchador
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

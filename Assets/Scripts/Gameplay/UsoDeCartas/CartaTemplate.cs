@@ -1,5 +1,7 @@
 using ServiceLocatorPath;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Gameplay.UsoDeCartas
 {
@@ -15,6 +17,7 @@ namespace Gameplay.UsoDeCartas
         [SerializeField] private RutaComponentEnum rutaComponentId;
         [SerializeField] private float distanciaDeInteraccion, health, velocidadDeInteraccion, velocidadDeMovimiento, damage, escudo;
         [SerializeField] private int costoEnergia;
+        [SerializeField] private TextMeshProUGUI valorCarta;
         public string Id => id;
         
         
@@ -27,6 +30,7 @@ namespace Gameplay.UsoDeCartas
             _factoriaPersonaje = factoriaPersonaje;
             var rectTransformRect = GetComponent<RectTransform>().rect;
             rectTransformRect.width = rectTransformRect.height;
+            valorCarta.text = $"{costoEnergia}";
             //Debug.Log(rectTransformRect.height);
             //Debug.Log(rectTransformRect.width);
         }

@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: def475d14de68754586748426ed672fd, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -723,6 +723,7 @@ MonoBehaviour:
   damage: 60
   escudo: 0
   costoEnergia: 5
+  valorCarta: {fileID: 971560392514880441}
 --- !u!1 &8159330854986713344
 GameObject:
   m_ObjectHideFlags: 0
