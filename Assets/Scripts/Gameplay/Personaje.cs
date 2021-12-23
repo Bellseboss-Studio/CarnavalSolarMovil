@@ -19,6 +19,7 @@ namespace Gameplay
         [SerializeField] private InteraccionComponent _interaccionComponent;
         [SerializeField] private RutaComponent _rutaComponent;
         private PersonajeStatesConfiguration _personajeStatesConfiguration;
+        private Animator _animador;
         public bool enemigo;
         public bool laPartidaEstaCongelada = false;
         private bool estaVivo = true;
@@ -44,6 +45,7 @@ namespace Gameplay
         public void SetComponents(TargetBehaviour targetBehaviour, InteraccionBehaviour interaccionBehaviour, RutaBehaviour rutaBehaviour, EstadisticasCarta estadisticasCarta, GameObject prefab)
         {
             var _prefabInstanciado = Instantiate(prefab, transform);
+            _animador = _prefabInstanciado.GetComponent<Animator>();
             var position = _prefabInstanciado.transform.position;
             position = new Vector3(position.x, position.y + .5f, position.z);
             _prefabInstanciado.transform.position = position;
@@ -52,6 +54,7 @@ namespace Gameplay
             velocidadDeMovimiento = estadisticasCarta.VelocidadDeMovimiento;
             distanciaDeInteraccion = estadisticasCarta.DistanciaDeInteraccion;
             damage = estadisticasCarta.Damage;
+            _estadisticasCarta = estadisticasCarta;
             _targetComponent.Configuracion(targetBehaviour, this);
             _rutaComponent.Configuration(GetComponent<NavMeshAgent>(), this, rutaBehaviour);
             _interaccionComponent.Configurate(this, interaccionBehaviour);
@@ -99,11 +102,41 @@ namespace Gameplay
             GetTargetComponent().DejarDeSerTargeteado(this);
             GetTargetComponent().HeDejadoDeTargetear();
             isTargeteable = false;
+            _animador.SetTrigger("murio");
         }
 
         private void OnDestroy()
         {
             estaVivo = false;
+        }
+
+        public void Caminar(bool estaCaminando)
+        {
+            _animador.SetBool("estaCaminando", estaCaminando);
+        }
+
+        public void GolpearTarget()
+        {
+            if (_estadisticasCarta.DistanciaDeInteraccion > 2)
+            {
+                _animador.SetBool("estaGolpeandoDistancia", true);
+            }
+            else
+            {
+                _animador.SetBool("estaGolpeando", true);
+            }
+        }
+
+        public void DejarInteractuar()
+        {
+            if (_estadisticasCarta.DistanciaDeInteraccion > 2)
+            {
+                _animador.SetBool("estaGolpeandoDistancia", false);
+            }
+            else
+            {
+                _animador.SetBool("estaGolpeando", false);
+            }
         }
     }
 
@@ -115,8 +148,12 @@ namespace Gameplay
         private float _velocidadDeMovimiento;
         private float _damage;
         private float _escudo;
+        public AnimationClip Caminar { get; }
+        public AnimationClip Golpear { get; }
+        public AnimationClip Morir { get; }
+        public AnimationClip Idle { get; }
 
-        public EstadisticasCarta(float distanciaDeInteraccion, float health, float velocidadDeInteraccion, float velocidadDeMovimiento, float damage, float escudo)
+        public EstadisticasCarta(float distanciaDeInteraccion, float health, float velocidadDeInteraccion, float velocidadDeMovimiento, float damage, float escudo, AnimationClip caminar, AnimationClip golpear, AnimationClip morir, AnimationClip idle)
         {
             _distanciaDeInteraccion = distanciaDeInteraccion;
             _health = health;
@@ -124,6 +161,10 @@ namespace Gameplay
             _velocidadDeMovimiento = velocidadDeMovimiento;
             _damage = damage;
             _escudo = escudo;
+            Caminar = caminar;
+            Golpear = golpear;
+            Morir = morir;
+            Idle = idle;
         }
 
 

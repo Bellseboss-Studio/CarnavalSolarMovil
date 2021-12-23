@@ -32,6 +32,7 @@ namespace Gameplay
 
         public virtual void Interactuar(List<Personaje> target)
         {
+            _personaje.GolpearTarget();
             target[0].GetInteractionComponent().AplicarInteraccion(_personaje);
         }
 
