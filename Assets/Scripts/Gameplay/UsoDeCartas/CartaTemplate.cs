@@ -19,6 +19,7 @@ namespace Gameplay.UsoDeCartas
         [SerializeField] private int costoEnergia;
         [SerializeField] private TextMeshProUGUI valorCarta;
         [SerializeField] private ZonaDeDropeo zona;
+        [SerializeField] private AnimationClip caminar, golpear, morir, idle;
         public string Id => id;
         
         
@@ -49,7 +50,7 @@ namespace Gameplay.UsoDeCartas
                 _factoriaPersonaje.CreatePersonaje(hitPoint,
                     new EstadististicasYHabilidadesDePersonaje(modelo3DId, targetComponentId, interaccionComponentId,
                         rutaComponentId, distanciaDeInteraccion, health, velocidadDeInteraccion, velocidadDeMovimiento,
-                        damage, escudo));
+                        damage, escudo, caminar, golpear, morir, idle));
                 gameObject.SetActive(false);
             }
         }
