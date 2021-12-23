@@ -132,6 +132,7 @@ namespace Gameplay
             var personaje = Object.Instantiate(_personaje);
             personaje.SetComponents(_targetBehaviour, _interaccionBehaviour, _rutaComponent, _estadisticasCarta, _prefab);
             personaje.transform.position = _position;
+            
             return personaje;
         }
     }

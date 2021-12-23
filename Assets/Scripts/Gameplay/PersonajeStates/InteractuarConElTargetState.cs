@@ -21,6 +21,7 @@ namespace Gameplay.PersonajeStates
             //Debug.Log("estas en el estado interactuar");
             if (targets.Count > 0) _personaje.GetInteractionComponent().Interactuar(targets);
             await Task.Delay(TimeSpan.FromSeconds(_personaje.velocidadDeInteraccion));
+            _personaje.DejarInteractuar();
             return new PersonajeStateResult(PersonajeStatesConfiguration.BuscarTargetState);
         }
     }
