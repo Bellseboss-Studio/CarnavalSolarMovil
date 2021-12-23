@@ -17,5 +17,10 @@ namespace ServiceLocatorPath
 
             return _baraja;
         }
+
+        public void AddCarta(string cartaTemplateId)
+        {
+            _baraja.Push(cartaTemplateId);
+        }
     }
 }

@@ -40,6 +40,12 @@ namespace Gameplay.NewGameStates
             pauseButton.onClick.AddListener(() => _juegoPausado = true);
             jugarButton.onClick.AddListener(() => _juegoPausado = false);
             finalizarJuegoButton.onClick.AddListener(() => _juegoTerminado = true);
+            //Este foreach es mientras seleccionamos las cartas en otra escena
+            foreach (var cartaTemplate in cartasConfiguracion.GetCartasTemplate())
+            {
+                ServiceLocator.Instance.GetService<IBarajaDelPlayer>().AddCarta(cartaTemplate.Id);
+            }
+            _colocacionCartas.Configurate();
         }
         
         private async void StartState(IEstadoDeJuego state, object data = null)
