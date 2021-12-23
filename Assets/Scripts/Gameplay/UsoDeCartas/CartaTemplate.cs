@@ -39,10 +39,13 @@ namespace Gameplay.UsoDeCartas
         private void DropCompleted(Vector3 hitPoint)
         {
             if (ServiceLocator.Instance.GetService<IServicioDeEnergia>().TieneEnergiaSuficiente(costoEnergia))
+            {
                 _factoriaPersonaje.CreatePersonaje(hitPoint,
                     new EstadististicasYHabilidadesDePersonaje(modelo3DId, targetComponentId, interaccionComponentId,
-                        rutaComponentId, distanciaDeInteraccion, health, velocidadDeInteraccion, velocidadDeMovimiento, damage, escudo));
-            gameObject.SetActive(false);
+                        rutaComponentId, distanciaDeInteraccion, health, velocidadDeInteraccion, velocidadDeMovimiento,
+                        damage, escudo));
+                gameObject.SetActive(false);
+            }
         }
 
         private void Dragging()

@@ -69,6 +69,26 @@ namespace Gameplay
                     _interaccionBehaviour = new DaniarYAumentarVelocidadAlMatar();
                     break;
                 
+                case InteraccionComponentEnum.AtacarYCurarAliadoCercanoMasDañado:
+                    _interaccionBehaviour = new AtacarYCurarAliadoCercanoMasDañado();
+                    break;
+                
+                case InteraccionComponentEnum.AtacarYReducirVelocidadDeMovimientoYAtaqueAlObjetivo:
+                    _interaccionBehaviour = new AtacarYReducirVelocidadDeMovimientoYAtaqueAlObjetivo();
+                    break;
+                
+                case InteraccionComponentEnum.AumentarVelocidadDeAtaqueYDeMovimientoDeAliadosCercanosAlMorir:
+                    _interaccionBehaviour = new AumentarVelocidadDeAtaqueYDeMovimientoDeAliadosCercanosAlMorir();
+                    break;
+                
+                case InteraccionComponentEnum.DaniarTresTargetsMasCercanos:
+                    _interaccionBehaviour = new DaniarTresTargetsMasCercanos();
+                    break;
+                
+                /*case InteraccionComponentEnum.:
+                    _interaccionBehaviour = new ();
+                    break;*/
+                
                 default:
                     throw new Exception($"El componente con la id {interaccionBehaviourId} no existe");
             }

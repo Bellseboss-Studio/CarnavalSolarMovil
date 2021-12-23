@@ -2,11 +2,15 @@
 {
     public enum InteraccionComponentEnum
     {
-        DaniarPersonaje,
         AtacarConDanioProgresivo,
+        AtacarYCurarAliadoCercanoMasDañado,
+        AtacarYReducirVelocidadDeMovimientoYAtaqueAlObjetivo,
+        AumentarVelocidadDeAtaqueYDeMovimientoDeAliadosCercanosAlMorir,
+        DaniarPersonaje,
         DaniarPersonajeSegunLaDistancia,
         DaniarPersonajeYAutoCurarse,
         DaniarPersonajeYReflejarDanio,
+        DaniarTresTargetsMasCercanos,
         DaniarYAumentarVelocidadAlMatar
     }
 }

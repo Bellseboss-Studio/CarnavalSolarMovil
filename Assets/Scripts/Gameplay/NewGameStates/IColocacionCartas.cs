@@ -8,5 +8,8 @@ namespace Gameplay.NewGameStates
         List<GameObject> GetPosicionesDeCartas();
 
         int GetNumeroDePosiciones();
+        bool PuedoSacarOtraCarta();
+        GameObject GetPosicionDeCarta();
+        string GetNextCartaId();
     }
 }
