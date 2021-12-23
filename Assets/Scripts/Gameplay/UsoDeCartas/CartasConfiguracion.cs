@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,6 +28,10 @@ namespace Gameplay.UsoDeCartas
             }
             else return cartaTemplate;
         }
-        
+
+        public CartaTemplate[] GetCartasTemplate()
+        {
+            return cartaTemplates;
+        }
     }
 }
