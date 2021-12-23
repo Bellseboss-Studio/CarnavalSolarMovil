@@ -47,17 +47,22 @@ namespace Gameplay.UsoDeCartas
         {
             if (ServiceLocator.Instance.GetService<IServicioDeEnergia>().TieneEnergiaSuficiente(costoEnergia))
             {
-                _factoriaPersonaje.CreatePersonaje(hitPoint,
-                    new EstadististicasYHabilidadesDePersonaje(modelo3DId, targetComponentId, interaccionComponentId,
-                        rutaComponentId, distanciaDeInteraccion, health, velocidadDeInteraccion, velocidadDeMovimiento,
-                        damage, escudo, caminar, golpear, morir, idle));
+                _factoriaPersonaje.CreatePersonaje(hitPoint,GetEstadisticas());
                 gameObject.SetActive(false);
+                ServiceLocator.Instance.GetService<IEnemyInstantiate>().InstanciateEnemy(_factoriaPersonaje);
             }
         }
 
         private void Dragging()
         {
             //Debug.Log("Se Esta Draggeando");
+        }
+
+        public EstadististicasYHabilidadesDePersonaje GetEstadisticas()
+        {
+            return new EstadististicasYHabilidadesDePersonaje(modelo3DId, targetComponentId, interaccionComponentId,
+                rutaComponentId, distanciaDeInteraccion, health, velocidadDeInteraccion, velocidadDeMovimiento,
+                damage, escudo, caminar, golpear, morir, idle);
         }
     }
 }
