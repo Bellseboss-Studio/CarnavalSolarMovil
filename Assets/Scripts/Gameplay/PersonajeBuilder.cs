@@ -23,15 +23,15 @@ namespace Gameplay
             return this;
         }
 
-        public PersonajeBuilder WithTargetComponent(string targetComponentId)
+        public PersonajeBuilder WithTargetComponent(TargetComponentEnum targetComponentId)
         {
             switch (targetComponentId)
             {
-                case "buscarEnemigoMasCercano":
+                case TargetComponentEnum.BuscarEnemigoMasCercano:
                     _targetBehaviour = new BuscarEnemigoMasCercano();
                     break;
                 
-                case "buscarTresEnemigosMasCercanos":
+                case TargetComponentEnum.BuscarTresEnemigosMasCercanos:
                     _targetBehaviour = new BuscartresEnemigosMasCercanos();
                     break;
                 
@@ -41,41 +41,45 @@ namespace Gameplay
             return this;
         }
 
-        public PersonajeBuilder WithInteraccionComponent(string interaccionBehaviourId)
+        public PersonajeBuilder WithInteraccionComponent(InteraccionComponentEnum interaccionBehaviourId)
         {
             switch (interaccionBehaviourId)
             {
-                case "DaniarPersonaje":
+                case InteraccionComponentEnum.DaniarPersonaje:
                     _interaccionBehaviour = new DaniarPersonaje();
                     break;
 
-                case "atacarConDanioProgresivo":
+                case InteraccionComponentEnum.AtacarConDanioProgresivo:
                     _interaccionBehaviour = new AtacarConDanioProgresivo();
                     break;
                 
-                case "daniarPersonajeSegunLaDistancia":
+                case InteraccionComponentEnum.DaniarPersonajeSegunLaDistancia:
                     _interaccionBehaviour = new DaniarPersonajeSegunLaDistancia();
                     break;
                 
-                case "daniarPersonajeYAutoCurarse":
+                case InteraccionComponentEnum.DaniarPersonajeYAutoCurarse:
                     _interaccionBehaviour = new DaniarPersonajeYAutoCurarse();
                     break;
                 
-                case "daniarPersonajeYReflejarDanio":
+                case InteraccionComponentEnum.DaniarPersonajeYReflejarDanio:
                     _interaccionBehaviour = new DaniarPersonajeYReflejarDanio();
                     break;
 
+                case InteraccionComponentEnum.DaniarYAumentarVelocidadAlMatar:
+                    _interaccionBehaviour = new DaniarYAumentarVelocidadAlMatar();
+                    break;
+                
                 default:
                     throw new Exception($"El componente con la id {interaccionBehaviourId} no existe");
             }
             return this;
         }
         
-        public PersonajeBuilder WithRutaComponent(string rutaComponentId)
+        public PersonajeBuilder WithRutaComponent(RutaComponentEnum rutaComponentId)
         {
             switch (rutaComponentId)
             {
-                case "rutaMasCorta":
+                case RutaComponentEnum.RutaMasCorta:
                     _rutaComponent = new RutaMasCorta();
                     break;
                 default:

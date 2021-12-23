@@ -9,7 +9,7 @@ namespace Gameplay.Personajes.InteraccionComponents
             if (target == null) return;
             _interaccionComponent.ReducirVelocidadDeMovimientoYAtaqueAlObjetivo(target, 20, _personaje.velocidadDeInteraccion);
             AplicarDanio(target, _personaje.damage);
-            Debug.Log(target.health);
+            //Debug.Log(target.health);
         }
     }
 }

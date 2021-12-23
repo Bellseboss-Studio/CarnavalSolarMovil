@@ -10,17 +10,18 @@ namespace Gameplay.UsoDeCartas
     {
         private IColocacionCartas _colocacionCartas;
         private CartasConfiguracion _cartasConfiguracion;
-        private GameObject _canvasDeLasCartas;
+        private GameObject _canvasDeLasCartas, _canvasPrincipal;
         private FactoriaPersonaje _factoriaPersonaje;
         private Stack<CartaTemplate> cartasInstanciadas;
 
-        public void Configurate(IColocacionCartas colocacionCartas, CartasConfiguracion cartasConfiguracion, GameObject canvasDeLasCartas, FactoriaPersonaje factoriaPersonaje)
+        public void Configurate(IColocacionCartas colocacionCartas, CartasConfiguracion cartasConfiguracion, GameObject canvasDeLasCartas, FactoriaPersonaje factoriaPersonaje, GameObject canvasPrincipal)
         {
             cartasInstanciadas = new Stack<CartaTemplate>();
             _colocacionCartas = colocacionCartas;
             _cartasConfiguracion = cartasConfiguracion;
             _canvasDeLasCartas = canvasDeLasCartas;
             _factoriaPersonaje = factoriaPersonaje;
+            _canvasPrincipal = canvasPrincipal;
         }
 
         public CartaTemplate Create(string id, GameObject posicion)
@@ -29,7 +30,7 @@ namespace Gameplay.UsoDeCartas
             var cartaInstancia = Instantiate(cartaTemplate, _canvasDeLasCartas.transform);
             cartaInstancia.transform.position = posicion.transform.position;
             var dragDeLaCarta = cartaInstancia.GetComponent<DragComponent>();
-            dragDeLaCarta.Configure(posicion.GetComponent<RectTransform>());
+            dragDeLaCarta.Configure(posicion.GetComponent<RectTransform>(), _canvasDeLasCartas.GetComponent<RectTransform>());
             cartaInstancia.Configurate(_factoriaPersonaje);
             return cartaInstancia;
         }

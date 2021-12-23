@@ -3,12 +3,12 @@
     public class EstadististicasYHabilidadesDePersonaje
     {
         public string idModelo3D;
-        public string idTargetComponent;
-        public string idInteraccionComponent;
-        public string idRutaComponent;
+        public TargetComponentEnum idTargetComponent;
+        public InteraccionComponentEnum idInteraccionComponent;
+        public RutaComponentEnum idRutaComponent;
         public EstadisticasCarta EstadisticasCarta;
 
-        public EstadististicasYHabilidadesDePersonaje(string idModelo3D, string idTargetComponent, string idInteraccionComponent, string idRutaComponent, float distanciaDeInteraccion, float health, float velocidadDeInteraccion, float velocidadDeMovimiento, float damage, float escudo)
+        public EstadististicasYHabilidadesDePersonaje(string idModelo3D, TargetComponentEnum idTargetComponent, InteraccionComponentEnum idInteraccionComponent, RutaComponentEnum idRutaComponent, float distanciaDeInteraccion, float health, float velocidadDeInteraccion, float velocidadDeMovimiento, float damage, float escudo)
         {
             this.idModelo3D = idModelo3D;
             this.idTargetComponent = idTargetComponent;

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Gameplay.PersonajeStates;
 using Gameplay.UsoDeCartas;
+using ServiceLocatorPath;
 using UnityEngine;
 
 namespace Gameplay.NewGameStates
@@ -20,11 +21,13 @@ namespace Gameplay.NewGameStates
         public void InitialConfiguration()
         {
             _factoriaCarta.CrearPrimerasCartas();
+            ServiceLocator.Instance.GetService<IServicioDeTiempo>().ComienzaAContarElTiempo();
         }
 
         public void FinishConfiguration()
         {
             _factoriaCarta.DestruirLasCartas();
+            ServiceLocator.Instance.GetService<IServicioDeTiempo>().DejaDeContarElTiempo();
         }
 
         public async Task<PersonajeStateResult> DoAction(object data)
