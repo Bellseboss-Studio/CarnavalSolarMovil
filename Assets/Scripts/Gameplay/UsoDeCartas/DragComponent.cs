@@ -94,7 +94,8 @@ public class DragComponent : MonoBehaviour
         if (!canUseComponent) return;
         var mousePos = Input.mousePosition;
         var rectTransform = gameObject.GetComponent<RectTransform>();
-        //Debug.Log(rectTransform);
+        var toWord = _camera.ScreenToWorldPoint(mousePos);
+        Debug.Log(toWord);
         rectTransform.localPosition = new Vector3(mousePos.x - (960/2), mousePos.y - (540/2));
         RaycastHit[] hits;
         var posicion = transform.position;
