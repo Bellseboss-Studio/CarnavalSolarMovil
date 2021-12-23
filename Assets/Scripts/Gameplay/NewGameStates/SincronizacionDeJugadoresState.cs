@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Threading.Tasks;
 using Gameplay.PersonajeStates;
+using ServiceLocatorPath;
 using StatesOfEnemies;
 using UnityEngine;
 
@@ -33,6 +34,7 @@ namespace Gameplay.NewGameStates
             if (_mediadorDeEstadosDelJuego.SeSincronizaronLosJugadores())
             {
                 await Task.Delay(TimeSpan.FromMilliseconds(100));
+                ServiceLocator.Instance.GetService<IServicioDeEnergia>().Init();
                 return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.Pausa);
             }
             await Task.Delay(TimeSpan.FromMilliseconds(100));

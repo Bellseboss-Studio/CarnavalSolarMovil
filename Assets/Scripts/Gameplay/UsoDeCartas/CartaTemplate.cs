@@ -1,3 +1,4 @@
+using ServiceLocatorPath;
 using UnityEngine;
 
 namespace Gameplay.UsoDeCartas
@@ -13,6 +14,7 @@ namespace Gameplay.UsoDeCartas
         [SerializeField] private TargetComponentEnum targetComponentId;
         [SerializeField] private RutaComponentEnum rutaComponentId;
         [SerializeField] private float distanciaDeInteraccion, health, velocidadDeInteraccion, velocidadDeMovimiento, damage, escudo;
+        [SerializeField] private int costoEnergia;
         public string Id => id;
         
         
@@ -25,8 +27,8 @@ namespace Gameplay.UsoDeCartas
             _factoriaPersonaje = factoriaPersonaje;
             var rectTransformRect = GetComponent<RectTransform>().rect;
             rectTransformRect.width = rectTransformRect.height;
-            Debug.Log(rectTransformRect.height);
-            Debug.Log(rectTransformRect.width);
+            //Debug.Log(rectTransformRect.height);
+            //Debug.Log(rectTransformRect.width);
         }
 
         private void FinishDragging()
@@ -36,7 +38,10 @@ namespace Gameplay.UsoDeCartas
 
         private void DropCompleted(Vector3 hitPoint)
         {
-            _factoriaPersonaje.CreatePersonaje(hitPoint, new EstadististicasYHabilidadesDePersonaje(modelo3DId, targetComponentId, interaccionComponentId, rutaComponentId, distanciaDeInteraccion, health, velocidadDeInteraccion, velocidadDeMovimiento, damage, escudo));
+            if (ServiceLocator.Instance.GetService<IServicioDeEnergia>().TieneEnergiaSuficiente(costoEnergia))
+                _factoriaPersonaje.CreatePersonaje(hitPoint,
+                    new EstadististicasYHabilidadesDePersonaje(modelo3DId, targetComponentId, interaccionComponentId,
+                        rutaComponentId, distanciaDeInteraccion, health, velocidadDeInteraccion, velocidadDeMovimiento, damage, escudo));
             gameObject.SetActive(false);
         }
 
