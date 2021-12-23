@@ -16,7 +16,7 @@ namespace Gameplay.UsoDeCartas
             configuracionDeModelo3DDePersonajes = Instantiate(configuracionDeModelo3DDePersonajes);
         }
 
-        public void CreatePersonaje(Vector3 hitPoint, EstadististicasYHabilidadesDePersonaje estadististicasYHabilidadesDePersonaje)
+        public void CreatePersonaje(Vector3 hitPoint, EstadististicasYHabilidadesDePersonaje estadististicasYHabilidadesDePersonaje, bool esEnemigo = false)
         {
             var _personajeBuilder = new PersonajeBuilder();
             _personajeBuilder.With3DObject(configuracionDeModelo3DDePersonajes.GetPersonajePrefabById(estadististicasYHabilidadesDePersonaje.idModelo3D));
@@ -26,7 +26,7 @@ namespace Gameplay.UsoDeCartas
             _personajeBuilder.WithRutaComponent(estadististicasYHabilidadesDePersonaje.idRutaComponent);
             _personajeBuilder.WithEstadisticasCarta(estadististicasYHabilidadesDePersonaje.EstadisticasCarta);
             _personajeBuilder.WithPosition(hitPoint);
-            InstanciarPersonaje(_personajeBuilder, true);
+            InstanciarPersonaje(_personajeBuilder, esEnemigo);
         }
         
         void InstanciarPersonaje(PersonajeBuilder personajeBuilder, bool seraEnemigoElPersonaje)

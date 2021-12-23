@@ -6,5 +6,6 @@ namespace Gameplay.NewGameStates
     {
         Stack<string> GetBaraja();
         void AddCarta(string cartaTemplateId);
+        string GetCartaRandom();
     }
 }

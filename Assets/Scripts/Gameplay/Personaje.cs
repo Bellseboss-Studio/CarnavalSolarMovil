@@ -117,7 +117,7 @@ namespace Gameplay
 
         public void GolpearTarget()
         {
-            if (_estadisticasCarta.DistanciaDeInteraccion > 2)
+            if (_estadisticasCarta.DistanciaDeInteraccion > 3)
             {
                 _animador.SetBool("estaGolpeandoDistancia", true);
             }

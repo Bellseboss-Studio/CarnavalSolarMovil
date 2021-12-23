@@ -1,4 +1,5 @@
 ﻿using Gameplay.NewGameStates;
+using Gameplay.UsoDeCartas;
 using UnityEngine;
 
 namespace ServiceLocatorPath
@@ -8,6 +9,7 @@ namespace ServiceLocatorPath
         [SerializeField] private GameObject prefab;
         [SerializeField] private ServicioDeTiempo _servicioDeTiempo;
         [SerializeField] private ServicioDeEnergia _servicioDeEnergia;
+        [SerializeField] private ServicioDeInstanciadoDeEnemigos manejadorDeEnemigos;
         
         
         private void Awake()
@@ -23,6 +25,7 @@ namespace ServiceLocatorPath
             ServiceLocator.Instance.RegisterService<IServicioDeEnergia>(_servicioDeEnergia);
             var servicioDeBaraja = new ServicioDeBaraja();
             ServiceLocator.Instance.RegisterService<IBarajaDelPlayer>(servicioDeBaraja);
+            ServiceLocator.Instance.RegisterService<IEnemyInstantiate>(manejadorDeEnemigos);
             DontDestroyOnLoad(gameObject);
         }
     }
