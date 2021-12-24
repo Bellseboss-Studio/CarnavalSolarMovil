@@ -10,7 +10,7 @@ namespace ServiceLocatorPath
         [SerializeField] private ServicioDeTiempo _servicioDeTiempo;
         [SerializeField] private ServicioDeEnergia _servicioDeEnergia;
         [SerializeField] private ServicioDeInstanciadoDeEnemigos manejadorDeEnemigos;
-        
+        [SerializeField] private ColocacionCartas colocacionCartas;
         
         private void Awake()
         {
@@ -21,6 +21,7 @@ namespace ServiceLocatorPath
                 return;
             }
             var playFab = new PlayFabCustom();
+            ServiceLocator.Instance.RegisterService<IColocacionCartas>(colocacionCartas);
             ServiceLocator.Instance.RegisterService<IPlayFabCustom>(playFab);
             ServiceLocator.Instance.RegisterService<IServicioDeTiempo>(_servicioDeTiempo);
             ServiceLocator.Instance.RegisterService<IServicioDeEnergia>(_servicioDeEnergia);

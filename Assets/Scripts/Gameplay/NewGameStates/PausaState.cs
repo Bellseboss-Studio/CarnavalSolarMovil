@@ -22,7 +22,8 @@ namespace Gameplay.NewGameStates
         {
             ServiceLocator.Instance.GetService<IServicioDeEnergia>().AddEnergy();
             _factoriaCarta.CrearPrimerasCartas();
-            ServiceLocator.Instance.GetService<IServicioDeTiempo>().ComienzaAContarElTiempo();
+            _factoriaCarta.CrearCartasEnHuecos();
+            ServiceLocator.Instance.GetService<IServicioDeTiempo>().ComienzaAContarElTiempo(3);
         }
 
         public void FinishConfiguration()

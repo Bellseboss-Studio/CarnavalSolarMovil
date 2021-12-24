@@ -2,22 +2,21 @@
 using System.Threading.Tasks;
 using Gameplay.PersonajeStates;
 using ServiceLocatorPath;
-using UnityEngine;
 
 namespace Gameplay.NewGameStates
 {
-    public class JugandoState : IEstadoDeJuego
+    public class ColocandoHeroeState : IEstadoDeJuego
     {
         private IMediadorDeEstadosDelJuego _mediadorDeEstadosDelJuego;
 
-        public JugandoState(IMediadorDeEstadosDelJuego mediadorDeEstadosDelJuego)
+        public ColocandoHeroeState(IMediadorDeEstadosDelJuego mediadorDeEstadosDelJuego)
         {
             _mediadorDeEstadosDelJuego = mediadorDeEstadosDelJuego;
         }
 
         public void InitialConfiguration()
         {
-            ServiceLocator.Instance.GetService<IServicioDeTiempo>().ComienzaAContarElTiempo(2);
+            ServiceLocator.Instance.GetService<IServicioDeTiempo>().ComienzaAContarElTiempo(1);
         }
 
         public void FinishConfiguration()
@@ -25,20 +24,12 @@ namespace Gameplay.NewGameStates
             ServiceLocator.Instance.GetService<IServicioDeTiempo>().DejaDeContarElTiempo();
         }
 
-        
         public async Task<PersonajeStateResult> DoAction(object data)
         {
-            //Debug.Log("Estas en estado de jugar");
-            while (_mediadorDeEstadosDelJuego.EstanJugando())
+            while (_mediadorDeEstadosDelJuego.SeCololoElHeroe())
             {
-                if (_mediadorDeEstadosDelJuego.SeTerminoElJuego())
-                {
-                    await Task.Delay(TimeSpan.FromMilliseconds(100));
-                    return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.FinDeJuego);
-                }
                 await Task.Delay(TimeSpan.FromMilliseconds(100));
             }
-            //Debug.Log("Estas en estado de pausa");
             await Task.Delay(TimeSpan.FromMilliseconds(100));
             return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.Pausa);
         }
