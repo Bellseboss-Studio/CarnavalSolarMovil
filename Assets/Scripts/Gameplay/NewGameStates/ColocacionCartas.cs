@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using ServiceLocatorPath;
 using UnityEngine;
 
 namespace Gameplay.NewGameStates
@@ -15,7 +16,7 @@ namespace Gameplay.NewGameStates
         {
             barajaDeCartasId = new Stack<string>();
             cartasEnMano = new Stack<string>();
-            barajaDeCartasId = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetBaraja();
+            barajaDeCartasId = ServiceLocator.Instance.GetService<IServicioDeBarajasDisponibles>().GetBarajaElejida();
         }
 
         public List<GameObject> GetPosicionesDeCartas()
@@ -35,7 +36,7 @@ namespace Gameplay.NewGameStates
 
         public GameObject GetPosicionDeCarta()
         {
-            return posicionesDeCartas[cartasEnMano.Count];
+            return posicionesDeCartas[cartasEnMano.Count - 1];
         }
 
         public string GetNextCartaId()
