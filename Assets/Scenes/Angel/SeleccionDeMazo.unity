@@ -1725,10 +1725,58 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2513701326941724067, guid: 83357cb2a6969064994360cc339fcc2c, type: 3}
       propertyPath: listaDeIdDeCartasEnBaraja.Array.size
-      value: 1
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2513701326941724067, guid: 83357cb2a6969064994360cc339fcc2c, type: 3}
       propertyPath: listaDeIdDeCartasEnBaraja.Array.data[0]
+      value: E03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513701326941724067, guid: 83357cb2a6969064994360cc339fcc2c, type: 3}
+      propertyPath: listaDeIdDeCartasEnBaraja.Array.data[1]
+      value: E03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513701326941724067, guid: 83357cb2a6969064994360cc339fcc2c, type: 3}
+      propertyPath: listaDeIdDeCartasEnBaraja.Array.data[2]
+      value: E03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513701326941724067, guid: 83357cb2a6969064994360cc339fcc2c, type: 3}
+      propertyPath: listaDeIdDeCartasEnBaraja.Array.data[3]
+      value: E03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513701326941724067, guid: 83357cb2a6969064994360cc339fcc2c, type: 3}
+      propertyPath: listaDeIdDeCartasEnBaraja.Array.data[4]
+      value: E03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513701326941724067, guid: 83357cb2a6969064994360cc339fcc2c, type: 3}
+      propertyPath: listaDeIdDeCartasEnBaraja.Array.data[5]
+      value: E03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513701326941724067, guid: 83357cb2a6969064994360cc339fcc2c, type: 3}
+      propertyPath: listaDeIdDeCartasEnBaraja.Array.data[6]
+      value: E03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513701326941724067, guid: 83357cb2a6969064994360cc339fcc2c, type: 3}
+      propertyPath: listaDeIdDeCartasEnBaraja.Array.data[7]
+      value: E03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513701326941724067, guid: 83357cb2a6969064994360cc339fcc2c, type: 3}
+      propertyPath: listaDeIdDeCartasEnBaraja.Array.data[8]
+      value: E03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513701326941724067, guid: 83357cb2a6969064994360cc339fcc2c, type: 3}
+      propertyPath: listaDeIdDeCartasEnBaraja.Array.data[9]
+      value: E03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513701326941724067, guid: 83357cb2a6969064994360cc339fcc2c, type: 3}
+      propertyPath: listaDeIdDeCartasEnBaraja.Array.data[10]
+      value: E03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513701326941724067, guid: 83357cb2a6969064994360cc339fcc2c, type: 3}
+      propertyPath: listaDeIdDeCartasEnBaraja.Array.data[11]
+      value: E03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513701326941724067, guid: 83357cb2a6969064994360cc339fcc2c, type: 3}
+      propertyPath: listaDeIdDeCartasEnBaraja.Array.data[12]
       value: E03
       objectReference: {fileID: 0}
     - target: {fileID: 6578856084272046412, guid: 83357cb2a6969064994360cc339fcc2c, type: 3}
