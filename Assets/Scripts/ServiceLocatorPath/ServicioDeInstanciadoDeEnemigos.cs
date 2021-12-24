@@ -19,7 +19,7 @@ namespace ServiceLocatorPath
             pointToInstantiate.x += point.transform.position.x;
             pointToInstantiate.z += point.transform.position.z;
             pointToInstantiate.y = point.transform.position.y;
-            Debug.Log(pointToInstantiate);
+            //Debug.Log(pointToInstantiate);
             var carta = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
             var cartaTemplate = _factoriaCarta.Create(carta, gameObject);
             factoriaPersonaje.CreatePersonaje(pointToInstantiate, cartaTemplate.GetEstadisticas(), true);

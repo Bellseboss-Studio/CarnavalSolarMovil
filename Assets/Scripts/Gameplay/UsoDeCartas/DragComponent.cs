@@ -97,7 +97,6 @@ public class DragComponent : MonoBehaviour
         if (!canUseComponent) return;
         var mousePos = Input.mousePosition;
         var rectTransform = gameObject.GetComponent<RectTransform>();
-        Debug.Log(_canvasRectTransform.rect.width);
         rectTransform.localPosition = new Vector3(mousePos.x - (_canvasRectTransform.rect.width / 2),
             mousePos.y - (_canvasRectTransform.rect.height / 2), 10);
         

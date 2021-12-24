@@ -14,6 +14,7 @@ namespace ServiceLocatorPath
         
         private void Awake()
         {
+            var servicioDeBaraja = new ServicioDeBaraja();
             if (FindObjectsOfType<Installer>().Length > 1)
             {
                 Destroy(gameObject);
@@ -23,7 +24,6 @@ namespace ServiceLocatorPath
             ServiceLocator.Instance.RegisterService<IPlayFabCustom>(playFab);
             ServiceLocator.Instance.RegisterService<IServicioDeTiempo>(_servicioDeTiempo);
             ServiceLocator.Instance.RegisterService<IServicioDeEnergia>(_servicioDeEnergia);
-            var servicioDeBaraja = new ServicioDeBaraja();
             ServiceLocator.Instance.RegisterService<IBarajaDelPlayer>(servicioDeBaraja);
             ServiceLocator.Instance.RegisterService<IEnemyInstantiate>(manejadorDeEnemigos);
             DontDestroyOnLoad(gameObject);
