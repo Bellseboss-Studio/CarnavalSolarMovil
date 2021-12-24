@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using Random = UnityEngine.Random;
 
 public class SfxManager : MonoBehaviour, ICheckDependencies
 {
@@ -11,6 +12,9 @@ public class SfxManager : MonoBehaviour, ICheckDependencies
 
     [Header("UI SFx")]
     [SerializeField] private List<GameObject> m_UISfx;
+
+    [Header("Footsteps Sounds")]
+    [SerializeField] private List<AudioClip> m_FsClips;
 
     [Header ("Activation Sfx")]
     [SerializeField] private List<GameObject> m_AttacksSfx;
@@ -50,7 +54,17 @@ public class SfxManager : MonoBehaviour, ICheckDependencies
         }
     }
 
-    
+
+
+    public void PlayFootstepSound(string character, AudioSource audioSource)
+    {
+        Debug.Log($"{character} Character character character something");
+        audioSource.maxDistance = 40;
+        audioSource.spatialBlend = 0.7f;
+        audioSource.outputAudioMixerGroup = SfxOutput;
+        audioSource.PlayOneShot(m_FsClips[Random.Range(0, m_FsClips.Count)]);
+    }
+
     public void PlaySound(string name)
     {
         StartCoroutine(ActivateSfxObject(name));
