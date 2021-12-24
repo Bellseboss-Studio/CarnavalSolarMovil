@@ -37,10 +37,10 @@ namespace Gameplay.Personajes.TargetComponents
             {
                 if (!_personajeMasCercano.GetTargetComponent().GetTargetTargetedBy().Contains(_personaje))
                 {
-                    Debug.Log("se añadio a la lista");
+                    //Debug.Log("se añadio a la lista");
                     _personajeMasCercano.GetTargetComponent().AddTargetedBy(_personaje);
                 }
-                Debug.Log(_personajeMasCercano.GetTargetComponent().GetTargetTargetedBy().Contains(_personaje));
+                //Debug.Log(_personajeMasCercano.GetTargetComponent().GetTargetTargetedBy().Contains(_personaje));
             }
         }
 
