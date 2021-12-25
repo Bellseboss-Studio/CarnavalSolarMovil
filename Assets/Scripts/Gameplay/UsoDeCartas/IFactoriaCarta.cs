@@ -7,10 +7,8 @@ namespace Gameplay.UsoDeCartas
     {
         void Configurate(IColocacionCartas colocacionCartas, CartasConfiguracion cartasConfiguracion, GameObject canvasDeLasCartas, FactoriaPersonaje factoriaPersonaje, GameObject canvasPrincipal);
 
-        CartaTemplate Create(string id, GameObject posicion, int posicionEnBaraja);
+        CartaTemplate Create(string id, GameObject posicion);
         void CrearPrimerasCartas();
         void DestruirLasCartas();
-        void CrearCartasEnHuecos();
-        CartaTemplate CreateEnemigo(string carta, GameObject gameObject);
     }
 }

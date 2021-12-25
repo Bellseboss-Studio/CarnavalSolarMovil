@@ -24,12 +24,10 @@ namespace Gameplay.UsoDeCartas
             _canvasPrincipal = canvasPrincipal;
         }
 
-        public CartaTemplate Create(string id, GameObject posicion, int posicionEnBaraja)
+        public CartaTemplate Create(string id, GameObject posicion)
         {
             var cartaTemplate = _cartasConfiguracion.GetCartaTemplate(id);
             var cartaInstancia = Instantiate(cartaTemplate, _canvasDeLasCartas.transform);
-            cartaInstancia.PosicionEnBaraja = posicionEnBaraja;
-            _colocacionCartas.HayCartaEnPosicion(posicionEnBaraja);
             cartaInstancia.transform.position = posicion.transform.position;
             var dragDeLaCarta = cartaInstancia.GetComponent<DragComponent>();
             dragDeLaCarta.Configure(posicion.GetComponent<RectTransform>(), _canvasDeLasCartas.GetComponent<RectTransform>());
@@ -37,22 +35,11 @@ namespace Gameplay.UsoDeCartas
             return cartaInstancia;
         }
 
-        public CartaTemplate CreateEnemigo(string id, GameObject posicion)
-        {
-            var cartaTemplate = _cartasConfiguracion.GetCartaTemplate(id);
-            var cartaInstancia = Instantiate(cartaTemplate, _canvasDeLasCartas.transform);
-            cartaInstancia.transform.position = posicion.transform.position;
-            var dragDeLaCarta = cartaInstancia.GetComponent<DragComponent>();
-            dragDeLaCarta.Configure(posicion.GetComponent<RectTransform>(), _canvasDeLasCartas.GetComponent<RectTransform>());
-            cartaInstancia.Configurate(_factoriaPersonaje);
-            return cartaInstancia;
-        }
-        
         public void CrearPrimerasCartas()
         {
             while (_colocacionCartas.PuedoSacarOtraCarta())
             {
-                Create(_colocacionCartas.GetNextCartaId(), _colocacionCartas.GetSiguientePosicionDeCarta(), _colocacionCartas.GetPosicionDeUltimaCartaInstanciada());
+                Create(_colocacionCartas.GetNextCartaId(), _colocacionCartas.GetPosicionDeCarta());
             }
         }
 
@@ -66,16 +53,6 @@ namespace Gameplay.UsoDeCartas
             }
 
             cartasInstanciadas = new Stack<CartaTemplate>();
-        }
-
-        public void CrearCartasEnHuecos()
-        {
-            var posicionesSinCartas = _colocacionCartas.ObtenerPocisionesSinCartas();
-            foreach (var posicionSinCarta in posicionesSinCartas)
-            {
-                Debug.Log($"colocandoCartaEnPosicion {posicionSinCarta}");
-                Create(_colocacionCartas.GetNextCartaId(), _colocacionCartas.GetPosicionDeCarta(posicionSinCarta),posicionSinCarta);
-            }
         }
     }
 }

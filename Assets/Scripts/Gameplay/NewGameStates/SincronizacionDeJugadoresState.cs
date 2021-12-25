@@ -35,7 +35,7 @@ namespace Gameplay.NewGameStates
             {
                 await Task.Delay(TimeSpan.FromMilliseconds(100));
                 ServiceLocator.Instance.GetService<IServicioDeEnergia>().Init();
-                return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.ColocandoHeroe);
+                return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.Pausa);
             }
             await Task.Delay(TimeSpan.FromMilliseconds(100));
             return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.SincronizacionDeJugadores);

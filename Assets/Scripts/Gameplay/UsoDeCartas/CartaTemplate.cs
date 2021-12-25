@@ -1,4 +1,3 @@
-using Gameplay.NewGameStates;
 using ServiceLocatorPath;
 using TMPro;
 using UnityEngine;
@@ -21,14 +20,9 @@ namespace Gameplay.UsoDeCartas
         [SerializeField] private TextMeshProUGUI valorCarta;
         [SerializeField] private ZonaDeDropeo zona;
         [SerializeField] private AnimationClip caminar, golpear, morir, idle;
-        [SerializeField] private int posicionEnBaraja;
         public string Id => id;
-        public int PosicionEnBaraja
-        {
-            get => posicionEnBaraja;
-            set => posicionEnBaraja = value;
-        }
-
+        
+        
         public void Configurate(FactoriaPersonaje factoriaPersonaje)
         {
             _dragComponent = GetComponent<DragComponent>();
@@ -53,7 +47,6 @@ namespace Gameplay.UsoDeCartas
         {
             if (ServiceLocator.Instance.GetService<IServicioDeEnergia>().TieneEnergiaSuficiente(costoEnergia))
             {
-                ServiceLocator.Instance.GetService<IColocacionCartas>().YaNoHayCartaEnPosicion(posicionEnBaraja);
                 _factoriaPersonaje.CreatePersonaje(hitPoint,GetEstadisticas());
                 gameObject.SetActive(false);
                 ServiceLocator.Instance.GetService<IEnemyInstantiate>().InstanciateEnemy(_factoriaPersonaje);

@@ -3,9 +3,8 @@
     public interface IServicioDeTiempo
     {
         bool EstaPausadoElJuego();
-        void ComienzaAContarElTiempo(int queTiempoEstoyContando);
+        void ComienzaAContarElTiempo();
         void DejaDeContarElTiempo();
         bool EstanJugando();
-        bool SeEstaColocandoElHeroe();
     }
 }

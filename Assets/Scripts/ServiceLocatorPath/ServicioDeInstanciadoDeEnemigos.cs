@@ -21,7 +21,7 @@ namespace ServiceLocatorPath
             pointToInstantiate.y = point.transform.position.y;
             //Debug.Log(pointToInstantiate);
             var carta = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
-            var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
+            var cartaTemplate = _factoriaCarta.Create(carta, gameObject);
             factoriaPersonaje.CreatePersonaje(pointToInstantiate, cartaTemplate.GetEstadisticas(), true);
             Destroy(cartaTemplate.gameObject);
         }

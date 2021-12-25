@@ -8,14 +8,8 @@ namespace Gameplay.NewGameStates
         List<GameObject> GetPosicionesDeCartas();
 
         int GetNumeroDePosiciones();
-        int GetPosicionDeUltimaCartaInstanciada();
         bool PuedoSacarOtraCarta();
-        GameObject GetSiguientePosicionDeCarta();
+        GameObject GetPosicionDeCarta();
         string GetNextCartaId();
-        void HayCartaEnPosicionInstanciada();
-        void YaNoHayCartaEnPosicion(int pos);
-        List<int> ObtenerPocisionesSinCartas();
-        GameObject GetPosicionDeCarta(int posicionSinCarta);
-        void HayCartaEnPosicion(int posicionSinCarta);
     }
 }
