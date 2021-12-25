@@ -17,7 +17,7 @@ namespace Gameplay.NewGameStates
 
         public void InitialConfiguration()
         {
-            ServiceLocator.Instance.GetService<IServicioDeTiempo>().ComienzaAContarElTiempo();
+            ServiceLocator.Instance.GetService<IServicioDeTiempo>().ComienzaAContarElTiempo(2);
         }
 
         public void FinishConfiguration()
