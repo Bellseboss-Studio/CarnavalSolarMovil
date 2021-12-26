@@ -8,5 +8,6 @@
         public bool SeSincronizaronLosJugadores();
         void SalirDelBuclePrincipal();
         bool EstanJugando();
+        bool SeCololoElHeroe();
     }
 }
