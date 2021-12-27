@@ -257,9 +257,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e6538b3fc3de4483ba4b5a2d6b505264, type: 3}
   - {fileID: 8300000, guid: 38b56d01ee6204cbdb0e08089e440037, type: 3}
   - {fileID: 8300000, guid: 6bb84afeeec5145c98e2d81a7d3fdcf0, type: 3}
+  m_DeathClips:
+  - {fileID: 8300000, guid: f4764252e946b4d5d960289496591a50, type: 3}
+  - {fileID: 8300000, guid: 058502a396b1d4876a494cb16dc047a2, type: 3}
+  - {fileID: 8300000, guid: 5f523893c5b9b446a9d0a67a64737383, type: 3}
+  - {fileID: 8300000, guid: f656e62bc42c84dbaa4c0dd97c809f8b, type: 3}
   m_AudioSource: {fileID: 5151858218852440148}
   m_CharacterName: 
   m_Output: {fileID: 7080800857700382711, guid: 8630ef64c34f243f682d65f44a9bc495, type: 2}
+  m_FsVolume: 0.76
+  m_DeathVolume: 1
 --- !u!82 &5151858218852440148
 AudioSource:
   m_ObjectHideFlags: 0
@@ -281,7 +288,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 2.64
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 20.99
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -316,7 +323,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.822
+      value: 0.9
       inSlope: 0
       outSlope: 0
       tangentMode: 0

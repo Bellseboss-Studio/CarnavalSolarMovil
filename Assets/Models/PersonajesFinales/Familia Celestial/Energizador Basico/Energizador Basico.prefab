@@ -663,7 +663,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 2.64
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 20.99
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -698,7 +698,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.822
+      value: 0.9
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -751,14 +751,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FsClips:
-  - {fileID: 8300000, guid: 825f552db955d40a68b1e274fecbdd13, type: 3}
-  - {fileID: 8300000, guid: 312f03c2944194e379b4b50ebc3041b3, type: 3}
-  - {fileID: 8300000, guid: de04451b706ec4abaaaa8752e6c2459f, type: 3}
-  - {fileID: 8300000, guid: 3b736c8faa4424bdab4ed93a9d1923c7, type: 3}
+  - {fileID: 8300000, guid: 493af18466150498aaf64cc6f29188af, type: 3}
+  - {fileID: 8300000, guid: aaad1c2779dbe4c9087c5804bf086c9d, type: 3}
+  - {fileID: 8300000, guid: 34296002213e64b8a8ab4238539196b1, type: 3}
+  - {fileID: 8300000, guid: 0bb3a560b800e4198aa1dca9f297220b, type: 3}
+  m_DeathClips: []
   m_AudioSource: {fileID: 1878386891723627547}
   m_CharacterName: 
   m_Output: {fileID: 7080800857700382711, guid: 8630ef64c34f243f682d65f44a9bc495, type: 2}
-  m_Volume: 1
+  m_FsVolume: 0.76
+  m_DeathVolume: 1
 --- !u!1 &4842160231493220690
 GameObject:
   m_ObjectHideFlags: 0

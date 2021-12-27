@@ -572,7 +572,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 46.1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1306,6 +1306,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiempoDePausa: 5
   tiempoDeJuego: 5
+  tiempoDeColocacionHeroe: 0
+  progresBarTiempo: {fileID: 0}
 --- !u!114 &888163690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1336,6 +1338,7 @@ MonoBehaviour:
   _servicioDeTiempo: {fileID: 888163689}
   _servicioDeEnergia: {fileID: 888163690}
   manejadorDeEnemigos: {fileID: 888163693}
+  colocacionCartas: {fileID: 0}
 --- !u!4 &888163692
 Transform:
   m_ObjectHideFlags: 0
@@ -1617,7 +1620,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.2505211, y: 0.45600003}
   m_AnchorMax: {x: 0.5, y: 0.5444432}
-  m_AnchoredPosition: {x: 127.2, y: 215.99997}
+  m_AnchoredPosition: {x: 127.19998, y: 215.99997}
   m_SizeDelta: {x: 2, y: 1.7199707}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1191245532
@@ -2263,7 +2266,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.05
+  m_fontSize: 70.75
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3250,7 +3253,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.45400003}
   m_AnchorMax: {x: 0.2505211, y: 0.5444432}
-  m_AnchoredPosition: {x: 126.699936, y: 216.99997}
+  m_AnchoredPosition: {x: 126.69995, y: 216.99997}
   m_SizeDelta: {x: -1, y: -0.27999878}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1859629442
