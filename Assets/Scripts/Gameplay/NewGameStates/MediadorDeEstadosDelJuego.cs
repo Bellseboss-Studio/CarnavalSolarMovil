@@ -19,6 +19,7 @@ namespace Gameplay.NewGameStates
         private bool _juegoTerminado = false;
         private bool _juegoConfigurado = false;
         private bool _puedeSalirDelBucleDeEstados = false;
+        private bool _seColocoElHeroe = false;
 
         private void Awake()
         {
@@ -34,7 +35,7 @@ namespace Gameplay.NewGameStates
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Jugando, new JugandoState(this));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Pausa, new PausaState(this, _factoriaCarta));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.FinDeJuego, new FinDeJuegoState(this));
-            _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.InstanciarHeroe, new InstanciarHeroeState(this));
+            _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.ColocandoHeroe, new ColocandoHeroeState(this));
             StartState(_configuracionDeLosEstadosDelJuego.GetState(1));
             finalizarConfiguracionButton.onClick.AddListener(() => _juegoConfigurado = true);
             pauseButton.onClick.AddListener(() => _juegoPausado = true);
@@ -91,6 +92,11 @@ namespace Gameplay.NewGameStates
         public bool EstanJugando()
         {
             return ServiceLocator.Instance.GetService<IServicioDeTiempo>().EstanJugando();
+        }
+
+        public bool SeCololoElHeroe()
+        {
+            return ServiceLocator.Instance.GetService<IServicioDeTiempo>().SeEstaColocandoElHeroe();
         }
 
         private void OnDisable()
