@@ -29,7 +29,11 @@ namespace Gameplay
             }
         }
 
-
+        public virtual void InteraccionAlIniciarTurno (Personaje origen)
+        {
+            
+        }
+        
         public virtual void Interactuar(List<Personaje> target)
         {
             _personaje.GolpearTarget();
