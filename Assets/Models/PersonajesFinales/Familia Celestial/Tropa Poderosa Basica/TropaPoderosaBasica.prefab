@@ -802,10 +802,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21d3e4144853438786aaaaa17cc1429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FsClips: []
+  m_FsClips:
+  - {fileID: 8300000, guid: 2b43a8d6d53c849919ee7e1d9948698e, type: 3}
+  - {fileID: 8300000, guid: 7c96a62afc8344547a4a1fbd40153e2a, type: 3}
+  - {fileID: 8300000, guid: 9855c5da368394840b43101e5feae801, type: 3}
+  - {fileID: 8300000, guid: 52d02ce4e8da346998cb9cb554884a60, type: 3}
   m_AudioSource: {fileID: -4958664187690860155}
   m_CharacterName: 
   m_Output: {fileID: 7080800857700382711, guid: 8630ef64c34f243f682d65f44a9bc495, type: 2}
+  m_Anim: {fileID: 0}
+  m_Volume: 0.712
 --- !u!1 &4753863735120355909
 GameObject:
   m_ObjectHideFlags: 0

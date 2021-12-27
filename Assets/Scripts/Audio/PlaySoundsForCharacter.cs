@@ -10,6 +10,9 @@ public class PlaySoundsForCharacter : MonoBehaviour, ICheckDependencies
     [SerializeField] private AudioSource m_AudioSource;
     [SerializeField] private string m_CharacterName;
     [SerializeField] private AudioMixerGroup m_Output;
+    
+    [Range(0.5f, 1.0f)]
+    [SerializeField] private float m_Volume = 1.0f;
 
     private void Start()
     {
@@ -18,6 +21,7 @@ public class PlaySoundsForCharacter : MonoBehaviour, ICheckDependencies
             .Replace(" ", "")
             .Replace("_","");
 
+        
     }
     public void PlayAttackSound()
     {
@@ -34,7 +38,7 @@ public class PlaySoundsForCharacter : MonoBehaviour, ICheckDependencies
         if(m_FsClips.Count > 0)
         {
             m_AudioSource.maxDistance = 40;
-            m_AudioSource.volume = Random.Range(0.5f, 0.7f);
+            m_AudioSource.volume = m_Volume - Random.Range(0f, 0.4f);
             m_AudioSource.pitch = Random.Range(0.9f, 1.2f);
             m_AudioSource.spatialBlend = 0.7f;
             m_AudioSource.outputAudioMixerGroup = m_Output;

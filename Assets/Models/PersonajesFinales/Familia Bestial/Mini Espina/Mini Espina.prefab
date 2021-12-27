@@ -1204,10 +1204,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FsClips:
-  - {fileID: 8300000, guid: 3f3beffc0043e43c6a8e601626fa9045, type: 3}
-  - {fileID: 8300000, guid: 70b91ff7b5e3546f39df9ec6cef2d326, type: 3}
-  - {fileID: 8300000, guid: 0e2dbe7c381a841ed91f8eb462f1c8e9, type: 3}
-  - {fileID: 8300000, guid: 3d34b2daf49d54ed3b87d5076d3ac157, type: 3}
+  - {fileID: 8300000, guid: f7cb4b5e323474dfdb1fffacd1415ad1, type: 3}
+  - {fileID: 8300000, guid: 87ac52ce47e3c4432990668ca3c0b283, type: 3}
+  - {fileID: 8300000, guid: 43094ee29593849fc9d06c3585a49743, type: 3}
+  - {fileID: 8300000, guid: 9d3d64367dec64d1c892fa5dba1f6e09, type: 3}
   m_AudioSource: {fileID: 5027538832450023368}
   m_CharacterName: 
   m_Output: {fileID: 7080800857700382711, guid: 8630ef64c34f243f682d65f44a9bc495, type: 2}
