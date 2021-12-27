@@ -1289,6 +1289,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797114229}
   m_CullTransparentMesh: 1
+--- !u!1 &805363953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 805363955}
+  - component: {fileID: 805363954}
+  m_Layer: 0
+  m_Name: ComportamientoDePersonajesFacade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &805363954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805363953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b77a618235f20e43a0975bdef626912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  factoriaPersonaje: {fileID: 49721935}
+  _servicioDeTiempo: {fileID: 888163689}
+--- !u!4 &805363955
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805363953}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 882.79083, y: 555.7971, z: 198.4055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &823548891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,9 +1536,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff4b67d6055459b96dfdd41c0f5e308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiempoDePausa: 5
-  tiempoDeJuego: 5
-  tiempoDeColocacionHeroe: 15
+  tiempoDePausa: 2
+  tiempoDeJuego: 2
+  tiempoDeColocacionHeroe: 2
   progresBarTiempo: {fileID: 1435366918}
 --- !u!114 &888163690
 MonoBehaviour:
@@ -1508,7 +1553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textoEnergia: {fileID: 1361471717}
-  energiaASumar: 10
+  energiaPorTurno: 10
 --- !u!114 &888163691
 MonoBehaviour:
   m_ObjectHideFlags: 0

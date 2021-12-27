@@ -14,8 +14,8 @@ namespace Gameplay.Personajes.InteraccionComponents
                 var aliadosCercanos = _interaccionComponent.GetAliadosCercanos(_personaje);
                 foreach (var aliadoCercano in aliadosCercanos)
                 {
-                    aliadoCercano.velocidadDeInteraccion *= 0.8f;
-                    aliadoCercano.velocidadDeMovimiento *= 1.2f;
+                    _interaccionComponent.AumentarVelocidadMovimientoPersonajePorSegundos(aliadoCercano, 50, 5);
+                    _interaccionComponent.DisminuirVelocidadInteraciconPersonajePorSegundos(aliadoCercano, 50, 5);
                 }
                 _personaje.Muerte();
             }

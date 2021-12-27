@@ -24,6 +24,7 @@ namespace Gameplay
         public bool laPartidaEstaCongelada = false;
         private bool estaVivo = true;
         public bool isTargeteable = true;
+        public bool esInmune = false;
         public string cosaDiferenciadora;
         public float distanciaDeInteraccion;
         public float health = 10;
@@ -31,8 +32,13 @@ namespace Gameplay
         public float velocidadDeMovimiento;
         public float damage;
         public float escudo;
+        public float armadura;
         private EstadisticasCarta _estadisticasCarta;
         public string Id => id;
+        public OnMuerte MuerteDelegate;
+        public delegate void OnMuerte(Personaje personaje);
+        
+        
         private void Awake()
         {
             
@@ -59,8 +65,8 @@ namespace Gameplay
             _rutaComponent.Configuration(GetComponent<NavMeshAgent>(), this, rutaBehaviour);
             _interaccionComponent.Configurate(this, interaccionBehaviour);
             _personajeStatesConfiguration = new PersonajeStatesConfiguration();
-            _personajeStatesConfiguration.AddState(PersonajeStatesConfiguration.CongeladoState, new CongeladoState(this));
-            _personajeStatesConfiguration.AddState(PersonajeStatesConfiguration.BuscarTargetState, new BuscarTargetState(_targetComponent));
+            _personajeStatesConfiguration.AddState(PersonajeStatesConfiguration.CongeladoState, new CongeladoState(this, _interaccionComponent));
+            _personajeStatesConfiguration.AddState(PersonajeStatesConfiguration.BuscarTargetState, new BuscarTargetState(_targetComponent, this));
             _personajeStatesConfiguration.AddState(PersonajeStatesConfiguration.DesplazarseHaciaElTargetState, new DesplazarseHaciaElTargetState(this, _rutaComponent));
             _personajeStatesConfiguration.AddState(PersonajeStatesConfiguration.InteractuarConElTargetState, new InteractuarConElTargetState(this));
             StartState(_personajeStatesConfiguration.GetState(0));
@@ -103,6 +109,7 @@ namespace Gameplay
             GetTargetComponent().HeDejadoDeTargetear();
             isTargeteable = false;
             _animador.SetTrigger("murio");
+            MuerteDelegate?.Invoke(this);
         }
 
         private void OnDestroy()
