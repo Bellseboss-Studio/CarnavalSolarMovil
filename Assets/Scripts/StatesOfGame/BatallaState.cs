@@ -16,12 +16,14 @@ namespace StatesOfEnemies
         public IEnumerator DoAction(IBehavior behavior)
         {
             Debug.Log("Batalla");
-            _mediator.ConfigurePlayers();
+            MxManager.MxInstance.PlayMusicState(GameStatesConfiguration.BatallaState);
+            _mediator.ConfiguraCooldownsPorPersonaje();
             _mediator.MuestraLaUiDeBatalla();
             while (!_mediator.OncePlayersIsDead())
             {
                 yield return new WaitForSeconds(0.1f);
             }
+            _mediator.HideBattleUi();
             behavior.SetNextState(GameStatesConfiguration.FinDeBatallaState);
         }
     }

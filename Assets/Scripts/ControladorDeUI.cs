@@ -63,6 +63,17 @@ public class ControladorDeUI : MonoBehaviour
 
     public void Restart()
     {
-        personajesPorComprar.Restart();
+        personajesPorComprar.Restart(CuandoEsSeleccionadoElPersonaje);
     }
+
+    public void HabilitarMenu()
+    {
+        personajesPorComprar.ReinicarMenu();
+    }
+
+    public void ClearPlayer()
+    {
+        _player1.ClearPersonajesJugablesElejidos();
+    }
+    
 }

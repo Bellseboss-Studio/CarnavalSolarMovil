@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class ControladorDeBatallaParaPersonajes : MonoBehaviour
 {
-    [SerializeField] private DragComponent ataqueNormal, ataqueEspecial;
     [SerializeField] private bool isElOtroPlayer;
-    public DragComponent AtaqueNormal => ataqueNormal;
-    public DragComponent AtaqueEspecial => ataqueEspecial;
+    [SerializeField] private PanelDePoderesController panelDePoderesController;
 
+    public PanelDePoderesController GetPanelDePoderesController()
+    {
+        return panelDePoderesController;
+    }
+    
     public bool DebeConfigurar => !isElOtroPlayer;
 }

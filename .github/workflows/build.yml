@@ -22,7 +22,8 @@ jobs:
           - 2020.3.11f1
         targetPlatform:
           - Android
-          - iOS
+          - StandaloneWindows64
+          #- iOS
     steps:
       - uses: actions/checkout@v2
         with:

@@ -28,12 +28,33 @@ public class PlaceOfPlayer : MonoBehaviour
             
             if (point.TryGetComponent<ControladorDeBatallaParaPersonajes>(out var controlador))
             {
-                pjview.Configurate(personajesJugablesElegidos[index], controlador);
+                pjview.Configurate(personajesJugablesElegidos[index], controlador, false);
             }
             index++;
             personajes.Add(pjview);
         }
     }
+
+    public void FulledCharacters(List<Personaje> personajesJugablesElegidos, PjView.OnApplyDamage cuandoAtaqueNormal, PjView.OnApplyDamage cuandoAtaqueEspecial)
+    {
+        var index = 0;
+        foreach (var point in points)
+        {
+            //Aqui cambiar por una factoria
+            var pjview = Instantiate(pjPrefab);
+            pjview.transform.position = point.transform.position;
+            
+            if (point.TryGetComponent<ControladorDeBatallaParaPersonajes>(out var controlador))
+            {
+                pjview.Configurate(personajesJugablesElegidos[index], controlador, true);
+                pjview.OnApplyDamageCustomEspecial += cuandoAtaqueEspecial;
+                pjview.OnApplyDamageCustomNormal += cuandoAtaqueNormal;
+            }
+            index++;
+            personajes.Add(pjview);
+        }
+    }
+
 
     public bool HayAlguienDePie()
     {
@@ -44,5 +65,41 @@ public class PlaceOfPlayer : MonoBehaviour
         }
 
         return EstanTodosVivos;
+    }
+
+    public GameObject[] GetPoints()
+    {
+        return points;
+    }
+
+    public List<PjView> GetViews()
+    {
+        return personajes;
+    }
+    
+    public void DestroyPlayableCharacters()
+    {
+        var index = 0;
+        foreach (var personaje in personajes)
+        {
+            Destroy(personaje.gameObject);
+        }
+        Configure();
+    }
+
+    public void DesConfigurePjView()
+    {
+        for (int i = 0; i < personajes.Count; i++)
+        {
+            if (points[i].TryGetComponent<ControladorDeBatallaParaPersonajes>(out var controlador))
+            {
+                personajes[i].DesConfigure(controlador);
+            }
+        }
+    }
+
+    public void DeshabilitaElDrag()
+    {
+        
     }
 }
