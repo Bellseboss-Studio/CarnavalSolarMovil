@@ -10,6 +10,9 @@ namespace Gameplay.UsoDeCartas
     {
         [SerializeField] private ConfiguracionDeModelo3DDePersonajes configuracionDeModelo3DDePersonajes;
         [SerializeField] private Personaje personaje;
+
+        public OnPersonajeCreado PersonajeCreado;
+        public delegate void OnPersonajeCreado(Personaje personaje);
         
         private void Awake()
         {
@@ -26,14 +29,16 @@ namespace Gameplay.UsoDeCartas
             _personajeBuilder.WithRutaComponent(estadististicasYHabilidadesDePersonaje.idRutaComponent);
             _personajeBuilder.WithEstadisticasCarta(estadististicasYHabilidadesDePersonaje.EstadisticasCarta);
             _personajeBuilder.WithPosition(hitPoint);
-            InstanciarPersonaje(_personajeBuilder, esEnemigo);
+            var personajeInstanciado = InstanciarPersonaje(_personajeBuilder, esEnemigo);
+            PersonajeCreado?.Invoke(personajeInstanciado);
         }
         
-        void InstanciarPersonaje(PersonajeBuilder personajeBuilder, bool seraEnemigoElPersonaje)
+        Personaje InstanciarPersonaje(PersonajeBuilder personajeBuilder, bool seraEnemigoElPersonaje)
         {
-            var personaje = personajeBuilder.Build();
-            personaje.transform.parent = transform;
-            personaje.enemigo = seraEnemigoElPersonaje;
+            var personajeInstanciado = personajeBuilder.Build();
+            personajeInstanciado.transform.parent = transform;
+            personajeInstanciado.enemigo = seraEnemigoElPersonaje;
+            return personajeInstanciado;
             // _personajes.Add(personaje);
         }
     }

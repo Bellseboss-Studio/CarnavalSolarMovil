@@ -21,6 +21,13 @@ namespace ServiceLocatorPath
         private float _valorDeLaProgresBar;
         private int _tiempoQueEstoyContando;
 
+        public delegate void OnPausarPersonajes();
+        
+        public OnPausarPersonajes PausarPersonajes;
+        public delegate void OnDespausarPersonajes();
+        
+        public OnDespausarPersonajes DespausarPersonajes;
+        
         private void Awake()
         {
             
@@ -59,7 +66,12 @@ namespace ServiceLocatorPath
 
         public bool EstaPausadoElJuego()
         {
-            return _deltaTimeLocal <= tiempoDePausa;
+            if (_deltaTimeLocal <= tiempoDePausa)
+            {
+                return true;
+            }
+            DespausarPersonajes?.Invoke();
+            return false;
         }
 
         public void ComienzaAContarElTiempo(int queTiempoEstoyContando)
@@ -76,7 +88,12 @@ namespace ServiceLocatorPath
 
         public bool EstanJugando()
         {
-            return _deltaTimeLocal <= tiempoDeJuego;
+            if (_deltaTimeLocal <= tiempoDeJuego)
+            {
+                return true;
+            }
+            PausarPersonajes?.Invoke();
+            return false;
         }
 
         public bool SeEstaColocandoElHeroe()

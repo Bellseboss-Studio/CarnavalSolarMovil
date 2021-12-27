@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Gameplay.Personajes.InteraccionComponents;
 
 namespace Gameplay
 {
@@ -11,5 +12,11 @@ namespace Gameplay
 
         public void AplicarDanioProgresivamente(Personaje origen, Personaje target, float danioARealizar, int repeticiones,
             float tiempoDeEspera);
+
+        void AumentarVelocidadMovimientoPorCincoSegundos(Personaje personaje, DaniarYAumentarVelocidadAlMatar interaccionComponent);
+        void AumentarVelocidadMovimientoPersonajePorSegundos(Personaje aliadoCercano, float porcentaje, float tiempo);
+        void DisminuirVelocidadInteraciconPersonajePorSegundos(Personaje personaje, float porcentaje, float tiempo);
+        void AumentarArmaduraPorSegundos(Personaje origen, float porcentajeAAumentar, float tiempo);
+        void ObtenerInmunidadPorSegundos(Personaje origen, float tiempo);
     }
 }
