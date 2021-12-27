@@ -6,7 +6,7 @@ namespace ServiceLocatorPath
     public class ServicioDeEnergia : MonoBehaviour, IServicioDeEnergia
     {
         [SerializeField] private TextMeshProUGUI textoEnergia;
-        [SerializeField] private int energiaASumar;
+        [SerializeField] private int energiaPorTurno;
         private int _energiaPlayer1;
         public void Init()
         {
@@ -27,8 +27,13 @@ namespace ServiceLocatorPath
 
         public void AddEnergy()
         {
-            _energiaPlayer1 += energiaASumar;
+            _energiaPlayer1 += energiaPorTurno;
             ActualizarTextoDeEnergia();
+        }
+
+        public void AddQuantityOfEnergy(int entergiaASumar)
+        {
+            _energiaPlayer1 += entergiaASumar;
         }
 
         private void ActualizarTextoDeEnergia()

@@ -6,12 +6,9 @@ namespace Gameplay.Personajes.InteraccionComponents
     {
         public override void AplicarInteraccion(Personaje origen)
         {
-            //behaviour.AplicarInteraccion(origen);
-            //Debug.Log(_personaje.name + origen.name);
             origen.GetInteractionComponent().EjecucionDeInteraccion(_personaje);
             if (origen == null) return;
-            AplicarDanio(origen,origen.damage * .2f);
-            //Debug.Log(origen.health);
+            AplicarDanio(origen,origen.damage);
             if (origen.health <= 0)
             {
                 origen.Muerte();
