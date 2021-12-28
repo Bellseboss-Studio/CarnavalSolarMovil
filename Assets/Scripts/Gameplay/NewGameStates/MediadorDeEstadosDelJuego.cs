@@ -1,4 +1,5 @@
-﻿using Gameplay.UsoDeCartas;
+﻿using System;
+using Gameplay.UsoDeCartas;
 using ServiceLocatorPath;
 using TMPro;
 using UnityEngine;
@@ -73,7 +74,7 @@ namespace Gameplay.NewGameStates
 
         public bool SeTerminoElJuego()
         {
-            return _juegoTerminado;
+            return ServiceLocator.Instance.GetService<IEstadoDePersonajesDelJuego>().TerminoElJuego();
         }
 
         public bool SeConfiguroElJuego()
@@ -101,23 +102,42 @@ namespace Gameplay.NewGameStates
             return _seColocoElHeroe;
         }
 
+        private Vector3 point;
+        private bool pedirUbicacionDeHeroe, tomoUbicacion;
         public Vector3 PedirColocacionDeHeroe()
         {
-            //Debug.Log("seDeberiaColocaralHeroe");
-            if (Input.GetMouseButton(1))
+            pedirUbicacionDeHeroe = true;
+            if (tomoUbicacion)
             {
-                RaycastHit hit;
-                Debug.Log("coloca Al heroe");
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-                {
-                    Debug.Log(hit);
-                    _factoriaCarta.CrearHeroe(hit.point);
-                    _seColocoElHeroe = true;
-                    return hit.point;
-                }
+                _factoriaCarta.CrearHeroe(point);
+                _seColocoElHeroe = true;
+                return point;
             }
             return Vector3.zero;
+        }
+
+        public void YaNoPedirColocacionDeHeroe()
+        {
+            pedirUbicacionDeHeroe = false;
+        }
+
+        private void Update()
+        {
+            if (pedirUbicacionDeHeroe)
+            {
+                if (Input.GetMouseButton(1))
+                {
+                    RaycastHit hit;
+                    Debug.Log("coloca Al heroe");
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                    {
+                        Debug.Log(hit);
+                        point = hit.point;
+                        tomoUbicacion = true;
+                    }
+                }
+            }
         }
 
         private void OnDisable()
