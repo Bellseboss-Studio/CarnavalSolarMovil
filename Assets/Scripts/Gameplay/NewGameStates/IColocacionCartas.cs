@@ -17,5 +17,6 @@ namespace Gameplay.NewGameStates
         List<int> ObtenerPocisionesSinCartas();
         GameObject GetPosicionDeCarta(int posicionSinCarta);
         void HayCartaEnPosicion(int posicionSinCarta);
+        string GetHeroe();
     }
 }

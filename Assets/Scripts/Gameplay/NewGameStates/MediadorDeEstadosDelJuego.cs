@@ -1,5 +1,6 @@
 ﻿using Gameplay.UsoDeCartas;
 using ServiceLocatorPath;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,8 @@ namespace Gameplay.NewGameStates
 {
     public class MediadorDeEstadosDelJuego : MonoBehaviour, IMediadorDeEstadosDelJuego
     {
-        [SerializeField] private Button finalizarConfiguracionButton, pauseButton, jugarButton, finalizarJuegoButton;
+        //[SerializeField] private Button finalizarConfiguracionButton, pauseButton, jugarButton, finalizarJuegoButton;
+        [SerializeField] private RectTransform textoIndicativoColocarHeroe;
         [SerializeField] private FactoriaCarta _factoriaCarta;
         [SerializeField] private ColocacionCartas _colocacionCartas;
         [SerializeField] private CartasConfiguracion cartasConfiguracion;
@@ -35,12 +37,12 @@ namespace Gameplay.NewGameStates
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Jugando, new JugandoState(this));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Pausa, new PausaState(this, _factoriaCarta));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.FinDeJuego, new FinDeJuegoState(this));
-            _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.ColocandoHeroe, new ColocandoHeroeState(this));
+            _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.ColocandoHeroe, new ColocandoHeroeState(this, textoIndicativoColocarHeroe));
             StartState(_configuracionDeLosEstadosDelJuego.GetState(1));
-            finalizarConfiguracionButton.onClick.AddListener(() => _juegoConfigurado = true);
-            pauseButton.onClick.AddListener(() => _juegoPausado = true);
-            jugarButton.onClick.AddListener(() => _juegoPausado = false);
-            finalizarJuegoButton.onClick.AddListener(() => _juegoTerminado = true);
+            //finalizarConfiguracionButton.onClick.AddListener(() => _juegoConfigurado = true);
+            //pauseButton.onClick.AddListener(() => _juegoPausado = true);
+            //jugarButton.onClick.AddListener(() => _juegoPausado = false);
+            //finalizarJuegoButton.onClick.AddListener(() => _juegoTerminado = true);
             //Este foreach es mientras seleccionamos las cartas en otra escena
             foreach (var cartaTemplate in cartasConfiguracion.GetCartasTemplate())
             {
@@ -96,7 +98,26 @@ namespace Gameplay.NewGameStates
 
         public bool SeCololoElHeroe()
         {
-            return ServiceLocator.Instance.GetService<IServicioDeTiempo>().SeEstaColocandoElHeroe();
+            return _seColocoElHeroe;
+        }
+
+        public Vector3 PedirColocacionDeHeroe()
+        {
+            //Debug.Log("seDeberiaColocaralHeroe");
+            if (Input.GetMouseButton(1))
+            {
+                RaycastHit hit;
+                Debug.Log("coloca Al heroe");
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                {
+                    Debug.Log(hit);
+                    _factoriaCarta.CrearHeroe(hit.point);
+                    _seColocoElHeroe = true;
+                    return hit.point;
+                }
+            }
+            return Vector3.zero;
         }
 
         private void OnDisable()

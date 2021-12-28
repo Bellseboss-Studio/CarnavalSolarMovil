@@ -1,4 +1,6 @@
-﻿namespace Gameplay.NewGameStates
+﻿using UnityEngine;
+
+namespace Gameplay.NewGameStates
 {
     public interface IMediadorDeEstadosDelJuego
     {
@@ -9,5 +11,6 @@
         void SalirDelBuclePrincipal();
         bool EstanJugando();
         bool SeCololoElHeroe();
+        Vector3 PedirColocacionDeHeroe();
     }
 }

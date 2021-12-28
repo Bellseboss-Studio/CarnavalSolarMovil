@@ -3,8 +3,10 @@ using UnityEngine;
 
 namespace Gameplay.Personajes.TargetComponents
 {
-    public class BuscarEnemigoMasCercano : TargetBehaviour
+    public class BuscarEnemigosDondeRebotar : TargetBehaviour
     {
+        private int _personajesAtacados = 0;
+        private List<Personaje> _listaDePersonajesAtacados;
         public override List<Personaje> GetTargets()
         {
             return _targets;
@@ -12,17 +14,37 @@ namespace Gameplay.Personajes.TargetComponents
 
         public override void BuscaLosTargets()
         {
+            if (_personajesAtacados >= 3)
+            {
+                _personaje.Muerte();
+            }
             Personaje _personajeMasCercano = null;
             List<Personaje> _personajesList = new List<Personaje>();
             var personajes = _targetComponent.GetPersonajes();
-            foreach (var personaje in personajes)
+            
+            var nuevoTarget = GetNuevoTarget(personajes);
+            if (nuevoTarget == null)
             {
-                if (personaje.enemigo != _personaje.enemigo && personaje.isTargeteable && !personaje.esInmune)
-                {
-                    _personajesList.Add(personaje);
-                }
+                //Destroy(gameObject);
+                return;
             }
-
+            _personaje.GetRutaComponent()._rutaBehaviour.ConfigureSinApply(nuevoTarget.gameObject);
+            _listaDePersonajesAtacados.Add(nuevoTarget);
+            
+            Personaje GetNuevoTarget(Personaje[] personajes)
+            {
+                foreach (var personaje in personajes)
+                {
+                    if (!_listaDePersonajesAtacados.Contains(personaje) && personaje.enemigo != _personaje.enemigo && personaje.isTargeteable && !personaje.esInmune)
+                    {
+                        _personajesList.Add(personaje);
+                        _personajesAtacados++;
+                        return personaje;
+                    }
+                }
+                return null;
+            }
+            
             float distance = 100;
             foreach (var personajeList in _personajesList)
             {
@@ -43,8 +65,5 @@ namespace Gameplay.Personajes.TargetComponents
                 //Debug.Log(_personajeMasCercano.GetTargetComponent().GetTargetTargetedBy().Contains(_personaje));
             }
         }
-        
-        
-        
     }
 }

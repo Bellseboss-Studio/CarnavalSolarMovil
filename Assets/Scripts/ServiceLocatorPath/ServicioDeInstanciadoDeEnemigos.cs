@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ServiceLocatorPath
 {
-    public class ServicioDeInstanciadoDeEnemigos : MonoBehaviour, IEnemyInstantiate
+    public class ServicioDeInstanciadoDeEnemigos : MonoBehaviour, IEnemyInstantiate, IHeroeInstancie
     {
         [SerializeField] private GameObject point;
         private IFactoriaCarta _factoriaCarta;
@@ -25,5 +25,14 @@ namespace ServiceLocatorPath
             factoriaPersonaje.CreatePersonaje(pointToInstantiate, cartaTemplate.GetEstadisticas(), true);
             Destroy(cartaTemplate.gameObject);
         }
+        public void InstanciateHero(FactoriaPersonaje factoriaPersonaje, Vector3 point)
+        {
+            //Debug.Log(pointToInstantiate);
+            var carta = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
+            var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
+            factoriaPersonaje.CreatePersonaje(point, cartaTemplate.GetEstadisticas(), true);
+            Destroy(cartaTemplate.gameObject);
+        }
+        
     }
 }
