@@ -107,9 +107,11 @@ namespace Gameplay.NewGameStates
             if (Input.GetMouseButton(1))
             {
                 RaycastHit hit;
+                Debug.Log("coloca Al heroe");
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity))
                 {
+                    Debug.Log("se colocó el heroe");
                     return hit.point;
                 }
             }
