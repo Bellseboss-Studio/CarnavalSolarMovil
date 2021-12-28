@@ -31,12 +31,14 @@ namespace Gameplay.NewGameStates
 
         public void FinishConfiguration()
         {
+            _mediadorDeEstadosDelJuego.YaNoPedirColocacionDeHeroe();
             ServiceLocator.Instance.GetService<IServicioDeTiempo>().DejaDeContarElTiempo();
+            _panelColocarHeroe.gameObject.SetActive(false);
         }
 
         public async Task<PersonajeStateResult> DoAction(object data)
         {
-            while (_mediadorDeEstadosDelJuego.SeCololoElHeroe())
+            while (!_mediadorDeEstadosDelJuego.SeCololoElHeroe())
             {
                 _mediadorDeEstadosDelJuego.PedirColocacionDeHeroe();
                 await Task.Delay(TimeSpan.FromMilliseconds(100));
