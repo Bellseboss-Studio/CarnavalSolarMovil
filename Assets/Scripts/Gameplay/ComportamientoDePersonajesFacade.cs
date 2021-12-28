@@ -51,7 +51,7 @@ namespace Gameplay
         {
             foreach (var personaje in _personajes)
             {
-                personaje.laPartidaEstaCongelada = true;
+                personaje.LaPartidaEstaCongelada = true;
             }
         }
         
@@ -59,7 +59,7 @@ namespace Gameplay
         {
             foreach (var personaje in _personajes)
             {
-                personaje.laPartidaEstaCongelada = false;
+                personaje.LaPartidaEstaCongelada = false;
             }
         }
         
