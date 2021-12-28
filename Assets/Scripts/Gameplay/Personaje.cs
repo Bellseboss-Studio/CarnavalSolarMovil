@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using Gameplay.Personajes.InteraccionComponents;
 using Gameplay.Personajes.RutaComponents;
 using Gameplay.Personajes.TargetComponents;
@@ -21,6 +22,7 @@ namespace Gameplay
         [SerializeField] private RutaComponent _rutaComponent;
         [SerializeField] private SinApply _sinApply;
         [SerializeField] public Image imagenIndicadoraDeEquipo;
+        [SerializeField] public Slider barraDeVida;
         private PersonajeStatesConfiguration _personajeStatesConfiguration;
         private Animator _animador;
         public bool enemigo;
@@ -46,6 +48,7 @@ namespace Gameplay
         public string cosaDiferenciadora;
         public float distanciaDeInteraccion;
         public float health = 10;
+        private float vidaMaxima;
         public float velocidadDeInteraccion;
         public float velocidadDeMovimiento;
         public float damage;
@@ -64,6 +67,13 @@ namespace Gameplay
 
         private void Start()
         {
+            AjustarBarraDeVida();
+        }
+
+        private void AjustarBarraDeVida()
+        {
+            var aumentoDeTamañoDeLaBarraDeVida = (health / 250)/5;
+            barraDeVida.transform.localScale = new Vector3(1 + aumentoDeTamañoDeLaBarraDeVida, 1,1);
         }
 
         public void SetComponents(TargetBehaviour targetBehaviour, InteraccionBehaviour interaccionBehaviour, RutaBehaviour rutaBehaviour, EstadisticasCarta estadisticasCarta, GameObject prefab)
@@ -77,6 +87,7 @@ namespace Gameplay
             _prefabInstanciado.transform.position = position;
             velocidadDeInteraccion = estadisticasCarta.VelocidadDeInteraccion;
             health = estadisticasCarta.Health;
+            vidaMaxima = estadisticasCarta.Health;
             velocidadDeMovimiento = estadisticasCarta.VelocidadDeMovimiento;
             distanciaDeInteraccion = estadisticasCarta.DistanciaDeInteraccion;
             damage = estadisticasCarta.Damage;
@@ -140,6 +151,7 @@ namespace Gameplay
 
         public void Muerte()
         {
+            barraDeVida.gameObject.SetActive(false);
             GetTargetComponent().DejarDeSerTargeteado(this);
             GetTargetComponent().HeDejadoDeTargetear();
             isTargeteable = false;
@@ -188,6 +200,12 @@ namespace Gameplay
         public RutaComponent GetRutaComponent()
         {
             return _rutaComponent;
+        }
+
+        public void ActualizarBarraDeVida()
+        {
+            var sequence = DOTween.Sequence();
+            sequence.Insert(0, barraDeVida.DOValue(health / vidaMaxima, 1f).SetEase(Ease.OutCirc));
         }
     }
 
