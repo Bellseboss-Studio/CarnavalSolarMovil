@@ -19,7 +19,7 @@ namespace Gameplay.PersonajeStates
 
         public async Task<PersonajeStateResult> DoAction(object data)
         {
-            if (_personaje.laPartidaEstaCongelada)
+            if (_personaje.LaPartidaEstaCongelada)
             {
                 return new PersonajeStateResult(PersonajeStatesConfiguration.CongeladoState);
             }

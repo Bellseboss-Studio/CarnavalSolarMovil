@@ -21,7 +21,22 @@ namespace Gameplay
         private PersonajeStatesConfiguration _personajeStatesConfiguration;
         private Animator _animador;
         public bool enemigo;
-        public bool laPartidaEstaCongelada = false;
+        private bool laPartidaEstaCongelada;
+
+        public bool LaPartidaEstaCongelada
+        {
+            get
+            {
+                return laPartidaEstaCongelada;
+            }
+            set
+            {
+                laPartidaEstaCongelada = value;
+                _animador.SetFloat("speedWalk", laPartidaEstaCongelada ? 0 : alternativa1);
+                _animador.SetFloat("speed", laPartidaEstaCongelada ? 0 : alternativa2);
+            }
+        }
+
         private bool estaVivo = true;
         public bool isTargeteable = true;
         public bool esInmune = false;
@@ -52,6 +67,8 @@ namespace Gameplay
         {
             var _prefabInstanciado = Instantiate(prefab, transform);
             _animador = _prefabInstanciado.GetComponent<Animator>();
+            //hacer el calculo de la velocidad de las animaciones si se puede
+            CalculandoVelocidadDeAnimaciones(estadisticasCarta);
             var position = _prefabInstanciado.transform.position;
             position = new Vector3(position.x, position.y + .5f, position.z);
             _prefabInstanciado.transform.position = position;
@@ -70,6 +87,21 @@ namespace Gameplay
             _personajeStatesConfiguration.AddState(PersonajeStatesConfiguration.DesplazarseHaciaElTargetState, new DesplazarseHaciaElTargetState(this, _rutaComponent));
             _personajeStatesConfiguration.AddState(PersonajeStatesConfiguration.InteractuarConElTargetState, new InteractuarConElTargetState(this));
             StartState(_personajeStatesConfiguration.GetState(0));
+        }
+
+        private float cienPorciento1, cienPorciento2, cienPorciento3, cienPorciento4, cienPorciento5, alternativa1, alternativa2, alternativa3, alternativa4, alternativa5;
+        private void CalculandoVelocidadDeAnimaciones(EstadisticasCarta estadisticasCarta)
+        {
+            cienPorciento1 = estadisticasCarta.Caminar.length;
+            cienPorciento2 = estadisticasCarta.Golpear.length;
+            cienPorciento3 = estadisticasCarta.Idle.length;
+            cienPorciento4 = estadisticasCarta.Morir.length;
+            alternativa1 = (estadisticasCarta.VelocidadDeInteraccion * 1) / cienPorciento1;
+            alternativa2 = (estadisticasCarta.VelocidadDeInteraccion * 1) / cienPorciento2;
+            alternativa3 = (estadisticasCarta.VelocidadDeInteraccion * 1) / cienPorciento3;
+            alternativa4 = (estadisticasCarta.VelocidadDeInteraccion * 1) / cienPorciento4;
+            Debug.Log($"Caminar {alternativa1} ; Golpear {alternativa2} ; Idle {alternativa3} ; Morir {alternativa4}");
+            _animador.SetFloat("speedWalk", alternativa1);
         }
 
         private async void StartState(IPersonajeState state, object data = null)
@@ -93,11 +125,6 @@ namespace Gameplay
             return _targetComponent;
         }
 
-        public bool LaPartidaEstaCongelada()
-        {
-            return laPartidaEstaCongelada;
-        }
-
         public Vector3 GetCharacterPosition()
         {
             return transform.position;
@@ -108,7 +135,11 @@ namespace Gameplay
             GetTargetComponent().DejarDeSerTargeteado(this);
             GetTargetComponent().HeDejadoDeTargetear();
             isTargeteable = false;
+            _animador.SetBool("estaCaminando", false);
+            _animador.SetBool("estaGolpeando", false);
+            _animador.SetBool("estaGolpeandoDistancia", false);
             _animador.SetTrigger("murio");
+            _animador.SetFloat("speed", 1);
             MuerteDelegate?.Invoke(this);
         }
 

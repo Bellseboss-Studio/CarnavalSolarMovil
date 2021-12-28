@@ -119,12 +119,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb6b27d695b4774b6abd353a27bc3a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
   _targetComponent: {fileID: 8369897322575768347}
   _interaccionComponent: {fileID: 9216507802543437335}
   _rutaComponent: {fileID: 963061542025207574}
   enemigo: 0
   laPartidaEstaCongelada: 0
   isTargeteable: 1
+  esInmune: 0
   cosaDiferenciadora: 
   distanciaDeInteraccion: 0
   health: 10
@@ -132,3 +134,4 @@ MonoBehaviour:
   velocidadDeMovimiento: 0
   damage: 0
   escudo: 0
+  armadura: 0

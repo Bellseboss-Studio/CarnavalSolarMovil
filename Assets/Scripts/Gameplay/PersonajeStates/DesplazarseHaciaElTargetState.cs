@@ -20,7 +20,7 @@ namespace Gameplay.PersonajeStates
 
         public async Task<PersonajeStateResult> DoAction(object data)
         {
-            if (_personaje.laPartidaEstaCongelada)
+            if (_personaje.LaPartidaEstaCongelada)
             {
                 return new PersonajeStateResult(PersonajeStatesConfiguration.CongeladoState);
             }
@@ -31,7 +31,7 @@ namespace Gameplay.PersonajeStates
             _personaje.Caminar(true);
             while (targets.Count > 0 && _personaje.isTargeteable && targets[0] != null && targets[0].isTargeteable && distanciaEntrePersonajes > _personaje.distanciaDeInteraccion)
             {
-                if (_personaje.laPartidaEstaCongelada)
+                if (_personaje.LaPartidaEstaCongelada)
                 {
                     _rutaComponent.DejarDeDesplazar();
                     return new PersonajeStateResult(PersonajeStatesConfiguration.CongeladoState);
