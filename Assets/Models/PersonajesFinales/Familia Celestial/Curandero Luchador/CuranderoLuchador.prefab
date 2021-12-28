@@ -1271,7 +1271,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 312f03c2944194e379b4b50ebc3041b3, type: 3}
   - {fileID: 8300000, guid: de04451b706ec4abaaaa8752e6c2459f, type: 3}
   - {fileID: 8300000, guid: 3b736c8faa4424bdab4ed93a9d1923c7, type: 3}
-  m_DeathClips: []
+  m_DeathClips:
+  - {fileID: 8300000, guid: e80bc507b1bde47fbaf7cd928b3d8c4d, type: 3}
+  - {fileID: 8300000, guid: e902ff82201f74630b2744f206f3f5db, type: 3}
+  - {fileID: 8300000, guid: 03909c95bb1174c08aa6105e36c68ad9, type: 3}
+  - {fileID: 8300000, guid: 3928a16777417424aa027d7f36b10c32, type: 3}
   m_AudioSource: {fileID: 3560137268649080416}
   m_CharacterName: 
   m_Output: {fileID: 7080800857700382711, guid: 8630ef64c34f243f682d65f44a9bc495, type: 2}
