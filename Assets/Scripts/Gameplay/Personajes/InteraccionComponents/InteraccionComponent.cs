@@ -37,7 +37,7 @@ namespace Gameplay
             List<Personaje> personajesList = new List<Personaje>();
             foreach (var personaje in personajes)
             {
-                if (personaje.enemigo == origen.enemigo && Vector3.Distance(personaje.transform.position, origen.transform.position)< 2)
+                if (personaje.enemigo == origen.enemigo && Vector3.Distance(personaje.transform.position, origen.transform.position)< 4)
                 {
                     personajesList.Add(personaje);
                 }

@@ -11,6 +11,8 @@
         DaniarPersonajeYAutoCurarse,
         DaniarPersonajeYReflejarDanio,
         DaniarTresTargetsMasCercanos,
-        DaniarYAumentarVelocidadAlMatar
+        DaniarYAumentarVelocidadAlMatar,
+        ObtenerEnergiaAlIniciarTurno,
+        AumentarVelocidadGeneralDeAliadosAlIniciarTurno
     }
 }
