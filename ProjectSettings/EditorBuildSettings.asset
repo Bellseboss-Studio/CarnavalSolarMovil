@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Angel/SeleccionDeMazo.unity
     guid: e300391c74f104d41a85d03aff88f91c
   - enabled: 1
+    path: Assets/Scenes/PeryLoth/NewGameStates_PeryLoth.unity
+    guid: 7bad9c6fb8703e441b78640850717da8
+  - enabled: 1
     path: Assets/Scenes/Angel/NewGameStates.unity
     guid: e14e4bd9262e02847b736a24ca6d45d2
   m_configObjects: {}

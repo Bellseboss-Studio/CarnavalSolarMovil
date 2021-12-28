@@ -52,7 +52,9 @@ namespace Gameplay.UsoDeCartas
         public void CrearHeroe(Vector3 point)
         {
             var heroe = _colocacionCartas.GetHeroe();
-            ServiceLocator.Instance.GetService<IHeroeInstancie>().InstanciateHero(_factoriaPersonaje, point);
+            ServiceLocator.Instance.GetService<IHeroeInstancie>().InstanciateHero(_factoriaPersonaje, point, heroe);
+            ServiceLocator.Instance.GetService<IEnemyInstantiate>().InstanciateHeroEnemy(_factoriaPersonaje);
+            
         }
 
         public void CrearPrimerasCartas()
