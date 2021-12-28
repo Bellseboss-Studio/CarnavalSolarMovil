@@ -34,6 +34,7 @@ namespace ServiceLocatorPath
         public void AddQuantityOfEnergy(int entergiaASumar)
         {
             _energiaPlayer1 += entergiaASumar;
+            ActualizarTextoDeEnergia();
         }
 
         private void ActualizarTextoDeEnergia()

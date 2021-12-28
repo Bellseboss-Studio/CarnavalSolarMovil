@@ -27,6 +27,10 @@ namespace Gameplay
             {
                 _personaje.Muerte();
             }
+            else
+            {
+                _personaje.ActualizarBarraDeVida();
+            }
         }
 
         public virtual void InteraccionAlIniciarTurno (Personaje origen)

@@ -85,6 +85,14 @@ namespace Gameplay
                     _interaccionBehaviour = new DaniarTresTargetsMasCercanos();
                     break;
                 
+                case InteraccionComponentEnum.ObtenerEnergiaAlIniciarTurno:
+                    _interaccionBehaviour = new ObtenerEnergiaAlIniciarTurno();
+                    break;
+                
+                case InteraccionComponentEnum.AumentarVelocidadGeneralDeAliadosAlIniciarTurno:
+                    _interaccionBehaviour = new AumentarVelocidadGeneralDeAliadosAlIniciarTurno();
+                    break;
+
                 /*case InteraccionComponentEnum.:
                     _interaccionBehaviour = new ();
                     break;*/
