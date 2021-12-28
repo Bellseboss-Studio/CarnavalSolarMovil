@@ -18,6 +18,7 @@ namespace Gameplay
         [SerializeField] private TargetComponent _targetComponent;
         [SerializeField] private InteraccionComponent _interaccionComponent;
         [SerializeField] private RutaComponent _rutaComponent;
+        [SerializeField] private SinApply _sinApply;
         private PersonajeStatesConfiguration _personajeStatesConfiguration;
         private Animator _animador;
         public bool enemigo;
@@ -62,7 +63,7 @@ namespace Gameplay
             damage = estadisticasCarta.Damage;
             _estadisticasCarta = estadisticasCarta;
             _targetComponent.Configuracion(targetBehaviour, this);
-            _rutaComponent.Configuration(GetComponent<NavMeshAgent>(), this, rutaBehaviour);
+            _rutaComponent.Configuration(GetComponent<NavMeshAgent>(), this, rutaBehaviour, _sinApply);
             _interaccionComponent.Configurate(this, interaccionBehaviour);
             _personajeStatesConfiguration = new PersonajeStatesConfiguration();
             _personajeStatesConfiguration.AddState(PersonajeStatesConfiguration.CongeladoState, new CongeladoState(this, _interaccionComponent));
@@ -144,6 +145,11 @@ namespace Gameplay
             {
                 _animador.SetBool("estaGolpeando", false);
             }
+        }
+
+        public RutaComponent GetRutaComponent()
+        {
+            return _rutaComponent;
         }
     }
 
