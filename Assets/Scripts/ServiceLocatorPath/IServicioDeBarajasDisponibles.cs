@@ -8,5 +8,6 @@ namespace ServiceLocatorPath
         void AniadirBaraja(SelectorBaraja baraja);
         void SetBarajaSeleccionadaId(SelectorBaraja barajaSeleccionadaId);
         Stack<string> GetBarajaElejida();
+        string GetHeroe();
     }
 }

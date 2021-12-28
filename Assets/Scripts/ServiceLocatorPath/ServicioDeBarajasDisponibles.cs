@@ -23,9 +23,6 @@ namespace ServiceLocatorPath
 
         public Stack<string> GetBarajaElejida()
         {
-            
-            
-            
             var idCartasBarajaSeleccionada = new Stack<string>();
             foreach (var idDeCartaEnBaraja in _barajaSeleccionadaId.ListaDeIdDeCartasEnBaraja)
             {
@@ -33,6 +30,11 @@ namespace ServiceLocatorPath
             }
 
             return idCartasBarajaSeleccionada;
+        }
+
+        public string GetHeroe()
+        {
+            return _barajaSeleccionadaId.ListaDeIdDeCartasEnBaraja[0];
         }
     }
 }

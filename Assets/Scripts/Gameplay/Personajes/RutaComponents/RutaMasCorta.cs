@@ -12,6 +12,7 @@ namespace Gameplay.Personajes.RutaComponents
             {
                 _navMeshAgent.enabled = true;
                 _navMeshAgent.destination = personaje.transform.position;
+                _navMeshAgent.speed = _personaje.velocidadDeMovimiento * (_personaje.escudo == 0 ? 1 : _personaje.escudo);
             }
         }
 
@@ -20,7 +21,7 @@ namespace Gameplay.Personajes.RutaComponents
             _navMeshAgent.enabled = true;
             _navMeshAgent.destination = targets[0].transform.position;
             _navMeshAgent.stoppingDistance = _personaje.distanciaDeInteraccion;
-            _navMeshAgent.speed = _personaje.velocidadDeMovimiento;
+            _navMeshAgent.speed = _personaje.velocidadDeMovimiento * (_personaje.escudo == 0 ? 1 : _personaje.escudo);
         }
 
         public override void DejarDeDesplazar()
