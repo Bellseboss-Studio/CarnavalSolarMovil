@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Gameplay.NewGameStates;
+using ServiceLocatorPath;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -47,7 +48,13 @@ namespace Gameplay.UsoDeCartas
             cartaInstancia.Configurate(_factoriaPersonaje);
             return cartaInstancia;
         }
-        
+
+        public void CrearHeroe(Vector3 point)
+        {
+            var heroe = _colocacionCartas.GetHeroe();
+            ServiceLocator.Instance.GetService<IHeroeInstancie>().InstanciateHero(_factoriaPersonaje, point);
+        }
+
         public void CrearPrimerasCartas()
         {
             while (_colocacionCartas.PuedoSacarOtraCarta())

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 963061542025207574}
   - component: {fileID: 9216507802543437335}
   - component: {fileID: 1033197627994222903}
+  - component: {fileID: -8449208976668339249}
   m_Layer: 0
   m_Name: Personaje
   m_TagString: Untagged
@@ -123,6 +124,7 @@ MonoBehaviour:
   _targetComponent: {fileID: 8369897322575768347}
   _interaccionComponent: {fileID: 9216507802543437335}
   _rutaComponent: {fileID: 963061542025207574}
+  _sinApply: {fileID: -8449208976668339249}
   enemigo: 0
   laPartidaEstaCongelada: 0
   isTargeteable: 1
@@ -135,3 +137,21 @@ MonoBehaviour:
   damage: 0
   escudo: 0
   armadura: 0
+--- !u!114 &-8449208976668339249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9007822363495127145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b9b0de9875f4a56a9897d82bad74f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deltaTimeLocal: 0
+  high: 0
+  velocity: 0
+  target: {fileID: 0}
+  increment: 0
+  stay: 0

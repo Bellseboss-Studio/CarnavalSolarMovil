@@ -18,6 +18,7 @@ namespace Gameplay
         [SerializeField] private TargetComponent _targetComponent;
         [SerializeField] private InteraccionComponent _interaccionComponent;
         [SerializeField] private RutaComponent _rutaComponent;
+        [SerializeField] private SinApply _sinApply;
         private PersonajeStatesConfiguration _personajeStatesConfiguration;
         private Animator _animador;
         public bool enemigo;
@@ -79,7 +80,7 @@ namespace Gameplay
             damage = estadisticasCarta.Damage;
             _estadisticasCarta = estadisticasCarta;
             _targetComponent.Configuracion(targetBehaviour, this);
-            _rutaComponent.Configuration(GetComponent<NavMeshAgent>(), this, rutaBehaviour);
+            _rutaComponent.Configuration(GetComponent<NavMeshAgent>(), this, rutaBehaviour, _sinApply);
             _interaccionComponent.Configurate(this, interaccionBehaviour);
             _personajeStatesConfiguration = new PersonajeStatesConfiguration();
             _personajeStatesConfiguration.AddState(PersonajeStatesConfiguration.CongeladoState, new CongeladoState(this, _interaccionComponent));
@@ -96,12 +97,17 @@ namespace Gameplay
             cienPorciento2 = estadisticasCarta.Golpear.length;
             cienPorciento3 = estadisticasCarta.Idle.length;
             cienPorciento4 = estadisticasCarta.Morir.length;
-            alternativa1 = (estadisticasCarta.VelocidadDeInteraccion * 1) / cienPorciento1;
-            alternativa2 = (estadisticasCarta.VelocidadDeInteraccion * 1) / cienPorciento2;
-            alternativa3 = (estadisticasCarta.VelocidadDeInteraccion * 1) / cienPorciento3;
-            alternativa4 = (estadisticasCarta.VelocidadDeInteraccion * 1) / cienPorciento4;
+            alternativa1 = (GetVelocitiOfInteraction(estadisticasCarta.VelocidadDeInteraccion) * 1) / cienPorciento1;
+            alternativa2 = (GetVelocitiOfInteraction(estadisticasCarta.VelocidadDeInteraccion) * 1) / cienPorciento2;
+            alternativa3 = (GetVelocitiOfInteraction(estadisticasCarta.VelocidadDeInteraccion) * 1) / cienPorciento3;
+            alternativa4 = (GetVelocitiOfInteraction(estadisticasCarta.VelocidadDeInteraccion) * 1) / cienPorciento4;
             Debug.Log($"Caminar {alternativa1} ; Golpear {alternativa2} ; Idle {alternativa3} ; Morir {alternativa4}");
             _animador.SetFloat("speedWalk", alternativa1);
+        }
+
+        private float GetVelocitiOfInteraction(float estadisticasCartaVelocidadDeInteraccion)
+        {
+            return estadisticasCartaVelocidadDeInteraccion == 0 ? 1 : estadisticasCartaVelocidadDeInteraccion;
         }
 
         private async void StartState(IPersonajeState state, object data = null)
@@ -175,6 +181,11 @@ namespace Gameplay
             {
                 _animador.SetBool("estaGolpeando", false);
             }
+        }
+
+        public RutaComponent GetRutaComponent()
+        {
+            return _rutaComponent;
         }
     }
 
