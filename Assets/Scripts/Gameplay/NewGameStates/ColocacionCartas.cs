@@ -62,6 +62,10 @@ namespace Gameplay.NewGameStates
         
         public string GetNextCartaId()
         {
+            if (_barajaDeCartasId.Count <= 0)
+            {
+                _barajaDeCartasId = ServiceLocator.Instance.GetService<IServicioDeBarajasDisponibles>().GetBarajaElejida();
+            }
             var carta = _barajaDeCartasId.Pop();
             _ultimaCartaInstanciada = carta;
             //_posicionDeUltimaCartaIntanciada = _cartasEnMano.Count;
