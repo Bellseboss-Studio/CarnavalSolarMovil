@@ -27,6 +27,7 @@ namespace ServiceLocatorPath
             ServiceLocator.Instance.RegisterService<IServicioDeEnergia>(_servicioDeEnergia);
             ServiceLocator.Instance.RegisterService<IBarajaDelPlayer>(servicioDeBaraja);
             ServiceLocator.Instance.RegisterService<IEnemyInstantiate>(manejadorDeEnemigos);
+            ServiceLocator.Instance.RegisterService<IHeroeInstancie>(manejadorDeEnemigos);
             DontDestroyOnLoad(gameObject);
         }
     }

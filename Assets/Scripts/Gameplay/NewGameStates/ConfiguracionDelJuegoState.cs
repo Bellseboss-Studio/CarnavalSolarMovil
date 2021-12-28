@@ -44,7 +44,7 @@ namespace Gameplay.NewGameStates
         {
             _factoriaCarta.Configurate(_colocacionCartas, _cartasConfiguracion, _canvasDeLasCartas, _factoriaPersonaje, _canvasPrincipal);
             //Debug.Log("Estas en estado de configurar juego");
-            if (_mediadorDeEstadosDelJuego.SeConfiguroElJuego())
+            //if (_mediadorDeEstadosDelJuego.SeConfiguroElJuego())
             {
                 await Task.Delay(TimeSpan.FromMilliseconds(100));
                 return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.SincronizacionDeJugadores);

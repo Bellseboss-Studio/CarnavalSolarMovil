@@ -88,6 +88,12 @@ namespace Gameplay.NewGameStates
 
             _posicionDeUltimaCartaIntanciada = posicionSinCarta;
         }
+
+        public string GetHeroe()
+        {
+            return ServiceLocator.Instance.GetService<IServicioDeBarajasDisponibles>().GetHeroe();
+        }
+
         public void YaNoHayCartaEnPosicion(int pos)
         {
             _hayCartaEnPosicion[pos] = false;
