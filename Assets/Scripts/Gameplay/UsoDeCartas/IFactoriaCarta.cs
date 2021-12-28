@@ -12,5 +12,6 @@ namespace Gameplay.UsoDeCartas
         void DestruirLasCartas();
         void CrearCartasEnHuecos();
         CartaTemplate CreateEnemigo(string carta, GameObject gameObject);
+        void CrearHeroe(Vector3 point);
     }
 }

@@ -24,10 +24,10 @@ namespace Gameplay.Personajes.RutaComponents
             _rutaBehaviour.DejarDeDesplazar();
         }
 
-        public void Configuration(NavMeshAgent navMeshAgent, Personaje personaje, RutaBehaviour rutaBehaviour)
+        public void Configuration(NavMeshAgent navMeshAgent, Personaje personaje, RutaBehaviour rutaBehaviour, SinApply sinApply)
         {
             _rutaBehaviour = rutaBehaviour;
-            _rutaBehaviour.Configurate(navMeshAgent, personaje, this);
+            _rutaBehaviour.Configurate(navMeshAgent, personaje, this, sinApply);
         }
     }
 }
