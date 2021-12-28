@@ -196,6 +196,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1741840970386040764}
   - component: {fileID: 5509159434716291242}
+  - component: {fileID: 2133463846755279343}
+  - component: {fileID: 5151858218852440148}
   m_Layer: 0
   m_Name: Potenciador_Posmuerte
   m_TagString: Untagged
@@ -238,6 +240,129 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2133463846755279343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398248451135028486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21d3e4144853438786aaaaa17cc1429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FsClips:
+  - {fileID: 8300000, guid: d040d05cd60ee4ee184946245a08f38b, type: 3}
+  - {fileID: 8300000, guid: e6538b3fc3de4483ba4b5a2d6b505264, type: 3}
+  - {fileID: 8300000, guid: 38b56d01ee6204cbdb0e08089e440037, type: 3}
+  - {fileID: 8300000, guid: 6bb84afeeec5145c98e2d81a7d3fdcf0, type: 3}
+  m_DeathClips:
+  - {fileID: 8300000, guid: f4764252e946b4d5d960289496591a50, type: 3}
+  - {fileID: 8300000, guid: 058502a396b1d4876a494cb16dc047a2, type: 3}
+  - {fileID: 8300000, guid: 5f523893c5b9b446a9d0a67a64737383, type: 3}
+  - {fileID: 8300000, guid: f656e62bc42c84dbaa4c0dd97c809f8b, type: 3}
+  m_AudioSource: {fileID: 5151858218852440148}
+  m_CharacterName: 
+  m_Output: {fileID: 7080800857700382711, guid: 8630ef64c34f243f682d65f44a9bc495, type: 2}
+  m_FsVolume: 0.76
+  m_DeathVolume: 1
+--- !u!82 &5151858218852440148
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398248451135028486}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 7080800857700382711, guid: 8630ef64c34f243f682d65f44a9bc495, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 2.64
+  MinDistance: 1
+  MaxDistance: 20.99
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.9
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.15833333
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1793241032324987375
 GameObject:
   m_ObjectHideFlags: 0

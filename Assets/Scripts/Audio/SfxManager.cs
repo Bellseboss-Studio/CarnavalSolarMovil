@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using Random = UnityEngine.Random;
 
 public class SfxManager : MonoBehaviour, ICheckDependencies
 {
@@ -50,7 +51,7 @@ public class SfxManager : MonoBehaviour, ICheckDependencies
         }
     }
 
-    
+
     public void PlaySound(string name)
     {
         StartCoroutine(ActivateSfxObject(name));
