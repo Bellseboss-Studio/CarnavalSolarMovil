@@ -1,5 +1,4 @@
-﻿using System;
-using Gameplay.UsoDeCartas;
+﻿using Gameplay.UsoDeCartas;
 using ServiceLocatorPath;
 using TMPro;
 using UnityEngine;
@@ -32,7 +31,7 @@ namespace Gameplay.NewGameStates
         private void Start()
         {
             _configuracionDeLosEstadosDelJuego = new ConfiguracionDeLosEstadosDelJuego();
-            _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.ConfiguracionDelJuego,
+            _configuracionDeLosEstadosDelJuego.AddInitialState(ConfiguracionDeLosEstadosDelJuego.ConfiguracionDelJuego,
                 new ConfiguracionDelJuegoState(this, _factoriaCarta, _colocacionCartas, cartasConfiguracion, canvasPrincipal, _factoriaPersonaje, canvasDeLasCartas));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.SincronizacionDeJugadores, new SincronizacionDeJugadoresState(this));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Jugando, new JugandoState(this));

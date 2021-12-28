@@ -81,7 +81,10 @@ namespace Gameplay.UsoDeCartas
             foreach (var posicionSinCarta in posicionesSinCartas)
             {
                 Debug.Log($"colocandoCartaEnPosicion {posicionSinCarta}");
-                Create(_colocacionCartas.GetNextCartaId(), _colocacionCartas.GetPosicionDeCarta(posicionSinCarta),posicionSinCarta);
+                if (_colocacionCartas.PuedoSacarOtraCarta())
+                {
+                    Create(_colocacionCartas.GetNextCartaId(), _colocacionCartas.GetPosicionDeCarta(posicionSinCarta),posicionSinCarta);   
+                }
             }
         }
     }
