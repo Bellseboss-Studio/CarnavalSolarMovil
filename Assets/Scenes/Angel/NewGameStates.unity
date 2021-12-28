@@ -1317,6 +1317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   factoriaPersonaje: {fileID: 49721935}
   _servicioDeTiempo: {fileID: 888163689}
+  colorAliado: {r: 0, g: 0, b: 1, a: 0.5882353}
+  colorEnemigo: {r: 1, g: 0, b: 0, a: 0.5882353}
 --- !u!4 &805363955
 Transform:
   m_ObjectHideFlags: 0

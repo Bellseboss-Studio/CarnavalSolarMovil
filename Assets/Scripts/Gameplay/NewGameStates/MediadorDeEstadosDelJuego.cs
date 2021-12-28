@@ -98,11 +98,12 @@ namespace Gameplay.NewGameStates
 
         public bool SeCololoElHeroe()
         {
-            return ServiceLocator.Instance.GetService<IServicioDeTiempo>().SeEstaColocandoElHeroe();
+            return _seColocoElHeroe;
         }
 
         public Vector3 PedirColocacionDeHeroe()
         {
+            //Debug.Log("seDeberiaColocaralHeroe");
             if (Input.GetMouseButton(1))
             {
                 RaycastHit hit;
@@ -110,7 +111,9 @@ namespace Gameplay.NewGameStates
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity))
                 {
-                    Debug.Log("se colocó el heroe");
+                    Debug.Log(hit);
+                    _factoriaCarta.CrearHeroe(hit.point);
+                    _seColocoElHeroe = true;
                     return hit.point;
                 }
             }

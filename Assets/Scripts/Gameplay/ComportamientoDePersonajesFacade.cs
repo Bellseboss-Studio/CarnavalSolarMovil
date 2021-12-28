@@ -14,7 +14,6 @@ namespace Gameplay
         private List<Personaje> _personajes;
         [SerializeField] private FactoriaPersonaje factoriaPersonaje;
         [SerializeField] private ServicioDeTiempo _servicioDeTiempo;
-        [SerializeField] private Image imagenDeEquipo;
         [SerializeField] private Color colorAliado, colorEnemigo;
 
         private void Awake()
@@ -33,6 +32,14 @@ namespace Gameplay
         {
             _personajes.Add(personaje);
             personaje.MuerteDelegate+= EliminarPersonajeDeLaLista;
+            if (personaje.enemigo)
+            {
+                personaje.imagenIndicadoraDeEquipo.color = colorEnemigo;
+            }
+            else
+            {
+                personaje.imagenIndicadoraDeEquipo.color = colorAliado;
+            }
         }
 
         private void EliminarPersonajeDeLaLista(Personaje personaje)

@@ -6,6 +6,7 @@ using Gameplay.PersonajeStates;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 namespace Gameplay
 {
@@ -19,6 +20,7 @@ namespace Gameplay
         [SerializeField] private InteraccionComponent _interaccionComponent;
         [SerializeField] private RutaComponent _rutaComponent;
         [SerializeField] private SinApply _sinApply;
+        [SerializeField] public Image imagenIndicadoraDeEquipo;
         private PersonajeStatesConfiguration _personajeStatesConfiguration;
         private Animator _animador;
         public bool enemigo;
