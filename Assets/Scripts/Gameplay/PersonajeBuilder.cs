@@ -92,7 +92,11 @@ namespace Gameplay
                 case InteraccionComponentEnum.AumentarVelocidadGeneralDeAliadosAlIniciarTurno:
                     _interaccionBehaviour = new AumentarVelocidadGeneralDeAliadosAlIniciarTurno();
                     break;
-
+                    
+                case InteraccionComponentEnum.AtacarYCurarAliadoMasCercanoAlImpacto:
+                    _interaccionBehaviour = new AtacarYCurarAliadoMasCercanoAlImpacto();
+                    break;
+                
                 /*case InteraccionComponentEnum.:
                     _interaccionBehaviour = new ();
                     break;*/

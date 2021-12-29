@@ -18,5 +18,6 @@ namespace Gameplay
         void DisminuirVelocidadInteraciconPersonajePorSegundos(Personaje personaje, float porcentaje, float tiempo);
         void AumentarArmaduraPorSegundos(Personaje origen, float porcentajeAAumentar, float tiempo);
         void ObtenerInmunidadPorSegundos(Personaje origen, float tiempo);
+        Personaje GetAliadoMasCercano(Personaje personaje);
     }
 }
