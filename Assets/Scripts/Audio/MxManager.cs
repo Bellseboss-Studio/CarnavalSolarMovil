@@ -67,20 +67,18 @@ public class MxManager : MonoBehaviour, ICheckDependencies
         {
             case 0:
                 go1 = m_MxTracks[MusicObjects.MenuMxPlayer.ToString()];
-                go1.SetActive(true);
-                m_MixesSnapshots[0].TransitionTo(m_TransitionTime);
-                StartCoroutine(EnableAndDisableMxObject());
+                //go1.SetActive(true);
+               // m_MixesSnapshots[0].TransitionTo(m_TransitionTime);
+                StartCoroutine(EnableAndDisableMxObjects(go1, 0));
                 break;
             case 1:
                 go1 = m_MxTracks[MusicObjects.GameplayMxPlayer.ToString()];
-                go1.SetActive(true);
-                m_MixesSnapshots[1].TransitionTo(m_TransitionTime);
-                StartCoroutine(EnableAndDisableMxObject());
-                break;
-            case 5:
-                //go1 = m_MxTracks[MusicObjects.VictoryMxPlayer.ToString()];
                 //go1.SetActive(true);
-                //m_MixesSnapshots[2].TransitionTo(1);
+                //m_MixesSnapshots[1].TransitionTo(m_TransitionTime);
+                StartCoroutine(EnableAndDisableMxObjects(go1, 1));
+                break;
+            case 2:
+                Debug.Log("Nada por aquí, nada por allá");
                 break;
             default:
                 Debug.Log($"The state is: {m_CurrentState.ToString()}");
@@ -95,8 +93,10 @@ public class MxManager : MonoBehaviour, ICheckDependencies
 
         }
 
-        IEnumerator EnableAndDisableMxObject()
+        IEnumerator EnableAndDisableMxObjects(GameObject go1, int snapshot)
         {
+            go1.SetActive(true);
+            m_MixesSnapshots[snapshot].TransitionTo(m_TransitionTime);
             yield return new WaitForSeconds(m_TransitionTime);
             foreach (var activeObject in goActiveInHierarchy)
             {
