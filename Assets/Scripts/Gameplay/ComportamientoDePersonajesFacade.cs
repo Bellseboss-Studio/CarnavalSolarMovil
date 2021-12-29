@@ -5,6 +5,7 @@ using Gameplay.Personajes.TargetComponents;
 using Gameplay.UsoDeCartas;
 using ServiceLocatorPath;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Gameplay
 {
@@ -13,6 +14,7 @@ namespace Gameplay
         private List<Personaje> _personajes;
         [SerializeField] private FactoriaPersonaje factoriaPersonaje;
         [SerializeField] private ServicioDeTiempo _servicioDeTiempo;
+        [SerializeField] private Color colorAliado, colorEnemigo;
 
         private void Awake()
         {
@@ -30,6 +32,14 @@ namespace Gameplay
         {
             _personajes.Add(personaje);
             personaje.MuerteDelegate+= EliminarPersonajeDeLaLista;
+            if (personaje.enemigo)
+            {
+                personaje.imagenIndicadoraDeEquipo.color = colorEnemigo;
+            }
+            else
+            {
+                personaje.imagenIndicadoraDeEquipo.color = colorAliado;
+            }
         }
 
         private void EliminarPersonajeDeLaLista(Personaje personaje)

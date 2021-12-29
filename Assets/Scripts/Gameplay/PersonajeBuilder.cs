@@ -16,6 +16,7 @@ namespace Gameplay
         private Vector3 _position;
         private GameObject _prefab;
         private EstadisticasCarta _estadisticasCarta;
+        private bool _renderizarUI;
 
         public PersonajeBuilder WithPersonaje(Personaje personaje)
         {
@@ -85,6 +86,23 @@ namespace Gameplay
                     _interaccionBehaviour = new DaniarTresTargetsMasCercanos();
                     break;
                 
+                case InteraccionComponentEnum.ObtenerEnergiaAlIniciarTurno:
+                    _interaccionBehaviour = new ObtenerEnergiaAlIniciarTurno();
+                    break;
+                
+                case InteraccionComponentEnum.AumentarVelocidadGeneralDeAliadosAlIniciarTurno:
+                    _interaccionBehaviour = new AumentarVelocidadGeneralDeAliadosAlIniciarTurno();
+                    break;
+                    
+                case InteraccionComponentEnum.AtacarYCurarAliadoMasCercanoAlImpacto:
+                    _interaccionBehaviour = new AtacarYCurarAliadoMasCercanoAlImpacto();
+                    break;
+                case InteraccionComponentEnum.InstanciarProyectilQueCuraYDania:
+                    _interaccionBehaviour = new DispararProyectilQueCuraYDania();
+                    break;
+                case InteraccionComponentEnum.DaniarPersonajeYAutoDestruirse:
+                    _interaccionBehaviour = new DaniarPersonajeAndAutoDestruirse();
+                    break;
                 /*case InteraccionComponentEnum.:
                     _interaccionBehaviour = new ();
                     break;*/
@@ -130,10 +148,16 @@ namespace Gameplay
         public Personaje Build()
         {
             var personaje = Object.Instantiate(_personaje);
-            personaje.SetComponents(_targetBehaviour, _interaccionBehaviour, _rutaComponent, _estadisticasCarta, _prefab);
+            personaje.SetComponents(_targetBehaviour, _interaccionBehaviour, _rutaComponent, _estadisticasCarta, _prefab, _renderizarUI);
             personaje.transform.position = _position;
             
             return personaje;
+        }
+
+        public PersonajeBuilder WithUi(bool renderizarUI)
+        {
+            _renderizarUI = renderizarUI;
+            return this;
         }
     }
 }

@@ -1,38 +1,115 @@
-﻿using Gameplay.NewGameStates;
+﻿using System;
+using System.Collections.Generic;
+using Gameplay.NewGameStates;
 using Gameplay.UsoDeCartas;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ServiceLocatorPath
 {
-    public class ServicioDeInstanciadoDeEnemigos : MonoBehaviour, IEnemyInstantiate, IHeroeInstancie
+    public class ServicioDeInstanciadoDeEnemigos : MonoBehaviour, IEnemyInstantiate, IHeroeInstancie, IEstadoDePersonajesDelJuego, IInstanciadoDeCosasConfiguradas
     {
         [SerializeField] private GameObject point;
+        private List<Gameplay.Personaje> personajesAliado;
+        private List<Gameplay.Personaje> personajesEnemigos;
         private IFactoriaCarta _factoriaCarta;
+        private IFactoriaPersonajes _factoriaPersonajes;
 
-        public void Configuration(IFactoriaCarta factoriaCarta)
+        private void Start()
+        {
+            personajesAliado = new List<Gameplay.Personaje>();
+            personajesEnemigos = new List<Gameplay.Personaje>();
+        }
+
+        public void Configuration(IFactoriaCarta factoriaCarta, IFactoriaPersonajes factoriaPersonajes)
         {
             _factoriaCarta = factoriaCarta;
+            _factoriaPersonajes = factoriaPersonajes;
         }
-        public void InstanciateEnemy(FactoriaPersonaje factoriaPersonaje)
+
+        public void InstanciateHeroEnemy(IFactoriaPersonajes factoriaPersonaje)
+        {
+            var carta = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
+            var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
+            var personaje = factoriaPersonaje.CreatePersonaje(GetPointRandom(), cartaTemplate.GetEstadisticas(), true, true);
+            personajesEnemigos.Add(personaje);
+            Destroy(cartaTemplate.gameObject);
+        }
+
+        public void InstanciateEnemy(IFactoriaPersonajes factoriaPersonaje)
+        {
+            var carta = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
+            var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
+            factoriaPersonaje.CreatePersonaje(GetPointRandom(), cartaTemplate.GetEstadisticas(), true, true);
+            Destroy(cartaTemplate.gameObject);
+        }
+
+        private Vector3 GetPointRandom()
         {
             var pointToInstantiate = Random.insideUnitSphere.normalized;
             pointToInstantiate.x += point.transform.position.x;
             pointToInstantiate.z += point.transform.position.z;
             pointToInstantiate.y = point.transform.position.y;
-            //Debug.Log(pointToInstantiate);
-            var carta = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
-            var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
-            factoriaPersonaje.CreatePersonaje(pointToInstantiate, cartaTemplate.GetEstadisticas(), true);
-            Destroy(cartaTemplate.gameObject);
+            return pointToInstantiate;
         }
-        public void InstanciateHero(FactoriaPersonaje factoriaPersonaje, Vector3 point)
+
+        public void InstanciateHero(IFactoriaPersonajes factoriaPersonaje, Vector3 point, string cualHeroe)
         {
-            //Debug.Log(pointToInstantiate);
-            var carta = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
+            InstanciateHero(factoriaPersonaje, point, cualHeroe, false);
+        }
+
+        public void InstanciateHero(IFactoriaPersonajes factoriaPersonaje, Vector3 point, string cualHeroe, bool enemigo)
+        {
+            var carta = cualHeroe;//ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
             var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
-            factoriaPersonaje.CreatePersonaje(point, cartaTemplate.GetEstadisticas(), true);
+            var personaje = factoriaPersonaje.CreatePersonaje(point, cartaTemplate.GetEstadisticas(), enemigo,true);
+            personajesAliado.Add(personaje);
             Destroy(cartaTemplate.gameObject);
         }
-        
+
+        public bool TerminoElJuego()
+        {
+            var terminoAliado = true;
+            var terminoEmemigo = true;
+            foreach (var personajeAliado in personajesAliado)
+            {
+                if (personajeAliado.health > 0)
+                {
+                    terminoAliado = false;
+                }
+            }
+
+            foreach (var personajeEnemigo in personajesEnemigos)
+            {
+                if (personajeEnemigo.health > 0)
+                {
+                    terminoEmemigo = false;
+                }
+            }
+
+            return terminoAliado || terminoEmemigo;
+        }
+
+        public bool GanoElPlayer()
+        {
+            var terminoAliado = false;
+            foreach (var personajeAliado in personajesAliado)
+            {
+                if (personajeAliado.health > 0)
+                {
+                    terminoAliado = true;
+                }
+            }
+
+            return terminoAliado;
+        }
+
+        public void InstanciaSinCarta(string carta, Vector3 point, bool esEnemigo)
+        {
+            var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
+            var personaje = _factoriaPersonajes.CreatePersonaje(point, cartaTemplate.GetEstadisticas(), esEnemigo, false);
+            personajesAliado.Add(personaje);
+            Destroy(cartaTemplate.gameObject);
+        }
     }
 }

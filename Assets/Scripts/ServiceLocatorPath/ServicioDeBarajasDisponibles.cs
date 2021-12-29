@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using Gameplay.NewGameStates;
 using Gameplay.UsoDeCartas;
+using UnityEngine;
 
 namespace ServiceLocatorPath
 {
@@ -21,20 +23,34 @@ namespace ServiceLocatorPath
             _barajaSeleccionadaId = barajaSeleccionadaId;
         }
 
-        public Stack<string> GetBarajaElejida()
+        public Stack<string> GetPrimeras10Cartas()
         {
             var idCartasBarajaSeleccionada = new Stack<string>();
-            foreach (var idDeCartaEnBaraja in _barajaSeleccionadaId.ListaDeIdDeCartasEnBaraja)
+            for (int i = 0; i < 10; i++)
             {
-                idCartasBarajaSeleccionada.Push(idDeCartaEnBaraja);
+                var cartaId = GetCartaSegunFamilia();
+                idCartasBarajaSeleccionada.Push(cartaId);
             }
 
             return idCartasBarajaSeleccionada;
         }
 
+        private string GetCartaSegunFamilia()
+        {
+            var valorRandomObtenido = Random.Range(1, 100);
+            if (valorRandomObtenido <= _barajaSeleccionadaId.PorcentajeProbabilidadSacarCartaDeLaMismaFamilia)
+            {
+                var cartaAAniadir = Random.Range(1, _barajaSeleccionadaId.ListaDeIdDeCartasEnBaraja.Count);
+                return _barajaSeleccionadaId.ListaDeIdDeCartasEnBaraja[cartaAAniadir];
+            }
+
+            var cartaRandom = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
+            return cartaRandom;
+        }
+
         public string GetHeroe()
         {
-            return _barajaSeleccionadaId.ListaDeIdDeCartasEnBaraja[0];
+            return _barajaSeleccionadaId.IDHeroe;
         }
     }
 }

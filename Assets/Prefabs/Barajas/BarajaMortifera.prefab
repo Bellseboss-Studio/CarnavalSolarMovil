@@ -89,21 +89,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d925e3fdd7c47e38c3f3afa3be0ff84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: BarajaMortifera
   listaDeIdDeCartasEnBaraja:
-  - E03
-  - E03
-  - E03
-  - E03
-  - E03
-  - E03
-  - E03
-  - E03
-  - E03
-  - E03
-  - E03
-  - E03
-  - E03
+  - A00
+  - A02
+  idHeroe: HA0
+  porcentajeProbabilidadSacarCartaDeLaMismaFamilia: 50
   estaSeleccionadaLaBaraja: 0
 --- !u!114 &231404326
 MonoBehaviour:

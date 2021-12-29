@@ -13,9 +13,6 @@ MonoBehaviour:
   m_Name: Configuracion De Modelo 3D De Personajes
   m_EditorClassIdentifier: 
   personajes:
-  - {fileID: 3743356022714164884, guid: 32c6439dfa46cd94da74d550cab2ea02, type: 3}
-  - {fileID: 6658209186139850537, guid: 5ff9f054f2f72c24b9a54feac2b1fc6d, type: 3}
-  - {fileID: 6066990239861221174, guid: a242d98a938806f43a65eea88bb48164, type: 3}
   - {fileID: 4598650156605636729, guid: f97a3c58c64b3bc4e9b1aa4495359626, type: 3}
   - {fileID: 8537469837638658422, guid: f271b8e7c36a2fb4a98cb3c4fd2c017d, type: 3}
   - {fileID: 2956289971193338598, guid: 7d6a84505f8f3754f9b6f0bbb69957a3, type: 3}
@@ -23,3 +20,12 @@ MonoBehaviour:
   - {fileID: 1398248451135028486, guid: 01ed31e005d1f994f8b86f922f2fb678, type: 3}
   - {fileID: 7507267559407061729, guid: dcc3742f21c7f9c49802708452406c4d, type: 3}
   - {fileID: 5819852640482833592, guid: a44c53b77f7954c449589634e12a1630, type: 3}
+  - {fileID: 4489788034835000820, guid: a21ce661121d6a049bd16116597d1633, type: 3}
+  - {fileID: 4379437707848200187, guid: 4b91529a0510b5548b4888a5118af3c9, type: 3}
+  - {fileID: 4850157908599979875, guid: 58028dd0e0d42c54bb7097f081879924, type: 3}
+  - {fileID: 5210352084228817680, guid: fca9897f5d28cca439bec9c1135b75c0, type: 3}
+  - {fileID: 3465344991099846634, guid: 4592501acc3cff842b5ace2c79233e73, type: 3}
+  - {fileID: 338577401024774744, guid: 1b92aa5e6781bc44680adc1cc84dacae, type: 3}
+  - {fileID: 4296472419613662498, guid: 7d5bf6794c8bfcd45bd3c6922c172b7e, type: 3}
+  - {fileID: 3086985627068172618, guid: 84f27da8ef025f14ba06c0d7e0348d4a, type: 3}
+  - {fileID: 7161106860431828664, guid: 0a613786f7b898846b4b1bc9b3a330a5, type: 3}

@@ -1,7 +1,11 @@
-﻿using Gameplay.UsoDeCartas;
+﻿using System;
+using System.Collections.Generic;
+using DG.Tweening;
+using Gameplay.UsoDeCartas;
 using ServiceLocatorPath;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Gameplay.NewGameStates
@@ -17,6 +21,12 @@ namespace Gameplay.NewGameStates
         [SerializeField] private bool jugadoresSincronizados;
         [SerializeField] private FactoriaPersonaje _factoriaPersonaje;
         private ConfiguracionDeLosEstadosDelJuego _configuracionDeLosEstadosDelJuego;
+        [SerializeField] private TextMeshProUGUI textoDeGanadoPerdido;
+        [SerializeField] private List<GameObject> cosasParaActivarCuandoGanaPierde;
+        [SerializeField] private List<Image> imagenesParaActivarCuandoGanaPierde;
+        [SerializeField] private List<Image> imagenesPanelesGanoPerdio;
+        [SerializeField] private List<TextMeshProUGUI> textosParaActivarCuandoGanaPierde;
+        [SerializeField] private Button botonContinuar;
         private bool _juegoPausado = true;
         private bool _juegoTerminado = false;
         private bool _juegoConfigurado = false;
@@ -44,12 +54,16 @@ namespace Gameplay.NewGameStates
             //jugarButton.onClick.AddListener(() => _juegoPausado = false);
             //finalizarJuegoButton.onClick.AddListener(() => _juegoTerminado = true);
             //Este foreach es mientras seleccionamos las cartas en otra escena
+            botonContinuar.onClick.AddListener(()=>
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            });
             foreach (var cartaTemplate in cartasConfiguracion.GetCartasTemplate())
             {
-                ServiceLocator.Instance.GetService<IBarajaDelPlayer>().AddCarta(cartaTemplate.Id);
+                ServiceLocator.Instance.GetService<IBarajaDelPlayer>().AddCarta(cartaTemplate.Value.Id);
             }
             _colocacionCartas.Configurate();
-            ServiceLocator.Instance.GetService<IEnemyInstantiate>().Configuration(_factoriaCarta);
+            ServiceLocator.Instance.GetService<IEnemyInstantiate>().Configuration(_factoriaCarta, _factoriaPersonaje);
         }
         
         private async void StartState(IEstadoDeJuego state, object data = null)
@@ -73,7 +87,7 @@ namespace Gameplay.NewGameStates
 
         public bool SeTerminoElJuego()
         {
-            return _juegoTerminado;
+            return ServiceLocator.Instance.GetService<IEstadoDePersonajesDelJuego>().TerminoElJuego();
         }
 
         public bool SeConfiguroElJuego()
@@ -98,21 +112,80 @@ namespace Gameplay.NewGameStates
 
         public bool SeCololoElHeroe()
         {
-            return ServiceLocator.Instance.GetService<IServicioDeTiempo>().SeEstaColocandoElHeroe();
+            return _seColocoElHeroe;
         }
 
+        private Vector3 point;
+        private bool pedirUbicacionDeHeroe, tomoUbicacion;
         public Vector3 PedirColocacionDeHeroe()
         {
-            if (Input.GetMouseButton(1))
+            pedirUbicacionDeHeroe = true;
+            if (tomoUbicacion)
             {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-                {
-                    return hit.point;
-                }
+                _factoriaCarta.CrearHeroe(point);
+                _seColocoElHeroe = true;
+                return point;
             }
             return Vector3.zero;
+        }
+
+        public void YaNoPedirColocacionDeHeroe()
+        {
+            pedirUbicacionDeHeroe = false;
+        }
+
+        public void MostrarMensajeDeQueSiPerdioGanoElJugador()
+        {
+            foreach (var o in cosasParaActivarCuandoGanaPierde)
+            {
+                o.SetActive(true);
+            }
+            var sequence = DOTween.Sequence();
+            foreach (var imagen in imagenesParaActivarCuandoGanaPierde)
+            {
+                sequence.Insert(0, imagen.DOFade(1, 1));
+            }
+            
+            foreach (var imagen in textosParaActivarCuandoGanaPierde)
+            {
+                sequence.Insert(0, imagen.DOFade(1, 1));
+            }
+            
+            foreach (var imagen in imagenesPanelesGanoPerdio)
+            {
+                sequence.Insert(0, imagen.DOFade(0.82f, 1));
+            }
+            
+            var textoColocar = "";
+            if (ServiceLocator.Instance.GetService<IEstadoDePersonajesDelJuego>().GanoElPlayer())
+            {
+                textoColocar = "Ganaste la batalla";
+            }
+            else
+            {
+                textoColocar = "Perdiste la batalla";
+            }
+            
+            textoDeGanadoPerdido.text = textoColocar;
+        }
+
+        private void Update()
+        {
+            if (pedirUbicacionDeHeroe)
+            {
+                if (Input.GetMouseButton(1))
+                {
+                    RaycastHit hit;
+                    Debug.Log("coloca Al heroe");
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                    {
+                        Debug.Log(hit);
+                        point = hit.point;
+                        tomoUbicacion = true;
+                    }
+                }
+            }
         }
 
         private void OnDisable()

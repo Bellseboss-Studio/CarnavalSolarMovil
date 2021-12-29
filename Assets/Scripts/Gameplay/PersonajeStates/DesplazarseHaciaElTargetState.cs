@@ -39,6 +39,7 @@ namespace Gameplay.PersonajeStates
                 //Debug.Log("estas en el estado desplazarse");
                 _rutaComponent.SetTargetsToNavMesh(targets);
                 distanciaEntrePersonajes = Vector3.Distance(_personaje.transform.position, targets[0].transform.position);
+                _personaje.BarraDeVidaMiraHaciaLaCamara();
                 await Task.Delay(TimeSpan.FromMilliseconds(100));
                 //Debug.Log(distanciaEntrePersonajes);
                 seDesplazo = true;

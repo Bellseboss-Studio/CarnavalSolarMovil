@@ -37,7 +37,7 @@ namespace Gameplay
             List<Personaje> personajesList = new List<Personaje>();
             foreach (var personaje in personajes)
             {
-                if (personaje.enemigo == origen.enemigo && Vector3.Distance(personaje.transform.position, origen.transform.position)< 2)
+                if (personaje.enemigo == origen.enemigo && Vector3.Distance(personaje.transform.position, origen.transform.position)< 4)
                 {
                     personajesList.Add(personaje);
                 }
@@ -136,6 +136,33 @@ namespace Gameplay
         public void ObtenerInmunidadPorSegundos(Personaje origen, float tiempo)
         {
             StartCoroutine(ObtenerInmunidadPorSegundosCoroutine(origen, tiempo));
+        }
+
+        public Personaje GetAliadoMasCercano(Personaje origen)
+        {
+            var personajes = FindObjectsOfType<Personaje>();
+            List<Personaje> _personajesList = new List<Personaje>();
+            foreach (var personaje in personajes)
+            {
+                if (personaje.enemigo == origen.enemigo)
+                {
+                    _personajesList.Add(personaje);
+                }
+            }
+
+            Personaje _personajeMasCercano = null;
+            
+            float distance = 100;
+            foreach (var personajeList in _personajesList)
+            {
+                if (Vector3.Distance(origen.transform.position, personajeList.transform.position) < distance)
+                {
+                    _personajeMasCercano = personajeList;
+                    distance = Vector3.Distance(origen.transform.position, personajeList.transform.position);
+                }
+            }
+            
+            return _personajeMasCercano;
         }
 
         IEnumerator ObtenerInmunidadPorSegundosCoroutine(Personaje origen, float tiempo)

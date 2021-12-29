@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using Gameplay.Personajes.InteraccionComponents;
 using Gameplay.Personajes.RutaComponents;
 using Gameplay.Personajes.TargetComponents;
@@ -6,6 +7,7 @@ using Gameplay.PersonajeStates;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 namespace Gameplay
 {
@@ -18,7 +20,10 @@ namespace Gameplay
         [SerializeField] private TargetComponent _targetComponent;
         [SerializeField] private InteraccionComponent _interaccionComponent;
         [SerializeField] private RutaComponent _rutaComponent;
-        [SerializeField] private SinApply _sinApply;
+        [SerializeField] public SinApply _sinApply;
+        [SerializeField] public Image imagenIndicadoraDeEquipo;
+        [SerializeField] public Slider barraDeVida;
+        [SerializeField] public Transform canvasBarraDeVida;
         private PersonajeStatesConfiguration _personajeStatesConfiguration;
         private Animator _animador;
         public bool enemigo;
@@ -33,8 +38,8 @@ namespace Gameplay
             set
             {
                 laPartidaEstaCongelada = value;
-                _animador.SetFloat("speedWalk", laPartidaEstaCongelada ? 0 : alternativa1);
-                _animador.SetFloat("speed", laPartidaEstaCongelada ? 0 : alternativa2);
+                _animador?.SetFloat("speedWalk", laPartidaEstaCongelada ? 0 : alternativa1);
+                _animador?.SetFloat("speed", laPartidaEstaCongelada ? 0 : alternativa2);
             }
         }
 
@@ -44,6 +49,7 @@ namespace Gameplay
         public string cosaDiferenciadora;
         public float distanciaDeInteraccion;
         public float health = 10;
+        private float vidaMaxima;
         public float velocidadDeInteraccion;
         public float velocidadDeMovimiento;
         public float damage;
@@ -60,11 +66,20 @@ namespace Gameplay
             
         }
 
-        private void Start()
+        private void AjustarBarraDeVida()
         {
+            var aumentoDeTamañoDeLaBarraDeVida = (health / 250)/5;
+            barraDeVida.transform.localScale = new Vector3(1 + aumentoDeTamañoDeLaBarraDeVida, 1,1);
+            BarraDeVidaMiraHaciaLaCamara();
         }
 
-        public void SetComponents(TargetBehaviour targetBehaviour, InteraccionBehaviour interaccionBehaviour, RutaBehaviour rutaBehaviour, EstadisticasCarta estadisticasCarta, GameObject prefab)
+        public void BarraDeVidaMiraHaciaLaCamara()
+        {
+            canvasBarraDeVida.LookAt(Camera.main.transform);
+        }
+
+        public void SetComponents(TargetBehaviour targetBehaviour, InteraccionBehaviour interaccionBehaviour, RutaBehaviour rutaBehaviour, EstadisticasCarta estadisticasCarta,
+            GameObject prefab, bool renderizarUI)
         {
             var _prefabInstanciado = Instantiate(prefab, transform);
             _animador = _prefabInstanciado.GetComponent<Animator>();
@@ -75,6 +90,7 @@ namespace Gameplay
             _prefabInstanciado.transform.position = position;
             velocidadDeInteraccion = estadisticasCarta.VelocidadDeInteraccion;
             health = estadisticasCarta.Health;
+            vidaMaxima = estadisticasCarta.Health;
             velocidadDeMovimiento = estadisticasCarta.VelocidadDeMovimiento;
             distanciaDeInteraccion = estadisticasCarta.DistanciaDeInteraccion;
             damage = estadisticasCarta.Damage;
@@ -88,6 +104,14 @@ namespace Gameplay
             _personajeStatesConfiguration.AddState(PersonajeStatesConfiguration.DesplazarseHaciaElTargetState, new DesplazarseHaciaElTargetState(this, _rutaComponent));
             _personajeStatesConfiguration.AddState(PersonajeStatesConfiguration.InteractuarConElTargetState, new InteractuarConElTargetState(this));
             StartState(_personajeStatesConfiguration.GetState(0));
+            if (renderizarUI)
+            {
+                AjustarBarraDeVida();   
+            }
+            else
+            {
+                barraDeVida.gameObject.SetActive(false);
+            }
         }
 
         private float cienPorciento1, cienPorciento2, cienPorciento3, cienPorciento4, cienPorciento5, alternativa1, alternativa2, alternativa3, alternativa4, alternativa5;
@@ -102,7 +126,7 @@ namespace Gameplay
             alternativa3 = (GetVelocitiOfInteraction(estadisticasCarta.VelocidadDeInteraccion) * 1) / cienPorciento3;
             alternativa4 = (GetVelocitiOfInteraction(estadisticasCarta.VelocidadDeInteraccion) * 1) / cienPorciento4;
             Debug.Log($"Caminar {alternativa1} ; Golpear {alternativa2} ; Idle {alternativa3} ; Morir {alternativa4}");
-            _animador.SetFloat("speedWalk", alternativa1);
+            _animador?.SetFloat("speedWalk", alternativa1);
         }
 
         private float GetVelocitiOfInteraction(float estadisticasCartaVelocidadDeInteraccion)
@@ -138,14 +162,15 @@ namespace Gameplay
 
         public void Muerte()
         {
+            barraDeVida.gameObject.SetActive(false);
             GetTargetComponent().DejarDeSerTargeteado(this);
             GetTargetComponent().HeDejadoDeTargetear();
             isTargeteable = false;
-            _animador.SetBool("estaCaminando", false);
-            _animador.SetBool("estaGolpeando", false);
-            _animador.SetBool("estaGolpeandoDistancia", false);
-            _animador.SetTrigger("murio");
-            _animador.SetFloat("speed", 1);
+            _animador?.SetBool("estaCaminando", false);
+            _animador?.SetBool("estaGolpeando", false);
+            _animador?.SetBool("estaGolpeandoDistancia", false);
+            _animador?.SetTrigger("murio");
+            _animador?.SetFloat("speed", 1);
             MuerteDelegate?.Invoke(this);
         }
 
@@ -156,18 +181,18 @@ namespace Gameplay
 
         public void Caminar(bool estaCaminando)
         {
-            _animador.SetBool("estaCaminando", estaCaminando);
+            _animador?.SetBool("estaCaminando", estaCaminando);
         }
 
         public void GolpearTarget()
         {
             if (_estadisticasCarta.DistanciaDeInteraccion > 3)
             {
-                _animador.SetBool("estaGolpeandoDistancia", true);
+                _animador?.SetBool("estaGolpeandoDistancia", true);
             }
             else
             {
-                _animador.SetBool("estaGolpeando", true);
+                _animador?.SetBool("estaGolpeando", true);
             }
         }
 
@@ -175,17 +200,23 @@ namespace Gameplay
         {
             if (_estadisticasCarta.DistanciaDeInteraccion > 2)
             {
-                _animador.SetBool("estaGolpeandoDistancia", false);
+                _animador?.SetBool("estaGolpeandoDistancia", false);
             }
             else
             {
-                _animador.SetBool("estaGolpeando", false);
+                _animador?.SetBool("estaGolpeando", false);
             }
         }
 
         public RutaComponent GetRutaComponent()
         {
             return _rutaComponent;
+        }
+
+        public void ActualizarBarraDeVida()
+        {
+            var sequence = DOTween.Sequence();
+            sequence.Insert(0, barraDeVida.DOValue(health / vidaMaxima, 1f).SetEase(Ease.OutCirc));
         }
     }
 

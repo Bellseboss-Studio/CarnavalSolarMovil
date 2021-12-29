@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fec3979a1ae37f3448357276bd230c21, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 7114197542983364732}
   - component: {fileID: 7316080808676934838}
   m_Layer: 5
-  m_Name: CuranderoLuchador
+  m_Name: Disparador Asesino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -711,24 +711,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e031fdb4af66f98488ef4942973ae24d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: E02
-  modelo3DId: CuranderoLuchador
-  interaccionComponentId: 1
-  targetComponentId: 0
+  id: A02
+  modelo3DId: Francotirador Venenoso
+  interaccionComponentId: 8
+  targetComponentId: 1
   rutaComponentId: 0
   distanciaDeInteraccion: 5
-  health: 380
-  velocidadDeInteraccion: 2
-  velocidadDeMovimiento: 1
-  damage: 140
+  health: 400
+  velocidadDeInteraccion: 1.2
+  velocidadDeMovimiento: 0.7
+  damage: 96
   escudo: 0
-  costoEnergia: 4
+  costoEnergia: 5
   valorCarta: {fileID: 971560392514880441}
   zona: 0
   caminar: {fileID: 7400000, guid: 6d3a04249b912e34ab784791da09e02c, type: 2}
   golpear: {fileID: 7400000, guid: 97088666cb28a6642b63e775f2ab010b, type: 2}
   morir: {fileID: 7400000, guid: c80e5eea73a86234c97950b148a12086, type: 2}
   idle: {fileID: 7400000, guid: b5dfd017a0cfd3942bb177165aea379d, type: 2}
+  posicionEnBaraja: 0
 --- !u!1 &8159330854986713344
 GameObject:
   m_ObjectHideFlags: 0

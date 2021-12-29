@@ -29,9 +29,17 @@ namespace Gameplay.UsoDeCartas
             else return cartaTemplate;
         }
 
-        public CartaTemplate[] GetCartasTemplate()
-        {
-            return cartaTemplates;
+        public Dictionary<string, CartaTemplate> GetCartasTemplate()
+        { 
+            var cartasTemplatesResult = new Dictionary<string, CartaTemplate>();
+            foreach (var template in _CartasTemplates)
+            {
+                if (!template.Value.ESUnaCartaIlegal)
+                {
+                    cartasTemplatesResult.Add(template.Key, template.Value);
+                }
+            }
+            return cartasTemplatesResult;
         }
     }
 }

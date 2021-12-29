@@ -195,7 +195,7 @@ AnimatorController:
     m_Controller: {fileID: 0}
   - m_Name: speedWalk
     m_Type: 1
-    m_DefaultFloat: 0
+    m_DefaultFloat: 1
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
@@ -400,7 +400,7 @@ AnimatorStateMachine:
     m_Position: {x: 650, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8933616211094616171}
-    m_Position: {x: 780, y: 250, z: 0}
+    m_Position: {x: 860, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 9207625600330889252}
     m_Position: {x: 190, y: 250, z: 0}

@@ -8,11 +8,15 @@ namespace Gameplay.UsoDeCartas
 {
     public class SelectorBaraja : MonoBehaviour
     {
-        [SerializeField] private string id;
         [SerializeField] private List<string> listaDeIdDeCartasEnBaraja;
+        [SerializeField] private string idHeroe;
+
+        public string IDHeroe => idHeroe;
+
+        [SerializeField] private float porcentajeProbabilidadSacarCartaDeLaMismaFamilia;
+        public float PorcentajeProbabilidadSacarCartaDeLaMismaFamilia => porcentajeProbabilidadSacarCartaDeLaMismaFamilia;
         private Button _botonBarajaSeleccionada;
         public bool estaSeleccionadaLaBaraja = false;
-        public string Id => id;
         public Button BotonBarajaSeleccionada => _botonBarajaSeleccionada;
         public List<string> ListaDeIdDeCartasEnBaraja => listaDeIdDeCartasEnBaraja;
         private void Awake()

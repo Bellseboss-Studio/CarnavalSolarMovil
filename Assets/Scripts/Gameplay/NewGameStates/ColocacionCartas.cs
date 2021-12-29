@@ -21,7 +21,7 @@ namespace Gameplay.NewGameStates
             _hayCartaEnPosicion = new List<bool>(){false,false,false,false,false,false,false,false,false,false};
             _barajaDeCartasId = new Stack<string>();
             _idCartasEnMano = new List<string>();
-            _barajaDeCartasId = ServiceLocator.Instance.GetService<IServicioDeBarajasDisponibles>().GetBarajaElejida();
+            _barajaDeCartasId = ServiceLocator.Instance.GetService<IServicioDeBarajasDisponibles>().GetPrimeras10Cartas();
             _cartasEnMano = new Dictionary<int, string>();
         }
         
@@ -64,7 +64,7 @@ namespace Gameplay.NewGameStates
         {
             if (_barajaDeCartasId.Count <= 0)
             {
-                _barajaDeCartasId = ServiceLocator.Instance.GetService<IServicioDeBarajasDisponibles>().GetBarajaElejida();
+                _barajaDeCartasId = ServiceLocator.Instance.GetService<IServicioDeBarajasDisponibles>().GetPrimeras10Cartas();
             }
             var carta = _barajaDeCartasId.Pop();
             _ultimaCartaInstanciada = carta;
