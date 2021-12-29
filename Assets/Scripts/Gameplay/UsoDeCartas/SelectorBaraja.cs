@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ServiceLocatorPath;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,10 @@ namespace Gameplay.UsoDeCartas
     {
         [SerializeField] private List<string> listaDeIdDeCartasEnBaraja;
         [SerializeField] private string idHeroe;
+        [SerializeField] private Image imageDeFamilia;
+        [SerializeField] private Sprite foto;
+        [SerializeField] private TextMeshProUGUI textoDeNombreDeFamilia;
+        [SerializeField] private string nombreFamilia;
 
         public string IDHeroe => idHeroe;
 
@@ -27,6 +32,8 @@ namespace Gameplay.UsoDeCartas
         private void Start()
         {
             AniadirBarajaAServiceLocator(this);
+            imageDeFamilia.sprite = foto;
+            textoDeNombreDeFamilia.text = nombreFamilia;
         }
 
         public void AniadirBarajaAServiceLocator(SelectorBaraja baraja)
