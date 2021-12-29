@@ -7,7 +7,7 @@ namespace ServiceLocatorPath
     {
         void AniadirBaraja(SelectorBaraja baraja);
         void SetBarajaSeleccionadaId(SelectorBaraja barajaSeleccionadaId);
-        Stack<string> GetBarajaElejida();
+        Stack<string> GetPrimeras10Cartas();
         string GetHeroe();
     }
 }
