@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2513701326941724067}
   - component: {fileID: 231404326}
   m_Layer: 5
-  m_Name: BarajaMortifera
+  m_Name: BarajaCelestial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,9 +90,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listaDeIdDeCartasEnBaraja:
-  - A00
-  - A02
-  idHeroe: HA0
+  - E01
+  - E02
+  - E03
+  idHeroe: HE0
   porcentajeProbabilidadSacarCartaDeLaMismaFamilia: 50
   estaSeleccionadaLaBaraja: 0
 --- !u!114 &231404326
