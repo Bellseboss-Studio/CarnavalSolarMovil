@@ -20,7 +20,7 @@ namespace Gameplay
         [SerializeField] private TargetComponent _targetComponent;
         [SerializeField] private InteraccionComponent _interaccionComponent;
         [SerializeField] private RutaComponent _rutaComponent;
-        [SerializeField] private SinApply _sinApply;
+        [SerializeField] public SinApply _sinApply;
         [SerializeField] public Image imagenIndicadoraDeEquipo;
         [SerializeField] public Slider barraDeVida;
         private PersonajeStatesConfiguration _personajeStatesConfiguration;

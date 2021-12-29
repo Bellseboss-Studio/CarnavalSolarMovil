@@ -13,6 +13,7 @@
         DaniarTresTargetsMasCercanos,
         DaniarYAumentarVelocidadAlMatar,
         ObtenerEnergiaAlIniciarTurno,
-        AumentarVelocidadGeneralDeAliadosAlIniciarTurno
+        AumentarVelocidadGeneralDeAliadosAlIniciarTurno,
+        AtacarYCurarAliadoMasCercanoAlImpacto
     }
 }

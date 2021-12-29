@@ -21,12 +21,12 @@ namespace Gameplay.UsoDeCartas
         [SerializeField] private TextMeshProUGUI valorCarta;
         [SerializeField] private ZonaDeDropeo zona;
         [SerializeField] private AnimationClip caminar, golpear, morir, idle;
-        [SerializeField] private int posicionEnBaraja;
+        private int _posicionEnBaraja;
         public string Id => id;
         public int PosicionEnBaraja
         {
-            get => posicionEnBaraja;
-            set => posicionEnBaraja = value;
+            get => _posicionEnBaraja;
+            set => _posicionEnBaraja = value;
         }
 
         public void Configurate(FactoriaPersonaje factoriaPersonaje)
@@ -53,7 +53,7 @@ namespace Gameplay.UsoDeCartas
         {
             if (ServiceLocator.Instance.GetService<IServicioDeEnergia>().TieneEnergiaSuficiente(costoEnergia))
             {
-                ServiceLocator.Instance.GetService<IColocacionCartas>().YaNoHayCartaEnPosicion(posicionEnBaraja);
+                ServiceLocator.Instance.GetService<IColocacionCartas>().YaNoHayCartaEnPosicion(_posicionEnBaraja);
                 _factoriaPersonaje.CreatePersonaje(hitPoint,GetEstadisticas());
                 gameObject.SetActive(false);
                 ServiceLocator.Instance.GetService<IEnemyInstantiate>().InstanciateEnemy(_factoriaPersonaje);
