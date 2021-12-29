@@ -29,6 +29,8 @@ namespace ServiceLocatorPath
             ServiceLocator.Instance.RegisterService<IEnemyInstantiate>(manejadorDeEnemigos);
             ServiceLocator.Instance.RegisterService<IHeroeInstancie>(manejadorDeEnemigos);
             ServiceLocator.Instance.RegisterService<IEstadoDePersonajesDelJuego>(manejadorDeEnemigos);
+            var servicioDeBarajasDisponibles = new ServicioDeBarajasDisponibles();
+            ServiceLocator.Instance.RegisterService<IServicioDeBarajasDisponibles>(servicioDeBarajasDisponibles);
             DontDestroyOnLoad(gameObject);
         }
     }

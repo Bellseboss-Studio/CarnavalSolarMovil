@@ -17,8 +17,6 @@ namespace InterfazDeUsuario
 
         private void Awake()
         {
-            var servicioDeBarajasDisponibles = new ServicioDeBarajasDisponibles();
-            ServiceLocator.Instance.RegisterService<IServicioDeBarajasDisponibles>(servicioDeBarajasDisponibles);
         }
 
         private void Start()
