@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using Gameplay.UsoDeCartas;
 using ServiceLocatorPath;
 using TMPro;
@@ -22,6 +23,9 @@ namespace Gameplay.NewGameStates
         private ConfiguracionDeLosEstadosDelJuego _configuracionDeLosEstadosDelJuego;
         [SerializeField] private TextMeshProUGUI textoDeGanadoPerdido;
         [SerializeField] private List<GameObject> cosasParaActivarCuandoGanaPierde;
+        [SerializeField] private List<Image> imagenesParaActivarCuandoGanaPierde;
+        [SerializeField] private List<Image> imagenesPanelesGanoPerdio;
+        [SerializeField] private List<TextMeshProUGUI> textosParaActivarCuandoGanaPierde;
         [SerializeField] private Button botonContinuar;
         private bool _juegoPausado = true;
         private bool _juegoTerminado = false;
@@ -132,11 +136,26 @@ namespace Gameplay.NewGameStates
 
         public void MostrarMensajeDeQueSiPerdioGanoElJugador()
         {
-            //aqui es donde se implementan las demas cosas
             foreach (var o in cosasParaActivarCuandoGanaPierde)
             {
                 o.SetActive(true);
             }
+            var sequence = DOTween.Sequence();
+            foreach (var imagen in imagenesParaActivarCuandoGanaPierde)
+            {
+                sequence.Insert(0, imagen.DOFade(1, 1));
+            }
+            
+            foreach (var imagen in textosParaActivarCuandoGanaPierde)
+            {
+                sequence.Insert(0, imagen.DOFade(1, 1));
+            }
+            
+            foreach (var imagen in imagenesPanelesGanoPerdio)
+            {
+                sequence.Insert(0, imagen.DOFade(0.82f, 1));
+            }
+            
             var textoColocar = "";
             if (ServiceLocator.Instance.GetService<IEstadoDePersonajesDelJuego>().GanoElPlayer())
             {
