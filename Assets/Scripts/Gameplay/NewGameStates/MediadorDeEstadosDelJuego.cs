@@ -56,7 +56,7 @@ namespace Gameplay.NewGameStates
             });
             foreach (var cartaTemplate in cartasConfiguracion.GetCartasTemplate())
             {
-                ServiceLocator.Instance.GetService<IBarajaDelPlayer>().AddCarta(cartaTemplate.Id);
+                ServiceLocator.Instance.GetService<IBarajaDelPlayer>().AddCarta(cartaTemplate.Value.Id);
             }
             _colocacionCartas.Configurate();
             ServiceLocator.Instance.GetService<IEnemyInstantiate>().Configuration(_factoriaCarta, _factoriaPersonaje);

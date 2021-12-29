@@ -21,8 +21,11 @@ namespace Gameplay.UsoDeCartas
         [SerializeField] private TextMeshProUGUI valorCarta;
         [SerializeField] private ZonaDeDropeo zona;
         [SerializeField] private AnimationClip caminar, golpear, morir, idle;
+        [SerializeField] private bool esUnaCartaIlegal;
+        
         private int _posicionEnBaraja;
         public string Id => id;
+        public bool ESUnaCartaIlegal => esUnaCartaIlegal;
         public int PosicionEnBaraja
         {
             get => _posicionEnBaraja;

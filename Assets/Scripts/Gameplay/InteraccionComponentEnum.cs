@@ -15,6 +15,7 @@
         ObtenerEnergiaAlIniciarTurno,
         AumentarVelocidadGeneralDeAliadosAlIniciarTurno,
         AtacarYCurarAliadoMasCercanoAlImpacto,
-        InstanciarProyectilQueCuraYDania
+        InstanciarProyectilQueCuraYDania,
+        DaniarPersonajeYAutoDestruirse
     }
 }

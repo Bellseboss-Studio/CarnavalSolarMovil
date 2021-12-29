@@ -31,7 +31,7 @@ namespace ServiceLocatorPath
         {
             var carta = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
             var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
-            var personaje = factoriaPersonaje.CreatePersonaje(GetPointRandom(), cartaTemplate.GetEstadisticas(), true);
+            var personaje = factoriaPersonaje.CreatePersonaje(GetPointRandom(), cartaTemplate.GetEstadisticas(), true, true);
             personajesEnemigos.Add(personaje);
             Destroy(cartaTemplate.gameObject);
         }
@@ -40,7 +40,7 @@ namespace ServiceLocatorPath
         {
             var carta = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
             var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
-            factoriaPersonaje.CreatePersonaje(GetPointRandom(), cartaTemplate.GetEstadisticas(), true);
+            factoriaPersonaje.CreatePersonaje(GetPointRandom(), cartaTemplate.GetEstadisticas(), true, true);
             Destroy(cartaTemplate.gameObject);
         }
 
@@ -62,7 +62,7 @@ namespace ServiceLocatorPath
         {
             var carta = cualHeroe;//ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
             var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
-            var personaje = factoriaPersonaje.CreatePersonaje(point, cartaTemplate.GetEstadisticas(), enemigo);
+            var personaje = factoriaPersonaje.CreatePersonaje(point, cartaTemplate.GetEstadisticas(), enemigo,true);
             personajesAliado.Add(personaje);
             Destroy(cartaTemplate.gameObject);
         }
@@ -104,10 +104,10 @@ namespace ServiceLocatorPath
             return terminoAliado;
         }
 
-        public void InstanciaSinCarta(string carta, Vector3 point)
+        public void InstanciaSinCarta(string carta, Vector3 point, bool esEnemigo)
         {
             var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
-            var personaje = _factoriaPersonajes.CreatePersonaje(point, cartaTemplate.GetEstadisticas(), false);
+            var personaje = _factoriaPersonajes.CreatePersonaje(point, cartaTemplate.GetEstadisticas(), esEnemigo, false);
             personajesAliado.Add(personaje);
             Destroy(cartaTemplate.gameObject);
         }

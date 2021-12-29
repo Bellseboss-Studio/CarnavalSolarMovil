@@ -38,8 +38,8 @@ namespace Gameplay
             set
             {
                 laPartidaEstaCongelada = value;
-                _animador.SetFloat("speedWalk", laPartidaEstaCongelada ? 0 : alternativa1);
-                _animador.SetFloat("speed", laPartidaEstaCongelada ? 0 : alternativa2);
+                _animador?.SetFloat("speedWalk", laPartidaEstaCongelada ? 0 : alternativa1);
+                _animador?.SetFloat("speed", laPartidaEstaCongelada ? 0 : alternativa2);
             }
         }
 
@@ -66,11 +66,6 @@ namespace Gameplay
             
         }
 
-        private void Start()
-        {
-            AjustarBarraDeVida();
-        }
-
         private void AjustarBarraDeVida()
         {
             var aumentoDeTamañoDeLaBarraDeVida = (health / 250)/5;
@@ -86,7 +81,8 @@ namespace Gameplay
             canvasBarraDeVida.rotation = quaternion;
         }
 
-        public void SetComponents(TargetBehaviour targetBehaviour, InteraccionBehaviour interaccionBehaviour, RutaBehaviour rutaBehaviour, EstadisticasCarta estadisticasCarta, GameObject prefab)
+        public void SetComponents(TargetBehaviour targetBehaviour, InteraccionBehaviour interaccionBehaviour, RutaBehaviour rutaBehaviour, EstadisticasCarta estadisticasCarta,
+            GameObject prefab, bool renderizarUI)
         {
             var _prefabInstanciado = Instantiate(prefab, transform);
             _animador = _prefabInstanciado.GetComponent<Animator>();
@@ -111,6 +107,14 @@ namespace Gameplay
             _personajeStatesConfiguration.AddState(PersonajeStatesConfiguration.DesplazarseHaciaElTargetState, new DesplazarseHaciaElTargetState(this, _rutaComponent));
             _personajeStatesConfiguration.AddState(PersonajeStatesConfiguration.InteractuarConElTargetState, new InteractuarConElTargetState(this));
             StartState(_personajeStatesConfiguration.GetState(0));
+            if (renderizarUI)
+            {
+                AjustarBarraDeVida();   
+            }
+            else
+            {
+                barraDeVida.gameObject.SetActive(false);
+            }
         }
 
         private float cienPorciento1, cienPorciento2, cienPorciento3, cienPorciento4, cienPorciento5, alternativa1, alternativa2, alternativa3, alternativa4, alternativa5;
@@ -125,7 +129,7 @@ namespace Gameplay
             alternativa3 = (GetVelocitiOfInteraction(estadisticasCarta.VelocidadDeInteraccion) * 1) / cienPorciento3;
             alternativa4 = (GetVelocitiOfInteraction(estadisticasCarta.VelocidadDeInteraccion) * 1) / cienPorciento4;
             Debug.Log($"Caminar {alternativa1} ; Golpear {alternativa2} ; Idle {alternativa3} ; Morir {alternativa4}");
-            _animador.SetFloat("speedWalk", alternativa1);
+            _animador?.SetFloat("speedWalk", alternativa1);
         }
 
         private float GetVelocitiOfInteraction(float estadisticasCartaVelocidadDeInteraccion)
@@ -165,11 +169,11 @@ namespace Gameplay
             GetTargetComponent().DejarDeSerTargeteado(this);
             GetTargetComponent().HeDejadoDeTargetear();
             isTargeteable = false;
-            _animador.SetBool("estaCaminando", false);
-            _animador.SetBool("estaGolpeando", false);
-            _animador.SetBool("estaGolpeandoDistancia", false);
-            _animador.SetTrigger("murio");
-            _animador.SetFloat("speed", 1);
+            _animador?.SetBool("estaCaminando", false);
+            _animador?.SetBool("estaGolpeando", false);
+            _animador?.SetBool("estaGolpeandoDistancia", false);
+            _animador?.SetTrigger("murio");
+            _animador?.SetFloat("speed", 1);
             MuerteDelegate?.Invoke(this);
         }
 
@@ -180,18 +184,18 @@ namespace Gameplay
 
         public void Caminar(bool estaCaminando)
         {
-            _animador.SetBool("estaCaminando", estaCaminando);
+            _animador?.SetBool("estaCaminando", estaCaminando);
         }
 
         public void GolpearTarget()
         {
             if (_estadisticasCarta.DistanciaDeInteraccion > 3)
             {
-                _animador.SetBool("estaGolpeandoDistancia", true);
+                _animador?.SetBool("estaGolpeandoDistancia", true);
             }
             else
             {
-                _animador.SetBool("estaGolpeando", true);
+                _animador?.SetBool("estaGolpeando", true);
             }
         }
 
@@ -199,11 +203,11 @@ namespace Gameplay
         {
             if (_estadisticasCarta.DistanciaDeInteraccion > 2)
             {
-                _animador.SetBool("estaGolpeandoDistancia", false);
+                _animador?.SetBool("estaGolpeandoDistancia", false);
             }
             else
             {
-                _animador.SetBool("estaGolpeando", false);
+                _animador?.SetBool("estaGolpeando", false);
             }
         }
 

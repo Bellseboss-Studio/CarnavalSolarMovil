@@ -5,6 +5,6 @@ namespace Gameplay.NewGameStates
 {
     public interface IFactoriaPersonajes
     {
-        Personaje CreatePersonaje(Vector3 point, EstadististicasYHabilidadesDePersonaje getEstadisticas, bool enemigo);
+        Personaje CreatePersonaje(Vector3 point, EstadististicasYHabilidadesDePersonaje getEstadisticas, bool enemigo, bool renderizarUi);
     }
 }

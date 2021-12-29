@@ -7,7 +7,7 @@ namespace Gameplay.Personajes.InteraccionComponents
         public override void EjecucionDeInteraccion(Personaje target)
         {
             //Disparamos el proyectil
-            ServiceLocator.Instance.GetService<IInstanciadoDeCosasConfiguradas>().InstanciaSinCarta("proyectilDanioEnemigoMasCercano",_personaje.GetCharacterPosition());
+            ServiceLocator.Instance.GetService<IInstanciadoDeCosasConfiguradas>().InstanciaSinCarta("proyectilDanioEnemigoMasCercano",_personaje.GetCharacterPosition(), _personaje.enemigo);
         }
     }
 }

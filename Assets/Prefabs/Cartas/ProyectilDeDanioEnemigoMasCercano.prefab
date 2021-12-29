@@ -713,7 +713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: proyectilDanioEnemigoMasCercano
   modelo3DId: Proyectil
-  interaccionComponentId: 4
+  interaccionComponentId: 14
   targetComponentId: 0
   rutaComponentId: 0
   distanciaDeInteraccion: 2
@@ -729,6 +729,7 @@ MonoBehaviour:
   golpear: {fileID: 7400000, guid: 97088666cb28a6642b63e775f2ab010b, type: 2}
   morir: {fileID: 7400000, guid: c80e5eea73a86234c97950b148a12086, type: 2}
   idle: {fileID: 7400000, guid: b5dfd017a0cfd3942bb177165aea379d, type: 2}
+  esUnaCartaIlegal: 0
 --- !u!1 &8159330854986713344
 GameObject:
   m_ObjectHideFlags: 0
