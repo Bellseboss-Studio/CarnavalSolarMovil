@@ -1372,6 +1372,8 @@ MonoBehaviour:
   - {fileID: 1415421172}
   - {fileID: 1181511459}
   botonContinuar: {fileID: 1234440674}
+  jugar: {fileID: 2118890949}
+  animator: {fileID: 377647285}
 --- !u!1 &792833452
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Angel/NewGameStates.unity
     guid: e14e4bd9262e02847b736a24ca6d45d2
-  - enabled: 1
-    path: Assets/Scenes/Joaquin/NewGameStatesConPostProcessing.unity
-    guid: 410b7664482e6f34495caa53a96e718b
   m_configObjects: {}
