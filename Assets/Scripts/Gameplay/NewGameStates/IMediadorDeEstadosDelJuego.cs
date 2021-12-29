@@ -13,5 +13,6 @@ namespace Gameplay.NewGameStates
         bool SeCololoElHeroe();
         Vector3 PedirColocacionDeHeroe();
         void YaNoPedirColocacionDeHeroe();
+        void MostrarMensajeDeQueSiPerdioGanoElJugador();
     }
 }
