@@ -38,6 +38,7 @@ namespace Gameplay
             set
             {
                 laPartidaEstaCongelada = value;
+                if(_animador== null) return;
                 _animador?.SetFloat("speedWalk", laPartidaEstaCongelada ? 0 : alternativa1);
                 _animador?.SetFloat("speed", laPartidaEstaCongelada ? 0 : alternativa2);
             }
@@ -174,19 +175,19 @@ namespace Gameplay
             MuerteDelegate?.Invoke(this);
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             estaVivo = false;
         }
 
         public void Caminar(bool estaCaminando)
         {
-            _animador?.SetBool("estaCaminando", estaCaminando);
+            if(gameObject!= null){ _animador?.SetBool("estaCaminando", estaCaminando);}
         }
 
         public void GolpearTarget()
         {
-            if (_estadisticasCarta.DistanciaDeInteraccion > 3)
+            if (_estadisticasCarta.DistanciaDeInteraccion > 3 && _animador != null)
             {
                 _animador?.SetBool("estaGolpeandoDistancia", true);
             }
@@ -198,13 +199,13 @@ namespace Gameplay
 
         public void DejarInteractuar()
         {
-            if (_estadisticasCarta.DistanciaDeInteraccion > 2)
+            if (_estadisticasCarta.DistanciaDeInteraccion > 2 && _animador != null)
             {
                 _animador?.SetBool("estaGolpeandoDistancia", false);
             }
             else
             {
-                _animador?.SetBool("estaGolpeando", false);
+                if(_animador!= null) _animador?.SetBool("estaGolpeando", false);
             }
         }
 

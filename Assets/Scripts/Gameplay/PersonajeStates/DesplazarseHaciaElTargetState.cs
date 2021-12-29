@@ -24,12 +24,15 @@ namespace Gameplay.PersonajeStates
             {
                 return new PersonajeStateResult(PersonajeStatesConfiguration.CongeladoState);
             }
+
+            float distanciaEntrePersonajes;
             var targets = _personaje.GetTargetComponent().GetTargets();
             //Debug.Log($"{_personaje.cosaDiferenciadora} {_personaje.transform.position} + {targets[0].cosaDiferenciadora} {targets[0].gameObject.transform.position}");
-            float distanciaEntrePersonajes = Vector3.Distance(_personaje.transform.position, targets[0].gameObject.transform.position);
+            if(_personaje == null && targets[0] == null) return new PersonajeStateResult(PersonajeStatesConfiguration.CongeladoState);
+            distanciaEntrePersonajes = Vector3.Distance(_personaje.transform.position, targets[0].gameObject.transform.position);
             if(distanciaEntrePersonajes > _personaje.distanciaDeInteraccion && targets.Count > 0 && _personaje != null && targets[0] != null) _rutaComponent.SetTargetsToNavMesh(targets);
             _personaje.Caminar(true);
-            while (targets.Count > 0 && _personaje.isTargeteable && targets[0] != null && targets[0].isTargeteable && distanciaEntrePersonajes > _personaje.distanciaDeInteraccion)
+            while (targets.Count > 0 && _personaje.isTargeteable && targets[0] != null && targets[0].isTargeteable && distanciaEntrePersonajes > _personaje.distanciaDeInteraccion && _personaje != null)
             {
                 if (_personaje.LaPartidaEstaCongelada)
                 {
