@@ -22,6 +22,11 @@ public class MxManager : MonoBehaviour, ICheckDependencies
         CheckForReferences();
         DontDestroyOnLoad(gameObject);
     }
+    private void Update()
+    {
+        Debug.Log($"The state is: {SceneManager.GetActiveScene().name}");
+        
+    }
 
     private void Start()
     {
@@ -72,6 +77,9 @@ public class MxManager : MonoBehaviour, ICheckDependencies
                     //go1 = m_MxTracks[MusicObjects.VictoryMxPlayer.ToString()];
                     //go1.SetActive(true);
                     //m_MixesSnapshots[2].TransitionTo(1);
+                    break;
+                default:
+                    Debug.Log($"The state is: {m_CurrentState.ToString()}");
                     break;
             }    
         }
