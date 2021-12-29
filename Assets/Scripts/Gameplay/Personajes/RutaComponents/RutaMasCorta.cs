@@ -11,6 +11,7 @@ namespace Gameplay.Personajes.RutaComponents
             if (_navMeshAgent != null)
             {
                 _navMeshAgent.enabled = true;
+                if (!_personaje.gameObject.activeSelf) return;
                 _navMeshAgent.destination = personaje.transform.position;
                 _navMeshAgent.speed = _personaje.velocidadDeMovimiento * (_personaje.escudo == 0 ? 1 : _personaje.escudo);
             }
@@ -19,6 +20,7 @@ namespace Gameplay.Personajes.RutaComponents
         public override void SetTargetsToNavMesh(List<Personaje> targets)
         {
             _navMeshAgent.enabled = true;
+            if (!_personaje.gameObject.activeSelf) return;
             _navMeshAgent.destination = targets[0].transform.position;
             _navMeshAgent.stoppingDistance = _personaje.distanciaDeInteraccion;
             _navMeshAgent.speed = _personaje.velocidadDeMovimiento * (_personaje.escudo == 0 ? 1 : _personaje.escudo);
