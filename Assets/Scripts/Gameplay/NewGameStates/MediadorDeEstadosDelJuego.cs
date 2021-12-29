@@ -173,7 +173,7 @@ namespace Gameplay.NewGameStates
         {
             if (pedirUbicacionDeHeroe)
             {
-                if (Input.GetMouseButton(1))
+                if (Input.GetMouseButton(0))
                 {
                     RaycastHit hit;
                     Debug.Log("coloca Al heroe");

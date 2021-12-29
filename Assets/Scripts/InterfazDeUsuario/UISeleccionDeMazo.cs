@@ -12,7 +12,8 @@ namespace InterfazDeUsuario
     public class UISeleccionDeMazo : MonoBehaviour
     {
         [SerializeField] private List<SelectorBaraja> selectoresDeBaraja;
-        [SerializeField] private Button botonContinuar;
+        [SerializeField] private Button botonContinuar, jugar;
+        [SerializeField] private Animator animator;
         private SelectorBaraja _barajaSeleccionada;
 
         private void Awake()
@@ -24,6 +25,10 @@ namespace InterfazDeUsuario
         private void Start()
         {
             botonContinuar.onClick.AddListener(ContinuarASiguienteEscena);
+            jugar.onClick.AddListener(() =>
+            {
+                animator.SetBool("jugar", true);
+            });
             
             ConfigurarBotonesSelectoresDeBaraja();
         }
