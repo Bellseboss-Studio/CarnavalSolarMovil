@@ -19,16 +19,17 @@ namespace Gameplay.UsoDeCartas
             configuracionDeModelo3DDePersonajes = Instantiate(configuracionDeModelo3DDePersonajes);
         }
 
-        public Personaje CreatePersonaje(Vector3 hitPoint, EstadististicasYHabilidadesDePersonaje estadististicasYHabilidadesDePersonaje, bool esEnemigo = false)
+        public Personaje CreatePersonaje(Vector3 hitPoint, EstadististicasYHabilidadesDePersonaje estadististicasYHabilidadesDePersonaje, bool esEnemigo = false, bool renderizarUI = true)
         {
             var _personajeBuilder = new PersonajeBuilder();
-            _personajeBuilder.With3DObject(configuracionDeModelo3DDePersonajes.GetPersonajePrefabById(estadististicasYHabilidadesDePersonaje.idModelo3D));
-            _personajeBuilder.WithPersonaje(personaje);
-            _personajeBuilder.WithTargetComponent(estadististicasYHabilidadesDePersonaje.idTargetComponent);
-            _personajeBuilder.WithInteraccionComponent(estadististicasYHabilidadesDePersonaje.idInteraccionComponent);
-            _personajeBuilder.WithRutaComponent(estadististicasYHabilidadesDePersonaje.idRutaComponent);
-            _personajeBuilder.WithEstadisticasCarta(estadististicasYHabilidadesDePersonaje.EstadisticasCarta);
-            _personajeBuilder.WithPosition(hitPoint);
+            _personajeBuilder.With3DObject(configuracionDeModelo3DDePersonajes.GetPersonajePrefabById(estadististicasYHabilidadesDePersonaje.idModelo3D))
+                .WithPersonaje(personaje)
+                .WithTargetComponent(estadististicasYHabilidadesDePersonaje.idTargetComponent)
+                .WithInteraccionComponent(estadististicasYHabilidadesDePersonaje.idInteraccionComponent)
+                .WithRutaComponent(estadististicasYHabilidadesDePersonaje.idRutaComponent)
+                .WithEstadisticasCarta(estadististicasYHabilidadesDePersonaje.EstadisticasCarta)
+                .WithPosition(hitPoint)
+                .WithUi(renderizarUI);
             var personajeInstanciado = InstanciarPersonaje(_personajeBuilder, esEnemigo);
             PersonajeCreado?.Invoke(personajeInstanciado);
             return personajeInstanciado;
