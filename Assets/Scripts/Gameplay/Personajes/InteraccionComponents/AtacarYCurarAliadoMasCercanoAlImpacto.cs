@@ -1,4 +1,6 @@
-﻿namespace Gameplay.Personajes.InteraccionComponents
+﻿using ServiceLocatorPath;
+
+namespace Gameplay.Personajes.InteraccionComponents
 {
     public class AtacarYCurarAliadoMasCercanoAlImpacto : InteraccionBehaviour
     {
@@ -6,6 +8,7 @@
         {
             if (target == null) return;
             AplicarDanio(target, _personaje.damage);
+            //instanciar proyectil
             var aliadoCercano = _interaccionComponent.GetAliadoMasCercano(_personaje);
             if (aliadoCercano != null)
             {

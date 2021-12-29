@@ -59,7 +59,7 @@ namespace Gameplay.NewGameStates
                 ServiceLocator.Instance.GetService<IBarajaDelPlayer>().AddCarta(cartaTemplate.Id);
             }
             _colocacionCartas.Configurate();
-            ServiceLocator.Instance.GetService<IEnemyInstantiate>().Configuration(_factoriaCarta);
+            ServiceLocator.Instance.GetService<IEnemyInstantiate>().Configuration(_factoriaCarta, _factoriaPersonaje);
         }
         
         private async void StartState(IEstadoDeJuego state, object data = null)

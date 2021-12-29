@@ -7,12 +7,13 @@ using Random = UnityEngine.Random;
 
 namespace ServiceLocatorPath
 {
-    public class ServicioDeInstanciadoDeEnemigos : MonoBehaviour, IEnemyInstantiate, IHeroeInstancie, IEstadoDePersonajesDelJuego
+    public class ServicioDeInstanciadoDeEnemigos : MonoBehaviour, IEnemyInstantiate, IHeroeInstancie, IEstadoDePersonajesDelJuego, IInstanciadoDeCosasConfiguradas
     {
         [SerializeField] private GameObject point;
         private List<Gameplay.Personaje> personajesAliado;
         private List<Gameplay.Personaje> personajesEnemigos;
         private IFactoriaCarta _factoriaCarta;
+        private IFactoriaPersonajes _factoriaPersonajes;
 
         private void Start()
         {
@@ -20,12 +21,13 @@ namespace ServiceLocatorPath
             personajesEnemigos = new List<Gameplay.Personaje>();
         }
 
-        public void Configuration(IFactoriaCarta factoriaCarta)
+        public void Configuration(IFactoriaCarta factoriaCarta, IFactoriaPersonajes factoriaPersonajes)
         {
             _factoriaCarta = factoriaCarta;
+            _factoriaPersonajes = factoriaPersonajes;
         }
 
-        public void InstanciateHeroEnemy(FactoriaPersonaje factoriaPersonaje)
+        public void InstanciateHeroEnemy(IFactoriaPersonajes factoriaPersonaje)
         {
             var carta = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
             var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
@@ -34,7 +36,7 @@ namespace ServiceLocatorPath
             Destroy(cartaTemplate.gameObject);
         }
 
-        public void InstanciateEnemy(FactoriaPersonaje factoriaPersonaje)
+        public void InstanciateEnemy(IFactoriaPersonajes factoriaPersonaje)
         {
             var carta = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
             var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
@@ -51,12 +53,12 @@ namespace ServiceLocatorPath
             return pointToInstantiate;
         }
 
-        public void InstanciateHero(FactoriaPersonaje factoriaPersonaje, Vector3 point, string cualHeroe)
+        public void InstanciateHero(IFactoriaPersonajes factoriaPersonaje, Vector3 point, string cualHeroe)
         {
             InstanciateHero(factoriaPersonaje, point, cualHeroe, false);
         }
 
-        public void InstanciateHero(FactoriaPersonaje factoriaPersonaje, Vector3 point, string cualHeroe, bool enemigo)
+        public void InstanciateHero(IFactoriaPersonajes factoriaPersonaje, Vector3 point, string cualHeroe, bool enemigo)
         {
             var carta = cualHeroe;//ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
             var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
@@ -100,6 +102,14 @@ namespace ServiceLocatorPath
             }
 
             return terminoAliado;
+        }
+
+        public void InstanciaSinCarta(string carta, Vector3 point)
+        {
+            var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
+            var personaje = _factoriaPersonajes.CreatePersonaje(point, cartaTemplate.GetEstadisticas(), false);
+            personajesAliado.Add(personaje);
+            Destroy(cartaTemplate.gameObject);
         }
     }
 }

@@ -1875,6 +1875,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1223313595}
     m_Modifications:
+    - target: {fileID: 2513701326941724067, guid: 83357cb2a6969064994360cc339fcc2c, type: 3}
+      propertyPath: listaDeIdDeCartasEnBaraja.Array.data[0]
+      value: HE0
+      objectReference: {fileID: 0}
     - target: {fileID: 6578856084272046412, guid: 83357cb2a6969064994360cc339fcc2c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
