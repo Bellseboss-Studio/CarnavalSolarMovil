@@ -87,5 +87,19 @@ namespace ServiceLocatorPath
 
             return terminoAliado || terminoEmemigo;
         }
+
+        public bool GanoElPlayer()
+        {
+            var terminoAliado = false;
+            foreach (var personajeAliado in personajesAliado)
+            {
+                if (personajeAliado.health > 0)
+                {
+                    terminoAliado = true;
+                }
+            }
+
+            return terminoAliado;
+        }
     }
 }
