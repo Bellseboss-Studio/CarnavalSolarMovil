@@ -706,7 +706,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 7080800857700382711, guid: 8630ef64c34f243f682d65f44a9bc495, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.67
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -811,7 +811,7 @@ MonoBehaviour:
   m_AudioSource: {fileID: -4958664187690860155}
   m_CharacterName: 
   m_Output: {fileID: 7080800857700382711, guid: 8630ef64c34f243f682d65f44a9bc495, type: 2}
-  m_FsVolume: 0.76
+  m_FsVolume: 0.578
   m_DeathVolume: 1
 --- !u!1 &4753863735120355909
 GameObject:

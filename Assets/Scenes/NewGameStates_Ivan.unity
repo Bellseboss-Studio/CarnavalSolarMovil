@@ -1321,7 +1321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textoEnergia: {fileID: 1361471717}
-  energiaASumar: 10
+  energiaPorTurno: 0
 --- !u!114 &888163691
 MonoBehaviour:
   m_ObjectHideFlags: 0
