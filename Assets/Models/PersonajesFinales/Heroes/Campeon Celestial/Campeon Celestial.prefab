@@ -677,11 +677,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FsClips: []
+  m_AttackClips: []
   m_DeathClips: []
   m_AudioSource: {fileID: -4576793807195006672}
   m_CharacterName: 
   m_Output: {fileID: 0}
-  m_FsVolume: 7
+  m_FsVolume: 0.708
+  m_AttackVolume: 1
   m_DeathVolume: 1
 --- !u!1 &3596072834234855346
 GameObject:
