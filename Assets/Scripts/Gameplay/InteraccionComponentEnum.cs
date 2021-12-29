@@ -14,6 +14,7 @@
         DaniarYAumentarVelocidadAlMatar,
         ObtenerEnergiaAlIniciarTurno,
         AumentarVelocidadGeneralDeAliadosAlIniciarTurno,
-        AtacarYCurarAliadoMasCercanoAlImpacto
+        AtacarYCurarAliadoMasCercanoAlImpacto,
+        InstanciarProyectilQueCuraYDania
     }
 }

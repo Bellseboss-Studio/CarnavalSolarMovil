@@ -96,7 +96,9 @@ namespace Gameplay
                 case InteraccionComponentEnum.AtacarYCurarAliadoMasCercanoAlImpacto:
                     _interaccionBehaviour = new AtacarYCurarAliadoMasCercanoAlImpacto();
                     break;
-                
+                case InteraccionComponentEnum.InstanciarProyectilQueCuraYDania:
+                    _interaccionBehaviour = new DispararProyectilQueCuraYDania();
+                    break;
                 /*case InteraccionComponentEnum.:
                     _interaccionBehaviour = new ();
                     break;*/

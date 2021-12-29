@@ -716,7 +716,7 @@ MonoBehaviour:
   interaccionComponentId: 4
   targetComponentId: 0
   rutaComponentId: 0
-  distanciaDeInteraccion: 0
+  distanciaDeInteraccion: 2
   health: 1000
   velocidadDeInteraccion: 0.01
   velocidadDeMovimiento: 10
