@@ -17,7 +17,7 @@ namespace ServiceLocatorPath
             var servicioDeBaraja = new ServicioDeBaraja();
             if (FindObjectsOfType<Installer>().Length > 1)
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
                 return;
             }
             var playFab = new PlayFabCustom();
@@ -29,7 +29,7 @@ namespace ServiceLocatorPath
             ServiceLocator.Instance.RegisterService<IEnemyInstantiate>(manejadorDeEnemigos);
             ServiceLocator.Instance.RegisterService<IHeroeInstancie>(manejadorDeEnemigos);
             ServiceLocator.Instance.RegisterService<IEstadoDePersonajesDelJuego>(manejadorDeEnemigos);
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
     }
 }

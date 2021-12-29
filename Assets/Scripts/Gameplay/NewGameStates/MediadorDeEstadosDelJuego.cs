@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using Gameplay.UsoDeCartas;
 using ServiceLocatorPath;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Gameplay.NewGameStates
@@ -18,6 +20,9 @@ namespace Gameplay.NewGameStates
         [SerializeField] private bool jugadoresSincronizados;
         [SerializeField] private FactoriaPersonaje _factoriaPersonaje;
         private ConfiguracionDeLosEstadosDelJuego _configuracionDeLosEstadosDelJuego;
+        [SerializeField] private TextMeshProUGUI textoDeGanadoPerdido;
+        [SerializeField] private List<GameObject> cosasParaActivarCuandoGanaPierde;
+        [SerializeField] private Button botonContinuar;
         private bool _juegoPausado = true;
         private bool _juegoTerminado = false;
         private bool _juegoConfigurado = false;
@@ -45,6 +50,10 @@ namespace Gameplay.NewGameStates
             //jugarButton.onClick.AddListener(() => _juegoPausado = false);
             //finalizarJuegoButton.onClick.AddListener(() => _juegoTerminado = true);
             //Este foreach es mientras seleccionamos las cartas en otra escena
+            botonContinuar.onClick.AddListener(()=>
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            });
             foreach (var cartaTemplate in cartasConfiguracion.GetCartasTemplate())
             {
                 ServiceLocator.Instance.GetService<IBarajaDelPlayer>().AddCarta(cartaTemplate.Id);
@@ -119,6 +128,26 @@ namespace Gameplay.NewGameStates
         public void YaNoPedirColocacionDeHeroe()
         {
             pedirUbicacionDeHeroe = false;
+        }
+
+        public void MostrarMensajeDeQueSiPerdioGanoElJugador()
+        {
+            //aqui es donde se implementan las demas cosas
+            foreach (var o in cosasParaActivarCuandoGanaPierde)
+            {
+                o.SetActive(true);
+            }
+            var textoColocar = "";
+            if (ServiceLocator.Instance.GetService<IEstadoDePersonajesDelJuego>().GanoElPlayer())
+            {
+                textoColocar = "Ganaste la batalla";
+            }
+            else
+            {
+                textoColocar = "Perdiste la batalla";
+            }
+            
+            textoDeGanadoPerdido.text = textoColocar;
         }
 
         private void Update()
