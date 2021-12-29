@@ -76,9 +76,6 @@ namespace Gameplay
         public void BarraDeVidaMiraHaciaLaCamara()
         {
             canvasBarraDeVida.LookAt(Camera.main.transform);
-            var quaternion = canvasBarraDeVida.rotation;
-            quaternion = new Quaternion(quaternion.x, transform.rotation.y, 0, 0);
-            canvasBarraDeVida.rotation = quaternion;
         }
 
         public void SetComponents(TargetBehaviour targetBehaviour, InteraccionBehaviour interaccionBehaviour, RutaBehaviour rutaBehaviour, EstadisticasCarta estadisticasCarta,
