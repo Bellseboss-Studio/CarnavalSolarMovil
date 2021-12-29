@@ -1,8 +1,8 @@
-﻿using ServiceLocatorPath;
+﻿using UnityEngine;
 
 namespace Gameplay.Personajes.InteraccionComponents
 {
-    public class AtacarYCurarAliadoMasCercanoAlImpacto : InteraccionBehaviour
+    public class DaniarPersonajeAndAutoDestruirse : InteraccionBehaviour
     {
         public override void EjecucionDeInteraccion(Personaje target)
         {
@@ -14,7 +14,8 @@ namespace Gameplay.Personajes.InteraccionComponents
             {
                 aliadoCercano.health += 120;
             }
-            //Debug.Log(target.health);
+            _personaje.gameObject.SetActive(false);
+            Object.Destroy(_personaje.gameObject,2);
         }
     }
 }

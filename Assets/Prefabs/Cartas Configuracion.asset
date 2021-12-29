@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cartaTemplates:
   - {fileID: 7316080808676934838, guid: debaacb5ad7c6224493bb6a9de138c0a, type: 3}
-  - {fileID: 7316080808676934838, guid: e5713fc7a6c67624fa4819f13fe5ccdd, type: 3}
-  - {fileID: 7316080808676934838, guid: 4ddde0efc543a0c4faf7dbd7a498e1e1, type: 3}
-  - {fileID: 7316080808676934838, guid: b08d10dabee708245b657517f390bceb, type: 3}
-  - {fileID: 7316080808676934838, guid: 558a35b17acd710489b9e2e4497724f9, type: 3}
   - {fileID: 7316080808676934838, guid: ea8b0ad7a7478e44590cf6e7988321f5, type: 3}
+  - {fileID: 7316080808676934838, guid: e5713fc7a6c67624fa4819f13fe5ccdd, type: 3}
   - {fileID: 7316080808676934838, guid: ffed7523ca87f8547b91263cd009f2a1, type: 3}
   - {fileID: 7316080808676934838, guid: b5c63c06bc381dd45bddc110d54ad0fb, type: 3}
+  - {fileID: 7316080808676934838, guid: b08d10dabee708245b657517f390bceb, type: 3}
   - {fileID: 7316080808676934838, guid: a7edc7a6903f61246aef41fb6684fdbf, type: 3}
   - {fileID: 7316080808676934838, guid: bd403e4a679d1d54d8c9a601b8a91f01, type: 3}
   - {fileID: 7316080808676934838, guid: 051684870539fc546b3bd38420b13402, type: 3}
+  - {fileID: 7316080808676934838, guid: 4ddde0efc543a0c4faf7dbd7a498e1e1, type: 3}
+  - {fileID: 7316080808676934838, guid: 558a35b17acd710489b9e2e4497724f9, type: 3}
+  - {fileID: 7316080808676934838, guid: 1bff0a873f3c5eb49bfa30c4b6e99285, type: 3}
