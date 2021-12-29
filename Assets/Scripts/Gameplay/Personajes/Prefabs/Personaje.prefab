@@ -791,6 +791,7 @@ MonoBehaviour:
   _sinApply: {fileID: -8449208976668339249}
   imagenIndicadoraDeEquipo: {fileID: 5969898109173959520}
   barraDeVida: {fileID: 5819097965165642446}
+  canvasBarraDeVida: {fileID: 8579155622506170141}
   enemigo: 0
   isTargeteable: 1
   esInmune: 0
