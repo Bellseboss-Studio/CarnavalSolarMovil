@@ -23,6 +23,7 @@ namespace Gameplay
         [SerializeField] public SinApply _sinApply;
         [SerializeField] public Image imagenIndicadoraDeEquipo;
         [SerializeField] public Slider barraDeVida;
+        [SerializeField] public Transform canvasBarraDeVida;
         private PersonajeStatesConfiguration _personajeStatesConfiguration;
         private Animator _animador;
         public bool enemigo;
@@ -74,6 +75,15 @@ namespace Gameplay
         {
             var aumentoDeTamañoDeLaBarraDeVida = (health / 250)/5;
             barraDeVida.transform.localScale = new Vector3(1 + aumentoDeTamañoDeLaBarraDeVida, 1,1);
+            BarraDeVidaMiraHaciaLaCamara();
+        }
+
+        public void BarraDeVidaMiraHaciaLaCamara()
+        {
+            canvasBarraDeVida.LookAt(Camera.main.transform);
+            var quaternion = canvasBarraDeVida.rotation;
+            quaternion = new Quaternion(quaternion.x, transform.rotation.y, 0, 0);
+            canvasBarraDeVida.rotation = quaternion;
         }
 
         public void SetComponents(TargetBehaviour targetBehaviour, InteraccionBehaviour interaccionBehaviour, RutaBehaviour rutaBehaviour, EstadisticasCarta estadisticasCarta, GameObject prefab)
