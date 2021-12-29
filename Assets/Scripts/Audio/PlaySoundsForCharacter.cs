@@ -7,6 +7,7 @@ using UnityEngine.Audio;
 public class PlaySoundsForCharacter : MonoBehaviour, ICheckDependencies
 {
     [SerializeField] private List<AudioClip> m_FsClips;
+    [SerializeField] private List<AudioClip> m_AttackClips;
     [SerializeField] private List<AudioClip> m_DeathClips;
     [SerializeField] private AudioSource m_AudioSource;
     [SerializeField] private string m_CharacterName;
@@ -14,6 +15,8 @@ public class PlaySoundsForCharacter : MonoBehaviour, ICheckDependencies
     
     [Range(0.5f, 1.0f)]
     [SerializeField] private float m_FsVolume = 7.0f;
+    [Range(0.5f, 1.0f)]
+    [SerializeField] private float m_AttackVolume = 1.0f;
     [Range(0.5f, 1.0f)]
     [SerializeField] private float m_DeathVolume = 1.0f;
 
@@ -28,7 +31,7 @@ public class PlaySoundsForCharacter : MonoBehaviour, ICheckDependencies
     }
     public void PlayAttackSound()
     {
-
+        SetAudioClipsToPlay(m_AttackClips, m_AttackVolume);
     }
 
     public void PlayDeathSound()
