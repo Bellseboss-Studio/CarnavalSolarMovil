@@ -22,11 +22,6 @@ public class MxManager : MonoBehaviour, ICheckDependencies
         CheckForReferences();
         DontDestroyOnLoad(gameObject);
     }
-    private void Update()
-    {
-        //Debug.Log($"The state is: {SceneManager.GetActiveScene().name}");
-        
-    }
 
     private void Start()
     {
@@ -39,14 +34,24 @@ public class MxManager : MonoBehaviour, ICheckDependencies
                 m_MxTracks.Add(child.gameObject.name, child.gameObject);
             }
         }
-        PlayMusicState(1);
+        PlayMusicState(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void Update()
+    {
+        if (m_CurrentState != SceneManager.GetActiveScene().buildIndex)
+        {
+            PlayMusicState(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     public void PlayMusicState(int state)
     {
         List<GameObject> goActiveInHierarchy = new List<GameObject>();
         var transitionGo = m_MxTracks["Transition"];
-        foreach(var objects in m_MusicTracks)
+
+
+        foreach (var objects in m_MusicTracks)
         {
             if(objects.gameObject.activeInHierarchy)
             {
@@ -54,39 +59,44 @@ public class MxManager : MonoBehaviour, ICheckDependencies
             }
         }
 
-        var go1 = new GameObject();
-        transitionGo.SetActive(true);
-        if(m_CurrentState != state)
-        {
-            m_CurrentState = state;
-            switch (state)
-            {
-                case 1:
-                    go1 = m_MxTracks[MusicObjects.MenuMxPlayer.ToString()];
-                    go1.SetActive(true);
-                    m_MixesSnapshots[0].TransitionTo(m_TransitionTime);
-                    StartCoroutine(EnableAndDisableMxObject());
-                    break;
-                case 7:
-                    go1 = m_MxTracks[MusicObjects.GameplayMxPlayer.ToString()];
-                    go1.SetActive(true);
-                    m_MixesSnapshots[1].TransitionTo(m_TransitionTime);
-                    StartCoroutine(EnableAndDisableMxObject());
-                    break;
-                case 5:
-                    //go1 = m_MxTracks[MusicObjects.VictoryMxPlayer.ToString()];
-                    //go1.SetActive(true);
-                    //m_MixesSnapshots[2].TransitionTo(1);
-                    break;
-                default:
-                    Debug.Log($"The state is: {m_CurrentState.ToString()}");
-                    break;
-            }    
-        }
-        
+        StartCoroutine(EnableAndDisableTransition());
 
-        IEnumerator EnableAndDisableMxObject()
+        var go1 = new GameObject();
+        m_CurrentState = SceneManager.GetActiveScene().buildIndex;
+        switch (state)
         {
+            case 0:
+                go1 = m_MxTracks[MusicObjects.MenuMxPlayer.ToString()];
+                //go1.SetActive(true);
+               // m_MixesSnapshots[0].TransitionTo(m_TransitionTime);
+                StartCoroutine(EnableAndDisableMxObjects(go1, 0));
+                break;
+            case 1:
+                go1 = m_MxTracks[MusicObjects.GameplayMxPlayer.ToString()];
+                //go1.SetActive(true);
+                //m_MixesSnapshots[1].TransitionTo(m_TransitionTime);
+                StartCoroutine(EnableAndDisableMxObjects(go1, 1));
+                break;
+            case 2:
+                Debug.Log("Nada por aquí, nada por allá");
+                break;
+            default:
+                Debug.Log($"The state is: {m_CurrentState.ToString()}");
+                break;
+        }
+
+        IEnumerator EnableAndDisableTransition()
+        {
+            transitionGo.SetActive(true);
+            yield return new WaitForSeconds(4);
+            transitionGo.SetActive(false);
+
+        }
+
+        IEnumerator EnableAndDisableMxObjects(GameObject go1, int snapshot)
+        {
+            go1.SetActive(true);
+            m_MixesSnapshots[snapshot].TransitionTo(m_TransitionTime);
             yield return new WaitForSeconds(m_TransitionTime);
             foreach (var activeObject in goActiveInHierarchy)
             {

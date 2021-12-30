@@ -688,12 +688,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21d3e4144853438786aaaaa17cc1429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FsClips: []
+  m_FsClips:
+  - {fileID: 8300000, guid: 825f552db955d40a68b1e274fecbdd13, type: 3}
+  - {fileID: 8300000, guid: 312f03c2944194e379b4b50ebc3041b3, type: 3}
+  - {fileID: 8300000, guid: de04451b706ec4abaaaa8752e6c2459f, type: 3}
+  - {fileID: 8300000, guid: 3b736c8faa4424bdab4ed93a9d1923c7, type: 3}
+  m_AttackClips: []
   m_DeathClips: []
   m_AudioSource: {fileID: 9158808535448076397}
   m_CharacterName: 
   m_Output: {fileID: 0}
   m_FsVolume: 7
+  m_AttackVolume: 1
   m_DeathVolume: 1
 --- !u!1 &4866527415312701979
 GameObject:
