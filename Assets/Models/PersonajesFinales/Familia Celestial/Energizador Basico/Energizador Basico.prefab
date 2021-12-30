@@ -755,8 +755,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 312f03c2944194e379b4b50ebc3041b3, type: 3}
   - {fileID: 8300000, guid: de04451b706ec4abaaaa8752e6c2459f, type: 3}
   - {fileID: 8300000, guid: 3b736c8faa4424bdab4ed93a9d1923c7, type: 3}
-  m_AttackClips: []
-  m_DeathClips: []
+  m_AttackClips:
+  - {fileID: 8300000, guid: 45e2c16f37f38437f885d618daceaf13, type: 3}
+  - {fileID: 8300000, guid: 7dc2a8254b53e4657b7c49c2664bc05d, type: 3}
+  - {fileID: 8300000, guid: b81026f0aac4c44b5891ef36c34f729c, type: 3}
+  - {fileID: 8300000, guid: fde09c4414b4142e1a132a73d5874ae5, type: 3}
+  m_DeathClips:
+  - {fileID: 8300000, guid: f656e62bc42c84dbaa4c0dd97c809f8b, type: 3}
+  - {fileID: 8300000, guid: f4764252e946b4d5d960289496591a50, type: 3}
+  - {fileID: 8300000, guid: 058502a396b1d4876a494cb16dc047a2, type: 3}
+  - {fileID: 8300000, guid: 5f523893c5b9b446a9d0a67a64737383, type: 3}
   m_AudioSource: {fileID: 1878386891723627547}
   m_CharacterName: 
   m_Output: {fileID: 7080800857700382711, guid: 8630ef64c34f243f682d65f44a9bc495, type: 2}

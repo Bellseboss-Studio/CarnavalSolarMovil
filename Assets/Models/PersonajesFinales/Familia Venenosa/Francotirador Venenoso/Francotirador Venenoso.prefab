@@ -744,7 +744,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 312f03c2944194e379b4b50ebc3041b3, type: 3}
   - {fileID: 8300000, guid: de04451b706ec4abaaaa8752e6c2459f, type: 3}
   - {fileID: 8300000, guid: 3b736c8faa4424bdab4ed93a9d1923c7, type: 3}
-  m_AttackClips: []
+  m_AttackClips:
+  - {fileID: 8300000, guid: cf920a4f4cb4c4cf7b387e1a991cb734, type: 3}
+  - {fileID: 8300000, guid: 41af556c5a1de4db6a047592a95cc74d, type: 3}
+  - {fileID: 8300000, guid: c664106f67c014d529670d584e373be8, type: 3}
+  - {fileID: 8300000, guid: 565358561a8684f238987d5c75571c09, type: 3}
   m_DeathClips: []
   m_AudioSource: {fileID: -6311062557377521838}
   m_CharacterName: 
