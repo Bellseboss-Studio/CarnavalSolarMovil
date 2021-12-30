@@ -1216,7 +1216,7 @@ PrefabInstance:
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: foto
       value: 
-      objectReference: {fileID: 21300000, guid: 8dc21b3354a3f2745bf1cf93d94a9620, type: 3}
+      objectReference: {fileID: 21300000, guid: 0dc72d47689115140aa47f08dd8b9223, type: 3}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: idHeroe
       value: HE0
@@ -2309,7 +2309,7 @@ PrefabInstance:
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: foto
       value: 
-      objectReference: {fileID: 21300000, guid: ef42753e3a53131419e9ac0df99f9f4d, type: 3}
+      objectReference: {fileID: 21300000, guid: c0c186351a8af544e93f9961c83ff280, type: 3}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: idHeroe
       value: HD0
@@ -2548,7 +2548,7 @@ PrefabInstance:
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: foto
       value: 
-      objectReference: {fileID: 21300000, guid: bd24db358babe38498bc6e5f164eff36, type: 3}
+      objectReference: {fileID: 21300000, guid: db6cc3d390db8ce43960eebcb6a88ceb, type: 3}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: idHeroe
       value: HA0
@@ -2911,7 +2911,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Continuar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d02dd51420250714d8fbef87a0f3f04a, type: 2}
   m_sharedMaterial: {fileID: -6586657060448596294, guid: d02dd51420250714d8fbef87a0f3f04a, type: 2}
