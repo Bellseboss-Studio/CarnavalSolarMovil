@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000017643, y: -0.00000453}
-  m_SizeDelta: {x: 69.4539, y: 77.6662}
+  m_SizeDelta: {x: 151.7484, y: 152.4423}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &277493772051265006
 CanvasRenderer:
@@ -111,10 +111,10 @@ RectTransform:
   m_Father: {fileID: 5202343790133810966}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8667820761521961841
 CanvasRenderer:
@@ -457,7 +457,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.11520004, y: 0.13440037}
+  m_AnchoredPosition: {x: 0.11520004, y: 0.13440132}
   m_SizeDelta: {x: -9.6579, y: -1.7266}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1297542122112757847
@@ -597,7 +597,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -73.50256, y: -29.42331}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &980314748392555266
 CanvasRenderer:
@@ -698,7 +698,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDetachable: 0
   initialPosition: {fileID: 0}
+  dondePosicionarLaCarta: {fileID: 6071203753388208710, guid: b7282741cbe777344bee8e597252d11d, type: 3}
   canUseComponent: 0
+  estaSeleccionadaLaCarta: 0
 --- !u!114 &7316080808676934838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -729,7 +731,7 @@ MonoBehaviour:
   golpear: {fileID: 7400000, guid: 97088666cb28a6642b63e775f2ab010b, type: 2}
   morir: {fileID: 7400000, guid: c80e5eea73a86234c97950b148a12086, type: 2}
   idle: {fileID: 7400000, guid: b5dfd017a0cfd3942bb177165aea379d, type: 2}
-  posicionEnBaraja: 0
+  esUnaCartaIlegal: 0
 --- !u!1 &8159330854986713344
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,8 +767,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -28.8, y: 35.43}
-  m_SizeDelta: {x: 22.3639, y: 19.5928}
+  m_AnchoredPosition: {x: -59.7, y: 71.2}
+  m_SizeDelta: {x: 42.0902, y: 50.177}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8535040515238039527
 CanvasRenderer:

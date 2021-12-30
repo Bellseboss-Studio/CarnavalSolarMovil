@@ -14,9 +14,11 @@ namespace Gameplay.UsoDeCartas
         private GameObject _canvasDeLasCartas, _canvasPrincipal;
         private FactoriaPersonaje _factoriaPersonaje;
         private Stack<CartaTemplate> cartasInstanciadas;
+        private Transform _transformDondePosicionar;
 
-        public void Configurate(IColocacionCartas colocacionCartas, CartasConfiguracion cartasConfiguracion, GameObject canvasDeLasCartas, FactoriaPersonaje factoriaPersonaje, GameObject canvasPrincipal)
+        public void Configurate(IColocacionCartas colocacionCartas, CartasConfiguracion cartasConfiguracion, GameObject canvasDeLasCartas, FactoriaPersonaje factoriaPersonaje, GameObject canvasPrincipal, Transform transformDondePosicionar)
         {
+            _transformDondePosicionar = transformDondePosicionar;
             cartasInstanciadas = new Stack<CartaTemplate>();
             _colocacionCartas = colocacionCartas;
             _cartasConfiguracion = cartasConfiguracion;
@@ -25,7 +27,7 @@ namespace Gameplay.UsoDeCartas
             _canvasPrincipal = canvasPrincipal;
         }
 
-        public CartaTemplate Create(string id, GameObject posicion, int posicionEnBaraja)
+        public CartaTemplate Create(string id, GameObject posicion, int posicionEnBaraja, Transform transformParameter)
         {
             var cartaTemplate = _cartasConfiguracion.GetCartaTemplate(id);
             var cartaInstancia = Instantiate(cartaTemplate, _canvasDeLasCartas.transform);
@@ -33,8 +35,9 @@ namespace Gameplay.UsoDeCartas
             _colocacionCartas.HayCartaEnPosicion(posicionEnBaraja);
             cartaInstancia.transform.position = posicion.transform.position;
             var dragDeLaCarta = cartaInstancia.GetComponent<DragComponent>();
-            dragDeLaCarta.Configure(posicion.GetComponent<RectTransform>(), _canvasDeLasCartas.GetComponent<RectTransform>());
+            dragDeLaCarta.Configure(posicion.GetComponent<RectTransform>(), _canvasDeLasCartas.GetComponent<RectTransform>(), transformParameter);
             cartaInstancia.Configurate(_factoriaPersonaje);
+            
             return cartaInstancia;
         }
 
@@ -44,7 +47,7 @@ namespace Gameplay.UsoDeCartas
             var cartaInstancia = Instantiate(cartaTemplate, _canvasDeLasCartas.transform);
             cartaInstancia.transform.position = posicion.transform.position;
             var dragDeLaCarta = cartaInstancia.GetComponent<DragComponent>();
-            dragDeLaCarta.Configure(posicion.GetComponent<RectTransform>(), _canvasDeLasCartas.GetComponent<RectTransform>());
+            dragDeLaCarta.Configure(posicion.GetComponent<RectTransform>(), _canvasDeLasCartas.GetComponent<RectTransform>(), new RectTransform());
             cartaInstancia.Configurate(_factoriaPersonaje);
             return cartaInstancia;
         }
@@ -61,7 +64,7 @@ namespace Gameplay.UsoDeCartas
         {
             while (_colocacionCartas.PuedoSacarOtraCarta())
             {
-                Create(_colocacionCartas.GetNextCartaId(), _colocacionCartas.GetSiguientePosicionDeCarta(), _colocacionCartas.GetPosicionDeUltimaCartaInstanciada());
+                Create(_colocacionCartas.GetNextCartaId(), _colocacionCartas.GetSiguientePosicionDeCarta(), _colocacionCartas.GetPosicionDeUltimaCartaInstanciada(), _transformDondePosicionar);
             }
         }
 
@@ -85,7 +88,7 @@ namespace Gameplay.UsoDeCartas
                 Debug.Log($"colocandoCartaEnPosicion {posicionSinCarta}");
                 if (_colocacionCartas.PuedoSacarOtraCarta())
                 {
-                    Create(_colocacionCartas.GetNextCartaId(), _colocacionCartas.GetPosicionDeCarta(posicionSinCarta),posicionSinCarta);   
+                    Create(_colocacionCartas.GetNextCartaId(), _colocacionCartas.GetPosicionDeCarta(posicionSinCarta),posicionSinCarta, _transformDondePosicionar);   
                 }
             }
         }

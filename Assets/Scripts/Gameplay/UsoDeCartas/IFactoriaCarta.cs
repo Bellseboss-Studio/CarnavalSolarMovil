@@ -5,9 +5,9 @@ namespace Gameplay.UsoDeCartas
 {
     public interface IFactoriaCarta
     {
-        void Configurate(IColocacionCartas colocacionCartas, CartasConfiguracion cartasConfiguracion, GameObject canvasDeLasCartas, FactoriaPersonaje factoriaPersonaje, GameObject canvasPrincipal);
+        void Configurate(IColocacionCartas colocacionCartas, CartasConfiguracion cartasConfiguracion, GameObject canvasDeLasCartas, FactoriaPersonaje factoriaPersonaje, GameObject canvasPrincipal, Transform transformDondePosicionar);
 
-        CartaTemplate Create(string id, GameObject posicion, int posicionEnBaraja);
+        CartaTemplate Create(string id, GameObject posicion, int posicionEnBaraja, Transform transformParameter);
         void CrearPrimerasCartas();
         void DestruirLasCartas();
         void CrearCartasEnHuecos();

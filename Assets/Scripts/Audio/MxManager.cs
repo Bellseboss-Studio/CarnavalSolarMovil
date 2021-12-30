@@ -24,7 +24,7 @@ public class MxManager : MonoBehaviour, ICheckDependencies
     }
     private void Update()
     {
-        Debug.Log($"The state is: {SceneManager.GetActiveScene().name}");
+        //Debug.Log($"The state is: {SceneManager.GetActiveScene().name}");
         
     }
 
