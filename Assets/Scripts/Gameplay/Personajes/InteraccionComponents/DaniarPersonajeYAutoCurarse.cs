@@ -9,6 +9,7 @@ namespace Gameplay.Personajes.InteraccionComponents
         {
             if (target == null) return;
             AplicarDanio(target, _personaje.damage);
+            _personaje.health += 100;
             Debug.Log(target.health);
         }
     }

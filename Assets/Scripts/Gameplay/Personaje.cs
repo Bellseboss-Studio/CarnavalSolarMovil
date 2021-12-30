@@ -24,6 +24,7 @@ namespace Gameplay
         [SerializeField] public Image imagenIndicadoraDeEquipo;
         [SerializeField] public Slider barraDeVida;
         [SerializeField] public Transform canvasBarraDeVida;
+        [SerializeField] public bool esUnaBala;
         private PersonajeStatesConfiguration _personajeStatesConfiguration;
         private Animator _animador;
         public bool enemigo;

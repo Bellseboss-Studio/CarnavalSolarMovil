@@ -715,7 +715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: E03
   modelo3DId: TropaPoderosaBasica
-  interaccionComponentId: 0
+  interaccionComponentId: 6
   targetComponentId: 0
   rutaComponentId: 0
   distanciaDeInteraccion: 2
