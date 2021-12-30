@@ -683,7 +683,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 34296002213e64b8a8ab4238539196b1, type: 3}
   m_AttackClips:
   - {fileID: 8300000, guid: 75546eec4f61e4ff69e116f848c84d84, type: 3}
-  m_DeathClips: []
+  m_DeathClips:
+  - {fileID: 8300000, guid: e5d95ad29910248729f1e9b1a62b9357, type: 3}
   m_AudioSource: {fileID: -4576793807195006672}
   m_CharacterName: 
   m_Output: {fileID: 0}

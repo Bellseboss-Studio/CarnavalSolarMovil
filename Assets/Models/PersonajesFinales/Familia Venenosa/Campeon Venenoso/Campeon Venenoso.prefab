@@ -689,12 +689,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FsClips:
-  - {fileID: 8300000, guid: 825f552db955d40a68b1e274fecbdd13, type: 3}
-  - {fileID: 8300000, guid: 312f03c2944194e379b4b50ebc3041b3, type: 3}
-  - {fileID: 8300000, guid: de04451b706ec4abaaaa8752e6c2459f, type: 3}
-  - {fileID: 8300000, guid: 3b736c8faa4424bdab4ed93a9d1923c7, type: 3}
-  m_AttackClips: []
-  m_DeathClips: []
+  - {fileID: 8300000, guid: e2c86f2dea7d64492bb6d98a5e282ace, type: 3}
+  - {fileID: 8300000, guid: a6880cc942ae7491b924ab749791afbd, type: 3}
+  - {fileID: 8300000, guid: 4d817108b2fca44e0b9108e71269a030, type: 3}
+  - {fileID: 8300000, guid: 1352d75b243ce411db28c158c1fc9579, type: 3}
+  m_AttackClips:
+  - {fileID: 8300000, guid: 2ba60eb2a0c5344adae17f65facc8f1e, type: 3}
+  m_DeathClips:
+  - {fileID: 8300000, guid: cd432316d106a4fcdb0bed78a657ad7a, type: 3}
   m_AudioSource: {fileID: 9158808535448076397}
   m_CharacterName: 
   m_Output: {fileID: 0}
