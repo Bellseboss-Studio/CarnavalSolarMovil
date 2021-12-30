@@ -3045,7 +3045,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Nombre Del Juego
+  m_text: 'Bienvenido al
+
+    Carnaval del sol'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d02dd51420250714d8fbef87a0f3f04a, type: 2}
   m_sharedMaterial: {fileID: -6586657060448596294, guid: d02dd51420250714d8fbef87a0f3f04a, type: 2}
@@ -3072,7 +3074,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 150.8
+  m_fontSize: 119.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
