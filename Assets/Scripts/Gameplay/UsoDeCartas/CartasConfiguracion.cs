@@ -34,6 +34,16 @@ namespace Gameplay.UsoDeCartas
             var cartasTemplatesResult = new Dictionary<string, CartaTemplate>();
             foreach (var template in _CartasTemplates)
             {
+                cartasTemplatesResult.Add(template.Key, template.Value);
+            }
+            return cartasTemplatesResult;
+        }
+        
+        public Dictionary<string, CartaTemplate> GetCartasTemplateLegales()
+        { 
+            var cartasTemplatesResult = new Dictionary<string, CartaTemplate>();
+            foreach (var template in _CartasTemplates)
+            {
                 if (!template.Value.ESUnaCartaIlegal)
                 {
                     cartasTemplatesResult.Add(template.Key, template.Value);
