@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using ServiceLocatorPath;
 using TMPro;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace Gameplay.UsoDeCartas
     {
         [SerializeField] private List<string> listaDeIdDeCartasEnBaraja;
         [SerializeField] private string idHeroe;
-        [SerializeField] private Image imageDeFamilia;
+        [SerializeField] private Image imageDeFamilia, seleccion;
         [SerializeField] private Sprite foto;
         [SerializeField] private TextMeshProUGUI textoDeNombreDeFamilia;
         [SerializeField] private string nombreFamilia;
@@ -39,6 +40,30 @@ namespace Gameplay.UsoDeCartas
         public void AniadirBarajaAServiceLocator(SelectorBaraja baraja)
         {
             ServiceLocator.Instance.GetService<IServicioDeBarajasDisponibles>().AniadirBaraja(baraja);
+        }
+
+        public void OscurecerImagen()
+        {
+            var negro = Color.black;
+            negro.a = .2f;
+            seleccion.color = negro;
+        }
+        public void AclararImagen()
+        {
+            seleccion.color = Color.clear;
+        }
+
+        public void MueveteALaDerecha(int distancia)
+        {
+            var sequence = DOTween.Sequence();
+            var tra = GetComponent<RectTransform>();
+            sequence.Insert(0, tra.DOLocalMoveX(tra.localPosition.x + distancia, .4f));
+        }
+        public void MueveteALaIzquierda(int distancia)
+        {
+            var sequence = DOTween.Sequence();
+            var tra = GetComponent<RectTransform>();
+            sequence.Insert(0, tra.DOLocalMoveX(tra.localPosition.x - distancia, .4f));
         }
     }
 }
