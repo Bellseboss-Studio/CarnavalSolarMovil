@@ -40,7 +40,7 @@ public class PjView : MonoBehaviour
     {
         //Animar el propio personaje
         anim.Play(_configuracionDelPeronsaje.AtaqueEspecial.name);
-        SfxManager.Instance.PlaySound(_configuracionDelPeronsaje.AtaqueEspecial.name);
+        //SfxManager.Instance.PlaySound(_configuracionDelPeronsaje.AtaqueEspecial.name);
         Debug.Log($"El ataque especial para {target.PJ.nombre}");
         StartCoroutine(LuegoDeLaAnimacionRecibir(target, _configuracionDelPeronsaje.AtaqueEspecial));
     }
@@ -48,7 +48,7 @@ public class PjView : MonoBehaviour
     private void OnDropInTargetInAtacaqueNormal(PjView target)
     {
         anim.Play(_configuracionDelPeronsaje.AtaqueNormal.name);
-        SfxManager.Instance.PlaySound(_configuracionDelPeronsaje.AtaqueEspecial.name);
+        //SfxManager.Instance.PlaySound(_configuracionDelPeronsaje.AtaqueEspecial.name);
         Debug.Log($"El ataque normal para {target.PJ.nombre}");
         StartCoroutine(LuegoDeLaAnimacionRecibir(target, _configuracionDelPeronsaje.AtaqueNormal));
     }
@@ -64,7 +64,7 @@ public class PjView : MonoBehaviour
     public void AplicaDanoDe(float danio)
     {
         anim.Play(danioAnim.name);
-        SfxManager.Instance.PlaySound(danioAnim.name);
+        //SfxManager.Instance.PlaySound(danioAnim.name);
         //probablemente esto defina cuando se muestra la pantalla de ganaste o perdiste
         Debug.Log($"Vida antes {_personaje.vida}");
         _personaje.vida -= danio;

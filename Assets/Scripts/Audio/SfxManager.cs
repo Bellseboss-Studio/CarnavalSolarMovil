@@ -35,20 +35,31 @@ public class SfxManager : MonoBehaviour, ICheckDependencies
 
     private void Start()
     {
-        foreach(var sfx in m_AttacksSfx)
+        if (m_AttacksSfx.Count > 0)
         {
-            SfxDictionary.Add(sfx.name, sfx);
+            foreach (var sfx in m_AttacksSfx)
+            {
+                SfxDictionary.Add(sfx.name, sfx);
+            }
         }
 
-        foreach (var sfx in m_ImpactSfx)
+        if (m_ImpactSfx.Count > 0)
         {
-            SfxDictionary.Add(sfx.name, sfx);
+            foreach (var sfx in m_ImpactSfx)
+            {
+                SfxDictionary.Add(sfx.name, sfx);
+            }
+
         }
 
-        foreach (var sfx in m_UISfx)
+        if (m_UISfx.Count > 0)
         {
-            SfxDictionary.Add(sfx.name, sfx);
+            foreach (var sfx in m_UISfx)
+            {
+                SfxDictionary.Add(sfx.name, sfx);
+            }
         }
+
     }
 
 
