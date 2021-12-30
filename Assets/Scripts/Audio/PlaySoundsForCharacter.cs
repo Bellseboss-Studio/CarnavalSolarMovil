@@ -14,7 +14,7 @@ public class PlaySoundsForCharacter : MonoBehaviour, ICheckDependencies
     [SerializeField] private AudioMixerGroup m_Output;
     
     [Range(0.5f, 1.0f)]
-    [SerializeField] private float m_FsVolume = 7.0f;
+    [SerializeField] private float m_FsVolume = 0.7f;
     [Range(0.5f, 1.0f)]
     [SerializeField] private float m_AttackVolume = 1.0f;
     [Range(0.5f, 1.0f)]

@@ -870,11 +870,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 38b56d01ee6204cbdb0e08089e440037, type: 3}
   - {fileID: 8300000, guid: 6bb84afeeec5145c98e2d81a7d3fdcf0, type: 3}
   - {fileID: 8300000, guid: e6538b3fc3de4483ba4b5a2d6b505264, type: 3}
-  m_DeathClips: []
+  m_AttackClips: []
+  m_DeathClips:
+  - {fileID: 8300000, guid: d26a928e1cfc5437bb9200bef9c3c692, type: 3}
+  - {fileID: 8300000, guid: 561dee1b36f4f4b65b696b82d5437311, type: 3}
+  - {fileID: 8300000, guid: f9b59286359d4466286f1a53c1f2a36a, type: 3}
+  - {fileID: 8300000, guid: 669a35715df884f30973cd5ef5571cd3, type: 3}
   m_AudioSource: {fileID: -448863789595725529}
   m_CharacterName: 
   m_Output: {fileID: 0}
   m_FsVolume: 0.851
+  m_AttackVolume: 1
   m_DeathVolume: 1
 --- !u!1 &5313775067497468744
 GameObject:
