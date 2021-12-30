@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class PlayUISound : MonoBehaviour
 {
-
-
     public void PlayUiSound(string buttonName)
     {
-
-
         SfxManager.Instance.PlaySound(buttonName);
-
-
     }
 }

@@ -71,6 +71,7 @@ public class SfxManager : MonoBehaviour, ICheckDependencies
     IEnumerator ActivateSfxObject(string name)
     {
         var go = SfxDictionary[name];
+        if(!go.activeInHierarchy)
         go.SetActive(true);
         var clipLength = go.gameObject.GetComponent<AudioSource>().clip.length;
         yield return new WaitForSeconds(clipLength);
