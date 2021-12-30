@@ -1230,6 +1230,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 408917769}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: puedeSeleccionarlo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: textoDeNombreDeFamilia
       value: 
       objectReference: {fileID: 538084474}
@@ -2319,6 +2323,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1117513397}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: puedeSeleccionarlo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: textoDeNombreDeFamilia
       value: 
       objectReference: {fileID: 1625716140}
@@ -2553,6 +2561,10 @@ PrefabInstance:
       propertyPath: imageDeFamilia
       value: 
       objectReference: {fileID: 1223164185}
+    - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: puedeSeleccionarlo
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: textoDeNombreDeFamilia
       value: 
@@ -3774,6 +3786,9 @@ MonoBehaviour:
   continuar: {fileID: 1824538004}
   jugar: {fileID: 2118890949}
   animator: {fileID: 377647285}
+  duracion: 0.5
+  fuerza: 50
+  vribacion: 60
 --- !u!1 &1692201358
 GameObject:
   m_ObjectHideFlags: 0

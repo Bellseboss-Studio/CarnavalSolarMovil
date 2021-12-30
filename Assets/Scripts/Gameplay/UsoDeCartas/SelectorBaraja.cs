@@ -16,8 +16,10 @@ namespace Gameplay.UsoDeCartas
         [SerializeField] private Sprite foto;
         [SerializeField] private TextMeshProUGUI textoDeNombreDeFamilia;
         [SerializeField] private string nombreFamilia;
+        [SerializeField] private bool puedeSeleccionarlo;
 
         public string IDHeroe => idHeroe;
+        public bool PuedeSeleccionarse => puedeSeleccionarlo;
 
         [SerializeField] private float porcentajeProbabilidadSacarCartaDeLaMismaFamilia;
         public float PorcentajeProbabilidadSacarCartaDeLaMismaFamilia => porcentajeProbabilidadSacarCartaDeLaMismaFamilia;
@@ -46,11 +48,11 @@ namespace Gameplay.UsoDeCartas
         {
             var negro = Color.black;
             negro.a = .2f;
-            seleccion.color = negro;
+            //seleccion.color = negro;
         }
         public void AclararImagen()
         {
-            seleccion.color = Color.clear;
+            //seleccion.color = Color.clear;
         }
 
         public void MueveteALaDerecha(int distancia)

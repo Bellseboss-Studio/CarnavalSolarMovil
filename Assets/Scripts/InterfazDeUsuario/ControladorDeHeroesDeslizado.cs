@@ -13,6 +13,8 @@ public class ControladorDeHeroesDeslizado : MonoBehaviour
     [SerializeField] private List<SelectorBaraja> barajas;
     [SerializeField] private Button derecha, izquierda, continuar, jugar;
     [SerializeField] private Animator animator;
+    [SerializeField] private float duracion;
+    [SerializeField] private int fuerza, vribacion;
     private int index;
     private SelectorBaraja _barajaSeleccionada;
     private bool estaMostrando;
@@ -33,6 +35,11 @@ public class ControladorDeHeroesDeslizado : MonoBehaviour
     }
     private void ContinuarASiguienteEscena()
     {
+        if (!_barajaSeleccionada.PuedeSeleccionarse)
+        {
+            _barajaSeleccionada.transform.DOShakePosition(duracion, fuerza, vribacion);
+            return;
+        }
         ServiceLocator.Instance.GetService<IServicioDeBarajasDisponibles>()
             .SetBarajaSeleccionadaId(_barajaSeleccionada);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
