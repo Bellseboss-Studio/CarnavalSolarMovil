@@ -8,23 +8,24 @@ public class DragComponent : MonoBehaviour
 {
     [SerializeField] private bool isDetachable;
     [SerializeField] private RectTransform initialPosition;
+    [SerializeField] private Transform dondePosicionarLaCarta;
     public ZonaDeDropeo Zona { get; set; }
     private RectTransform _canvasRectTransform;
     private GameObject _finalPosition;
     private EventTrigger.Entry entry_0;
     private EventTrigger.Entry entry_1;
-    private EventTrigger.Entry entry_2;
+    private EventTrigger.Entry entry_2; 
     private Camera _camera;
     private bool _isInUse;
     public bool canUseComponent;
     public OnDraggingElement OnDragging;
     public OnDraggingElement OnFinishDragging;
     public OnDraggingElementCompleted OnDropCompleted;
+    public bool estaSeleccionadaLaCarta;
     
     public delegate void OnDraggingElement();
     public delegate void OnDraggingElementCompleted(Vector3 hitPoint);
-
-
+    
     private void Start()
     {
         _camera = Camera.main;
@@ -58,8 +59,10 @@ public class DragComponent : MonoBehaviour
         RaycastHit[] hits;
         var posicion = transform.position;
         // Does the ray intersect any objects excluding the player layer
-        hits = Physics.RaycastAll(_camera.transform.position, posicion - _camera.transform.position, Mathf.Infinity);
-        Debug.DrawRay(_camera.transform.position, (posicion - _camera.transform.position) * 100, Color.yellow);
+        var _mousePos = Input.mousePosition;
+        _mousePos.z = 2;
+        hits = Physics.RaycastAll(_camera.transform.position, (_camera.ScreenToWorldPoint(_mousePos) - _camera.transform.position), Mathf.Infinity);
+        Debug.DrawRay(_camera.transform.position, (_camera.ScreenToWorldPoint(Input.mousePosition)) * 100, Color.yellow);
         bool colisionoConAlgo = false;
         foreach (var hit in hits)
         {
@@ -74,6 +77,7 @@ public class DragComponent : MonoBehaviour
         if (!colisionoConAlgo)
         {
             RestartPosition();
+            estaSeleccionadaLaCarta = false;
             OnFinishDragging?.Invoke();
         }
         //var position = _finalPosition.transform.position;
@@ -94,17 +98,22 @@ public class DragComponent : MonoBehaviour
 
     private void ObjectDragging_(PointerEventData data)
     {
-        if (!canUseComponent) return;
-        var mousePos = Input.mousePosition;
-        var rectTransform = gameObject.GetComponent<RectTransform>();
-        rectTransform.localPosition = new Vector3(mousePos.x - (_canvasRectTransform.rect.width / 2),
-            mousePos.y - (_canvasRectTransform.rect.height / 2), 10);
-        
+        /*if (!canUseComponent) return;
+        if (!estaSeleccionadaLaCarta)
+        {
+            estaSeleccionadaLaCarta = true;
+            GetComponent<RectTransform>().position = dondePosicionarLaCarta.position;
+            return;
+        }*/
+        transform.position = Input.mousePosition;
         RaycastHit[] hits;
         var posicion = transform.position;
         // Does the ray intersect any objects excluding the player layer
         hits = Physics.RaycastAll(_camera.transform.position, posicion - _camera.transform.position, Mathf.Infinity);
-        Debug.DrawRay(_camera.transform.position, (posicion - _camera.transform.position) * 100, Color.yellow);
+        //Debug.Log(Input.mousePosition);
+        var _mousePos = Input.mousePosition;
+        _mousePos.z = 2; // select distance = 10 units from the camera
+        Debug.DrawRay(_camera.transform.position, (_camera.ScreenToWorldPoint(_mousePos) - _camera.transform.position) * 100,  Color.yellow);
         
         foreach (var hit in hits)
         {
@@ -142,9 +151,10 @@ public class DragComponent : MonoBehaviour
         _finalPosition = initialPosition.gameObject;
     }
 
-    public void Configure(RectTransform initial_Position, RectTransform canvasRectTransform)
+    public void Configure(RectTransform initial_Position, RectTransform canvasRectTransform, Transform transformParameter)
     {
         //_factoriaCarta = factoriaCartas;
+        dondePosicionarLaCarta = transformParameter;
         _canvasRectTransform = canvasRectTransform;
         initialPosition = initial_Position;
         CreateEventForDragAndDrop();

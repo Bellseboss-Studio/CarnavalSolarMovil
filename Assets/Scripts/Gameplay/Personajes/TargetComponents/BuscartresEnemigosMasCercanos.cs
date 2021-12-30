@@ -52,7 +52,7 @@ namespace Gameplay.Personajes.TargetComponents
                             Debug.Log("se añadio a la lista");
                             personajesMasCercanos[0].GetTargetComponent().AddTargetedBy(_personaje);
                         }
-                        Debug.Log(personajesMasCercanos[0].GetTargetComponent().GetTargetTargetedBy().Contains(_personaje));
+                        //Debug.Log(personajesMasCercanos[0].GetTargetComponent().GetTargetTargetedBy().Contains(_personaje));
                     }
                 }
                     break;
@@ -67,10 +67,10 @@ namespace Gameplay.Personajes.TargetComponents
                         {
                             if (!personajeMasCercano.GetTargetComponent().GetTargetTargetedBy().Contains(_personaje))
                             {
-                                Debug.Log("se añadio a la lista");
+                                //Debug.Log("se añadio a la lista");
                                 personajeMasCercano.GetTargetComponent().AddTargetedBy(_personaje);
                             }
-                            Debug.Log(personajeMasCercano.GetTargetComponent().GetTargetTargetedBy().Contains(_personaje));
+                            //Debug.Log(personajeMasCercano.GetTargetComponent().GetTargetTargetedBy().Contains(_personaje));
                         }
                     }
                     break;
