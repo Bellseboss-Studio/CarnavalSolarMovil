@@ -38,9 +38,11 @@ namespace ServiceLocatorPath
         private string GetCartaSegunFamilia()
         {
             var valorRandomObtenido = Random.Range(1, 100);
+            //Debug.Log(valorRandomObtenido);
             if (valorRandomObtenido <= _barajaSeleccionadaId.PorcentajeProbabilidadSacarCartaDeLaMismaFamilia)
             {
-                var cartaAAniadir = Random.Range(1, _barajaSeleccionadaId.ListaDeIdDeCartasEnBaraja.Count);
+                var cartaAAniadir = Random.Range(0, _barajaSeleccionadaId.ListaDeIdDeCartasEnBaraja.Count);
+                Debug.Log(cartaAAniadir);
                 return _barajaSeleccionadaId.ListaDeIdDeCartasEnBaraja[cartaAAniadir];
             }
 

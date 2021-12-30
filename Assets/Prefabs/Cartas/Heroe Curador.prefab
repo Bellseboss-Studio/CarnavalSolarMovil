@@ -712,7 +712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: HE0
-  modelo3DId: Campeon Celestial
+  modelo3DId: Campeon_Celestial
   interaccionComponentId: 13
   targetComponentId: 0
   rutaComponentId: 0
@@ -729,6 +729,7 @@ MonoBehaviour:
   golpear: {fileID: 7400000, guid: 97088666cb28a6642b63e775f2ab010b, type: 2}
   morir: {fileID: 7400000, guid: c80e5eea73a86234c97950b148a12086, type: 2}
   idle: {fileID: 7400000, guid: b5dfd017a0cfd3942bb177165aea379d, type: 2}
+  esUnaCartaIlegal: 0
 --- !u!1 &8159330854986713344
 GameObject:
   m_ObjectHideFlags: 0

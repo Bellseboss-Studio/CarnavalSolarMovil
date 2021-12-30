@@ -718,7 +718,7 @@ MonoBehaviour:
   rutaComponentId: 0
   distanciaDeInteraccion: 2
   health: 1000
-  velocidadDeInteraccion: 0.01
+  velocidadDeInteraccion: 10
   velocidadDeMovimiento: 10
   damage: 50
   escudo: 0
