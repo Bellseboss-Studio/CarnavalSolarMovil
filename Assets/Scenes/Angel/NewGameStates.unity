@@ -1789,8 +1789,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff4b67d6055459b96dfdd41c0f5e308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiempoDePausa: 2
-  tiempoDeJuego: 2
+  tiempoDePausa: 15
+  tiempoDeJuego: 15
   tiempoDeColocacionHeroe: 20
   progresBarTiempo: {fileID: 1435366918}
 --- !u!114 &888163690
@@ -4404,7 +4404,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 200
+  m_fontSize: 199
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
