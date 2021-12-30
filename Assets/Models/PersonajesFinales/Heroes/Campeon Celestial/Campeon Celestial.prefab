@@ -676,8 +676,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21d3e4144853438786aaaaa17cc1429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FsClips: []
-  m_AttackClips: []
+  m_FsClips:
+  - {fileID: 8300000, guid: 0bb3a560b800e4198aa1dca9f297220b, type: 3}
+  - {fileID: 8300000, guid: 493af18466150498aaf64cc6f29188af, type: 3}
+  - {fileID: 8300000, guid: aaad1c2779dbe4c9087c5804bf086c9d, type: 3}
+  - {fileID: 8300000, guid: 34296002213e64b8a8ab4238539196b1, type: 3}
+  m_AttackClips:
+  - {fileID: 8300000, guid: 75546eec4f61e4ff69e116f848c84d84, type: 3}
   m_DeathClips: []
   m_AudioSource: {fileID: -4576793807195006672}
   m_CharacterName: 
