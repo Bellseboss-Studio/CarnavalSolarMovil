@@ -64,7 +64,7 @@ namespace Gameplay.NewGameStates
         
         public string GetNextCartaId()
         {
-            if (_barajaDeCartasId.Count <= 0)
+            if (_barajaDeCartasId.Count <= 9)
             {
                 _barajaDeCartasId = ServiceLocator.Instance.GetService<IServicioDeBarajasDisponibles>().GetPrimeras10Cartas();
             }
