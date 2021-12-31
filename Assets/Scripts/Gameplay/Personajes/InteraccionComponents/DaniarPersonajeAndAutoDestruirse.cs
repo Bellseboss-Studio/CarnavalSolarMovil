@@ -13,8 +13,10 @@ namespace Gameplay.Personajes.InteraccionComponents
             if (aliadoCercano != null)
             {
                 aliadoCercano.health += 120;
+                aliadoCercano.ActualizarBarraDeVida();
             }
             _personaje.gameObject.SetActive(false);
+            _personaje.Muerte();
             Object.Destroy(_personaje.gameObject,2);
         }
     }

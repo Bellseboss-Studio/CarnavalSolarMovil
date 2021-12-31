@@ -147,7 +147,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 3.05}
+  m_AnchoredPosition: {x: 0, y: 3.238}
   m_SizeDelta: {x: 1, y: 0.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4695120257366045390
@@ -524,7 +524,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2, y: 2}
+  m_SizeDelta: {x: 1.5, y: 1.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6897490814924402944
 Canvas:
@@ -678,7 +678,6 @@ GameObject:
   - component: {fileID: 9216507802543437335}
   - component: {fileID: 1033197627994222903}
   - component: {fileID: -8449208976668339249}
-  - component: {fileID: 528888116064846489}
   m_Layer: 0
   m_Name: Personaje
   m_TagString: Untagged
@@ -793,7 +792,7 @@ MonoBehaviour:
   imagenIndicadoraDeEquipo: {fileID: 5969898109173959520}
   barraDeVida: {fileID: 5819097965165642446}
   canvasBarraDeVida: {fileID: 8579155622506170141}
-  esUnaBala: 0
+  esBala: 0
   enemigo: 0
   isTargeteable: 1
   esInmune: 0
@@ -818,25 +817,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deltaTimeLocal: 0
-  high: 0
-  velocity: 0
+  high: 3
+  velocity: 0.15
   target: {fileID: 0}
   increment: 0
   sePuedeMover: 0
   stay: 0
---- !u!208 &528888116064846489
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9007822363495127145}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5

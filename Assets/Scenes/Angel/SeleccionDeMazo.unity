@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999946, b: 0.99999946, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -977,6 +977,17 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &254479982 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1178737023, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+  m_PrefabInstance: {fileID: 1223164182}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &340591658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1323,7 +1334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1379,7 +1390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1416,6 +1427,11 @@ PrefabInstance:
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: puedeSeleccionarlo
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: descripcionDeFamilia
+      value: "Los celestiales son amorosos y curativos, generan energ\xEDa y colocan
+        cartas poderosas a las que proteger\xE1n."
       objectReference: {fileID: 0}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: textoDeNombreDeFamilia
@@ -1501,7 +1517,7 @@ RectTransform:
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1679428578}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1590,6 +1606,132 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1001 &513297356
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1679428578}
+    m_Modifications:
+    - target: {fileID: 184579906, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1692201363}
+    - target: {fileID: 3298273465074800171, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_Name
+      value: Heroe (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 683.656
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 904.227
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 161.028
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: nombreFamilia
+      value: "L\xFAgubre"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: descripcionDeFamilia
+      value: "Los l\xFAgubres se dispersan por el mapa y molestan al rival. Les gusta
+        avanzar y atacar por detr\xE1s. "
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+--- !u!224 &513297357 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+  m_PrefabInstance: {fileID: 513297356}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &513297358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+  m_PrefabInstance: {fileID: 513297356}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d925e3fdd7c47e38c3f3afa3be0ff84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &538084474 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 41162152, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
@@ -2432,7 +2574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2488,7 +2630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 3000
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2525,6 +2667,11 @@ PrefabInstance:
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: puedeSeleccionarlo
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: descripcionDeFamilia
+      value: "Los bestiales son agresivos y r\xE1pidos. Se potencian entre s\xED
+        y aplican efectos al recibir da\xF1o. "
       objectReference: {fileID: 0}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: textoDeNombreDeFamilia
@@ -2675,7 +2822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2731,7 +2878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2770,9 +2917,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: descripcionDeFamilia
+      value: Los venenosos debilitan al enemigo en la distancia y aplica efectos
+        que dan ventaja a los aliados.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: textoDeNombreDeFamilia
       value: 
       objectReference: {fileID: 988830631}
+    - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: textoDeDescripcionDeFamilia
+      value: 
+      objectReference: {fileID: 254479982}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: listaDeIdDeCartasEnBaraja.Array.size
       value: 2
@@ -3587,7 +3743,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1679428578}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3965,11 +4121,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 184579904}
   - {fileID: 1223164183}
   - {fileID: 408917767}
   - {fileID: 1117513395}
+  - {fileID: 184579904}
   - {fileID: 1991432481}
+  - {fileID: 513297357}
   - {fileID: 505498058}
   - {fileID: 1533610567}
   - {fileID: 1824538003}
@@ -3994,11 +4151,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barajas:
-  - {fileID: 184579907}
   - {fileID: 1223164184}
   - {fileID: 408917768}
   - {fileID: 1117513396}
+  - {fileID: 184579907}
   - {fileID: 1991432482}
+  - {fileID: 513297358}
   derecha: {fileID: 505498061}
   izquierda: {fileID: 1533610571}
   continuar: {fileID: 1824538004}
@@ -4152,7 +4310,7 @@ RectTransform:
   m_Children:
   - {fileID: 1277394916}
   m_Father: {fileID: 1679428578}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4418,6 +4576,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: nombreFamilia
+      value: Impecable
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: descripcionDeFamilia
+      value: Los impecables son guardianes que usan escudo e inmunidad, resisten
+        fuertes ataques y generan control.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
 --- !u!224 &1991432481 stripped
@@ -4594,7 +4761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4650,7 +4817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4667,6 +4834,11 @@ PrefabInstance:
     - target: {fileID: 3298273465074800212, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: descripcionDeFamilia
+      value: "Los mort\xEDferos hacen grandes da\xF1os y atacan a m\xFAltiples enemigos
+        a la vez, ninguna tropa d\xE9bil podr\xE1 vencerlos. "
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
