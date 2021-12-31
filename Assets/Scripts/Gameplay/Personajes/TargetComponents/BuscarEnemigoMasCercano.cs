@@ -17,7 +17,7 @@ namespace Gameplay.Personajes.TargetComponents
             var personajes = _targetComponent.GetPersonajes();
             foreach (var personaje in personajes)
             {
-                if (personaje.enemigo != _personaje.enemigo && personaje.isTargeteable && !personaje.esInmune && !personaje.esUnaBala)
+                if (personaje.enemigo != _personaje.enemigo && personaje.isTargeteable && !personaje.esInmune && !personaje.EsUnaBala)
                 {
                     _personajesList.Add(personaje);
                 }
@@ -32,7 +32,7 @@ namespace Gameplay.Personajes.TargetComponents
                     distance = Vector3.Distance(_personaje.transform.position, personajeList.transform.position);
                 }
             }
-            if (_personajeMasCercano != null && !_targets.Contains(_personajeMasCercano) && _personajeMasCercano.isTargeteable && !_personajeMasCercano.esInmune && !_personajeMasCercano.esUnaBala) _targets.Add(_personajeMasCercano);
+            if (_personajeMasCercano != null && !_targets.Contains(_personajeMasCercano) && _personajeMasCercano.isTargeteable && !_personajeMasCercano.esInmune && !_personajeMasCercano.EsUnaBala) _targets.Add(_personajeMasCercano);
             if (_personajeMasCercano != null)
             {
                 if (!_personajeMasCercano.GetTargetComponent().GetTargetTargetedBy().Contains(_personaje))

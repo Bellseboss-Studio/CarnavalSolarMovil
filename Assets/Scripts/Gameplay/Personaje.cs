@@ -24,7 +24,25 @@ namespace Gameplay
         [SerializeField] public Image imagenIndicadoraDeEquipo;
         [SerializeField] public Slider barraDeVida;
         [SerializeField] public Transform canvasBarraDeVida;
-        [SerializeField] public bool esUnaBala;
+
+        [SerializeField] private bool esBala;
+        public bool EsUnaBala
+        {
+            get
+            {
+                return esBala;
+            }
+            set
+            {
+                esBala = value;
+                if (esBala)
+                {
+                    GetComponent<BoxCollider>().enabled = false;
+                    GetComponent<NavMeshAgent>().enabled = false;
+                }
+            }
+        }
+
         private PersonajeStatesConfiguration _personajeStatesConfiguration;
         private Animator _animador;
         public bool enemigo;
@@ -127,6 +145,7 @@ namespace Gameplay
             alternativa2 = (GetVelocitiOfInteraction(estadisticasCarta.VelocidadDeInteraccion) * 1) / cienPorciento2;
             alternativa3 = (GetVelocitiOfInteraction(estadisticasCarta.VelocidadDeInteraccion) * 1) / cienPorciento3;
             alternativa4 = (GetVelocitiOfInteraction(estadisticasCarta.VelocidadDeInteraccion) * 1) / cienPorciento4;
+            alternativa2 /= 3;
             Debug.Log($"Caminar {alternativa1} ; Golpear {alternativa2} ; Idle {alternativa3} ; Morir {alternativa4}");
             _animador?.SetFloat("speedWalk", alternativa1);
         }
@@ -174,6 +193,7 @@ namespace Gameplay
             _animador?.SetTrigger("murio");
             _animador?.SetFloat("speed", 1);
             MuerteDelegate?.Invoke(this);
+            Destroy(gameObject, 5);
         }
 
         private void OnDisable()
