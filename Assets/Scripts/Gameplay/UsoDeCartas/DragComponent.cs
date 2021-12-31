@@ -10,6 +10,7 @@ public class DragComponent : MonoBehaviour
     [SerializeField] private RectTransform initialPosition;
     [SerializeField] private Transform dondePosicionarLaCarta;
     public ZonaDeDropeo Zona { get; set; }
+    private Vector3 posicionInicial;
     private RectTransform _canvasRectTransform;
     private GameObject _finalPosition;
     private EventTrigger.Entry entry_0;
@@ -87,12 +88,12 @@ public class DragComponent : MonoBehaviour
 
     public void RestartPosition()
     {
-        var position = initialPosition.position;
-        gameObject.GetComponent<RectTransform>().position = initialPosition.GetComponent<RectTransform>().position;
+        transform.position = posicionInicial;
     }
 
     private void BeginDrag_(PointerEventData data)
     {
+        posicionInicial = transform.position;
         OnDragging?.Invoke();
     }
 
@@ -157,6 +158,7 @@ public class DragComponent : MonoBehaviour
         dondePosicionarLaCarta = transformParameter;
         _canvasRectTransform = canvasRectTransform;
         initialPosition = initial_Position;
+        posicionInicial = transform.localPosition;
         CreateEventForDragAndDrop();
     }
 
