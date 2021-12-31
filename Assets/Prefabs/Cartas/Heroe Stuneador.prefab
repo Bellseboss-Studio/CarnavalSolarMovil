@@ -719,7 +719,7 @@ MonoBehaviour:
   targetComponentId: 0
   rutaComponentId: 0
   distanciaDeInteraccion: 2
-  health: 1600
+  health: 3200
   velocidadDeInteraccion: 1.5
   velocidadDeMovimiento: 0.25
   damage: 165
