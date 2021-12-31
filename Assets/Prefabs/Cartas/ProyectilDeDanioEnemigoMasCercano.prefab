@@ -717,7 +717,7 @@ MonoBehaviour:
   modelo3DId: Proyectil
   interaccionComponentId: 14
   targetComponentId: 0
-  rutaComponentId: 0
+  rutaComponentId: 1
   distanciaDeInteraccion: 2
   health: 1000
   velocidadDeInteraccion: 10

@@ -15,6 +15,7 @@ namespace Gameplay.Personajes.InteraccionComponents
                 aliadoCercano.health += 120;
             }
             _personaje.gameObject.SetActive(false);
+            _personaje.Muerte();
             Object.Destroy(_personaje.gameObject,2);
         }
     }

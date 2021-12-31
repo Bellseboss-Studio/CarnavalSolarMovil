@@ -792,6 +792,7 @@ MonoBehaviour:
   imagenIndicadoraDeEquipo: {fileID: 5969898109173959520}
   barraDeVida: {fileID: 5819097965165642446}
   canvasBarraDeVida: {fileID: 8579155622506170141}
+  esBala: 0
   enemigo: 0
   isTargeteable: 1
   esInmune: 0
@@ -816,8 +817,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deltaTimeLocal: 0
-  high: 0
-  velocity: 0
+  high: 3
+  velocity: 0.15
   target: {fileID: 0}
   increment: 0
   sePuedeMover: 0
