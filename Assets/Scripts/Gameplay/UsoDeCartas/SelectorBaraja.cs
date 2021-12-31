@@ -15,7 +15,9 @@ namespace Gameplay.UsoDeCartas
         [SerializeField] private Image imageDeFamilia, seleccion;
         [SerializeField] private Sprite foto;
         [SerializeField] private TextMeshProUGUI textoDeNombreDeFamilia;
+        [SerializeField] private TextMeshProUGUI textoDeDescripcionDeFamilia;
         [SerializeField] private string nombreFamilia;
+        [SerializeField] private string descripcionDeFamilia;
         [SerializeField] private bool puedeSeleccionarlo;
 
         public string IDHeroe => idHeroe;
@@ -37,6 +39,7 @@ namespace Gameplay.UsoDeCartas
             AniadirBarajaAServiceLocator(this);
             imageDeFamilia.sprite = foto;
             textoDeNombreDeFamilia.text = nombreFamilia;
+            textoDeDescripcionDeFamilia.text = descripcionDeFamilia;
         }
 
         public void AniadirBarajaAServiceLocator(SelectorBaraja baraja)
