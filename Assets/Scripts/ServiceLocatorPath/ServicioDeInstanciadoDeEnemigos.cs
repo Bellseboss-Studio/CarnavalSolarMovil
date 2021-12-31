@@ -111,6 +111,7 @@ namespace ServiceLocatorPath
             var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
             var personaje = _factoriaPersonajes.CreatePersonaje(point, cartaTemplate.GetEstadisticas(), esEnemigo, false);
             personaje.esUnaBala = true;
+            personaje.imagenIndicadoraDeEquipo.enabled = false;
             personajesAliado.Add(personaje);
             Destroy(cartaTemplate.gameObject);
         }
