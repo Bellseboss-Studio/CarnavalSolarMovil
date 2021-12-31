@@ -88,7 +88,7 @@ namespace Gameplay
 
         private void AjustarBarraDeVida()
         {
-            var aumentoDeTamañoDeLaBarraDeVida = (health / 250)/5;
+            var aumentoDeTamañoDeLaBarraDeVida = (health / 250)/15;
             barraDeVida.transform.localScale = new Vector3(1 + aumentoDeTamañoDeLaBarraDeVida, 1,1);
             BarraDeVidaMiraHaciaLaCamara();
         }
