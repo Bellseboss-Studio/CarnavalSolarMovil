@@ -16,6 +16,8 @@ namespace Gameplay.NewGameStates
         public const int ColocandoHeroe = 6;
         
         private readonly Dictionary<int, IEstadoDeJuego> _states;
+        
+        
 
         public ConfiguracionDeLosEstadosDelJuego()
         {

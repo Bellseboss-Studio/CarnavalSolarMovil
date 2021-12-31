@@ -24,6 +24,25 @@ namespace Gameplay
         [SerializeField] public Image imagenIndicadoraDeEquipo;
         [SerializeField] public Slider barraDeVida;
         [SerializeField] public Transform canvasBarraDeVida;
+
+        [SerializeField] private bool esBala;
+        public bool EsUnaBala
+        {
+            get
+            {
+                return esBala;
+            }
+            set
+            {
+                esBala = value;
+                if (esBala)
+                {
+                    GetComponent<BoxCollider>().enabled = false;
+                    GetComponent<NavMeshAgent>().enabled = false;
+                }
+            }
+        }
+
         private PersonajeStatesConfiguration _personajeStatesConfiguration;
         private Animator _animador;
         public bool enemigo;
@@ -69,7 +88,7 @@ namespace Gameplay
 
         private void AjustarBarraDeVida()
         {
-            var aumentoDeTamañoDeLaBarraDeVida = (health / 250)/5;
+            var aumentoDeTamañoDeLaBarraDeVida = (health / 250)/15;
             barraDeVida.transform.localScale = new Vector3(1 + aumentoDeTamañoDeLaBarraDeVida, 1,1);
             BarraDeVidaMiraHaciaLaCamara();
         }
@@ -126,6 +145,7 @@ namespace Gameplay
             alternativa2 = (GetVelocitiOfInteraction(estadisticasCarta.VelocidadDeInteraccion) * 1) / cienPorciento2;
             alternativa3 = (GetVelocitiOfInteraction(estadisticasCarta.VelocidadDeInteraccion) * 1) / cienPorciento3;
             alternativa4 = (GetVelocitiOfInteraction(estadisticasCarta.VelocidadDeInteraccion) * 1) / cienPorciento4;
+            alternativa2 /= 3;
             Debug.Log($"Caminar {alternativa1} ; Golpear {alternativa2} ; Idle {alternativa3} ; Morir {alternativa4}");
             _animador?.SetFloat("speedWalk", alternativa1);
         }
@@ -173,6 +193,7 @@ namespace Gameplay
             _animador?.SetTrigger("murio");
             _animador?.SetFloat("speed", 1);
             MuerteDelegate?.Invoke(this);
+            Destroy(gameObject, 5);
         }
 
         private void OnDisable()
@@ -219,42 +240,5 @@ namespace Gameplay
             var sequence = DOTween.Sequence();
             sequence.Insert(0, barraDeVida.DOValue(health / vidaMaxima, 1f).SetEase(Ease.OutCirc));
         }
-    }
-
-    public class EstadisticasCarta
-    {
-        private float _distanciaDeInteraccion;
-        private float _health;
-        private float _velocidadDeInteraccion;
-        private float _velocidadDeMovimiento;
-        private float _damage;
-        private float _escudo;
-        public AnimationClip Caminar { get; }
-        public AnimationClip Golpear { get; }
-        public AnimationClip Morir { get; }
-        public AnimationClip Idle { get; }
-
-        public EstadisticasCarta(float distanciaDeInteraccion, float health, float velocidadDeInteraccion, float velocidadDeMovimiento, float damage, float escudo, AnimationClip caminar, AnimationClip golpear, AnimationClip morir, AnimationClip idle)
-        {
-            _distanciaDeInteraccion = distanciaDeInteraccion;
-            _health = health;
-            _velocidadDeInteraccion = velocidadDeInteraccion;
-            _velocidadDeMovimiento = velocidadDeMovimiento;
-            _damage = damage;
-            _escudo = escudo;
-            Caminar = caminar;
-            Golpear = golpear;
-            Morir = morir;
-            Idle = idle;
-        }
-
-
-        public float DistanciaDeInteraccion => _distanciaDeInteraccion;
-        public float Health => _health;
-        public float VelocidadDeInteraccion => _velocidadDeInteraccion;
-        public float VelocidadDeMovimiento => _velocidadDeMovimiento;
-        public float Damage => _damage;
-        public float Escudo => _escudo;
-
     }
 }

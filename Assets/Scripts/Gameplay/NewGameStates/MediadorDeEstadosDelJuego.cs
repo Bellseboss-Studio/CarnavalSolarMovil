@@ -16,7 +16,7 @@ namespace Gameplay.NewGameStates
         [SerializeField] private RectTransform textoIndicativoColocarHeroe;
         [SerializeField] private FactoriaCarta _factoriaCarta;
         [SerializeField] private ColocacionCartas _colocacionCartas;
-        [SerializeField] private CartasConfiguracion cartasConfiguracion;
+        [SerializeField] private CartasConfiguracion cartasConfiguracion, heroesConfiguracion;
         [SerializeField] private GameObject canvasDeLasCartas, canvasPrincipal;
         [SerializeField] private bool jugadoresSincronizados;
         [SerializeField] private FactoriaPersonaje _factoriaPersonaje;
@@ -37,6 +37,7 @@ namespace Gameplay.NewGameStates
         private void Awake()
         {
             cartasConfiguracion = Instantiate(cartasConfiguracion);
+            heroesConfiguracion = Instantiate(heroesConfiguracion);
         }
 
         private void Start()
@@ -59,7 +60,11 @@ namespace Gameplay.NewGameStates
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             });
-            foreach (var cartaTemplate in cartasConfiguracion.GetCartasTemplate())
+            foreach (var cartaTemplate in heroesConfiguracion.GetCartasTemplate())
+            {
+                ServiceLocator.Instance.GetService<IBarajaDelPlayer>().AddHeroe(cartaTemplate.Value.Id);
+            }
+            foreach (var cartaTemplate in cartasConfiguracion.GetCartasTemplateLegales())
             {
                 ServiceLocator.Instance.GetService<IBarajaDelPlayer>().AddCarta(cartaTemplate.Value.Id);
             }
@@ -169,6 +174,16 @@ namespace Gameplay.NewGameStates
             }
             
             textoDeGanadoPerdido.text = textoColocar;
+        }
+
+        public void OcultarCartas()
+        {
+            _colocacionCartas.OcultarCartas();
+        }
+
+        public void MostrarCartas()
+        {
+            _colocacionCartas.MostrarCartas();
         }
 
         private void Update()

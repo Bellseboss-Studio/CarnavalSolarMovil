@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using ServiceLocatorPath;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Gameplay.NewGameStates
     public class ColocacionCartas : MonoBehaviour, IColocacionCartas
     {
         [SerializeField] private List<GameObject> posicionesDeCartas;
+        [SerializeField] private GameObject panelQueContieneCartas;
         private List<bool> _hayCartaEnPosicion;
         private Stack<string> _barajaDeCartasId;
         private List<string> _idCartasEnMano;
@@ -62,7 +64,7 @@ namespace Gameplay.NewGameStates
         
         public string GetNextCartaId()
         {
-            if (_barajaDeCartasId.Count <= 0)
+            if (_barajaDeCartasId.Count <= 9)
             {
                 _barajaDeCartasId = ServiceLocator.Instance.GetService<IServicioDeBarajasDisponibles>().GetPrimeras10Cartas();
             }
@@ -116,6 +118,21 @@ namespace Gameplay.NewGameStates
         public GameObject GetPosicionDeCarta(int posicionSinCarta)
         {
             return posicionesDeCartas[posicionSinCarta];
+        }
+
+        public void OcultarCartas()
+        {
+
+            var sequence = DOTween.Sequence();
+            var tra = panelQueContieneCartas.GetComponent<RectTransform>();
+            sequence.Insert(0, tra.DOLocalMoveY(tra.localPosition.y - 1000, .4f));
+        }
+
+        public void MostrarCartas()
+        {
+            var sequence = DOTween.Sequence();
+            var tra = panelQueContieneCartas.GetComponent<RectTransform>();
+            sequence.Insert(0, tra.DOLocalMoveY(tra.localPosition.y + 1000, .4f));
         }
     }
 }

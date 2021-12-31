@@ -17,7 +17,8 @@ namespace Gameplay.NewGameStates
 
         public void InitialConfiguration()
         {
-            ServiceLocator.Instance.GetService<IServicioDeTiempo>().ComienzaAContarElTiempo(2);
+            ServiceLocator.Instance.GetService<IServicioDeTiempo>().ComienzaAContarElTiempo(3);
+            _mediadorDeEstadosDelJuego.OcultarCartas();
         }
 
         public void FinishConfiguration()

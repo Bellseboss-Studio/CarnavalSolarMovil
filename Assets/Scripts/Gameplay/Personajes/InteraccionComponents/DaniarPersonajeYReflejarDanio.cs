@@ -9,6 +9,7 @@ namespace Gameplay.Personajes.InteraccionComponents
             origen.GetInteractionComponent().EjecucionDeInteraccion(_personaje);
             if (origen == null) return;
             AplicarDanio(origen,origen.damage);
+            origen.ActualizarBarraDeVida();
             if (origen.health <= 0)
             {
                 origen.Muerte();

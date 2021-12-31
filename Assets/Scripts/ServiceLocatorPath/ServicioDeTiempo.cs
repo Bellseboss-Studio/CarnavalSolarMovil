@@ -21,6 +21,8 @@ namespace ServiceLocatorPath
         private float _valorDeLaProgresBar;
         private int _tiempoQueEstoyContando;
 
+        public int TiempoQueEstoyContando => _tiempoQueEstoyContando;
+
         public delegate void OnPausarPersonajes();
         
         public OnPausarPersonajes PausarPersonajes;
@@ -73,7 +75,7 @@ namespace ServiceLocatorPath
             DespausarPersonajes?.Invoke();
             return false;
         }
-
+        
         public void ComienzaAContarElTiempo(int queTiempoEstoyContando)
         {
             _puedoContarElTiempo = true;
