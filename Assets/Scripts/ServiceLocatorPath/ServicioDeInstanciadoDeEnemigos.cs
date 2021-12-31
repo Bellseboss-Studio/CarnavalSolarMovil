@@ -29,9 +29,10 @@ namespace ServiceLocatorPath
 
         public void InstanciateHeroEnemy(IFactoriaPersonajes factoriaPersonaje)
         {
-            var carta = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
+            var carta = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetHeroeRandom();
             var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
             var personaje = factoriaPersonaje.CreatePersonaje(GetPointRandom(), cartaTemplate.GetEstadisticas(), true, true);
+            personaje.LaPartidaEstaCongelada = true;
             personajesEnemigos.Add(personaje);
             Destroy(cartaTemplate.gameObject);
         }
@@ -63,6 +64,7 @@ namespace ServiceLocatorPath
             var carta = cualHeroe;//ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
             var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
             var personaje = factoriaPersonaje.CreatePersonaje(point, cartaTemplate.GetEstadisticas(), enemigo,true);
+            personaje.LaPartidaEstaCongelada = true;
             personajesAliado.Add(personaje);
             Destroy(cartaTemplate.gameObject);
         }
@@ -108,6 +110,7 @@ namespace ServiceLocatorPath
         {
             var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
             var personaje = _factoriaPersonajes.CreatePersonaje(point, cartaTemplate.GetEstadisticas(), esEnemigo, false);
+            personaje.esUnaBala = true;
             personajesAliado.Add(personaje);
             Destroy(cartaTemplate.gameObject);
         }

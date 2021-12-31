@@ -16,7 +16,7 @@ namespace Gameplay.NewGameStates
         [SerializeField] private RectTransform textoIndicativoColocarHeroe;
         [SerializeField] private FactoriaCarta _factoriaCarta;
         [SerializeField] private ColocacionCartas _colocacionCartas;
-        [SerializeField] private CartasConfiguracion cartasConfiguracion;
+        [SerializeField] private CartasConfiguracion cartasConfiguracion, heroesConfiguracion;
         [SerializeField] private GameObject canvasDeLasCartas, canvasPrincipal;
         [SerializeField] private bool jugadoresSincronizados;
         [SerializeField] private FactoriaPersonaje _factoriaPersonaje;
@@ -27,6 +27,7 @@ namespace Gameplay.NewGameStates
         [SerializeField] private List<Image> imagenesPanelesGanoPerdio;
         [SerializeField] private List<TextMeshProUGUI> textosParaActivarCuandoGanaPierde;
         [SerializeField] private Button botonContinuar;
+        [SerializeField] private Transform _transformDondePosicionar;
         private bool _juegoPausado = true;
         private bool _juegoTerminado = false;
         private bool _juegoConfigurado = false;
@@ -36,13 +37,14 @@ namespace Gameplay.NewGameStates
         private void Awake()
         {
             cartasConfiguracion = Instantiate(cartasConfiguracion);
+            heroesConfiguracion = Instantiate(heroesConfiguracion);
         }
 
         private void Start()
         {
             _configuracionDeLosEstadosDelJuego = new ConfiguracionDeLosEstadosDelJuego();
             _configuracionDeLosEstadosDelJuego.AddInitialState(ConfiguracionDeLosEstadosDelJuego.ConfiguracionDelJuego,
-                new ConfiguracionDelJuegoState(this, _factoriaCarta, _colocacionCartas, cartasConfiguracion, canvasPrincipal, _factoriaPersonaje, canvasDeLasCartas));
+                new ConfiguracionDelJuegoState(this, _factoriaCarta, _colocacionCartas, cartasConfiguracion, canvasPrincipal, _factoriaPersonaje, canvasDeLasCartas, _transformDondePosicionar));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.SincronizacionDeJugadores, new SincronizacionDeJugadoresState(this));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Jugando, new JugandoState(this));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Pausa, new PausaState(this, _factoriaCarta));
@@ -58,7 +60,11 @@ namespace Gameplay.NewGameStates
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             });
-            foreach (var cartaTemplate in cartasConfiguracion.GetCartasTemplate())
+            foreach (var cartaTemplate in heroesConfiguracion.GetCartasTemplate())
+            {
+                ServiceLocator.Instance.GetService<IBarajaDelPlayer>().AddHeroe(cartaTemplate.Value.Id);
+            }
+            foreach (var cartaTemplate in cartasConfiguracion.GetCartasTemplateLegales())
             {
                 ServiceLocator.Instance.GetService<IBarajaDelPlayer>().AddCarta(cartaTemplate.Value.Id);
             }
@@ -117,6 +123,7 @@ namespace Gameplay.NewGameStates
 
         private Vector3 point;
         private bool pedirUbicacionDeHeroe, tomoUbicacion;
+
         public Vector3 PedirColocacionDeHeroe()
         {
             pedirUbicacionDeHeroe = true;
@@ -176,11 +183,11 @@ namespace Gameplay.NewGameStates
                 if (Input.GetMouseButton(0))
                 {
                     RaycastHit hit;
-                    Debug.Log("coloca Al heroe");
+                    //Debug.Log("coloca Al heroe");
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     if (Physics.Raycast(ray, out hit, Mathf.Infinity))
                     {
-                        Debug.Log(hit);
+                        //Debug.Log(hit);
                         point = hit.point;
                         tomoUbicacion = true;
                     }

@@ -17,9 +17,10 @@ namespace Gameplay.NewGameStates
         private GameObject _canvasDeLasCartas;
         private FactoriaPersonaje _factoriaPersonaje;
         private readonly GameObject _canvasPrincipal;
+        private readonly Transform _transformDondePosicionar;
 
 
-        public ConfiguracionDelJuegoState(IMediadorDeEstadosDelJuego mediadorDeEstadosDelJuego, IFactoriaCarta factoriaCarta, IColocacionCartas colocacionCartas, CartasConfiguracion cartasConfiguracion, GameObject canvasDeLasCartas, FactoriaPersonaje factoriaPersonaje, GameObject canvasPrincipal)
+        public ConfiguracionDelJuegoState(IMediadorDeEstadosDelJuego mediadorDeEstadosDelJuego, IFactoriaCarta factoriaCarta, IColocacionCartas colocacionCartas, CartasConfiguracion cartasConfiguracion, GameObject canvasDeLasCartas, FactoriaPersonaje factoriaPersonaje, GameObject canvasPrincipal, Transform transformDondePosicionar)
         {
             _mediadorDeEstadosDelJuego = mediadorDeEstadosDelJuego;
             _factoriaCarta = factoriaCarta;
@@ -28,6 +29,7 @@ namespace Gameplay.NewGameStates
             _canvasDeLasCartas = canvasDeLasCartas;
             _factoriaPersonaje = factoriaPersonaje;
             _canvasPrincipal = canvasPrincipal;
+            _transformDondePosicionar = transformDondePosicionar;
         }
         
         public void InitialConfiguration()
@@ -42,7 +44,7 @@ namespace Gameplay.NewGameStates
 
         public async Task<PersonajeStateResult> DoAction(object data)
         {
-            _factoriaCarta.Configurate(_colocacionCartas, _cartasConfiguracion, _canvasDeLasCartas, _factoriaPersonaje, _canvasPrincipal);
+            _factoriaCarta.Configurate(_colocacionCartas, _cartasConfiguracion, _canvasDeLasCartas, _factoriaPersonaje, _canvasPrincipal, _transformDondePosicionar);
             //Debug.Log("Estas en estado de configurar juego");
             //if (_mediadorDeEstadosDelJuego.SeConfiguroElJuego())
             {

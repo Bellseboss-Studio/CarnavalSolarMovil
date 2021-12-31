@@ -14,7 +14,7 @@ public class PlaySoundsForCharacter : MonoBehaviour, ICheckDependencies
     [SerializeField] private AudioMixerGroup m_Output;
     
     [Range(0.5f, 1.0f)]
-    [SerializeField] private float m_FsVolume = 0.7f;
+    private float m_FsVolume = 0.9f;
     [Range(0.5f, 1.0f)]
     [SerializeField] private float m_AttackVolume = 1.0f;
     [Range(0.5f, 1.0f)]
@@ -59,9 +59,10 @@ public class PlaySoundsForCharacter : MonoBehaviour, ICheckDependencies
         {
             m_AudioSource.maxDistance = 40;
             m_AudioSource.volume = volume - Random.Range(0f, 0.4f);
-            m_AudioSource.pitch = Random.Range(0.9f, 1.2f);
+            m_AudioSource.pitch = Random.Range(0.95f, 1.02f);
             m_AudioSource.spatialBlend = 0.7f;
             m_AudioSource.outputAudioMixerGroup = m_Output;
+            if(!m_AudioSource.isPlaying)
             m_AudioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Count)]);
         }
         else

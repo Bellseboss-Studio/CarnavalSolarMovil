@@ -1272,7 +1272,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: de04451b706ec4abaaaa8752e6c2459f, type: 3}
   - {fileID: 8300000, guid: 3b736c8faa4424bdab4ed93a9d1923c7, type: 3}
   m_AttackClips:
-  - {fileID: 8300000, guid: 75546eec4f61e4ff69e116f848c84d84, type: 3}
+  - {fileID: 8300000, guid: 399f07b5dccb14efab52187c08f58883, type: 3}
   m_DeathClips:
   - {fileID: 8300000, guid: e80bc507b1bde47fbaf7cd928b3d8c4d, type: 3}
   - {fileID: 8300000, guid: e902ff82201f74630b2744f206f3f5db, type: 3}

@@ -71,6 +71,11 @@ public class ControladorDeHeroesDeslizado : MonoBehaviour
                 //_barajaSeleccionada = barajas[index];
                 index++;
                 barajas[index].BotonBarajaSeleccionada.onClick.Invoke();
+                SfxManager.Instance.PlaySound("BrowseCharacter");
+            }
+            else
+            {
+                SfxManager.Instance.PlaySound("Block");
             }
         });
         izquierda.onClick.AddListener(() =>
@@ -84,6 +89,11 @@ public class ControladorDeHeroesDeslizado : MonoBehaviour
                 }
                 index--;
                 barajas[index].BotonBarajaSeleccionada.onClick.Invoke();
+                SfxManager.Instance.PlaySound("BrowseCharacter");
+            }
+            else
+            {
+                SfxManager.Instance.PlaySound("Block");
             }
         });
         

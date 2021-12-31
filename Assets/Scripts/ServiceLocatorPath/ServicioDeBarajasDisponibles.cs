@@ -42,7 +42,7 @@ namespace ServiceLocatorPath
             if (valorRandomObtenido <= _barajaSeleccionadaId.PorcentajeProbabilidadSacarCartaDeLaMismaFamilia)
             {
                 var cartaAAniadir = Random.Range(0, _barajaSeleccionadaId.ListaDeIdDeCartasEnBaraja.Count);
-                Debug.Log(cartaAAniadir);
+                //Debug.Log(cartaAAniadir);
                 return _barajaSeleccionadaId.ListaDeIdDeCartasEnBaraja[cartaAAniadir];
             }
 
