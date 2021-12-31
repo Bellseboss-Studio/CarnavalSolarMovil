@@ -27,6 +27,7 @@ namespace Gameplay.NewGameStates
             _mediadorDeEstadosDelJuego.PedirColocacionDeHeroe();
             var sequence = DOTween.Sequence();
             sequence.Insert(0, _panelColocarHeroe.DOScale(1, .45f).SetEase(Ease.OutBack));
+            _mediadorDeEstadosDelJuego.OcultarCartas();
         }
 
         public void FinishConfiguration()

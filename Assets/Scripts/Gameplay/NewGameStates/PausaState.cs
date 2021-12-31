@@ -24,6 +24,7 @@ namespace Gameplay.NewGameStates
             _factoriaCarta.CrearPrimerasCartas();
             _factoriaCarta.CrearCartasEnHuecos();
             ServiceLocator.Instance.GetService<IServicioDeTiempo>().ComienzaAContarElTiempo(2);
+            _mediadorDeEstadosDelJuego.MostrarCartas();
         }
 
         public void FinishConfiguration()
