@@ -176,6 +176,16 @@ namespace Gameplay.NewGameStates
             textoDeGanadoPerdido.text = textoColocar;
         }
 
+        public void OcultarCartas()
+        {
+            _colocacionCartas.OcultarCartas();
+        }
+
+        public void MostrarCartas()
+        {
+            _colocacionCartas.MostrarCartas();
+        }
+
         private void Update()
         {
             if (pedirUbicacionDeHeroe)

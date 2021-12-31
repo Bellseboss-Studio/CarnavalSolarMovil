@@ -60,6 +60,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 1399175324639926092}
     m_Position: {x: 143.50128, y: 444.0797, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -178231158071614849}
+    m_Position: {x: 178.50128, y: 509.0797, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -325,6 +328,32 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: ac2e59b532b48844fbfc7561f474b8c9, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &-178231158071614849
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: niIdeaDeLoQueHago
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: f2863cbf8d700d0498a0b05aeddbe9e1, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

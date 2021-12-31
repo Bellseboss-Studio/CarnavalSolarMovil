@@ -1101,10 +1101,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f9b59286359d4466286f1a53c1f2a36a, type: 3}
   - {fileID: 8300000, guid: 669a35715df884f30973cd5ef5571cd3, type: 3}
   - {fileID: 8300000, guid: d26a928e1cfc5437bb9200bef9c3c692, type: 3}
-  m_AudioSource: {fileID: 0}
+  m_AudioSource: {fileID: -6558206654294195465}
   m_CharacterName: 
   m_Output: {fileID: 0}
-  m_FsVolume: 0.7
   m_AttackVolume: 1
   m_DeathVolume: 1
 --- !u!1 &7558183694794547793
