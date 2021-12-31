@@ -120,6 +120,9 @@ namespace Gameplay
                 case RutaComponentEnum.RutaMasCorta:
                     _rutaComponent = new RutaMasCorta();
                     break;
+                case RutaComponentEnum.MovimientoBala:
+                    _rutaComponent = new MovimientoBala();
+                    break;
                 default:
                     throw new Exception($"El componente con la id {rutaComponentId} no existe");
                 break;

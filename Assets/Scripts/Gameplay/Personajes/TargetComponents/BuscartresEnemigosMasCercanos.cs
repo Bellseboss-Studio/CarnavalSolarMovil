@@ -17,7 +17,7 @@ namespace Gameplay.Personajes.TargetComponents
             var personajes = _targetComponent.GetPersonajes();
             foreach (var personaje in personajes)
             {
-                if (personaje.enemigo != _personaje.enemigo && personaje.isTargeteable && !personaje.esUnaBala)
+                if (personaje.enemigo != _personaje.enemigo && personaje.isTargeteable && !personaje.EsUnaBala)
                 {
                     personajesList.Add(personaje);
                 }

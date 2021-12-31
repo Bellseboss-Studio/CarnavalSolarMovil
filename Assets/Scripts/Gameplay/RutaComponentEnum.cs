@@ -2,6 +2,7 @@
 {
     public enum RutaComponentEnum
     {
-        RutaMasCorta
+        RutaMasCorta,
+        MovimientoBala
     }
 }

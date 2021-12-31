@@ -308,7 +308,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -686,7 +686,9 @@ MonoBehaviour:
   seleccion: {fileID: 3782294102022431786}
   foto: {fileID: 21300000, guid: 66b96964349a90247b229f1fa736f6bc, type: 3}
   textoDeNombreDeFamilia: {fileID: 41162152}
+  textoDeDescripcionDeFamilia: {fileID: 1178737023}
   nombreFamilia: Mortifera
+  descripcionDeFamilia: 
   puedeSeleccionarlo: 0
   porcentajeProbabilidadSacarCartaDeLaMismaFamilia: 50
   estaSeleccionadaLaBaraja: 0
