@@ -11,7 +11,7 @@ namespace Gameplay.PersonajeStates
         private Personaje _personaje;
         private readonly RutaComponent _rutaComponent;
         private bool seDesplazo = false;
-        private int rotacionesParaVolverABuscar = 10;
+        private int rotacionesParaVolverABuscar = 2;
 
         public DesplazarseHaciaElTargetState(Personaje personaje, RutaComponent rutaComponent)
         {
@@ -35,12 +35,6 @@ namespace Gameplay.PersonajeStates
             _personaje.Caminar(true);
             while (targets.Count > 0 && _personaje.isTargeteable && targets[0] != null && targets[0].isTargeteable && distanciaEntrePersonajes > _personaje.distanciaDeInteraccion && _personaje != null)
             {
-                rotacionesParaVolverABuscar--;
-                if (rotacionesParaVolverABuscar == 0)
-                {
-                    rotacionesParaVolverABuscar = 10;
-                    return new PersonajeStateResult(PersonajeStatesConfiguration.BuscarTargetState);
-                }
                 if (_personaje.LaPartidaEstaCongelada)
                 {
                     _rutaComponent.DejarDeDesplazar();
@@ -52,6 +46,13 @@ namespace Gameplay.PersonajeStates
                 _personaje.BarraDeVidaMiraHaciaLaCamara();
                 await Task.Delay(TimeSpan.FromMilliseconds(100));
                 //Debug.Log(distanciaEntrePersonajes);
+                rotacionesParaVolverABuscar--;
+                if (rotacionesParaVolverABuscar <= 0)
+                {
+                    rotacionesParaVolverABuscar = 2;
+                    _personaje.GetTargetComponent().BuscaTusTargets();
+                    targets = _personaje.GetTargetComponent().GetTargets();
+                }
                 seDesplazo = true;
             }
             if(seDesplazo) _rutaComponent.DejarDeDesplazar();
