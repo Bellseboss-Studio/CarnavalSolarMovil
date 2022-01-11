@@ -38,5 +38,24 @@ namespace Gameplay.UsoDeCartas
         {
             return _dragComponent;
         }
+
+        public void MostrarZona()
+        {
+            var meshRenderer = GetComponent<MeshRenderer>();
+            meshRenderer.enabled = true;
+            var materialColor = meshRenderer.material.color;
+            materialColor.a = .588f;
+            meshRenderer.material.color = materialColor;
+        }
+
+        public void OcultarZona()
+        {
+            var meshRenderer = GetComponent<MeshRenderer>();
+            meshRenderer.enabled = false;
+            var materialColor = meshRenderer.material.color;
+            materialColor.a = 0;
+            meshRenderer.material.color = materialColor;
+        }
+        
     }
 }

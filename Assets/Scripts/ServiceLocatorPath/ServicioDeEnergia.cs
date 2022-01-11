@@ -10,8 +10,10 @@ namespace ServiceLocatorPath
         private int _energiaPlayer1;
         public void Init()
         {
-            //_energiaPlayer1 = 0;
-            ActualizarTextoDeEnergia();
+            _energiaPlayer1 = 5;
+            //energiaPorTurno = 3;
+            //ActualizarTextoDeEnergia();
+            textoEnergia.text = "8";
         }
 
         public bool TieneEnergiaSuficiente(int costoDeEnergia)
@@ -28,6 +30,7 @@ namespace ServiceLocatorPath
         public void AddEnergy()
         {
             _energiaPlayer1 += energiaPorTurno;
+            energiaPorTurno++;
             ActualizarTextoDeEnergia();
         }
 

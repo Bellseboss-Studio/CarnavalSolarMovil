@@ -10,6 +10,7 @@ namespace Gameplay.UsoDeCartas
     public class CartaTemplate : MonoBehaviour, ICartaTemplate
     {
         private DragComponent _dragComponent;
+        private DropComponent _dropComponent;
         private FactoriaPersonaje _factoriaPersonaje;
         [SerializeField] private string id;
         [SerializeField] private string modelo3DId;
@@ -22,7 +23,9 @@ namespace Gameplay.UsoDeCartas
         [SerializeField] private ZonaDeDropeo zona;
         [SerializeField] private AnimationClip caminar, golpear, morir, idle;
         [SerializeField] private bool esUnaCartaIlegal;
-        
+
+        public ZonaDeDropeo Zona => zona;
+
         private int _posicionEnBaraja;
         public string Id => id;
         public bool ESUnaCartaIlegal => esUnaCartaIlegal;
@@ -32,7 +35,7 @@ namespace Gameplay.UsoDeCartas
             set => _posicionEnBaraja = value;
         }
 
-        public void Configurate(FactoriaPersonaje factoriaPersonaje)
+        public void Configurate(FactoriaPersonaje factoriaPersonaje, DropComponent dropComponent)
         {
             _dragComponent = GetComponent<DragComponent>();
             _dragComponent.OnDragging += Dragging;
@@ -43,17 +46,20 @@ namespace Gameplay.UsoDeCartas
             var rectTransformRect = GetComponent<RectTransform>().rect;
             rectTransformRect.width = rectTransformRect.height;
             valorCarta.text = $"{costoEnergia}";
+            _dropComponent = dropComponent;
             //Debug.Log(rectTransformRect.height);
             //Debug.Log(rectTransformRect.width);
         }
 
         private void FinishDragging()
         {
+            _dropComponent.OcultarZona();
             //Debug.Log("Se Termino De Draggear");
         }
 
         private void DropCompleted(Vector3 hitPoint)
         {
+            _dropComponent.OcultarZona();
             if (ServiceLocator.Instance.GetService<IServicioDeEnergia>().TieneEnergiaSuficiente(costoEnergia))
             {
                 ServiceLocator.Instance.GetService<IColocacionCartas>().YaNoHayCartaEnPosicion(_posicionEnBaraja);
@@ -65,6 +71,7 @@ namespace Gameplay.UsoDeCartas
 
         private void Dragging()
         {
+            _dropComponent.MostrarZona();
             //Debug.Log("Se Esta Draggeando");
         }
 
