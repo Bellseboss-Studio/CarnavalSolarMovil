@@ -2906,7 +2906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: nombreFamilia
-      value: Venenosa
+      value: Mortifera
       objectReference: {fileID: 0}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: imageDeFamilia
@@ -2918,8 +2918,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: descripcionDeFamilia
-      value: Los venenosos debilitan al enemigo en la distancia y aplica efectos
-        que dan ventaja a los aliados.
+      value: Las cartas mortiferas son asesinas agresivas que se fortalecen al asesinar
+        y son muy eficientes contra todo tipo de enemigos
       objectReference: {fileID: 0}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: textoDeNombreDeFamilia

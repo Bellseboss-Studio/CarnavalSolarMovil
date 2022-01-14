@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 7114197542983364732}
   - component: {fileID: 7316080808676934838}
   m_Layer: 5
-  m_Name: _Modelo Base Carta 1
+  m_Name: _Modelo Base Carta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -732,6 +732,7 @@ MonoBehaviour:
   morir: {fileID: 7400000, guid: c80e5eea73a86234c97950b148a12086, type: 2}
   idle: {fileID: 7400000, guid: b5dfd017a0cfd3942bb177165aea379d, type: 2}
   esUnaCartaIlegal: 0
+  panelDeDescripcion: {fileID: 5407791036193610792}
 --- !u!1 &8159330854986713344
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,7 +39,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -73.50256, y: -29.42331}
+  m_AnchoredPosition: {x: -46, y: -29.42331}
   m_SizeDelta: {x: 360, y: 360}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &980314748392555266
@@ -175,6 +175,7 @@ MonoBehaviour:
   morir: {fileID: 7400000, guid: c80e5eea73a86234c97950b148a12086, type: 2}
   idle: {fileID: 7400000, guid: b5dfd017a0cfd3942bb177165aea379d, type: 2}
   esUnaCartaIlegal: 0
+  panelDeDescripcion: {fileID: 595731705382782554}
 --- !u!1001 &8255623393337680577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -182,6 +183,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5202343790133810966}
     m_Modifications:
+    - target: {fileID: 6307920080916883211, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+      propertyPath: m_text
+      value: Opcion agresiva estandart que se fortalezca de eliminar cartas debiles
+        del rival
+      objectReference: {fileID: 0}
+    - target: {fileID: 6307920080916883211, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+      propertyPath: m_fontSize
+      value: 59.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6315414879249161009, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
       propertyPath: m_Color.b
       value: 0.22745098
@@ -282,15 +292,44 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7235650982770678110, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272994643063902636, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819543383288891477, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7922848823416478945, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
       propertyPath: m_Name
       value: BocetoCarta
+      objectReference: {fileID: 0}
+    - target: {fileID: 8851169105958102171, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8851169105958102171, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8851169105958102171, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
 --- !u!224 &1292050827740018720 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7169612811733916385, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+  m_PrefabInstance: {fileID: 8255623393337680577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &595731705382782554 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8851169105958102171, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
   m_PrefabInstance: {fileID: 8255623393337680577}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &5804040183772898318 stripped
