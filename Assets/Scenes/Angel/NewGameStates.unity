@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.29381624, g: 0.12085631, b: 0.03633824, a: 1}
+  m_IndirectSpecularColor: {r: 0.33897904, g: 0.1357593, b: 0.05071968, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -203,7 +203,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.79833335}
   m_AnchorMax: {x: 0.18139584, y: 1}
-  m_AnchoredPosition: {x: 1.6298828, y: 1.3305664}
+  m_AnchoredPosition: {x: 1.6298828, y: 1.329834}
   m_SizeDelta: {x: 3.25, y: -2.669983}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &55156047
@@ -1328,6 +1328,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5592538566192113619, guid: 6ae5bf2e422eb994f8394d904ede1e0e, type: 3}
+      propertyPath: all
+      value: 
+      objectReference: {fileID: 1518073158}
+    - target: {fileID: 5592538566192113619, guid: 6ae5bf2e422eb994f8394d904ede1e0e, type: 3}
+      propertyPath: touchDown
+      value: 
+      objectReference: {fileID: 1712987416}
+    - target: {fileID: 5592538566192113619, guid: 6ae5bf2e422eb994f8394d904ede1e0e, type: 3}
+      propertyPath: medioCampo
+      value: 
+      objectReference: {fileID: 2077299687}
     - target: {fileID: 6111713981917750406, guid: 6ae5bf2e422eb994f8394d904ede1e0e, type: 3}
       propertyPath: m_Name
       value: FactoriaCartas
@@ -1790,8 +1802,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff4b67d6055459b96dfdd41c0f5e308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiempoDePausa: 15
-  tiempoDeJuego: 15
+  tiempoDePausa: 8
+  tiempoDeJuego: 8
   tiempoDeColocacionHeroe: 20
   progresBarTiempo: {fileID: 1435366918}
 --- !u!114 &888163690
@@ -1807,7 +1819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textoEnergia: {fileID: 1361471717}
-  energiaPorTurno: 10
+  energiaPorTurno: 3
 --- !u!114 &888163691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1889,7 +1901,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.64705884, g: 0.5351421, b: 0.48206657, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3259,7 +3271,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 448.6
+  m_fontSize: 517.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3490,8 +3502,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1518073156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0609, y: -0.027, z: 0.00807}
-  m_LocalScale: {x: 3.0680459, y: 0.077596165, z: 3.4226344}
+  m_LocalPosition: {x: -0.0052, y: -0.027, z: 0.00807}
+  m_LocalScale: {x: 2.9566758, y: 0.077596165, z: 3.4226344}
   m_Children: []
   m_Father: {fileID: 1250625020}
   m_RootOrder: 0
@@ -3543,7 +3555,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2d5bbb2db7b9d63408aceec0b1009013, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3980,8 +3992,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712987414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0609, y: -0.027, z: -1.49085}
-  m_LocalScale: {x: 3.0680459, y: 0.077596165, z: 0.42477897}
+  m_LocalPosition: {x: -0.0088, y: -0.027, z: -1.1367}
+  m_LocalScale: {x: 2.964039, y: 0.077596165, z: 1.1330129}
   m_Children: []
   m_Father: {fileID: 1250625020}
   m_RootOrder: 2
@@ -4033,7 +4045,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2d5bbb2db7b9d63408aceec0b1009013, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4409,7 +4421,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 106.6
+  m_fontSize: 140
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4886,8 +4898,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077299685}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0609, y: -0.027, z: -0.82197}
-  m_LocalScale: {x: 3.0680459, y: 0.077596165, z: 1.7625526}
+  m_LocalPosition: {x: -0.0059, y: -0.027, z: -0.82197}
+  m_LocalScale: {x: 2.95821, y: 0.077596165, z: 1.7625526}
   m_Children: []
   m_Father: {fileID: 1250625020}
   m_RootOrder: 1
@@ -4939,7 +4951,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2d5bbb2db7b9d63408aceec0b1009013, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

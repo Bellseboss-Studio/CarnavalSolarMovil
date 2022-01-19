@@ -175,6 +175,7 @@ MonoBehaviour:
   morir: {fileID: 7400000, guid: c80e5eea73a86234c97950b148a12086, type: 2}
   idle: {fileID: 7400000, guid: b5dfd017a0cfd3942bb177165aea379d, type: 2}
   esUnaCartaIlegal: 1
+  panelDeDescripcion: {fileID: 4545469755135144083}
 --- !u!1001 &5026417134915802120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -295,6 +296,11 @@ PrefabInstance:
 --- !u!224 &2791949321181499113 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7169612811733916385, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+  m_PrefabInstance: {fileID: 5026417134915802120}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &4545469755135144083 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8851169105958102171, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
   m_PrefabInstance: {fileID: 5026417134915802120}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7484034489798857415 stripped

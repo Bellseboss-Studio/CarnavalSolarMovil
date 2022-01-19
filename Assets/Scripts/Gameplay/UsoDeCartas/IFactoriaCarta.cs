@@ -10,7 +10,7 @@ namespace Gameplay.UsoDeCartas
         CartaTemplate Create(string id, GameObject posicion, int posicionEnBaraja, Transform transformParameter);
         void CrearPrimerasCartas();
         void DestruirLasCartas();
-        void CrearCartasEnHuecos();
+        void CrearCarta();
         CartaTemplate CreateEnemigo(string carta, GameObject gameObject);
         void CrearHeroe(Vector3 point);
     }

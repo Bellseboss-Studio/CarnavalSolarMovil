@@ -44,7 +44,7 @@ namespace Gameplay.NewGameStates
 
         public bool PuedoSacarOtraCarta()
         {
-            return _cartasEnMano.Count < posicionesDeCartas.Count && _barajaDeCartasId.Count > 0;
+            return _cartasEnMano.Count < 5 && _barajaDeCartasId.Count > 0;
         }
 
         public GameObject GetSiguientePosicionDeCarta()
