@@ -7,5 +7,6 @@
         void DejaDeContarElTiempo();
         bool EstanJugando();
         bool SeEstaColocandoElHeroe();
+        void AniadirCantidadDeEnergiaAlSiguienteTurno(int entergiaASumar);
     }
 }

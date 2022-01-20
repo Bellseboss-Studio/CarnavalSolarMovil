@@ -34,8 +34,10 @@ namespace ServiceLocatorPath
             ActualizarTextoDeEnergia();
         }
 
-        public void AddQuantityOfEnergy(int entergiaASumar)
+        public void AddQuantityOfEnergyInTheNextTurn(int entergiaASumar)
         {
+            ServiceLocator.Instance.GetService<IServicioDeTiempo>()
+                .AniadirCantidadDeEnergiaAlSiguienteTurno(entergiaASumar);
             _energiaPlayer1 += entergiaASumar;
             ActualizarTextoDeEnergia();
         }

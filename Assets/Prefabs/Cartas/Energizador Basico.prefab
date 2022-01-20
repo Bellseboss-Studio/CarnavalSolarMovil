@@ -162,10 +162,10 @@ MonoBehaviour:
   targetComponentId: 0
   rutaComponentId: 0
   distanciaDeInteraccion: 2
-  health: 250
-  velocidadDeInteraccion: 0.5
+  health: 300
+  velocidadDeInteraccion: 5
   velocidadDeMovimiento: 1
-  damage: 25
+  damage: 50
   escudo: 0
   costoEnergia: 1
   valorCarta: {fileID: 2662281435646634262}

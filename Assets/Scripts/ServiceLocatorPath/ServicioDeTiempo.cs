@@ -15,6 +15,7 @@ namespace ServiceLocatorPath
         [SerializeField] private float tiempoDeJuego;
         [SerializeField] private float tiempoDeColocacionHeroe;
         [SerializeField] private Slider progresBarTiempo;
+        [SerializeField] private Image pasuaIcono, playIcono;
 
         private bool _puedoContarElTiempo;
         private float _deltaTimeLocal = 0;
@@ -73,6 +74,8 @@ namespace ServiceLocatorPath
                 return true;
             }
             DespausarPersonajes?.Invoke();
+            playIcono.enabled = true;
+            pasuaIcono.enabled = false;
             return false;
         }
         
@@ -95,12 +98,19 @@ namespace ServiceLocatorPath
                 return true;
             }
             PausarPersonajes?.Invoke();
+            playIcono.enabled = false;
+            pasuaIcono.enabled = true;
             return false;
         }
 
         public bool SeEstaColocandoElHeroe()
         {
             return _deltaTimeLocal <= tiempoDeColocacionHeroe;
+        }
+
+        public void AniadirCantidadDeEnergiaAlSiguienteTurno(int entergiaASumar)
+        {
+            throw new NotImplementedException();
         }
     }
 }

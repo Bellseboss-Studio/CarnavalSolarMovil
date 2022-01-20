@@ -164,7 +164,7 @@ MonoBehaviour:
   distanciaDeInteraccion: 2
   health: 900
   velocidadDeInteraccion: 1
-  velocidadDeMovimiento: 1
+  velocidadDeMovimiento: 0.7
   damage: 160
   escudo: 0
   costoEnergia: 9

@@ -114,5 +114,14 @@ namespace ServiceLocatorPath
             personaje.imagenIndicadoraDeEquipo.enabled = false;
             Destroy(cartaTemplate.gameObject);
         }
+        public void InstanciaSinCartaConTarget(string carta, Vector3 point, bool esEnemigo, Gameplay.Personaje target)
+        {
+            var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
+            var personaje = _factoriaPersonajes.CreatePersonaje(point, cartaTemplate.GetEstadisticas(), esEnemigo, false);
+            personaje.GetTargetComponent().SetTarget(target);
+            personaje.EsUnaBala = true;
+            personaje.imagenIndicadoraDeEquipo.enabled = false;
+            Destroy(cartaTemplate.gameObject);
+        }
     }
 }

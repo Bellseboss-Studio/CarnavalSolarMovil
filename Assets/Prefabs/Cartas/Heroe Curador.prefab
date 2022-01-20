@@ -162,10 +162,10 @@ MonoBehaviour:
   targetComponentId: 0
   rutaComponentId: 0
   distanciaDeInteraccion: 12
-  health: 4800
-  velocidadDeInteraccion: 1.4
+  health: 1800
+  velocidadDeInteraccion: 3
   velocidadDeMovimiento: 0.25
-  damage: 140
+  damage: 300
   escudo: 0
   costoEnergia: 200
   valorCarta: {fileID: 8199502692526599257}
@@ -186,6 +186,10 @@ PrefabInstance:
     - target: {fileID: 881151182889456955, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6307920080916883211, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+      propertyPath: m_fontSize
+      value: 59.3
       objectReference: {fileID: 0}
     - target: {fileID: 6315414879249161009, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
       propertyPath: m_Color.b

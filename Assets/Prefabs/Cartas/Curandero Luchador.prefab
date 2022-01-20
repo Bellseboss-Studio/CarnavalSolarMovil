@@ -158,13 +158,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: E02
   modelo3DId: CuranderoLuchador
-  interaccionComponentId: 1
+  interaccionComponentId: 16
   targetComponentId: 0
   rutaComponentId: 0
   distanciaDeInteraccion: 5
-  health: 380
+  health: 400
   velocidadDeInteraccion: 2
-  velocidadDeMovimiento: 1
+  velocidadDeMovimiento: 0.7
   damage: 140
   escudo: 0
   costoEnergia: 4

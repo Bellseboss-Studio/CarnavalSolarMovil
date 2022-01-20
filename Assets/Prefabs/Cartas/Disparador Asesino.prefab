@@ -158,16 +158,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: A02
   modelo3DId: Francotirador Venenoso
-  interaccionComponentId: 8
+  interaccionComponentId: 17
   targetComponentId: 1
   rutaComponentId: 0
   distanciaDeInteraccion: 5
-  health: 400
+  health: 440
   velocidadDeInteraccion: 1.2
   velocidadDeMovimiento: 0.7
-  damage: 96
+  damage: 156
   escudo: 0
-  costoEnergia: 5
+  costoEnergia: 7
   valorCarta: {fileID: 7859612565436948375}
   zona: 0
   caminar: {fileID: 7400000, guid: 6d3a04249b912e34ab784791da09e02c, type: 2}

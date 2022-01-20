@@ -64,6 +64,11 @@ namespace Gameplay.Personajes.TargetComponents
             throw new NotImplementedException();
         }
 
+        public void AddTarget(Personaje target)
+        {
+            _targets.Add(target);
+        }
+        
         public void RemoveTarget(Personaje personaje)
         {
             _targets.Remove(personaje);

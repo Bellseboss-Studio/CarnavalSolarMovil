@@ -36,6 +36,10 @@ namespace Gameplay
                     _targetBehaviour = new BuscartresEnemigosMasCercanos();
                     break;
                 
+                case TargetComponentEnum.BuscarEnemigoMasCercanoYNoActualizar:
+                    _targetBehaviour = new BuscarEnemigoMasCercanoYNoActualizar();
+                    break;
+                
                 default:
                     throw new Exception($"El componente con la id {targetComponentId} no existe");
             }
@@ -101,8 +105,25 @@ namespace Gameplay
                     _interaccionBehaviour = new DispararProyectilQueCuraYDania();
                     break;
                 case InteraccionComponentEnum.DaniarPersonajeYAutoDestruirse:
+                    _interaccionBehaviour = new DaniarPersonajeCurarAliadoMasCercanoAndAutoDestruirse();
+                    break;
+                
+                case InteraccionComponentEnum.DaniarPersonajeCurarAliadoCercanoMasDaniadoAndAutoDestruirse:
+                    _interaccionBehaviour = new DaniarPersonajeCurarAliadoCercanoMasDaniadoAndAutoDestruirse();
+                    break;
+                
+                case InteraccionComponentEnum.DispararProyectilQueDaniaYCuraAliadoMasCercano:
+                    _interaccionBehaviour = new DispararProyectilQueDaniaYCuraAliadoMasCercano();
+                    break;
+                
+                case InteraccionComponentEnum.DaniarPersonajeAndAutoDestruirse:
                     _interaccionBehaviour = new DaniarPersonajeAndAutoDestruirse();
                     break;
+                
+                case InteraccionComponentEnum.DispararProyectilesQueDanian:
+                    _interaccionBehaviour = new DispararProyectilesQueDanian();
+                    break;
+                
                 /*case InteraccionComponentEnum.:
                     _interaccionBehaviour = new ();
                     break;*/

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Gameplay.Personajes.TargetComponents
 {
-    public class BuscarEnemigoMasCercano : TargetBehaviour
+    public class BuscarEnemigoMasCercanoYNoActualizar : TargetBehaviour
     {
         public override List<Personaje> GetTargets()
         {
@@ -12,7 +12,6 @@ namespace Gameplay.Personajes.TargetComponents
 
         public override void BuscaLosTargets()
         {
-            _targets = new List<Personaje>();
             Personaje _personajeMasCercano = null;
             List<Personaje> _personajesList = new List<Personaje>();
             var personajes = _targetComponent.GetPersonajes();
