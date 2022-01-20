@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 7114197542983364732}
   - component: {fileID: 7316080808676934838}
   m_Layer: 5
-  m_Name: ProyectilDeDanioEnemigoMasCercano
+  m_Name: ProyectilDeCuranderoLuchador
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -713,16 +713,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e031fdb4af66f98488ef4942973ae24d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: proyectilDanioEnemigoMasCercano
+  id: ProyectilDeCuranderoLuchador
   modelo3DId: Proyectil
-  interaccionComponentId: 14
+  interaccionComponentId: 15
   targetComponentId: 2
   rutaComponentId: 1
   distanciaDeInteraccion: 2
   health: 1000
   velocidadDeInteraccion: 10
   velocidadDeMovimiento: 10
-  damage: 50
+  damage: 140
   escudo: 0
   costoEnergia: 0
   valorCarta: {fileID: 971560392514880441}
