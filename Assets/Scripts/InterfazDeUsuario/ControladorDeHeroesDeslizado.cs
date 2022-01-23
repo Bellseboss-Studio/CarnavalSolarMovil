@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class ControladorDeHeroesDeslizado : MonoBehaviour
 {
     [SerializeField] private List<SelectorBaraja> barajas;
-    [SerializeField] private Button derecha, izquierda, continuar, jugar;
+    [SerializeField] private Button derecha, izquierda, continuar, jugar, salirButton;
     [SerializeField] private Animator animator;
     [SerializeField] private float duracion;
     [SerializeField] private int fuerza, vribacion;
@@ -46,6 +46,7 @@ public class ControladorDeHeroesDeslizado : MonoBehaviour
     }
     private void Start()
     {
+        salirButton.onClick.AddListener(() => Application.Quit());
         foreach (var baraja in barajas)
         {
             baraja.BotonBarajaSeleccionada.onClick.AddListener(() =>

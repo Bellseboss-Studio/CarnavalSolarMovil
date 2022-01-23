@@ -162,10 +162,10 @@ MonoBehaviour:
   targetComponentId: 0
   rutaComponentId: 0
   distanciaDeInteraccion: 12
-  health: 4800
-  velocidadDeInteraccion: 1.4
+  health: 1800
+  velocidadDeInteraccion: 3
   velocidadDeMovimiento: 0.25
-  damage: 140
+  damage: 300
   escudo: 0
   costoEnergia: 200
   valorCarta: {fileID: 8199502692526599257}
@@ -175,6 +175,7 @@ MonoBehaviour:
   morir: {fileID: 7400000, guid: c80e5eea73a86234c97950b148a12086, type: 2}
   idle: {fileID: 7400000, guid: b5dfd017a0cfd3942bb177165aea379d, type: 2}
   esUnaCartaIlegal: 1
+  panelDeDescripcion: {fileID: 2954956595706924557}
 --- !u!1001 &6041497768760208022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -185,6 +186,10 @@ PrefabInstance:
     - target: {fileID: 881151182889456955, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6307920080916883211, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+      propertyPath: m_fontSize
+      value: 59.3
       objectReference: {fileID: 0}
     - target: {fileID: 6315414879249161009, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
       propertyPath: m_Color.b
@@ -295,6 +300,11 @@ PrefabInstance:
 --- !u!224 &3506090705140920439 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7169612811733916385, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+  m_PrefabInstance: {fileID: 6041497768760208022}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &2954956595706924557 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8851169105958102171, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
   m_PrefabInstance: {fileID: 6041497768760208022}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &8199502692526599257 stripped

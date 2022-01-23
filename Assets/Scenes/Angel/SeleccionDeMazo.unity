@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999946, b: 0.99999946, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2906,7 +2906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: nombreFamilia
-      value: Venenosa
+      value: Mortifera
       objectReference: {fileID: 0}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: imageDeFamilia
@@ -2918,8 +2918,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: descripcionDeFamilia
-      value: Los venenosos debilitan al enemigo en la distancia y aplica efectos
-        que dan ventaja a los aliados.
+      value: Las cartas mortiferas son asesinas agresivas que se fortalecen al asesinar
+        y son muy eficientes contra todo tipo de enemigos
       objectReference: {fileID: 0}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: textoDeNombreDeFamilia
@@ -4161,6 +4161,7 @@ MonoBehaviour:
   izquierda: {fileID: 1533610571}
   continuar: {fileID: 1824538004}
   jugar: {fileID: 2118890949}
+  salirButton: {fileID: 1093964715}
   animator: {fileID: 377647285}
   duracion: 0.5
   fuerza: 50

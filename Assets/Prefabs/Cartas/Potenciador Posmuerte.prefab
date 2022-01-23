@@ -162,12 +162,12 @@ MonoBehaviour:
   targetComponentId: 0
   rutaComponentId: 0
   distanciaDeInteraccion: 2
-  health: 840
+  health: 500
   velocidadDeInteraccion: 0.6
   velocidadDeMovimiento: 1.3
-  damage: 60
+  damage: 96
   escudo: 0
-  costoEnergia: 5
+  costoEnergia: 6
   valorCarta: {fileID: 1863332152957923679}
   zona: 0
   caminar: {fileID: 7400000, guid: 6d3a04249b912e34ab784791da09e02c, type: 2}
@@ -175,6 +175,7 @@ MonoBehaviour:
   morir: {fileID: 7400000, guid: c80e5eea73a86234c97950b148a12086, type: 2}
   idle: {fileID: 7400000, guid: b5dfd017a0cfd3942bb177165aea379d, type: 2}
   esUnaCartaIlegal: 0
+  panelDeDescripcion: {fileID: 4689236391055971083}
 --- !u!1001 &4307174963874543504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -185,6 +186,14 @@ PrefabInstance:
     - target: {fileID: 881151182889456955, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6307920080916883211, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+      propertyPath: m_text
+      value: Soporte agresivo que potencia grandes grupos de cartas al morir
+      objectReference: {fileID: 0}
+    - target: {fileID: 6307920080916883211, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+      propertyPath: m_fontSize
+      value: 62.25
       objectReference: {fileID: 0}
     - target: {fileID: 6315414879249161009, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
       propertyPath: m_Color.g
@@ -291,6 +300,11 @@ PrefabInstance:
 --- !u!224 &6393347934197378417 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7169612811733916385, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+  m_PrefabInstance: {fileID: 4307174963874543504}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &4689236391055971083 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8851169105958102171, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
   m_PrefabInstance: {fileID: 4307174963874543504}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1863332152957923679 stripped

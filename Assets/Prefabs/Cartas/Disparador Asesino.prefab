@@ -158,16 +158,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: A02
   modelo3DId: Francotirador Venenoso
-  interaccionComponentId: 8
+  interaccionComponentId: 17
   targetComponentId: 1
   rutaComponentId: 0
   distanciaDeInteraccion: 5
-  health: 400
+  health: 440
   velocidadDeInteraccion: 1.2
   velocidadDeMovimiento: 0.7
-  damage: 96
+  damage: 156
   escudo: 0
-  costoEnergia: 5
+  costoEnergia: 7
   valorCarta: {fileID: 7859612565436948375}
   zona: 0
   caminar: {fileID: 7400000, guid: 6d3a04249b912e34ab784791da09e02c, type: 2}
@@ -175,6 +175,7 @@ MonoBehaviour:
   morir: {fileID: 7400000, guid: c80e5eea73a86234c97950b148a12086, type: 2}
   idle: {fileID: 7400000, guid: b5dfd017a0cfd3942bb177165aea379d, type: 2}
   esUnaCartaIlegal: 0
+  panelDeDescripcion: {fileID: 3880575536148774339}
 --- !u!1001 &5696835326362556760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -182,6 +183,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5202343790133810966}
     m_Modifications:
+    - target: {fileID: 6307920080916883211, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+      propertyPath: m_text
+      value: "Soporte agresivo con da\xF1o en area"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6307920080916883211, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
     - target: {fileID: 6315414879249161009, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
       propertyPath: m_Color.b
       value: 0.22745098
@@ -291,6 +300,11 @@ PrefabInstance:
 --- !u!224 &3202249921679967161 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7169612811733916385, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+  m_PrefabInstance: {fileID: 5696835326362556760}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &3880575536148774339 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8851169105958102171, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
   m_PrefabInstance: {fileID: 5696835326362556760}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7859612565436948375 stripped

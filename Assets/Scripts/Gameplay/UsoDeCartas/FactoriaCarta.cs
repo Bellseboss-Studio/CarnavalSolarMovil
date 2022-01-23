@@ -9,12 +9,14 @@ namespace Gameplay.UsoDeCartas
 {
     public class FactoriaCarta : MonoBehaviour, IFactoriaCarta
     {
+        [SerializeField] private DropComponent all, medioCampo, touchDown;
         private IColocacionCartas _colocacionCartas;
         private CartasConfiguracion _cartasConfiguracion;
         private GameObject _canvasDeLasCartas, _canvasPrincipal;
         private FactoriaPersonaje _factoriaPersonaje;
         private Stack<CartaTemplate> cartasInstanciadas;
         private Transform _transformDondePosicionar;
+        private bool yaColocamosPrimerasCartas = false;
 
         public void Configurate(IColocacionCartas colocacionCartas, CartasConfiguracion cartasConfiguracion, GameObject canvasDeLasCartas, FactoriaPersonaje factoriaPersonaje, GameObject canvasPrincipal, Transform transformDondePosicionar)
         {
@@ -25,6 +27,7 @@ namespace Gameplay.UsoDeCartas
             _canvasDeLasCartas = canvasDeLasCartas;
             _factoriaPersonaje = factoriaPersonaje;
             _canvasPrincipal = canvasPrincipal;
+            yaColocamosPrimerasCartas = false;
         }
 
         public CartaTemplate Create(string id, GameObject posicion, int posicionEnBaraja, Transform transformParameter)
@@ -36,9 +39,19 @@ namespace Gameplay.UsoDeCartas
             cartaInstancia.transform.position = posicion.transform.position;
             var dragDeLaCarta = cartaInstancia.GetComponent<DragComponent>();
             dragDeLaCarta.Configure(posicion.GetComponent<RectTransform>(), _canvasDeLasCartas.GetComponent<RectTransform>(), transformParameter);
-            cartaInstancia.Configurate(_factoriaPersonaje);
-            
+            cartaInstancia.Configurate(_factoriaPersonaje, ReferenciarDrpoComponentALaCarta(cartaInstancia));
             return cartaInstancia;
+        }
+
+        private DropComponent ReferenciarDrpoComponentALaCarta(CartaTemplate cartaInstancia)
+        {
+            return cartaInstancia.Zona switch
+            {
+                ZonaDeDropeo.TOUCHDOWN => touchDown,
+                ZonaDeDropeo.MEDIOCAMPO => medioCampo,
+                ZonaDeDropeo.TODOCAMPO => all,
+                _ => throw new ArgumentOutOfRangeException()
+            };
         }
 
         public CartaTemplate CreateEnemigo(string id, GameObject posicion)
@@ -48,7 +61,7 @@ namespace Gameplay.UsoDeCartas
             cartaInstancia.transform.position = posicion.transform.position;
             var dragDeLaCarta = cartaInstancia.GetComponent<DragComponent>();
             dragDeLaCarta.Configure(posicion.GetComponent<RectTransform>(), _canvasDeLasCartas.GetComponent<RectTransform>(), new RectTransform());
-            cartaInstancia.Configurate(_factoriaPersonaje);
+            cartaInstancia.Configurate(_factoriaPersonaje, null);
             return cartaInstancia;
         }
 
@@ -62,10 +75,12 @@ namespace Gameplay.UsoDeCartas
 
         public void CrearPrimerasCartas()
         {
+            if (yaColocamosPrimerasCartas) return;
             while (_colocacionCartas.PuedoSacarOtraCarta())
             {
                 Create(_colocacionCartas.GetNextCartaId(), _colocacionCartas.GetSiguientePosicionDeCarta(), _colocacionCartas.GetPosicionDeUltimaCartaInstanciada(), _transformDondePosicionar);
             }
+            yaColocamosPrimerasCartas = true;
         }
 
         public void DestruirLasCartas()
@@ -80,14 +95,12 @@ namespace Gameplay.UsoDeCartas
             cartasInstanciadas = new Stack<CartaTemplate>();
         }
 
-        public void CrearCartasEnHuecos()
+        public void CrearCarta()
         {
             var posicionesSinCartas = _colocacionCartas.ObtenerPocisionesSinCartas();
-            foreach (var posicionSinCarta in posicionesSinCartas)
-            {
-                Debug.Log($"colocandoCartaEnPosicion {posicionSinCarta}");
-                Create(_colocacionCartas.GetNextCartaId(), _colocacionCartas.GetPosicionDeCarta(posicionSinCarta),posicionSinCarta, _transformDondePosicionar);
-            }
+            if (posicionesSinCartas.Count == 0) return;
+            Debug.Log($"colocandoCartaEnPosicion {posicionesSinCartas[0]}");
+            Create(_colocacionCartas.GetNextCartaId(), _colocacionCartas.GetPosicionDeCarta(posicionesSinCartas[0]),posicionesSinCartas[0], _transformDondePosicionar);
         }
     }
 }

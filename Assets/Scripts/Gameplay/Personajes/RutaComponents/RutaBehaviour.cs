@@ -17,6 +17,10 @@ namespace Gameplay.Personajes.RutaComponents
 
         public abstract void DejarDeDesplazar();
 
+        public void SetVelocityToNavMesh()
+        {
+            _navMeshAgent.speed = _personaje.velocidadDeMovimiento;
+        }
 
         public void Configurate(NavMeshAgent navMeshAgent, Personaje personaje, IRutaComponent rutaComponent, SinApply sinApply)
         {
