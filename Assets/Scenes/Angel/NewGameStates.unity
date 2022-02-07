@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.29381624, g: 0.12085631, b: 0.03633824, a: 1}
+  m_IndirectSpecularColor: {r: 0.338661, g: 0.13746908, b: 0.05130542, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1771,6 +1771,7 @@ GameObject:
   - component: {fileID: 888163690}
   - component: {fileID: 888163689}
   - component: {fileID: 888163693}
+  - component: {fileID: 888163694}
   m_Layer: 0
   m_Name: Installer
   m_TagString: Untagged
@@ -1825,6 +1826,7 @@ MonoBehaviour:
   _servicioDeEnergia: {fileID: 888163690}
   manejadorDeEnemigos: {fileID: 888163693}
   colocacionCartas: {fileID: 1793217003}
+  enemiBehavior: {fileID: 0}
 --- !u!4 &888163692
 Transform:
   m_ObjectHideFlags: 0
@@ -1852,6 +1854,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 1732901737}
+  multipler: 3
+--- !u!114 &888163694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888163688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ae7814f061b194088930a7ee04c9ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &913429139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,6 +1973,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
@@ -3259,7 +3275,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 448.6
+  m_fontSize: 448.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4409,7 +4425,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 106.6
+  m_fontSize: 140
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

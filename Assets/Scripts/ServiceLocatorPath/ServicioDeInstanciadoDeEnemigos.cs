@@ -10,6 +10,7 @@ namespace ServiceLocatorPath
     public class ServicioDeInstanciadoDeEnemigos : MonoBehaviour, IEnemyInstantiate, IHeroeInstancie, IEstadoDePersonajesDelJuego, IInstanciadoDeCosasConfiguradas
     {
         [SerializeField] private GameObject point;
+        [SerializeField] private float multipler;
         private List<Gameplay.Personaje> personajesAliado;
         private List<Gameplay.Personaje> personajesEnemigos;
         private IFactoriaCarta _factoriaCarta;
@@ -47,7 +48,7 @@ namespace ServiceLocatorPath
 
         private Vector3 GetPointRandom()
         {
-            var pointToInstantiate = Random.insideUnitSphere.normalized;
+            var pointToInstantiate = Random.insideUnitSphere.normalized * multipler;
             pointToInstantiate.x += point.transform.position.x;
             pointToInstantiate.z += point.transform.position.z;
             pointToInstantiate.y = point.transform.position.y;
