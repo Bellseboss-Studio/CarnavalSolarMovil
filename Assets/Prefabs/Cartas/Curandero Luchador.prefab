@@ -158,13 +158,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: E02
   modelo3DId: CuranderoLuchador
-  interaccionComponentId: 1
+  interaccionComponentId: 16
   targetComponentId: 0
   rutaComponentId: 0
   distanciaDeInteraccion: 5
-  health: 380
+  health: 400
   velocidadDeInteraccion: 2
-  velocidadDeMovimiento: 1
+  velocidadDeMovimiento: 0.7
   damage: 140
   escudo: 0
   costoEnergia: 4
@@ -175,6 +175,7 @@ MonoBehaviour:
   morir: {fileID: 7400000, guid: c80e5eea73a86234c97950b148a12086, type: 2}
   idle: {fileID: 7400000, guid: b5dfd017a0cfd3942bb177165aea379d, type: 2}
   esUnaCartaIlegal: 0
+  panelDeDescripcion: {fileID: 6175503918153818605}
 --- !u!1001 &3415531098696582518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -185,6 +186,14 @@ PrefabInstance:
     - target: {fileID: 881151182889456955, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6307920080916883211, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+      propertyPath: m_text
+      value: Curador semi-agresivo que requiere pelear para curar
+      objectReference: {fileID: 0}
+    - target: {fileID: 6307920080916883211, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+      propertyPath: m_fontSize
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 6315414879249161009, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
       propertyPath: m_Color.b
@@ -291,6 +300,11 @@ PrefabInstance:
 --- !u!224 &5483681948161367959 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7169612811733916385, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+  m_PrefabInstance: {fileID: 3415531098696582518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &6175503918153818605 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8851169105958102171, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
   m_PrefabInstance: {fileID: 3415531098696582518}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &971560392514880441 stripped

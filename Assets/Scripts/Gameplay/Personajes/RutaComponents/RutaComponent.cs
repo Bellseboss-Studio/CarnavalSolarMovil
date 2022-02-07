@@ -29,5 +29,10 @@ namespace Gameplay.Personajes.RutaComponents
             _rutaBehaviour = rutaBehaviour;
             _rutaBehaviour.Configurate(navMeshAgent, personaje, this, sinApply);
         }
+
+        public void setVelocityToNavMesh()
+        {
+            _rutaBehaviour.SetVelocityToNavMesh();
+        }
     }
 }

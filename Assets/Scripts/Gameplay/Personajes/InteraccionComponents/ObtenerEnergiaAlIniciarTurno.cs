@@ -7,7 +7,7 @@ namespace Gameplay.Personajes.InteraccionComponents
         public override void InteraccionAlIniciarTurno (Personaje origen)
         {
             if(_personaje.enemigo) return;
-            ServiceLocator.Instance.GetService<IServicioDeEnergia>().AddQuantityOfEnergy(3);
+            ServiceLocator.Instance.GetService<IServicioDeEnergia>().AddQuantityOfEnergyInTheNextTurn(3);
         }
     }
 }
