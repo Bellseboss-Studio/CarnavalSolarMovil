@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Gameplay/EnemiBehavior.meta
 guid: d8aa730267ad7ad4eb64ffe64d99c00a
+========
+guid: 044e13b733e476f419184afc8dbf008f
+>>>>>>>> bca81c05d5480bf5697d57da2db76c99b66ccf3e:Assets/Models/Environment/NewStadium.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

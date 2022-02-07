@@ -162,7 +162,7 @@ MonoBehaviour:
   targetComponentId: 0
   rutaComponentId: 0
   distanciaDeInteraccion: 2
-  health: 3200
+  health: 2000
   velocidadDeInteraccion: 1.5
   velocidadDeMovimiento: 0.25
   damage: 165
@@ -175,6 +175,7 @@ MonoBehaviour:
   morir: {fileID: 7400000, guid: c80e5eea73a86234c97950b148a12086, type: 2}
   idle: {fileID: 7400000, guid: b5dfd017a0cfd3942bb177165aea379d, type: 2}
   esUnaCartaIlegal: 1
+  panelDeDescripcion: {fileID: 8931418692672865082}
 --- !u!1001 &83156695542900641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -299,6 +300,11 @@ PrefabInstance:
 --- !u!224 &7086689232067689792 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7169612811733916385, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
+  m_PrefabInstance: {fileID: 83156695542900641}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &8931418692672865082 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8851169105958102171, guid: 1b6480885f7b4d745861580b9120765a, type: 3}
   m_PrefabInstance: {fileID: 83156695542900641}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &2538522644943987054 stripped

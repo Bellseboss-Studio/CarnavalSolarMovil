@@ -16,6 +16,10 @@
         AumentarVelocidadGeneralDeAliadosAlIniciarTurno,
         AtacarYCurarAliadoMasCercanoAlImpacto,
         InstanciarProyectilQueCuraYDania,
-        DaniarPersonajeYAutoDestruirse
+        DaniarPersonajeYAutoDestruirse,
+        DaniarPersonajeCurarAliadoCercanoMasDaniadoAndAutoDestruirse,
+        DispararProyectilQueDaniaYCuraAliadoMasCercano,
+        DispararProyectilesQueDanian,
+        DaniarPersonajeAndAutoDestruirse
     }
 }

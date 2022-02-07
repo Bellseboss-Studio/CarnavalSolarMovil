@@ -60,5 +60,10 @@ namespace Gameplay.Personajes.TargetComponents
         {
             _behaviour.RemoveTarget(personaje);
         }
+
+        public void SetTarget(Personaje target)
+        {
+            _behaviour.AddTarget(target);
+        }
     }
 }

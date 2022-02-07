@@ -37,7 +37,7 @@ namespace Gameplay
             List<Personaje> personajesList = new List<Personaje>();
             foreach (var personaje in personajes)
             {
-                if (personaje.enemigo == origen.enemigo && Vector3.Distance(personaje.transform.position, origen.transform.position)< 4)
+                if (personaje.enemigo == origen.enemigo && Vector3.Distance(personaje.transform.position, origen.transform.position)< 6)
                 {
                     personajesList.Add(personaje);
                 }
@@ -106,8 +106,12 @@ namespace Gameplay
 
             IEnumerator AumentarVelocidadPorCincoSegundosCoroutine()
             {
-                personaje.velocidadDeMovimiento += (personaje.velocidadDeMovimiento * .5f);
+                var aumento = personaje.velocidadDeMovimiento * 2;
+                personaje.velocidadDeMovimiento += aumento;
+                personaje.GetRutaComponent().setVelocityToNavMesh();
                 yield return new WaitForSeconds(5);
+                personaje.velocidadDeMovimiento -= aumento;
+                personaje.GetRutaComponent().setVelocityToNavMesh();
                 interaccionComponent.YaAumenteMiVelocidad = false;
             }
         }
@@ -182,15 +186,17 @@ namespace Gameplay
         IEnumerator AumentarVelocidadMovimientoPersonajePorSegundosCoroutine(Personaje personaje, float velocidadMovimientoPotenciada, float tiempo)
         {
             personaje.velocidadDeMovimiento += velocidadMovimientoPotenciada;
+            personaje.GetRutaComponent().setVelocityToNavMesh();
             yield return new WaitForSeconds(tiempo);
             personaje.velocidadDeMovimiento -= velocidadMovimientoPotenciada;
+            personaje.GetRutaComponent().setVelocityToNavMesh();
         }
 
         IEnumerator DisminuirVelocidadInteraciconPersonajePorSegundosCoroutine(Personaje personaje, float velocidadInteraccionPotenciada, float tiempo)
         {
-            personaje.velocidadDeInteraccion += velocidadInteraccionPotenciada;
-            yield return new WaitForSeconds(tiempo);
             personaje.velocidadDeInteraccion -= velocidadInteraccionPotenciada;
+            yield return new WaitForSeconds(tiempo);
+            personaje.velocidadDeInteraccion += velocidadInteraccionPotenciada;
         }
         
         private void AplicarDanio(Personaje target, float danioARealizar)

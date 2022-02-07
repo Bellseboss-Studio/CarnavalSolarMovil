@@ -2,5 +2,6 @@
 {
     public interface IEnemyBehavior
     {
+        void InstantiateEnemies();
     }
 }

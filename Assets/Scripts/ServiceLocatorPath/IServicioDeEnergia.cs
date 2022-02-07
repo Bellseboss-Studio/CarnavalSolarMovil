@@ -5,6 +5,8 @@
         void Init();
         bool TieneEnergiaSuficiente(int costoDeEnergia);
         void AddEnergy();
-        void AddQuantityOfEnergy(int i);
+        void AddQuantityOfEnergyInTheNextTurn(int i);
+        bool TieneEnergiaSuficienteP2(int costoDeEnergia);
+        void AddEnergyP2();
     }
 }

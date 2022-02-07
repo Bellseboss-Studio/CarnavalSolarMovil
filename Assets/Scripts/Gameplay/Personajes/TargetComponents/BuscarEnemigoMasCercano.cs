@@ -12,6 +12,7 @@ namespace Gameplay.Personajes.TargetComponents
 
         public override void BuscaLosTargets()
         {
+            _targets = new List<Personaje>();
             Personaje _personajeMasCercano = null;
             List<Personaje> _personajesList = new List<Personaje>();
             var personajes = _targetComponent.GetPersonajes();
@@ -43,8 +44,5 @@ namespace Gameplay.Personajes.TargetComponents
                 //Debug.Log(_personajeMasCercano.GetTargetComponent().GetTargetTargetedBy().Contains(_personaje));
             }
         }
-        
-        
-        
     }
 }

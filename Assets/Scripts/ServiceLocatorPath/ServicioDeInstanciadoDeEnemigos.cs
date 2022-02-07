@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Gameplay.NewGameStates;
 using Gameplay.UsoDeCartas;
 using UnityEngine;
@@ -42,8 +41,16 @@ namespace ServiceLocatorPath
         {
             var carta = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
             var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
-            factoriaPersonaje.CreatePersonaje(GetPointRandom(), cartaTemplate.GetEstadisticas(), true, true);
-            Destroy(cartaTemplate.gameObject);
+            if (ServiceLocator.Instance.GetService<IServicioDeEnergia>()
+                .TieneEnergiaSuficienteP2(cartaTemplate.GetCostoEnergia))
+            {
+                factoriaPersonaje.CreatePersonaje(GetPointRandom(), cartaTemplate.GetEstadisticas(), true, true);
+                Destroy(cartaTemplate.gameObject);   
+            }
+            else
+            {
+                throw new EnergiaInsuficienteException("No tiene energia para continuar");
+            }
         }
 
         private Vector3 GetPointRandom()
@@ -111,6 +118,15 @@ namespace ServiceLocatorPath
         {
             var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
             var personaje = _factoriaPersonajes.CreatePersonaje(point, cartaTemplate.GetEstadisticas(), esEnemigo, false);
+            personaje.EsUnaBala = true;
+            personaje.imagenIndicadoraDeEquipo.enabled = false;
+            Destroy(cartaTemplate.gameObject);
+        }
+        public void InstanciaSinCartaConTarget(string carta, Vector3 point, bool esEnemigo, Gameplay.Personaje target)
+        {
+            var cartaTemplate = _factoriaCarta.CreateEnemigo(carta, gameObject);
+            var personaje = _factoriaPersonajes.CreatePersonaje(point, cartaTemplate.GetEstadisticas(), esEnemigo, false);
+            personaje.GetTargetComponent().SetTarget(target);
             personaje.EsUnaBala = true;
             personaje.imagenIndicadoraDeEquipo.enabled = false;
             Destroy(cartaTemplate.gameObject);
