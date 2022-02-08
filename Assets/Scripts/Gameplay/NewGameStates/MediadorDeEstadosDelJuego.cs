@@ -186,6 +186,11 @@ namespace Gameplay.NewGameStates
             _colocacionCartas.MostrarCartas();
         }
 
+        public IFactoriaPersonajes GetFactoryHero()
+        {
+            return _factoriaPersonaje;
+        }
+
         private void Update()
         {
             if (pedirUbicacionDeHeroe)

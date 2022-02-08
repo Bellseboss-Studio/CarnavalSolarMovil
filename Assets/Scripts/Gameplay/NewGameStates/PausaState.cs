@@ -21,6 +21,7 @@ namespace Gameplay.NewGameStates
         public void InitialConfiguration()
         {
             ServiceLocator.Instance.GetService<IServicioDeEnergia>().AddEnergy();
+            ServiceLocator.Instance.GetService<IServicioDeEnergia>().AddEnergyP2();
             _factoriaCarta.CrearPrimerasCartas();
             _factoriaCarta.CrearCarta();
             ServiceLocator.Instance.GetService<IServicioDeTiempo>().ComienzaAContarElTiempo(2);
@@ -29,8 +30,10 @@ namespace Gameplay.NewGameStates
 
         public void FinishConfiguration()
         {
+            ServiceLocator.Instance.GetService<IEnemyBehavior>().InstantiateEnemies();
             _factoriaCarta.DestruirLasCartas();
             ServiceLocator.Instance.GetService<IServicioDeTiempo>().DejaDeContarElTiempo();
+            ServiceLocator.Instance.GetService<IServicioDeTiempo>().DescongelarPersonajes();
         }
 
         public async Task<PersonajeStateResult> DoAction(object data)
