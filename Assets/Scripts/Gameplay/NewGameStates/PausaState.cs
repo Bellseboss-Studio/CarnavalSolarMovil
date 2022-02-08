@@ -30,9 +30,10 @@ namespace Gameplay.NewGameStates
 
         public void FinishConfiguration()
         {
+            ServiceLocator.Instance.GetService<IEnemyBehavior>().InstantiateEnemies();
             _factoriaCarta.DestruirLasCartas();
             ServiceLocator.Instance.GetService<IServicioDeTiempo>().DejaDeContarElTiempo();
-            ServiceLocator.Instance.GetService<IEnemyBehavior>().InstantiateEnemies();
+            ServiceLocator.Instance.GetService<IServicioDeTiempo>().DescongelarPersonajes();
         }
 
         public async Task<PersonajeStateResult> DoAction(object data)

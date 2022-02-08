@@ -73,10 +73,15 @@ namespace ServiceLocatorPath
             {
                 return true;
             }
-            DespausarPersonajes?.Invoke();
+            DescongelarPersonajes();
             playIcono.enabled = true;
             pasuaIcono.enabled = false;
             return false;
+        }
+
+        public void DescongelarPersonajes()
+        {
+            DespausarPersonajes?.Invoke();
         }
         
         public void ComienzaAContarElTiempo(int queTiempoEstoyContando)
@@ -97,10 +102,15 @@ namespace ServiceLocatorPath
             {
                 return true;
             }
-            PausarPersonajes?.Invoke();
+            CongelarPersonajes();
             playIcono.enabled = false;
             pasuaIcono.enabled = true;
             return false;
+        }
+
+        public void CongelarPersonajes()
+        {
+            PausarPersonajes?.Invoke();
         }
 
         public bool SeEstaColocandoElHeroe()
