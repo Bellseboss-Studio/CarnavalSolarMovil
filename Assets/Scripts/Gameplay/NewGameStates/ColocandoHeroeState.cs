@@ -45,6 +45,7 @@ namespace Gameplay.NewGameStates
                 await Task.Delay(TimeSpan.FromMilliseconds(100));
             }
             await Task.Delay(TimeSpan.FromMilliseconds(100));
+            ServiceLocator.Instance.GetService<IEnemyInstantiate>().InstanciateHeroEnemy(_mediadorDeEstadosDelJuego.GetFactoryHero());
             return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.Pausa);
         }
     }

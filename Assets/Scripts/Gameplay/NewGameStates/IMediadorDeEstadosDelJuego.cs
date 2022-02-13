@@ -16,5 +16,6 @@ namespace Gameplay.NewGameStates
         void MostrarMensajeDeQueSiPerdioGanoElJugador();
         void OcultarCartas();
         void MostrarCartas();
+        IFactoriaPersonajes GetFactoryHero();
     }
 }
