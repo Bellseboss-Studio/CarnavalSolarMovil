@@ -27,6 +27,7 @@ namespace Gameplay.UsoDeCartas
         [SerializeField] private Transform panelDeDescripcion;
 
         public ZonaDeDropeo Zona => zona;
+        public int GetCostoEnergia => costoEnergia;
 
         private int _posicionEnBaraja;
         public string Id => id;
@@ -70,7 +71,6 @@ namespace Gameplay.UsoDeCartas
                 ServiceLocator.Instance.GetService<IColocacionCartas>().YaNoHayCartaEnPosicion(_posicionEnBaraja);
                 _factoriaPersonaje.CreatePersonaje(hitPoint,GetEstadisticas());
                 gameObject.SetActive(false);
-                ServiceLocator.Instance.GetService<IEnemyInstantiate>().InstanciateEnemy(_factoriaPersonaje);
             }
         }
 
