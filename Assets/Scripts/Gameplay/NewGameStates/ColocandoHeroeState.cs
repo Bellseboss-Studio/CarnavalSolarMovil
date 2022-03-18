@@ -14,11 +14,13 @@ namespace Gameplay.NewGameStates
     {
         private IMediadorDeEstadosDelJuego _mediadorDeEstadosDelJuego;
         private readonly RectTransform _panelColocarHeroe;
+        private readonly FactoriaCarta _factoriaCarta;
 
-        public ColocandoHeroeState(IMediadorDeEstadosDelJuego mediadorDeEstadosDelJuego, RectTransform panelColocarHeroe)
+        public ColocandoHeroeState(IMediadorDeEstadosDelJuego mediadorDeEstadosDelJuego, RectTransform panelColocarHeroe, FactoriaCarta factoriaCarta)
         {
             _mediadorDeEstadosDelJuego = mediadorDeEstadosDelJuego;
             _panelColocarHeroe = panelColocarHeroe;
+            _factoriaCarta = factoriaCarta;
         }
 
         public void InitialConfiguration()
@@ -35,6 +37,7 @@ namespace Gameplay.NewGameStates
             _mediadorDeEstadosDelJuego.YaNoPedirColocacionDeHeroe();
             ServiceLocator.Instance.GetService<IServicioDeTiempo>().DejaDeContarElTiempo();
             _panelColocarHeroe.gameObject.SetActive(false);
+            _factoriaCarta.CrearPrimerasCartas();
         }
 
         public async Task<PersonajeStateResult> DoAction(object data)
