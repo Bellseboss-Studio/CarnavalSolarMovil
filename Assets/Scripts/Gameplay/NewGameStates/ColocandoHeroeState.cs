@@ -35,6 +35,7 @@ namespace Gameplay.NewGameStates
             _mediadorDeEstadosDelJuego.YaNoPedirColocacionDeHeroe();
             ServiceLocator.Instance.GetService<IServicioDeTiempo>().DejaDeContarElTiempo();
             _panelColocarHeroe.gameObject.SetActive(false);
+            _mediadorDeEstadosDelJuego.CrearPrimerasCartas();
         }
 
         public async Task<PersonajeStateResult> DoAction(object data)
