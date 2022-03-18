@@ -40,6 +40,7 @@ namespace Gameplay.UsoDeCartas
 
         public void Configurate(FactoriaPersonaje factoriaPersonaje, DropComponent dropComponent)
         {
+            _dropComponent = dropComponent;
             _dragComponent = GetComponent<DragComponent>();
             _dragComponent.OnDragging += Dragging;
             _dragComponent.OnDropCompleted += DropCompleted;
@@ -49,7 +50,20 @@ namespace Gameplay.UsoDeCartas
             var rectTransformRect = GetComponent<RectTransform>().rect;
             rectTransformRect.width = rectTransformRect.height;
             valorCarta.text = $"{costoEnergia}";
-            _dropComponent = dropComponent;
+            //Debug.Log(rectTransformRect.height);
+            //Debug.Log(rectTransformRect.width);
+        }
+        public void Configurate(FactoriaPersonaje factoriaPersonaje)
+        {
+            _dragComponent = GetComponent<DragComponent>();
+            _dragComponent.OnDragging += Dragging;
+            _dragComponent.OnDropCompleted += DropCompleted;
+            _dragComponent.OnFinishDragging += FinishDragging;
+            _dragComponent.Zona = zona;
+            _factoriaPersonaje = factoriaPersonaje;
+            var rectTransformRect = GetComponent<RectTransform>().rect;
+            rectTransformRect.width = rectTransformRect.height;
+            valorCarta.text = $"{costoEnergia}";
             //Debug.Log(rectTransformRect.height);
             //Debug.Log(rectTransformRect.width);
         }

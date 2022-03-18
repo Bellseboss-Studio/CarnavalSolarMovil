@@ -191,6 +191,11 @@ namespace Gameplay.NewGameStates
             return _factoriaPersonaje;
         }
 
+        public void CrearPrimerasCartas()
+        {
+            _factoriaCarta.CrearPrimerasCartas();
+        }
+
         private void Update()
         {
             if (pedirUbicacionDeHeroe)

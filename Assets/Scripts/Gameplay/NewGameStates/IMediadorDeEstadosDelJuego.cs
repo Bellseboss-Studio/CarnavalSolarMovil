@@ -17,5 +17,6 @@ namespace Gameplay.NewGameStates
         void OcultarCartas();
         void MostrarCartas();
         IFactoriaPersonajes GetFactoryHero();
+        void CrearPrimerasCartas();
     }
 }

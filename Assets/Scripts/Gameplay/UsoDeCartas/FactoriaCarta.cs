@@ -38,7 +38,15 @@ namespace Gameplay.UsoDeCartas
             cartaInstancia.transform.position = posicion.transform.position;
             var dragDeLaCarta = cartaInstancia.GetComponent<DragComponent>();
             dragDeLaCarta.Configure(posicion.GetComponent<RectTransform>(), _canvasDeLasCartas.GetComponent<RectTransform>(), transformParameter);
-            cartaInstancia.Configurate(_factoriaPersonaje, ReferenciarDrpoComponentALaCarta(cartaInstancia));
+            try
+            {
+                cartaInstancia.Configurate(_factoriaPersonaje, ReferenciarDrpoComponentALaCarta(cartaTemplate));
+            }
+            catch (Exception)
+            {
+                Debug.Log("No tiene zona");
+            }
+            
             return cartaInstancia;
         }
 
@@ -61,7 +69,7 @@ namespace Gameplay.UsoDeCartas
             cartaInstancia.transform.position = posicion.transform.position;
             var dragDeLaCarta = cartaInstancia.GetComponent<DragComponent>();
             dragDeLaCarta.Configure(posicion.GetComponent<RectTransform>(), _canvasDeLasCartas.GetComponent<RectTransform>(), new RectTransform());
-            cartaInstancia.Configurate(_factoriaPersonaje, null);
+            cartaInstancia.Configurate(_factoriaPersonaje);
             return cartaInstancia;
         }
 
