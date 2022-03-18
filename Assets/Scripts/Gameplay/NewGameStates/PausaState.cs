@@ -22,7 +22,6 @@ namespace Gameplay.NewGameStates
         {
             ServiceLocator.Instance.GetService<IServicioDeEnergia>().AddEnergy();
             ServiceLocator.Instance.GetService<IServicioDeEnergia>().AddEnergyP2();
-            _factoriaCarta.CrearPrimerasCartas();
             _factoriaCarta.CrearCarta();
             ServiceLocator.Instance.GetService<IServicioDeTiempo>().ComienzaAContarElTiempo(2);
             _mediadorDeEstadosDelJuego.MostrarCartas();
