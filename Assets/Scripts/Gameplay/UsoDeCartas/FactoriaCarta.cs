@@ -16,7 +16,6 @@ namespace Gameplay.UsoDeCartas
         private FactoriaPersonaje _factoriaPersonaje;
         private Stack<CartaTemplate> cartasInstanciadas;
         private Transform _transformDondePosicionar;
-        private bool yaColocamosPrimerasCartas = false;
 
         public void Configurate(IColocacionCartas colocacionCartas, CartasConfiguracion cartasConfiguracion, GameObject canvasDeLasCartas, FactoriaPersonaje factoriaPersonaje, GameObject canvasPrincipal, Transform transformDondePosicionar)
         {
@@ -27,11 +26,11 @@ namespace Gameplay.UsoDeCartas
             _canvasDeLasCartas = canvasDeLasCartas;
             _factoriaPersonaje = factoriaPersonaje;
             _canvasPrincipal = canvasPrincipal;
-            yaColocamosPrimerasCartas = false;
         }
 
         public CartaTemplate Create(string id, GameObject posicion, int posicionEnBaraja, Transform transformParameter)
         {
+            Debug.Log("crea aliado");
             var cartaTemplate = _cartasConfiguracion.GetCartaTemplate(id);
             var cartaInstancia = Instantiate(cartaTemplate, _canvasDeLasCartas.transform);
             cartaInstancia.PosicionEnBaraja = posicionEnBaraja;
@@ -56,6 +55,7 @@ namespace Gameplay.UsoDeCartas
 
         public CartaTemplate CreateEnemigo(string id, GameObject posicion)
         {
+            Debug.Log("crea enemigo");
             var cartaTemplate = _cartasConfiguracion.GetCartaTemplate(id);
             var cartaInstancia = Instantiate(cartaTemplate, _canvasDeLasCartas.transform);
             cartaInstancia.transform.position = posicion.transform.position;
@@ -74,12 +74,10 @@ namespace Gameplay.UsoDeCartas
 
         public void CrearPrimerasCartas()
         {
-            if (yaColocamosPrimerasCartas) return;
             while (_colocacionCartas.PuedoSacarOtraCarta())
             {
                 Create(_colocacionCartas.GetNextCartaId(), _colocacionCartas.GetSiguientePosicionDeCarta(), _colocacionCartas.GetPosicionDeUltimaCartaInstanciada(), _transformDondePosicionar);
             }
-            yaColocamosPrimerasCartas = true;
         }
 
         public void DestruirLasCartas()
