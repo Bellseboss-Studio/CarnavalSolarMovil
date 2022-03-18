@@ -45,12 +45,13 @@ namespace ServiceLocatorPath
                 .TieneEnergiaSuficienteP2(cartaTemplate.GetCostoEnergia))
             {
                 factoriaPersonaje.CreatePersonaje(GetPointRandom(), cartaTemplate.GetEstadisticas(), true, true);
-                Destroy(cartaTemplate.gameObject);   
             }
             else
             {
+                Destroy(cartaTemplate.gameObject);
                 throw new EnergiaInsuficienteException("No tiene energia para continuar");
             }
+            Destroy(cartaTemplate.gameObject);
         }
 
         private Vector3 GetPointRandom()

@@ -53,7 +53,7 @@ namespace Gameplay
                 }
             }
             transform.localPosition = positionLocal;
-            Debug.Log(deltaTimeLocal);
+            //Debug.Log(deltaTimeLocal);
         }
 
         public void Configure(GameObject targetParameter)

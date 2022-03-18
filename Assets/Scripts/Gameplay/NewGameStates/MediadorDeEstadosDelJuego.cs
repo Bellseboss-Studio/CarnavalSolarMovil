@@ -49,7 +49,7 @@ namespace Gameplay.NewGameStates
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Jugando, new JugandoState(this));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Pausa, new PausaState(this, _factoriaCarta));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.FinDeJuego, new FinDeJuegoState(this));
-            _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.ColocandoHeroe, new ColocandoHeroeState(this, textoIndicativoColocarHeroe));
+            _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.ColocandoHeroe, new ColocandoHeroeState(this, textoIndicativoColocarHeroe, _factoriaCarta));
             StartState(_configuracionDeLosEstadosDelJuego.GetState(1));
             //finalizarConfiguracionButton.onClick.AddListener(() => _juegoConfigurado = true);
             //pauseButton.onClick.AddListener(() => _juegoPausado = true);
