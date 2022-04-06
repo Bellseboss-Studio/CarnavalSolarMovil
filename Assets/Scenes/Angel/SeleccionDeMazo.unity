@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999946, b: 0.99999946, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -967,6 +967,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
@@ -1519,10 +1520,10 @@ RectTransform:
   m_Father: {fileID: 1679428578}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 416.909, y: 147}
-  m_SizeDelta: {x: 246.181, y: 224.057}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -145, y: 147}
+  m_SizeDelta: {x: 246.18103, y: 224.057}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &505498059
 MonoBehaviour:
@@ -1707,12 +1708,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: nombreFamilia
-      value: "L\xFAgubre"
+      value: Venenosa
       objectReference: {fileID: 0}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: descripcionDeFamilia
-      value: "Los l\xFAgubres se dispersan por el mapa y molestan al rival. Les gusta
-        avanzar y atacar por detr\xE1s. "
+      value: 'Las cartas Venenosas son francotiradores fuertes con efectos debilitadores
+        capaces de neutralizar rivales con facilidad.  '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
@@ -3534,10 +3535,10 @@ RectTransform:
   m_Father: {fileID: 377647282}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1080, y: 1920}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1336042036
 MonoBehaviour:
@@ -3745,9 +3746,9 @@ RectTransform:
   m_Father: {fileID: 1679428578}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -408.692, y: 157.85782}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 142, y: 157.85782}
   m_SizeDelta: {x: 262.618, y: 224.057}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1533610568
@@ -4133,10 +4134,10 @@ RectTransform:
   m_Father: {fileID: 1336042035}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1679428579
 MonoBehaviour:
@@ -4837,9 +4838,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: foto
+      value: 
+      objectReference: {fileID: 21300000, guid: 8f093411b7c9c2848b575c663d25b0b8, type: 3}
+    - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: idHeroe
+      value: HC0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: nombreFamilia
+      value: "L\xFAgubre"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
+      propertyPath: puedeSeleccionarlo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320365581585227863, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}
       propertyPath: descripcionDeFamilia
-      value: "Los mort\xEDferos hacen grandes da\xF1os y atacan a m\xFAltiples enemigos
-        a la vez, ninguna tropa d\xE9bil podr\xE1 vencerlos. "
+      value: "Los l\xFAgubres se dispersan por el mapa y molestan al rival. Les gusta
+        avanzar y atacar por detr\xE1s. "
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b33d030d2d38dbf4780b2687beb517a1, type: 3}

@@ -18,6 +18,7 @@ public class ControladorDeHeroesDeslizado : MonoBehaviour
     private int index;
     private SelectorBaraja _barajaSeleccionada;
     private bool estaMostrando;
+    private bool canShake = true;
 
     private void Awake()
     {
@@ -35,6 +36,8 @@ public class ControladorDeHeroesDeslizado : MonoBehaviour
     }
     private void ContinuarASiguienteEscena()
     {
+        if (!canShake) return;
+        StartCoroutine(WaitForShake());
         if (!_barajaSeleccionada.PuedeSeleccionarse)
         {
             _barajaSeleccionada.transform.DOShakePosition(duracion, fuerza, vribacion);
@@ -44,6 +47,14 @@ public class ControladorDeHeroesDeslizado : MonoBehaviour
             .SetBarajaSeleccionadaId(_barajaSeleccionada);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    private IEnumerator WaitForShake()
+    {
+        canShake = false;
+        yield return new WaitForSeconds(duracion + 0.1f);
+        canShake = true;
+    }
+
     private void Start()
     {
         salirButton.onClick.AddListener(() => Application.Quit());
