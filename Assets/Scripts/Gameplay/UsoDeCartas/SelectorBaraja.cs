@@ -38,6 +38,7 @@ namespace Gameplay.UsoDeCartas
         {
             AniadirBarajaAServiceLocator(this);
             imageDeFamilia.sprite = foto;
+            imageDeFamilia.preserveAspect = true;
             textoDeNombreDeFamilia.text = nombreFamilia;
             textoDeDescripcionDeFamilia.text = descripcionDeFamilia;
         }
