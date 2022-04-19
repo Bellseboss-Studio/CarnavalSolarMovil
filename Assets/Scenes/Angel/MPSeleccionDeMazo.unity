@@ -788,7 +788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &256654321
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1492,6 +1492,7 @@ MonoBehaviour:
   continuar: {fileID: 1525010278}
   jugar: {fileID: 1466262521}
   salirButton: {fileID: 1750413841}
+  jugarOnline: {fileID: 1982639004}
   animator: {fileID: 2075292034}
   duracion: 0.5
   fuerza: 50

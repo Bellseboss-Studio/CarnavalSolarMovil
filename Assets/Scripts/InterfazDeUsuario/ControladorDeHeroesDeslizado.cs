@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class ControladorDeHeroesDeslizado : MonoBehaviour
 {
     [SerializeField] private List<SelectorBaraja> barajas;
-    [SerializeField] private Button derecha, izquierda, continuar, jugar, salirButton;
+    [SerializeField] private Button derecha, izquierda, continuar, jugar, salirButton, jugarOnline;
     [SerializeField] private Animator animator;
     [SerializeField] private float duracion;
     [SerializeField] private int fuerza, vribacion;
@@ -19,6 +19,7 @@ public class ControladorDeHeroesDeslizado : MonoBehaviour
     private SelectorBaraja _barajaSeleccionada;
     private bool estaMostrando;
     private bool canShake = true;
+    private bool _juegoEnLinea = false;
 
     private void Awake()
     {
@@ -45,7 +46,14 @@ public class ControladorDeHeroesDeslizado : MonoBehaviour
         }
         ServiceLocator.Instance.GetService<IServicioDeBarajasDisponibles>()
             .SetBarajaSeleccionadaId(_barajaSeleccionada);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (_juegoEnLinea)
+        {
+            SceneManager.LoadScene("MPNewGameStates");
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     private IEnumerator WaitForShake()
@@ -114,6 +122,12 @@ public class ControladorDeHeroesDeslizado : MonoBehaviour
         jugar.onClick.AddListener(() =>
         {
             animator.SetBool("jugar", true);
+        });
+        
+        jugarOnline.onClick.AddListener(() =>
+        {
+            animator.SetBool("jugar", true);
+            _juegoEnLinea = true;
         });
         
         barajas[0].BotonBarajaSeleccionada.onClick.Invoke();
