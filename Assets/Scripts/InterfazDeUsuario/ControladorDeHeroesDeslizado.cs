@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Gameplay.UsoDeCartas;
+using NewMultiplayer;
+using Photon.Pun;
+using Photon.Realtime;
 using ServiceLocatorPath;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +18,7 @@ public class ControladorDeHeroesDeslizado : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private float duracion;
     [SerializeField] private int fuerza, vribacion;
+    [SerializeField] private PhotonLobby _photonLobby;
     private int index;
     private SelectorBaraja _barajaSeleccionada;
     private bool estaMostrando;
@@ -48,7 +52,8 @@ public class ControladorDeHeroesDeslizado : MonoBehaviour
             .SetBarajaSeleccionadaId(_barajaSeleccionada);
         if (_juegoEnLinea)
         {
-            SceneManager.LoadScene("MPNewGameStates");
+            _photonLobby.JoinRandomOrCreateRoom();
+            //SceneManager.LoadScene("MPNewGameStates");
         }
         else
         {

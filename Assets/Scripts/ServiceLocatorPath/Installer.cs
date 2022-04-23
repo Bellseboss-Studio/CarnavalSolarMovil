@@ -12,6 +12,7 @@ namespace ServiceLocatorPath
         [SerializeField] private ServicioDeInstanciadoDeEnemigos manejadorDeEnemigos;
         [SerializeField] private ColocacionCartas colocacionCartas;
         [SerializeField] private EnemiBehavior enemiBehavior;
+        [SerializeField] private ServicioMensajeriaPhoton servicioMensajeriaPhoton;
         
         private void Awake()
         {
@@ -32,6 +33,7 @@ namespace ServiceLocatorPath
             ServiceLocator.Instance.RegisterService<IEstadoDePersonajesDelJuego>(manejadorDeEnemigos);
             ServiceLocator.Instance.RegisterService<IInstanciadoDeCosasConfiguradas>(manejadorDeEnemigos);
             ServiceLocator.Instance.RegisterService<IEnemyBehavior>(enemiBehavior);
+            ServiceLocator.Instance.RegisterService<IServicioMensajeriaPhoton>(servicioMensajeriaPhoton);
             //DontDestroyOnLoad(gameObject);
         }
     }

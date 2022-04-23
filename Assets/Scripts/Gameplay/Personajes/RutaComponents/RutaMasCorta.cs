@@ -28,8 +28,7 @@ namespace Gameplay.Personajes.RutaComponents
 
         public override void DejarDeDesplazar()
         {
-            
-           if (_navMeshAgent!= null) _navMeshAgent.enabled = false;
+            if (_navMeshAgent!= null) _navMeshAgent.enabled = false;
         }
     }
 }

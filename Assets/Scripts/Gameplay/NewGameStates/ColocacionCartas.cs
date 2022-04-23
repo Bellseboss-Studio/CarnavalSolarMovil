@@ -100,6 +100,11 @@ namespace Gameplay.NewGameStates
             return ServiceLocator.Instance.GetService<IServicioDeBarajasDisponibles>().GetHeroe();
         }
 
+        public string GetHeroeEnemigo()
+        {
+            return ServiceLocator.Instance.GetService<IServicioDeBarajasDisponibles>().GetHeroeEnemigo();
+        }
+
         public void YaNoHayCartaEnPosicion(int pos)
         {
             _hayCartaEnPosicion[pos] = false;

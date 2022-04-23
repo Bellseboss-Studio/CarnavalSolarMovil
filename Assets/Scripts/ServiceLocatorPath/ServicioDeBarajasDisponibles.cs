@@ -9,6 +9,7 @@ namespace ServiceLocatorPath
     {
         private List<SelectorBaraja> _barajasDisponibles;
         private SelectorBaraja _barajaSeleccionadaId;
+        private string _idHeroeEnemigoSeleccionado;
         public ServicioDeBarajasDisponibles()
         {
             _barajasDisponibles = new List<SelectorBaraja>();
@@ -21,6 +22,16 @@ namespace ServiceLocatorPath
         public void SetBarajaSeleccionadaId(SelectorBaraja barajaSeleccionadaId)
         {
             _barajaSeleccionadaId = barajaSeleccionadaId;
+        }
+        
+        public SelectorBaraja GetBarajaSeleccionadaId()
+        {
+            return _barajaSeleccionadaId;
+        }
+
+        public void SetBarajaEnemigaSeleccionadaId(string barajaSeleccionadaId)
+        {
+            _idHeroeEnemigoSeleccionado = barajaSeleccionadaId;
         }
 
         public Stack<string> GetPrimeras10Cartas()
@@ -53,6 +64,11 @@ namespace ServiceLocatorPath
         public string GetHeroe()
         {
             return _barajaSeleccionadaId.IDHeroe;
+        }
+
+        public string GetHeroeEnemigo()
+        {
+            return _idHeroeEnemigoSeleccionado;
         }
     }
 }

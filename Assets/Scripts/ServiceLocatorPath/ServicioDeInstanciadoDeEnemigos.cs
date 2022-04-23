@@ -78,6 +78,16 @@ namespace ServiceLocatorPath
             Destroy(cartaTemplate.gameObject);
         }
 
+        public void InstanciateHeroEnemy(IFactoriaPersonajes factoriaPersonaje, Vector3 point, string heroe)
+        {
+            //ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();
+            var cartaTemplate = _factoriaCarta.CreateEnemigo(heroe, gameObject);
+            var personaje = factoriaPersonaje.CreatePersonaje(point, cartaTemplate.GetEstadisticas(), true,true);
+            personaje.LaPartidaEstaCongelada = true;
+            personajesEnemigos.Add(personaje);
+            Destroy(cartaTemplate.gameObject);
+        }
+
         public bool TerminoElJuego()
         {
             var terminoAliado = true;

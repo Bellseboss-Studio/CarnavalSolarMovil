@@ -42,13 +42,13 @@ namespace Gameplay.NewGameStates
 
         public async Task<PersonajeStateResult> DoAction(object data)
         {
-            while (!_mediadorDeEstadosDelJuego.SeCololoElHeroe())
+            while (!_mediadorDeEstadosDelJuego.SeCololoaronLosHeroes())
             {
-                _mediadorDeEstadosDelJuego.PedirColocacionDeHeroe();
+                if(!_mediadorDeEstadosDelJuego.SeColocoElHeroe()) _mediadorDeEstadosDelJuego.PedirColocacionDeHeroe();
                 await Task.Delay(TimeSpan.FromMilliseconds(100));
             }
             await Task.Delay(TimeSpan.FromMilliseconds(100));
-            ServiceLocator.Instance.GetService<IEnemyInstantiate>().InstanciateHeroEnemy(_mediadorDeEstadosDelJuego.GetFactoryHero());
+            //ServiceLocator.Instance.GetService<IEnemyInstantiate>().InstanciateHeroEnemy(_mediadorDeEstadosDelJuego.GetFactoryHero());
             return new PersonajeStateResult(ConfiguracionDeLosEstadosDelJuego.Pausa);
         }
     }

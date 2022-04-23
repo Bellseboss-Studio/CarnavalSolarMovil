@@ -1497,6 +1497,7 @@ MonoBehaviour:
   duracion: 0.5
   fuerza: 50
   vribacion: 60
+  _photonLobby: {fileID: 513478773}
 --- !u!1 &513478772
 GameObject:
   m_ObjectHideFlags: 0
@@ -4897,7 +4898,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1982639005}
   m_OnClick:
     m_PersistentCalls:
