@@ -6,23 +6,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f79e61cd-ff5b-40e0-8415-dc5fa26aa79c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Barajas/Heroe.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Barajas/Heroe.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cartas/Heroe Curador.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cartas/Heroe Curador.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cartas/Heroe Espinas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cartas/Heroe Espinas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cartas/Heroe Stuneador.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cartas/Heroe Stuneador.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cartas/ProyectilDeDanioEnemigoMasCercano.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cartas/ProyectilDeDanioEnemigoMasCercano.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Angel/SeleccionDeMazo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Angel/SeleccionDeMazo.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Personaje.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Personaje.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PersonajeBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/PersonajeBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Personajes/InteraccionComponents/DaniarPersonajeAndAutoDestruirse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Personajes/InteraccionComponents/DaniarPersonajeAndAutoDestruirse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Personajes/Prefabs/Personaje.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Personajes/Prefabs/Personaje.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Personajes/TargetComponents/BuscarEnemigoMasCercano.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Personajes/TargetComponents/BuscarEnemigoMasCercano.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Personajes/TargetComponents/BuscartresEnemigosMasCercanos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Personajes/TargetComponents/BuscartresEnemigosMasCercanos.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/RutaComponentEnum.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/RutaComponentEnum.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/UsoDeCartas/SelectorBaraja.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/UsoDeCartas/SelectorBaraja.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ServiceLocatorPath/ServicioDeInstanciadoDeEnemigos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ServiceLocatorPath/ServicioDeInstanciadoDeEnemigos.cs" afterDir="false" />
-    </list>
+    <list default="true" id="f79e61cd-ff5b-40e0-8415-dc5fa26aa79c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,6 +30,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -56,10 +43,15 @@
       <option name="presentableId" value="Default" />
       <updated>1640932073721</updated>
       <workItem from="1640932098182" duration="71000" />
+      <workItem from="1650728007808" duration="75000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
