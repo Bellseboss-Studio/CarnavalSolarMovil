@@ -10,7 +10,7 @@ namespace Gameplay.NewGameStates
         public bool SeSincronizaronLosJugadores();
         void SalirDelBuclePrincipal();
         bool EstanJugando();
-        bool SeCololoElHeroe();
+        bool SeCololoaronLosHeroes();
         Vector3 PedirColocacionDeHeroe();
         void YaNoPedirColocacionDeHeroe();
         void MostrarMensajeDeQueSiPerdioGanoElJugador();
@@ -18,5 +18,7 @@ namespace Gameplay.NewGameStates
         void MostrarCartas();
         IFactoriaPersonajes GetFactoryHero();
         void CrearPrimerasCartas();
+
+        bool SeColocoElHeroe();
     }
 }

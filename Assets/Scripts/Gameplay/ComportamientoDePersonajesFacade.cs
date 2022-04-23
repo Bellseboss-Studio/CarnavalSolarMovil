@@ -31,7 +31,7 @@ namespace Gameplay
         private void PersonajeCreado(Personaje personaje)
         {
             _personajes.Add(personaje);
-            Debug.Log(_servicioDeTiempo.TiempoQueEstoyContando);
+            //Debug.Log(_servicioDeTiempo.TiempoQueEstoyContando);
             if (_servicioDeTiempo.TiempoQueEstoyContando == 2)
             {
                 personaje.LaPartidaEstaCongelada = true;

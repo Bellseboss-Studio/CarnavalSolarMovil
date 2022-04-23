@@ -8,5 +8,6 @@ namespace ServiceLocatorPath
     {
         void InstanciateHero(IFactoriaPersonajes factoriaPersonaje, Vector3 point, string cualHeroe);
         void InstanciateHero(IFactoriaPersonajes factoriaPersonaje, Vector3 point, string cualHeroe, bool enemigo = false);
+        void InstanciateHeroEnemy(IFactoriaPersonajes factoriaPersonaje, Vector3 point, string heroe);
     }
 }

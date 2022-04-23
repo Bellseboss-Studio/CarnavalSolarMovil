@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using ExitGames.Client.Photon;
 using Gameplay.UsoDeCartas;
 using ServiceLocatorPath;
 using TMPro;
@@ -32,7 +33,16 @@ namespace Gameplay.NewGameStates
         private bool _juegoTerminado = false;
         private bool _juegoConfigurado = false;
         private bool _puedeSalirDelBucleDeEstados = false;
-        private bool _seColocoElHeroe = false;
+        private bool _seColocoElHeroe = false, _seColocoElHeroeEnemigo = false;
+        private bool _isMasterClient;
+
+        public bool SeColocoElHeroeEnemigo
+        {
+            get => _seColocoElHeroeEnemigo;
+            set => _seColocoElHeroeEnemigo = value;
+        }
+
+        public FactoriaCarta FactoriaCarta => _factoriaCarta;
 
         private void Awake()
         {
@@ -106,6 +116,11 @@ namespace Gameplay.NewGameStates
             return jugadoresSincronizados;
         }
 
+        public void SincronizarJugador()
+        {
+            jugadoresSincronizados = true;
+        }
+        
         public void SalirDelBuclePrincipal()
         {
             _puedeSalirDelBucleDeEstados = true;
@@ -116,9 +131,9 @@ namespace Gameplay.NewGameStates
             return ServiceLocator.Instance.GetService<IServicioDeTiempo>().EstanJugando();
         }
 
-        public bool SeCololoElHeroe()
+        public bool SeCololoaronLosHeroes()
         {
-            return _seColocoElHeroe;
+            return _seColocoElHeroe && _seColocoElHeroeEnemigo;
         }
 
         private Vector3 point;
@@ -129,7 +144,7 @@ namespace Gameplay.NewGameStates
             pedirUbicacionDeHeroe = true;
             if (tomoUbicacion)
             {
-                _factoriaCarta.CrearHeroe(point);
+                ServiceLocator.Instance.GetService<IServicioMensajeriaPhoton>().CrearHeroe(_isMasterClient, point);
                 _seColocoElHeroe = true;
                 return point;
             }
@@ -196,6 +211,11 @@ namespace Gameplay.NewGameStates
             _factoriaCarta.CrearPrimerasCartas();
         }
 
+        public bool SeColocoElHeroe()
+        {
+            return _seColocoElHeroe;
+        }
+
         private void Update()
         {
             if (pedirUbicacionDeHeroe)
@@ -209,6 +229,7 @@ namespace Gameplay.NewGameStates
                     {
                         //Debug.Log(hit);
                         point = hit.point;
+                        //Debug.Log(hit.point);
                         tomoUbicacion = true;
                     }
                 }
@@ -219,5 +240,17 @@ namespace Gameplay.NewGameStates
         {
             SalirDelBuclePrincipal();
         }
+
+        public void SetIsMasterClient(bool isMasterClient)
+        {
+            _isMasterClient = isMasterClient;
+        }
+
+        public bool IsMasterClient()
+        {
+            return _isMasterClient;
+        }
+        
+        
     }
 }

@@ -44,6 +44,10 @@ MonoBehaviour:
   - PublicandoPersonajesElejidos
   - CompartirInformacionDeTodoLoMio
   - DanandoPersonaje
+  - SincronizarJugadores
+  - CrearHeroeRPC
+  - SetBarajaEnemigaRPC
+  - SetHeroeEnemigoRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
