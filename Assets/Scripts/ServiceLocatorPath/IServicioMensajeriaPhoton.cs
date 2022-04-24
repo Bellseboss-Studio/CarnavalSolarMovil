@@ -10,5 +10,6 @@ namespace ServiceLocatorPath
         void SincronizarInicioDePartida();
         void CrearHeroe(bool isMasterClient, Vector3 point);
         void SetHeroeEnemigo(SelectorBaraja getBarajaSeleccionadaId);
+        void CrearPersonaje(Vector3 hitPoint, string getEstadisticas);
     }
 }

@@ -8,5 +8,6 @@ namespace Gameplay.UsoDeCartas
         void InstanciateEnemy(IFactoriaPersonajes factoriaPersonaje);
         void Configuration(IFactoriaCarta factoriaCarta, IFactoriaPersonajes factoriaPersonajes);
         void InstanciateHeroEnemy(IFactoriaPersonajes factoriaPersonaje);
+        void InstanciateCharacter(string id, Vector3 hitPoint, bool enemigo);
     }
 }

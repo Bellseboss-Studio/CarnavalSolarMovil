@@ -30,6 +30,11 @@ namespace ServiceLocatorPath
             photonView.RPC("SetHeroeEnemigoRPC", RpcTarget.Others, getBarajaSeleccionadaId.IDHeroe);
         }
 
+        public void CrearPersonaje(Vector3 hitPoint, string id)
+        {
+            photonView.RPC("CrearPersonajeRPC", RpcTarget.All, hitPoint, id, gameManager.IsMasterClient());
+        }
+
         [PunRPC]
         private void SincronizarJugadores()
         {
@@ -55,6 +60,20 @@ namespace ServiceLocatorPath
         private void SetHeroeEnemigoRPC(string idHeroe)
         {
             ServiceLocator.Instance.GetService<IServicioDeBarajasDisponibles>().SetBarajaEnemigaSeleccionadaId(idHeroe);
+        }
+
+        [PunRPC]
+        private void CrearPersonajeRPC(Vector3 hitPoint, string id, bool isMasterClient)
+        {
+            if (isMasterClient == gameManager.IsMasterClient())
+            {
+                ServiceLocator.Instance.GetService<IEnemyInstantiate>().InstanciateCharacter(id, hitPoint, false);
+            }
+            else
+            {
+                hitPoint = new Vector3(hitPoint.x * -1, hitPoint.y, hitPoint.z * -1);
+                ServiceLocator.Instance.GetService<IEnemyInstantiate>().InstanciateCharacter(id, hitPoint, true);
+            }
         }
         
     }
