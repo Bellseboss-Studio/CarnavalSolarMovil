@@ -37,6 +37,13 @@ namespace ServiceLocatorPath
             Destroy(cartaTemplate.gameObject);
         }
 
+        public void InstanciateCharacter(string id, Vector3 hitPoint, bool enemigo)
+        {
+            var cartaTemplate = _factoriaCarta.CreateEnemigo(id, gameObject);
+            _factoriaPersonajes.CreatePersonaje(hitPoint, cartaTemplate.GetEstadisticas(), enemigo, true);
+            Destroy(cartaTemplate.gameObject);
+        }
+
         public void InstanciateEnemy(IFactoriaPersonajes factoriaPersonaje)
         {
             var carta = ServiceLocator.Instance.GetService<IBarajaDelPlayer>().GetCartaRandom();

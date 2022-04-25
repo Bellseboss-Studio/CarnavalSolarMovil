@@ -36,6 +36,8 @@ namespace Gameplay.NewGameStates
         private bool _seColocoElHeroe = false, _seColocoElHeroeEnemigo = false;
         private bool _isMasterClient;
 
+        public FactoriaPersonaje FactoriaPersonaje => _factoriaPersonaje;
+
         public bool SeColocoElHeroeEnemigo
         {
             get => _seColocoElHeroeEnemigo;
