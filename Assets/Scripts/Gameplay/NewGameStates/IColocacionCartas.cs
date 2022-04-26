@@ -18,5 +18,6 @@ namespace Gameplay.NewGameStates
         GameObject GetPosicionDeCarta(int posicionSinCarta);
         void HayCartaEnPosicion(int posicionSinCarta);
         string GetHeroe();
+        string GetHeroeEnemigo();
     }
 }

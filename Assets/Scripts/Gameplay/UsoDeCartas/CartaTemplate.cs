@@ -83,7 +83,8 @@ namespace Gameplay.UsoDeCartas
             if (ServiceLocator.Instance.GetService<IServicioDeEnergia>().TieneEnergiaSuficiente(costoEnergia))
             {
                 ServiceLocator.Instance.GetService<IColocacionCartas>().YaNoHayCartaEnPosicion(_posicionEnBaraja);
-                _factoriaPersonaje.CreatePersonaje(hitPoint,GetEstadisticas());
+                ServiceLocator.Instance.GetService<IServicioMensajeriaPhoton>().CrearPersonaje(hitPoint, id);
+                //_factoriaPersonaje.CreatePersonaje(hitPoint,GetEstadisticas());
                 gameObject.SetActive(false);
             }
         }

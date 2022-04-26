@@ -3,6 +3,7 @@ using System.Collections;
 using System.Threading.Tasks;
 using Gameplay.PersonajeStates;
 using Gameplay.UsoDeCartas;
+using ServiceLocatorPath;
 using StatesOfEnemies;
 using UnityEngine;
 
@@ -34,7 +35,7 @@ namespace Gameplay.NewGameStates
         
         public void InitialConfiguration()
         {
-            
+            ServiceLocator.Instance.GetService<IServicioMensajeriaPhoton>().SetHeroeEnemigo(ServiceLocator.Instance.GetService<IServicioDeBarajasDisponibles>().GetBarajaSeleccionadaId());
         }
 
         public void FinishConfiguration()

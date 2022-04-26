@@ -2,6 +2,7 @@
 using Gameplay.Personajes.InteraccionComponents;
 using Gameplay.Personajes.RutaComponents;
 using Gameplay.Personajes.TargetComponents;
+using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -154,6 +155,8 @@ namespace Gameplay
         public PersonajeBuilder WithPosition(Vector3 position)
         {
             _position = position;
+            //Debug.Log(position);
+            //EditorApplication.isPaused = true;
             return this;
         }
         

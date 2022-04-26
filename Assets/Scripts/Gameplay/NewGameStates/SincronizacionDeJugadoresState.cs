@@ -19,7 +19,7 @@ namespace Gameplay.NewGameStates
 
         public void InitialConfiguration()
         {
-            
+            if(ServiceLocator.Instance.GetService<IServicioMensajeriaPhoton>().VerificarSerMasterClient()) ServiceLocator.Instance.GetService<IServicioMensajeriaPhoton>().SincronizarInicioDePartida();
         }
 
         public void FinishConfiguration()
