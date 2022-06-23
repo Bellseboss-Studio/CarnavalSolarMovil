@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.338661, g: 0.13746908, b: 0.05130542, a: 1}
+  m_IndirectSpecularColor: {r: 0.33897904, g: 0.1357593, b: 0.05071968, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1084,7 +1084,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 697542894}
-  - component: {fileID: 697542895}
+  - component: {fileID: 697542896}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1106,7 +1106,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &697542895
+--- !u!114 &697542896
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1115,12 +1115,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 697542893}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9747fc7c71854880806f05d4a5778a8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e8307dc78ed4834ad963cb4720ab6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   textoIndicativoColocarHeroe: {fileID: 1027859166}
   _factoriaCarta: {fileID: 775702044}
-  _colocacionCartas: {fileID: 1793217003}
+  _colocacionCartas: {fileID: 1793217005}
   cartasConfiguracion: {fileID: 11400000, guid: fa26bb25bf38fb343af50772ed202972, type: 2}
   heroesConfiguracion: {fileID: 11400000, guid: ce23a661b64ed0147a18c952083a3eab, type: 2}
   canvasDeLasCartas: {fileID: 1230467992}
@@ -1134,8 +1134,8 @@ MonoBehaviour:
   imagenesParaActivarCuandoGanaPierde:
   - {fileID: 1640366161}
   imagenesPanelesGanoPerdio:
-  - {fileID: 1726707803}
   - {fileID: 1992248343}
+  - {fileID: 1726707803}
   textosParaActivarCuandoGanaPierde:
   - {fileID: 724696174}
   - {fileID: 454210755}
@@ -1832,14 +1832,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 888163688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80bf0bac3d4241f2bbc05846361503c7, type: 3}
+  m_Script: {fileID: 11500000, guid: f1b96bae09a146cea8a18ed79859542a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   _servicioDeTiempo: {fileID: 888163689}
   _servicioDeEnergia: {fileID: 888163690}
   manejadorDeEnemigos: {fileID: 888163693}
-  colocacionCartas: {fileID: 1793217003}
+  colocacionCartas: {fileID: 0}
   enemiBehavior: {fileID: 888163694}
 --- !u!4 &888163692
 Transform:
@@ -3366,7 +3366,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 448.5
+  m_fontSize: 448.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4571,19 +4571,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: ColocacionCartas
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 23578268115931642, guid: b0422a815e653e843972ee165013b526, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b0422a815e653e843972ee165013b526, type: 3}
---- !u!114 &1793217003 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 23578268115931642, guid: b0422a815e653e843972ee165013b526, type: 3}
+--- !u!1 &1793217004 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 23578268115931643, guid: b0422a815e653e843972ee165013b526, type: 3}
   m_PrefabInstance: {fileID: 1793217002}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &1793217005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793217004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5397e998377f416fbceab37d30af9b81, type: 3}
+  m_Script: {fileID: 11500000, guid: 38adc7b8abdd4018abc275991ccaf348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posicionesDeCartas:
+  - {fileID: 2116348323}
+  - {fileID: 610148777}
+  - {fileID: 238109036}
+  - {fileID: 1521948755}
+  - {fileID: 1690818960}
+  - {fileID: 1633384572}
+  - {fileID: 1348562800}
+  - {fileID: 57907968}
+  - {fileID: 1259132044}
+  - {fileID: 797114229}
+  panelQueContieneCartas: {fileID: 2023248668}
 --- !u!1 &1855004421
 GameObject:
   m_ObjectHideFlags: 0

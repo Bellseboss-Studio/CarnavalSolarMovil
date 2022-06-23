@@ -29,6 +29,7 @@ namespace Gameplay.NewGameStates
         [SerializeField] private List<TextMeshProUGUI> textosParaActivarCuandoGanaPierde;
         [SerializeField] private Button botonContinuar;
         [SerializeField] private Transform _transformDondePosicionar;
+        [SerializeField] private bool isOffline;
         private bool _juegoPausado = true;
         private bool _juegoTerminado = false;
         private bool _juegoConfigurado = false;
@@ -55,9 +56,16 @@ namespace Gameplay.NewGameStates
         private void Start()
         {
             _configuracionDeLosEstadosDelJuego = new ConfiguracionDeLosEstadosDelJuego();
-            _configuracionDeLosEstadosDelJuego.AddInitialState(ConfiguracionDeLosEstadosDelJuego.ConfiguracionDelJuego,
-                new ConfiguracionDelJuegoState(this, _factoriaCarta, _colocacionCartas, cartasConfiguracion, canvasPrincipal, _factoriaPersonaje, canvasDeLasCartas, _transformDondePosicionar));
-            _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.SincronizacionDeJugadores, new SincronizacionDeJugadoresState(this));
+            if (isOffline)
+            {
+                _configuracionDeLosEstadosDelJuego.AddInitialState(ConfiguracionDeLosEstadosDelJuego.ConfiguracionDelJuego, new ConfiguracionDelJuegoStateOffline(this, _factoriaCarta, _colocacionCartas, cartasConfiguracion, canvasPrincipal, _factoriaPersonaje, canvasDeLasCartas, _transformDondePosicionar));
+                _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.SincronizacionDeJugadores, new SincronizacionDeJugadoresStateOffline(this));
+            }
+            else
+            {
+                _configuracionDeLosEstadosDelJuego.AddInitialState(ConfiguracionDeLosEstadosDelJuego.ConfiguracionDelJuego, new ConfiguracionDelJuegoState(this, _factoriaCarta, _colocacionCartas, cartasConfiguracion, canvasPrincipal, _factoriaPersonaje, canvasDeLasCartas, _transformDondePosicionar));
+                _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.SincronizacionDeJugadores, new SincronizacionDeJugadoresState(this));
+            }
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Jugando, new JugandoState(this));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.Pausa, new PausaState(this, _factoriaCarta));
             _configuracionDeLosEstadosDelJuego.AddState(ConfiguracionDeLosEstadosDelJuego.FinDeJuego, new FinDeJuegoState(this));
@@ -132,7 +140,7 @@ namespace Gameplay.NewGameStates
         {
             return ServiceLocator.Instance.GetService<IServicioDeTiempo>().EstanJugando();
         }
-
+        
         public bool SeCololoaronLosHeroes()
         {
             return _seColocoElHeroe && _seColocoElHeroeEnemigo;

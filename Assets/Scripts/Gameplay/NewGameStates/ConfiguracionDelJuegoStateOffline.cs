@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections;
 using System.Threading.Tasks;
 using Gameplay.PersonajeStates;
 using Gameplay.UsoDeCartas;
 using ServiceLocatorPath;
-using StatesOfEnemies;
 using UnityEngine;
 
 namespace Gameplay.NewGameStates
 {
-    public class ConfiguracionDelJuegoState : IEstadoDeJuego
+    public class ConfiguracionDelJuegoStateOffline : IEstadoDeJuego
     {
         private IMediadorDeEstadosDelJuego _mediadorDeEstadosDelJuego;
         private IFactoriaCarta _factoriaCarta;
@@ -21,7 +19,10 @@ namespace Gameplay.NewGameStates
         private readonly Transform _transformDondePosicionar;
 
 
-        public ConfiguracionDelJuegoState(IMediadorDeEstadosDelJuego mediadorDeEstadosDelJuego, IFactoriaCarta factoriaCarta, IColocacionCartas colocacionCartas, CartasConfiguracion cartasConfiguracion, GameObject canvasDeLasCartas, FactoriaPersonaje factoriaPersonaje, GameObject canvasPrincipal, Transform transformDondePosicionar)
+        public ConfiguracionDelJuegoStateOffline(IMediadorDeEstadosDelJuego mediadorDeEstadosDelJuego,
+            IFactoriaCarta factoriaCarta, IColocacionCartas colocacionCartas, CartasConfiguracion cartasConfiguracion,
+            GameObject canvasDeLasCartas, FactoriaPersonaje factoriaPersonaje, GameObject canvasPrincipal,
+            Transform transformDondePosicionar)
         {
             _mediadorDeEstadosDelJuego = mediadorDeEstadosDelJuego;
             _factoriaCarta = factoriaCarta;
@@ -33,24 +34,18 @@ namespace Gameplay.NewGameStates
             _transformDondePosicionar = transformDondePosicionar;
         }
 
-        protected ConfiguracionDelJuegoState()
-        {
-            
-        }
-
         public void InitialConfiguration()
         {
-            ServiceLocator.Instance.GetService<IServicioMensajeriaPhoton>().SetHeroeEnemigo(ServiceLocator.Instance.GetService<IServicioDeBarajasDisponibles>().GetBarajaSeleccionadaId());
         }
 
         public void FinishConfiguration()
         {
-            
         }
 
         public async Task<PersonajeStateResult> DoAction(object data)
         {
-            _factoriaCarta.Configurate(_colocacionCartas, _cartasConfiguracion, _canvasDeLasCartas, _factoriaPersonaje, _canvasPrincipal, _transformDondePosicionar);
+            _factoriaCarta.Configurate(_colocacionCartas, _cartasConfiguracion, _canvasDeLasCartas, _factoriaPersonaje,
+                _canvasPrincipal, _transformDondePosicionar);
             //Debug.Log("Estas en estado de configurar juego");
             //if (_mediadorDeEstadosDelJuego.SeConfiguroElJuego())
             {
