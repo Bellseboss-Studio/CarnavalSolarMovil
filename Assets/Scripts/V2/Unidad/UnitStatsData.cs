@@ -7,6 +7,7 @@ public class UnitStatsData
     public float Ataque;
     public float DistanciaDeAtaque;
     public float CoolDownAttack;
+    public float MovementVelocity;
 
     public UnitStatsData(UnitStatsSO so)
     {
@@ -14,6 +15,7 @@ public class UnitStatsData
         Ataque = so.Ataque;
         DistanciaDeAtaque = so.DistanciaDeAtaque;
         CoolDownAttack = so.CoolDownAttack;
+        MovementVelocity = so.MovementVelocity;
     }
 
     // Constructor vacío para serialización

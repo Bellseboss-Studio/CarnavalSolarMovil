@@ -7,6 +7,12 @@ namespace V2.Unidad
     {
         [SerializeField] private NavMeshAgent agent;
         public Vector3 destination;
+        private UnitMediator _mediator;
+
+        public void Configure(UnitMediator mediator)
+        {
+            _mediator = mediator;
+        }
 
         [ContextMenu("Agregar")]
         public void Agregar()
@@ -21,7 +27,22 @@ namespace V2.Unidad
 
         public void MoveTo(Vector3 position)
         {
+            if (_mediator == null) return;
+            agent.speed = _mediator.GetStat().MovementVelocity;
             agent.SetDestination(position);
+        }
+
+        public void Stop()
+        {
+            if (agent == null) return;
+            agent.ResetPath();
+            agent.velocity = Vector3.zero;
+        }
+
+        public void SetAutoRotation(bool isEnabled)
+        {
+            if (agent == null) return;
+            agent.updateRotation = isEnabled;
         }
 
         /// <summary>
@@ -35,6 +56,7 @@ namespace V2.Unidad
                 speed = agent.velocity.magnitude;
                 return true;
             }
+
             return false;
         }
     }

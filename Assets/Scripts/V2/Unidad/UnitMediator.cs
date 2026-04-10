@@ -32,19 +32,15 @@ namespace V2.Unidad
 
         #region Unity Events
 
-        protected virtual void Awake()
+        protected virtual void Start()
         {
+            Configure();
             // Inicialización de referencias si es necesario
             CurrentState = new UnitStateIdle();
             currentStateName = CurrentState.GetType().Name;
             CurrentState.Enter(this);
             // Por defecto, usa el buscador simple que retorna el target actual
             _enemyTargetFinder = new TargetEnemyFinder();
-        }
-
-        protected virtual void Start()
-        {
-            Configure();
             if (target != null)
             {
                 MoveTo(target.position);
@@ -236,6 +232,7 @@ namespace V2.Unidad
         /// </summary>
         public virtual void Configure()
         {
+            movement.Configure(this);
             if (healthController != null)
                 healthController.SetHp(statsController.GetStat().HP);
 

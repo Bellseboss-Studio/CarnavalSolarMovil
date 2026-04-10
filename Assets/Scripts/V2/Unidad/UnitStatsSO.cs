@@ -8,4 +8,5 @@ public class UnitStatsSO : ScriptableObject
     public float Ataque = 10f;
     public float DistanciaDeAtaque = 2f;
     public float CoolDownAttack = 1f;
+    public float MovementVelocity = 1f;
 }

@@ -12,12 +12,18 @@ namespace V2.Unidad.States
         {
             _timer = 0f;
             _attackCooldown = mediator.GetStat().CoolDownAttack;
-            if (mediator.AnimatorController != null)
-                mediator.AnimatorController.PlayAttack();
-            // Buscar el mediador del objetivo
+            mediator.Movement?.Stop();
+            mediator.Movement?.SetAutoRotation(false);
+
             var target = mediator.GetTarget();
             if (target != null)
+            {
                 _targetMediator = target;
+                LookAtTarget(mediator, _targetMediator);
+            }
+
+            if (mediator.AnimatorController != null)
+                mediator.AnimatorController.PlayAttack();
         }
 
         public void Update(UnitMediator mediator, float deltaTime)
@@ -28,6 +34,8 @@ namespace V2.Unidad.States
                 mediator.ChangeState(new UnitStateBuscarEnemigo());
                 return;
             }
+
+            LookAtTarget(mediator, _targetMediator);
 
             float distancia = Vector3.Distance(mediator.transform.position, _targetMediator.transform.position);
             float rango = mediator.GetStat().DistanciaDeAtaque;
@@ -49,7 +57,19 @@ namespace V2.Unidad.States
 
         public void Exit(UnitMediator mediator)
         {
-            // Nada por ahora
+            mediator.Movement?.SetAutoRotation(true);
+        }
+
+        private void LookAtTarget(UnitMediator mediator, UnitMediator target)
+        {
+            Vector3 direction = target.transform.position - mediator.transform.position;
+            direction.y = 0f;
+
+            if (direction.sqrMagnitude > 0.0001f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                mediator.transform.rotation = targetRotation;
+            }
         }
     }
 }

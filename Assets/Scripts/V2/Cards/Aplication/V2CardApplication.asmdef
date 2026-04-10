@@ -1,0 +1,17 @@
+{
+    "name": "V2CardApplication",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0d91527433795844e86bcaed45e3331e",
+        "GUID:9e89aa517cce2184b8bfb32a562bd400"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

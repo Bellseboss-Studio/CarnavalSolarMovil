@@ -1,0 +1,17 @@
+{
+    "name": "V2GameLoopApplication",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b9c19309418fab64981e20ea8edd9426",
+        "GUID:a65d9a73e86e8a16094732b640e510ef"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

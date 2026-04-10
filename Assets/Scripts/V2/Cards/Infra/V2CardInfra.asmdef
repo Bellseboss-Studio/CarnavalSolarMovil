@@ -1,0 +1,16 @@
+{
+    "name": "V2CardInfra",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0d91527433795844e86bcaed45e3331e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
